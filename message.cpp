@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <iomanip>
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -127,8 +128,10 @@ ft::irc::message::message(int command, const std::string& prefix)
       end(false)
 {
     std::ostringstream oss;
-    oss << command;
+    oss << std::setfill('0') << std::setw(3) << std::dec << command; // %03d
     this->command = oss.str();
+
+    assert(_validate_command(this->command));
 }
 
 ft::irc::message::message(const std::string& prefix, const std::string& command, const std::vector<std::string>& params)
@@ -137,6 +140,7 @@ ft::irc::message::message(const std::string& prefix, const std::string& command,
       params(params),
       end(true) // for recv
 {
+    assert(_validate_command(this->command));
 }
 
 std::string& ft::irc::message::operator[](param_vector::size_type n)
