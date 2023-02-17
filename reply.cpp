@@ -303,9 +303,7 @@ ft::irc::message ft::irc::make_reply::whois_channels(param_t nickname, std::vect
     std::ostringstream oss;
     for (auto&& [channelname, is_chanop, is_chanspk] : infos)
     {
-        oss << (is_chanop ? "@" : is_chanspk ? "+"
-                                             : "")
-            << channelname << ' ';
+        oss << (is_chanop ? "@" : (is_chanspk ? "+" : "")) << channelname << ' ';
     }
     return message(RPL_WHOISCHANNELS, this->prefix) << nickname << oss.str();
 }
@@ -370,12 +368,10 @@ ft::irc::message ft::irc::make_reply::version(param_t version, int debug_level, 
 
 ft::irc::message ft::irc::make_reply::who_reply(param_t channelname, param_t username, param_t hostname, param_t servername, param_t nickname, bool is_away, bool is_operator, bool is_chanop, bool is_chanspk, int hop_count, param_t info)
 {
-    std::string status;
-    status += is_away ? "G" : "H";
-    status += is_operator ? "*" : "";
-    status += is_chanop ? "@" : is_chanspk ? "+"
-                                           : "";
-    return message(RPL_WHOREPLY, this->prefix) << channelname << username << hostname << servername << nickname << status << hop_count + " " + info;
+    std::ostringstream status, oss;
+    status << (is_away ? "G" : "H") << (is_operator ? "*" : "") << (is_chanop ? "@" : (is_chanspk ? "+" : ""));
+    oss << hop_count << " " << info;
+    return message(RPL_WHOREPLY, this->prefix) << channelname << username << hostname << servername << nickname << status.str() << oss.str();
 }
 
 ft::irc::message ft::irc::make_reply::end_of_who(param_t name)
@@ -389,11 +385,7 @@ ft::irc::message ft::irc::make_reply::name_reply(param_t channelname, std::vecto
     std::ostringstream oss;
     for (auto&& [nickname, is_chanop, is_chanspk] : infos)
     {
-        std::string info;
-        info += nickname;
-        info += is_chanop ? "@" : is_chanspk ? "+"
-                                             : "";
-        oss << info;
+        oss << nickname << (is_chanop ? "@" : (is_chanspk ? "+" : "")) << ' ';
     }
     return message(RPL_NAMREPLY, this->prefix) << channelname << oss.str();
 }
@@ -405,7 +397,9 @@ ft::irc::message ft::irc::make_reply::end_of_names(param_t channelname)
 
 ft::irc::message ft::irc::make_reply::links(param_t mask, param_t server_name, int hop_count, param_t info)
 {
-    return message(RPL_LINKS, this->prefix) << mask << server_name << hop_count + " " + info;
+    std::ostringstream oss;
+    oss << hop_count << " " << info;
+    return message(RPL_LINKS, this->prefix) << mask << server_name << oss.str();
 }
 
 ft::irc::message ft::irc::make_reply::end_of_links(param_t mask)
@@ -472,9 +466,9 @@ ft::irc::message ft::irc::make_reply::users(param_t utmp_name, param_t utmp_line
 {
     // NOTE: utmp.h
     std::ostringstream oss;
-    oss << std::left << std::setw(8) << utmp_name << ' '; // "%-8s "
-    oss << std::left << std::setw(9) << utmp_line << ' '; // "%-9s "
-    oss << std::left << std::setw(8) << utmp_host;        // "%-8s"
+    oss << std::left << std::setw(8) << utmp_name << ' ' // "%-8s "
+        << std::left << std::setw(9) << utmp_line << ' ' // "%-9s "
+        << std::left << std::setw(8) << utmp_host;       // "%-8s"
     return message(RPL_USERS, this->prefix) << oss.str();
 }
 
@@ -537,4 +531,123 @@ ft::irc::message ft::irc::make_reply::trace_new_type(param_t new_type, param_t c
 ft::irc::message ft::irc::make_reply::trace_log(param_t log_filename, int debug_level)
 {
     return message(RPL_TRACELOG, this->prefix) << "File" << log_filename << debug_level;
+}
+
+ft::irc::message ft::irc::make_reply::stats_link_info(param_t linkname, int sendq, param_t sent_messages, int sent_bytes, param_t received_messages, int received_bytes, int time_open)
+{
+    return message(RPL_STATSLINKINFO, this->prefix) << linkname << sendq << sent_messages << sent_bytes << received_messages << received_bytes << time_open;
+}
+
+ft::irc::message ft::irc::make_reply::stats_commands(param_t command, unsigned count)
+{
+    return message(RPL_STATSCOMMANDS, this->prefix) << command << count;
+}
+
+ft::irc::message ft::irc::make_reply::stats_c_line(param_t host, param_t pass, param_t name, int port, int conf_class)
+{
+    return message(RPL_STATSCLINE, this->prefix) << 'C' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
+}
+
+ft::irc::message ft::irc::make_reply::stats_n_line(param_t host, param_t pass, param_t name, int port, int conf_class)
+{
+    return message(RPL_STATSNLINE, this->prefix) << 'N' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
+}
+
+ft::irc::message ft::irc::make_reply::stats_i_line(param_t host, param_t pass, param_t name, int port, int conf_class)
+{
+    return message(RPL_STATSILINE, this->prefix) << 'I' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
+}
+
+ft::irc::message ft::irc::make_reply::stats_k_line(param_t host, param_t pass, param_t name, int port, int conf_class)
+{
+    return message(RPL_STATSKLINE, this->prefix) << 'K' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
+}
+
+ft::irc::message ft::irc::make_reply::stats_y_line(int class_class, int ping_freq, int conn_freq, int max_sendq)
+{
+    return message(RPL_STATSYLINE, this->prefix) << 'Y' << class_class << ping_freq << conn_freq << max_sendq;
+}
+
+ft::irc::message ft::irc::make_reply::end_of_stats(char stats_letter)
+{
+    return message(RPL_ENDOFSTATS, this->prefix) << stats_letter << "End of /STATS report";
+}
+
+ft::irc::message ft::irc::make_reply::stats_l_line(param_t host, param_t pass, param_t name, int max_depth)
+{
+    return message(RPL_STATSLLINE, this->prefix) << 'L' << host << (!pass.empty() ? "*" : "<NULL>") << name << max_depth;
+}
+
+ft::irc::message ft::irc::make_reply::stats_uptime(int days, int hours, int minutes, int seconds)
+{
+    std::ostringstream oss;
+    oss << "Server Up " << days << " days "
+        << hours << ":"
+        << std::setfill('0') << std::setw(2) << std::dec << minutes << ":" // "%02d:"
+        << std::setfill('0') << std::setw(2) << std::dec << seconds;       // "%02d"
+    return message(RPL_STATSUPTIME, this->prefix) << oss.str();
+}
+
+ft::irc::message ft::irc::make_reply::stats_o_line(param_t host, param_t pass, param_t name)
+{
+    return message(RPL_STATSOLINE, this->prefix) << 'O' << host << (!pass.empty() ? "*" : "<NULL>") << name;
+}
+
+ft::irc::message ft::irc::make_reply::stats_h_line(param_t host, param_t pass, param_t name)
+{
+    return message(RPL_STATSHLINE, this->prefix) << 'H' << host << (!pass.empty() ? "*" : "<NULL>") << name;
+}
+
+ft::irc::message ft::irc::make_reply::user_mode_is(param_t user_mode)
+{
+    return message(RPL_UMODEIS, this->prefix) << user_mode;
+}
+
+ft::irc::message ft::irc::make_reply::luser_client(int user_count, int invisible_count, int server_count)
+{
+    std::ostringstream oss;
+    oss << "There are " << user_count << " users and " << invisible_count << " invisible on " << server_count << " servers";
+    return message(RPL_LUSERCLIENT, this->prefix) << oss.str();
+}
+
+ft::irc::message ft::irc::make_reply::luser_operator(int op_count)
+{
+    return message(RPL_LUSEROP, this->prefix) << op_count << "operator(s) online";
+}
+
+ft::irc::message ft::irc::make_reply::luser_unknown(int unknown_count)
+{
+    return message(RPL_LUSERUNKNOWN, this->prefix) << unknown_count << "unknown connection(s)";
+}
+
+ft::irc::message ft::irc::make_reply::luser_channels(int channel_count)
+{
+    return message(RPL_LUSERCHANNELS, this->prefix) << channel_count << "channels formed";
+}
+
+ft::irc::message ft::irc::make_reply::luser_me(int client_count, int server_count)
+{
+    std::ostringstream oss;
+    oss << "I have " << client_count << " clients and " << server_count << " servers";
+    return message(RPL_LUSERME, this->prefix) << oss.str();
+}
+
+ft::irc::message ft::irc::make_reply::admin_me(param_t servername)
+{
+    return message(RPL_ADMINME, this->prefix) << servername << ":Administrative info";
+}
+
+ft::irc::message ft::irc::make_reply::admin_loc1(param_t location)
+{
+    return message(RPL_ADMINLOC1, this->prefix) << location;
+}
+
+ft::irc::message ft::irc::make_reply::admin_loc2(param_t location_detail)
+{
+    return message(RPL_ADMINLOC2, this->prefix) << location_detail;
+}
+
+ft::irc::message ft::irc::make_reply::admin_email(param_t email_address)
+{
+    return message(RPL_ADMINEMAIL, this->prefix) << email_address;
 }

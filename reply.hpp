@@ -147,6 +147,7 @@
     /* END */
 
 #include <string>
+#include <vector>
 
 namespace ft
 {
@@ -270,6 +271,28 @@ namespace ft
             message trace_server(int client_class, int number_of_server, int number_of_client, param_t servername, param_t uri);
             message trace_new_type(param_t new_type, param_t client_name);
             message trace_log(param_t log_filename, int debug_level);
+            message stats_link_info(param_t linkname, int sendq, param_t sent_messages, int sent_bytes, param_t received_messages, int received_bytes, int time_open);
+            message stats_commands(param_t command, unsigned count);
+            message stats_c_line(param_t host, param_t pass, param_t name, int port, int conf_class);
+            message stats_n_line(param_t host, param_t pass, param_t name, int port, int conf_class);
+            message stats_i_line(param_t host, param_t pass, param_t name, int port, int conf_class);
+            message stats_k_line(param_t host, param_t pass, param_t name, int port, int conf_class);
+            message stats_y_line(int class_class, int ping_freq, int conn_freq, int max_sendq);
+            message end_of_stats(char stats_letter);
+            message stats_l_line(param_t host, param_t pass, param_t name, int max_depth);
+            message stats_uptime(int days, int hours, int minutes, int seconds);
+            message stats_o_line(param_t host, param_t pass, param_t name);
+            message stats_h_line(param_t host, param_t pass, param_t name);
+            message user_mode_is(param_t user_mode);
+            message luser_client(int user_count, int invisible_count, int server_count);
+            message luser_operator(int op_count);
+            message luser_unknown(int unknown_count);
+            message luser_channels(int channel_count);
+            message luser_me(int client_count, int server_count);
+            message admin_me(param_t servername);
+            message admin_loc1(param_t location);
+            message admin_loc2(param_t location_detail);
+            message admin_email(param_t email_address);
         };
     }
 }
