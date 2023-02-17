@@ -26,11 +26,13 @@ namespace ft
             bool end;
 
         public:
-            message(int command, const std::string& prefix = std::string());
+            message(int command);
             message(const std::string& prefix, const std::string& command, const std::vector<std::string>& params);
 
             std::string& operator[](param_vector::size_type n);
             const std::string& operator[](param_vector::size_type n) const;
+
+            message& operator>>(const std::string& prefix);
 
             message& operator<<(const std::string& str);
             template <typename T>

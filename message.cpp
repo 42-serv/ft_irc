@@ -4,6 +4,7 @@
 #include "message.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cctype>
 #include <iomanip>
 #include <sstream>
@@ -121,9 +122,9 @@ bool ft::irc::message::try_parse(const std::string& line, message& out_msg)
     return true;
 }
 
-ft::irc::message::message(int command, const std::string& prefix)
+ft::irc::message::message(int command)
     : command(),
-      prefix(prefix),
+      prefix(),
       params(),
       end(false)
 {
@@ -152,6 +153,12 @@ std::string& ft::irc::message::operator[](param_vector::size_type n)
 const std::string& ft::irc::message::operator[](param_vector::size_type n) const
 {
     return this->params[n];
+}
+
+ft::irc::message& ft::irc::message::operator>>(const std::string& prefix)
+{
+    this->set_prefix(prefix);
+    return *this;
 }
 
 ft::irc::message& ft::irc::message::operator<<(const std::string& str)
