@@ -178,24 +178,24 @@ namespace ft
                 return message(ERR_NOSUCHNICK) << nickname << "No such nick/channel";
             }
 
-            static inline message no_such_server(param_t servername)
+            static inline message no_such_server(param_t server_name)
             {
-                return message(ERR_NOSUCHSERVER) << servername << "No such server";
+                return message(ERR_NOSUCHSERVER) << server_name << "No such server";
             }
 
-            static inline message no_such_channel(param_t channelname)
+            static inline message no_such_channel(param_t channel_name)
             {
-                return message(ERR_NOSUCHCHANNEL) << channelname << "No such channel";
+                return message(ERR_NOSUCHCHANNEL) << channel_name << "No such channel";
             }
 
-            static inline message cannot_send_to_channel(param_t channelname)
+            static inline message cannot_send_to_channel(param_t channel_name)
             {
-                return message(ERR_CANNOTSENDTOCHAN) << channelname << "Cannot send to channel";
+                return message(ERR_CANNOTSENDTOCHAN) << channel_name << "Cannot send to channel";
             }
 
-            static inline message too_many_channels(param_t channelname)
+            static inline message too_many_channels(param_t channel_name)
             {
-                return message(ERR_TOOMANYCHANNELS) << channelname << "You have joined too many channels";
+                return message(ERR_TOOMANYCHANNELS) << channel_name << "You have joined too many channels";
             }
 
             static inline message was_no_such_nickname(param_t nickname)
@@ -243,9 +243,9 @@ namespace ft
                 return message(ERR_NOMOTD) << "MOTD File is missing";
             }
 
-            static inline message no_admin_info(param_t servername)
+            static inline message no_admin_info(param_t server_name)
             {
-                return message(ERR_NOADMININFO) << servername << "No administrative info available";
+                return message(ERR_NOADMININFO) << server_name << "No administrative info available";
             }
 
             static inline message file_error(param_t file_operation, param_t filename)
@@ -273,19 +273,19 @@ namespace ft
                 return message(ERR_NICKCOLLISION) << nickname << "Nickname collision KILL";
             }
 
-            static inline message user_not_in_channel(param_t nickname, param_t channelname)
+            static inline message user_not_in_channel(param_t nickname, param_t channel_name)
             {
-                return message(ERR_USERNOTINCHANNEL) << nickname << channelname << "They aren't on that channel";
+                return message(ERR_USERNOTINCHANNEL) << nickname << channel_name << "They aren't on that channel";
             }
 
-            static inline message not_on_channel(param_t channelname)
+            static inline message not_on_channel(param_t channel_name)
             {
-                return message(ERR_NOTONCHANNEL) << channelname << "You're not on that channel";
+                return message(ERR_NOTONCHANNEL) << channel_name << "You're not on that channel";
             }
 
-            static inline message user_on_channel(param_t username, param_t channelname)
+            static inline message user_on_channel(param_t username, param_t channel_name)
             {
-                return message(ERR_USERONCHANNEL) << username << channelname << "is already on channel";
+                return message(ERR_USERONCHANNEL) << username << channel_name << "is already on channel";
             }
 
             static inline message no_login(param_t username)
@@ -333,14 +333,14 @@ namespace ft
                 return message(ERR_YOUREBANNEDCREEP) << "You are banned from this server";
             }
 
-            static inline message channel_key_already_set(param_t channelname)
+            static inline message channel_key_already_set(param_t channel_name)
             {
-                return message(ERR_KEYSET) << channelname << "Channel key already set";
+                return message(ERR_KEYSET) << channel_name << "Channel key already set";
             }
 
-            static inline message channel_is_full(param_t channelname)
+            static inline message channel_is_full(param_t channel_name)
             {
-                return message(ERR_CHANNELISFULL) << channelname << "Cannot join channel (+l)";
+                return message(ERR_CHANNELISFULL) << channel_name << "Cannot join channel (+l)";
             }
 
             static inline message unknown_mode(char mode_char)
@@ -348,19 +348,19 @@ namespace ft
                 return message(ERR_UNKNOWNMODE) << mode_char << "is unknown mode char to me";
             }
 
-            static inline message invite_only_channel(param_t channelname)
+            static inline message invite_only_channel(param_t channel_name)
             {
-                return message(ERR_INVITEONLYCHAN) << channelname << "Cannot join channel (+i)";
+                return message(ERR_INVITEONLYCHAN) << channel_name << "Cannot join channel (+i)";
             }
 
-            static inline message banned_from_channel(param_t channelname)
+            static inline message banned_from_channel(param_t channel_name)
             {
-                return message(ERR_BANNEDFROMCHAN) << channelname << "Cannot join channel (+b)";
+                return message(ERR_BANNEDFROMCHAN) << channel_name << "Cannot join channel (+b)";
             }
 
-            static inline message bad_channel_key(param_t channelname)
+            static inline message bad_channel_key(param_t channel_name)
             {
-                return message(ERR_BADCHANNELKEY) << channelname << "Cannot join channel (+k)";
+                return message(ERR_BADCHANNELKEY) << channel_name << "Cannot join channel (+k)";
             }
 
             static inline message no_privileges()
@@ -368,9 +368,9 @@ namespace ft
                 return message(ERR_NOPRIVILEGES) << "Permission Denied- You're not an IRC operator";
             }
 
-            static inline message channel_operator_privileges_needed(param_t channelname)
+            static inline message channel_operator_privileges_needed(param_t channel_name)
             {
-                return message(ERR_CHANOPRIVSNEEDED) << channelname << "You're not channel operator";
+                return message(ERR_CHANOPRIVSNEEDED) << channel_name << "You're not channel operator";
             }
 
             static inline message cannot_kill_server()
@@ -394,6 +394,29 @@ namespace ft
             }
         };
 
+        struct person_info
+        {
+            std::string nickname;
+            std::string username;
+            std::string host;
+            bool is_operator;
+            bool is_away;
+        };
+
+        struct channel_info
+        {
+            std::string channel_name;
+            bool is_chanop;
+            bool is_chanspk;
+        };
+
+        struct member_info
+        {
+            std::string nickname;
+            bool is_chanop;
+            bool is_chanspk;
+        };
+
         struct make_reply : make_reply_base
         {
             static inline message none()
@@ -401,13 +424,12 @@ namespace ft
                 return message(RPL_NONE);
             }
 
-            static inline message user_host(std::vector<std::tuple<std::string, std::string, std::string, bool, bool> > found_person_list)
+            static inline message user_host(std::vector<person_info> found_person_list)
             {
-                // FIXME: tuple???
                 std::ostringstream oss;
-                for (auto&& [nickname, username, hostname, is_operator, is_away] : found_person_list)
+                for (std::vector<person_info>::iterator it = found_person_list.begin(); it != found_person_list.end(); ++it)
                 {
-                    oss << nickname << (is_operator ? "*" : "") << '=' << (is_away ? '-' : '+') << username << '@' << hostname << ' ';
+                    oss << it->nickname << (it->is_operator ? "*" : "") << '=' << (it->is_away ? '-' : '+') << it->username << '@' << it->host << ' ';
                 }
                 return message(RPL_USERHOST) << oss.str();
             }
@@ -437,15 +459,15 @@ namespace ft
                 return message(RPL_NOWAWAY) << "You have been marked as being away";
             }
 
-            static inline message whois_user(param_t nickname, param_t username, param_t hostname, param_t info)
+            static inline message whois_user(param_t nickname, param_t username, param_t host, param_t info)
             {
                 const char* const pass = "*";
-                return message(RPL_WHOISUSER) << nickname << username << hostname << pass << info;
+                return message(RPL_WHOISUSER) << nickname << username << host << pass << info;
             }
 
-            static inline message whois_server(param_t nickname, param_t servername, param_t info)
+            static inline message whois_server(param_t nickname, param_t server_name, param_t info)
             {
-                return message(RPL_WHOISSERVER) << nickname << servername << info;
+                return message(RPL_WHOISSERVER) << nickname << server_name << info;
             }
 
             static inline message whois_operator(param_t nickname)
@@ -463,21 +485,20 @@ namespace ft
                 return message(RPL_ENDOFWHOIS) << nickname << "End of /WHOIS list";
             }
 
-            static inline message whois_channels(param_t nickname, std::vector<std::tuple<std::string, std::string, bool, bool> > channel_list)
+            static inline message whois_channels(param_t nickname, std::vector<channel_info> channel_list)
             {
-                // FIXME: tuple???
                 std::ostringstream oss;
-                for (auto&& [channelname, is_chanop, is_chanspk] : channel_list)
+                for (std::vector<channel_info>::iterator it = channel_list.begin(); it != channel_list.end(); ++it)
                 {
-                    oss << (is_chanop ? "@" : (is_chanspk ? "+" : "")) << channelname << ' ';
+                    oss << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << it->channel_name << ' ';
                 }
                 return message(RPL_WHOISCHANNELS) << nickname << oss.str();
             }
 
-            static inline message whowas_user(param_t nickname, param_t username, param_t hostname, param_t info)
+            static inline message whowas_user(param_t nickname, param_t username, param_t host, param_t info)
             {
                 const char* const pass = "*";
-                return message(RPL_WHOWASUSER) << nickname << username << hostname << pass << info;
+                return message(RPL_WHOWASUSER) << nickname << username << host << pass << info;
             }
 
             static inline message end_of_whowas(param_t nickname)
@@ -491,9 +512,9 @@ namespace ft
                                               << "Users  Name";
             }
 
-            static inline message list(param_t channelname, int number_of_visible_user, param_t channel_topic)
+            static inline message list(param_t channel_name, int visible_count, param_t channel_topic)
             {
-                return message(RPL_LIST) << channelname << number_of_visible_user << channel_topic;
+                return message(RPL_LIST) << channel_name << visible_count << channel_topic;
             }
 
             static inline message list_end()
@@ -501,24 +522,24 @@ namespace ft
                 return message(RPL_LISTEND) << "End of /LIST";
             }
 
-            static inline message channel_mode_is(param_t channelname, param_t channel_mode, param_t member_mode_param)
+            static inline message channel_mode_is(param_t channel_name, param_t channel_mode, param_t member_mode_param)
             {
-                return message(RPL_CHANNELMODEIS) << channelname << channel_mode << member_mode_param;
+                return message(RPL_CHANNELMODEIS) << channel_name << channel_mode << member_mode_param;
             }
 
-            static inline message no_topic(param_t channelname)
+            static inline message no_topic(param_t channel_name)
             {
-                return message(RPL_NOTOPIC) << channelname << "No topic is set";
+                return message(RPL_NOTOPIC) << channel_name << "No topic is set";
             }
 
-            static inline message topic(param_t channelname, param_t channel_topic)
+            static inline message topic(param_t channel_name, param_t channel_topic)
             {
-                return message(RPL_TOPIC) << channelname << channel_topic;
+                return message(RPL_TOPIC) << channel_name << channel_topic;
             }
 
-            static inline message inviting(param_t channelname, param_t nickname)
+            static inline message inviting(param_t channel_name, param_t nickname)
             {
-                return message(RPL_INVITING) << channelname << nickname;
+                return message(RPL_INVITING) << channel_name << nickname;
             }
 
             static inline message summoning(param_t username)
@@ -526,19 +547,19 @@ namespace ft
                 return message(RPL_SUMMONING) << username << "Summoning user to IRC";
             }
 
-            static inline message version(param_t version, int debug_level, param_t servername, param_t comments)
+            static inline message version(param_t version, int debug_level, param_t server_name, param_t comments)
             {
                 std::ostringstream oss;
                 oss << version << "." << debug_level;
-                return message(RPL_VERSION) << oss.str() << servername << comments;
+                return message(RPL_VERSION) << oss.str() << server_name << comments;
             }
 
-            static inline message who_reply(param_t channelname, param_t username, param_t hostname, param_t servername, param_t nickname, bool is_away, bool is_operator, bool is_chanop, bool is_chanspk, int hop_count, param_t info)
+            static inline message who_reply(param_t channel_name, param_t username, param_t host, param_t server_name, param_t nickname, bool is_away, bool is_operator, bool is_chanop, bool is_chanspk, int hop_count, param_t info)
             {
                 std::ostringstream status, oss;
                 status << (is_away ? "G" : "H") << (is_operator ? "*" : "") << (is_chanop ? "@" : (is_chanspk ? "+" : ""));
                 oss << hop_count << " " << info;
-                return message(RPL_WHOREPLY) << channelname << username << hostname << servername << nickname << status.str() << oss.str();
+                return message(RPL_WHOREPLY) << channel_name << username << host << server_name << nickname << status.str() << oss.str();
             }
 
             static inline message end_of_who(param_t name)
@@ -546,20 +567,19 @@ namespace ft
                 return message(RPL_ENDOFWHO) << name << "End of /WHO list";
             }
 
-            static inline message name_reply(param_t channelname, std::vector<std::tuple<std::string, bool, bool> > user_list)
+            static inline message name_reply(param_t channel_name, std::vector<member_info> user_list)
             {
-                // FIXME: tuple???
                 std::ostringstream oss;
-                for (auto&& [nickname, is_chanop, is_chanspk] : user_list)
+                for (std::vector<member_info>::iterator it = user_list.begin(); it != user_list.end(); ++it)
                 {
-                    oss << nickname << (is_chanop ? "@" : (is_chanspk ? "+" : "")) << ' ';
+                    oss << it->nickname << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << ' ';
                 }
-                return message(RPL_NAMREPLY) << channelname << oss.str();
+                return message(RPL_NAMREPLY) << channel_name << oss.str();
             }
 
-            static inline message end_of_names(param_t channelname)
+            static inline message end_of_names(param_t channel_name)
             {
-                return message(RPL_ENDOFNAMES) << channelname << "End of /NAMES list";
+                return message(RPL_ENDOFNAMES) << channel_name << "End of /NAMES list";
             }
 
             static inline message links(param_t mask, param_t server_name, int hop_count, param_t info)
@@ -574,14 +594,14 @@ namespace ft
                 return message(RPL_ENDOFLINKS) << mask << "End of /LINKS list";
             }
 
-            static inline message ban_list(param_t channelname, int ban_id)
+            static inline message ban_list(param_t channel_name, int ban_id)
             {
-                return message(RPL_BANLIST) << channelname << ban_id;
+                return message(RPL_BANLIST) << channel_name << ban_id;
             }
 
-            static inline message end_of_ban_list(param_t channelname)
+            static inline message end_of_ban_list(param_t channel_name)
             {
-                return message(RPL_ENDOFBANLIST) << channelname << "End of channel ban list";
+                return message(RPL_ENDOFBANLIST) << channel_name << "End of channel ban list";
             }
 
             static inline message info(param_t info)
@@ -594,9 +614,9 @@ namespace ft
                 return message(RPL_ENDOFINFO) << "End of /INFO list";
             }
 
-            static inline message motd_start(param_t servername)
+            static inline message motd_start(param_t server_name)
             {
-                return message(RPL_MOTDSTART) << "- " + servername + " Message of the day - ";
+                return message(RPL_MOTDSTART) << "- " + server_name + " Message of the day - ";
             }
 
             static inline message motd(param_t text)
@@ -619,9 +639,9 @@ namespace ft
                 return message(RPL_REHASHING) << config_filename << "Rehashing";
             }
 
-            static inline message time(param_t servername, param_t local_time_str)
+            static inline message time(param_t server_name, param_t local_time_str)
             {
-                return message(RPL_TIME) << servername << local_time_str;
+                return message(RPL_TIME) << server_name << local_time_str;
             }
 
             static inline message users_start()
@@ -649,11 +669,11 @@ namespace ft
                 return message(RPL_NOUSERS) << "Nobody logged in";
             }
 
-            static inline message trace_link(param_t version, int debug_level, param_t destination_servername, param_t next_servername)
+            static inline message trace_link(param_t version, int debug_level, param_t destination_server_name, param_t next_server_name)
             {
                 std::ostringstream oss;
                 oss << version << debug_level;
-                return message(RPL_TRACELINK) << "Link" << oss.str() << destination_servername << next_servername;
+                return message(RPL_TRACELINK) << "Link" << oss.str() << destination_server_name << next_server_name;
             }
 
             static inline message trace_connecting(int client_class, param_t client_name)
@@ -681,13 +701,13 @@ namespace ft
                 return message(RPL_TRACEUSER) << "User" << client_class << client_name;
             }
 
-            static inline message trace_server(int client_class, int number_of_server, int number_of_client, param_t servername, param_t uri)
+            static inline message trace_server(int client_class, int server_count, int client_count, param_t client_name, param_t by, param_t uesrname, param_t host)
             {
-                // uri: %s!%s@%s
-                std::ostringstream oss_s, oss_c;
-                oss_s << number_of_server << 'S';
-                oss_c << number_of_client << 'C';
-                return message(RPL_TRACESERVER) << "Serv" << client_class << oss_s.str() << oss_c.str() << servername << uri;
+                std::ostringstream oss_s, oss_c, oss;
+                oss_s << server_count << 'S';
+                oss_c << client_count << 'C';
+                oss << by << '!' << username << '@' << host; // ME: <by or '*'>!*@<my name>
+                return message(RPL_TRACESERVER) << "Serv" << client_class << oss_s.str() << oss_c.str() << client_name << oss.str();
             }
 
             static inline message trace_new_type(param_t new_type, param_t client_name)
@@ -799,9 +819,9 @@ namespace ft
                 return message(RPL_LUSERME) << oss.str();
             }
 
-            static inline message admin_me(param_t servername)
+            static inline message admin_me(param_t server_name)
             {
-                return message(RPL_ADMINME) << servername << ":Administrative info";
+                return message(RPL_ADMINME) << server_name << ":Administrative info";
             }
 
             static inline message admin_loc1(param_t location)
