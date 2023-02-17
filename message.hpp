@@ -33,6 +33,8 @@ namespace ft
             const std::string& operator[](param_vector::size_type n) const;
 
             message& operator<<(const std::string& str);
+            template <typename T>
+            message& operator<<(const T& obj);
 
             const std::string& get_command() const;
 

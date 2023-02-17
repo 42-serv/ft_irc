@@ -146,6 +146,8 @@
     _MACRO(492, ERR_NOSERVICEHOST, "", "RESERVED")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           \
     /* END */
 
+#include <string>
+
 namespace ft
 {
     namespace irc
@@ -159,13 +161,115 @@ namespace ft
 #undef _MAKE_ENUM
         };
 
-        struct make_reply
+        struct make_reply_base
         {
-            typedef const std::string& nickname_t;
+            typedef const std::string& param_t;
 
             std::string prefix;
+        };
 
-            message no_such_nick(nickname_t nickname);
+        struct make_error : make_reply_base
+        {
+            message no_such_nickname(param_t nickname);
+            message no_such_server(param_t servername);
+            message no_such_channel(param_t channelname);
+            message cannot_send_to_channel(param_t channelname);
+            message too_many_channels(param_t channelname);
+            message was_no_such_nickname(param_t nickname);
+            message too_many_targets(param_t target);
+            message no_origin();
+            message no_recipient(param_t command);
+            message no_text_to_send();
+            message no_toplevel(param_t mask);
+            message wildcard_toplevel(param_t mask);
+            message unknown_command(param_t command);
+            message no_motd();
+            message no_admin_info(param_t servername);
+            message file_error(param_t file_operation, param_t filename);
+            message no_nickname_given();
+            message erroneous_nickname(param_t nickname);
+            message nickname_in_use(param_t nickname);
+            message nickname_collision(param_t nickname);
+            message user_not_in_channel(param_t nickname, param_t channelname);
+            message not_on_channel(param_t channel);
+            message user_on_channel(param_t username, param_t channelname);
+            message no_login(param_t username);
+            message summon_disabled();
+            message users_disabled();
+            message not_registered();
+            message need_more_parameters(param_t command);
+            message already_registered();
+            message no_permission_for_host();
+            message password_mismatch();
+            message banned_from_server();
+            message channel_key_already_set(param_t channelname);
+            message channel_is_full(param_t channelname);
+            message unknown_mode(char mode_char);
+            message invite_only_channel(param_t channelname);
+            message banned_from_channel(param_t channelname);
+            message bad_channel_key(param_t channelname);
+            message no_privileges();
+            message channel_operator_privileges_needed(param_t channelname);
+            message cannot_kill_server();
+            message no_operator_host();
+            message user_mode_unknown_flag();
+            message users_donot_match();
+        };
+
+        struct make_reply : make_reply_base
+        {
+            message none();
+            message user_host(std::vector<std::tuple<std::string, std::string, bool, bool> > infos);
+            message ison(std::vector<std::string> nicks);
+            message away(param_t nickname, param_t msg);
+            message unaway();
+            message now_away();
+            message whois_user(param_t nickname, param_t username, param_t hostname, param_t info);
+            message whois_server(param_t nickname, param_t servername, param_t info);
+            message whois_operator(param_t nickname);
+            message whois_idle(param_t nickname, long idle_time_second);
+            message end_of_whois(param_t nickname);
+            message whois_channels(param_t nickname, std::vector<std::tuple<std::string, std::string, bool, bool> > infos);
+            message whowas_user(param_t nickname, param_t username, param_t hostname, param_t info);
+            message end_of_whowas(param_t nickname);
+            message list_start();
+            message list(param_t channelname, int number_of_visible_user, param_t channel_topic);
+            message list_end();
+            message channel_mode_is(param_t channelname, param_t channel_mode, param_t member_mode_param);
+            message no_topic(param_t channelname);
+            message topic(param_t channelname, param_t channel_topic);
+            message inviting(param_t channelname, param_t nickname);
+            message summoning(param_t username);
+            message version(param_t version, int debug_level, param_t servername, param_t comments);
+            message who_reply(param_t channelname, param_t username, param_t hostname, param_t servername, param_t nickname, bool is_away, bool is_operator, bool is_chanop, bool is_speakable, int hop_count, param_t info);
+            message end_of_who(param_t name);
+            message name_reply(param_t channelname, std::vector<std::tuple<std::string, bool, bool> > infos);
+            message end_of_names(param_t channelname);
+            message links(param_t mask, param_t server_name, int hop_count, param_t info);
+            message end_of_links(param_t mask);
+            message ban_list(param_t channelname, int ban_id);
+            message end_of_ban_list(param_t channelname);
+            message info(param_t info);
+            message end_of_info();
+            message motd_start(param_t servername);
+            message motd(param_t text);
+            message end_of_motd();
+            message now_operator();
+            message rehashing(param_t config_filename);
+            message time(param_t servername, param_t local_time_str);
+            message users_start();
+            message users(param_t user_id, param_t terminal, param_t host);
+            message end_of_users();
+            message no_users();
+            message trace_link(param_t version, int debug_level, param_t destination_servername, param_t next_servername);
+            message trace_connecting(int client_class, param_t client_name);
+            message trace_handshake(int client_class, param_t client_name);
+            message trace_unknown(int client_class, param_t client_name);
+            message trace_operator(int client_class, param_t client_name);
+            message trace_user(int client_class, param_t client_name);
+            message trace_server(int client_class, int number_of_server, int number_of_client, param_t servername, param_t uri);
+            message trace_new_type(param_t new_type, param_t client_name);
+            message trace_log(param_t log_filename, int debug_level);
         };
     }
 }

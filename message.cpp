@@ -11,7 +11,7 @@
 #include <string>
 #include <vector>
 
-std::vector<std::string> ft::irc::message::split(const std::string& str, std::string::value_type delim = ' ', std::string::value_type limit = '\0')
+std::vector<std::string> ft::irc::message::split(const std::string& str, std::string::value_type delim, std::string::value_type limit)
 {
     std::vector<std::string> vec;
 
@@ -158,6 +158,14 @@ ft::irc::message& ft::irc::message::operator<<(const std::string& str)
 {
     this->add_param(str);
     return *this;
+}
+
+template <typename T>
+ft::irc::message& ft::irc::message::operator<<(const T& chr)
+{
+    std::ostringstream oss;
+    oss << chr;
+    return this->operator<<(oss.str());
 }
 
 const std::string& ft::irc::message::get_command() const
