@@ -424,10 +424,10 @@ namespace ft
                 return message(RPL_NONE);
             }
 
-            static inline message user_host(std::vector<person_info> found_person_list)
+            static inline message user_host(const std::vector<person_info>& found_person_list)
             {
                 std::ostringstream oss;
-                for (std::vector<person_info>::iterator it = found_person_list.begin(); it != found_person_list.end(); ++it)
+                for (std::vector<person_info>::const_iterator it = found_person_list.begin(); it != found_person_list.end(); ++it)
                 {
                     oss << it->nickname << (it->is_operator ? "*" : "") << '=' << (it->is_away ? '-' : '+') << it->username << '@' << it->host << ' ';
                 }
@@ -437,7 +437,7 @@ namespace ft
             static inline message ison(const std::vector<std::string>& nickname_list)
             {
                 std::ostringstream oss;
-                for (std::vector<std::string>::iterator it = nickname_list.begin(); it != nickname_list.end(); ++it)
+                for (std::vector<std::string>::const_iterator it = nickname_list.begin(); it != nickname_list.end(); ++it)
                 {
                     oss << *it << ' ';
                 }
@@ -485,10 +485,10 @@ namespace ft
                 return message(RPL_ENDOFWHOIS) << nickname << "End of /WHOIS list";
             }
 
-            static inline message whois_channels(param_t nickname, std::vector<channel_info> channel_list)
+            static inline message whois_channels(param_t nickname, const std::vector<channel_info>& channel_list)
             {
                 std::ostringstream oss;
-                for (std::vector<channel_info>::iterator it = channel_list.begin(); it != channel_list.end(); ++it)
+                for (std::vector<channel_info>::const_iterator it = channel_list.begin(); it != channel_list.end(); ++it)
                 {
                     oss << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << it->channel_name << ' ';
                 }
@@ -567,10 +567,10 @@ namespace ft
                 return message(RPL_ENDOFWHO) << name << "End of /WHO list";
             }
 
-            static inline message name_reply(param_t channel_name, std::vector<member_info> user_list)
+            static inline message name_reply(param_t channel_name, const std::vector<member_info>& user_list)
             {
                 std::ostringstream oss;
-                for (std::vector<member_info>::iterator it = user_list.begin(); it != user_list.end(); ++it)
+                for (std::vector<member_info>::const_iterator it = user_list.begin(); it != user_list.end(); ++it)
                 {
                     oss << it->nickname << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << ' ';
                 }
@@ -701,7 +701,7 @@ namespace ft
                 return message(RPL_TRACEUSER) << "User" << client_class << client_name;
             }
 
-            static inline message trace_server(int client_class, int server_count, int client_count, param_t client_name, param_t by, param_t uesrname, param_t host)
+            static inline message trace_server(int client_class, int server_count, int client_count, param_t client_name, param_t by, param_t username, param_t host)
             {
                 std::ostringstream oss_s, oss_c, oss;
                 oss_s << server_count << 'S';

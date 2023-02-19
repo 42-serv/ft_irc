@@ -39,6 +39,11 @@ std::vector<std::string> ft::irc::message::split(const std::string& str, std::st
 
 static bool _validate_command(std::string& command)
 {
+    if (command.empty())
+    {
+        return false;
+    }
+
     if (std::isalpha(command[0]))
     {
         for (std::string::iterator it = command.begin(); it != command.end(); ++it)
