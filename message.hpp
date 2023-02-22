@@ -13,7 +13,7 @@ namespace ft
         class message
         {
         public:
-            static std::vector<std::string> message::split(const std::string& str, std::string::value_type delim = ' ', std::string::value_type limit = '\0');
+            static std::vector<std::string> split(const std::string& str, std::string::value_type delim = ' ', std::string::value_type limit = '\0');
             static bool try_parse(const std::string& str, message& out_msg);
 
         public:
@@ -26,6 +26,7 @@ namespace ft
             bool end;
 
         public:
+            message();
             message(int command);
             message(const std::string& prefix, const std::string& command, const std::vector<std::string>& params);
 

@@ -87,14 +87,14 @@ bool ft::irc::message::try_parse(const std::string& line, message& out_msg)
     std::string::size_type pos_begin = 0;
 
     std::string prefix;
-    if (line[0] == ':')
+    if (line[pos_begin] == ':')
     {
         std::string::size_type pos_end_prefix = line.find_first_of(' ', pos_begin);
         if (pos_end_prefix == std::string::npos)
         {
             return false;
         }
-        prefix = line.substr(pos_begin, pos_end_prefix);
+        prefix = line.substr(pos_begin, pos_end_prefix - pos_begin);
 
         pos_begin = line.find_first_not_of(' ', pos_end_prefix + 1);
         if (pos_begin == std::string::npos)
@@ -106,7 +106,7 @@ bool ft::irc::message::try_parse(const std::string& line, message& out_msg)
     std::string command;
     {
         std::string::size_type pos_end_command = line.find_first_of(' ', pos_begin);
-        command = line.substr(pos_begin, pos_end_command);
+        command = line.substr(pos_begin, pos_end_command - pos_begin);
 
         if (!_validate_command(command))
         {
@@ -116,15 +116,23 @@ bool ft::irc::message::try_parse(const std::string& line, message& out_msg)
         pos_begin = pos_end_command;
     }
 
-    std::vector<std::string> params = message::split(line.substr(pos_begin), ' ', ':');
-    if (params.size() > 15)
+    std::vector<std::string> params;
+    if (pos_begin != std::string::npos)
     {
-        // TODO: configurable limit
-        return false;
+        params = message::split(line.substr(pos_begin), ' ', ':');
+        if (params.size() > 15)
+        {
+            // TODO: configurable limit
+            return false;
+        }
     }
 
     out_msg = message(prefix, command, params);
     return true;
+}
+
+ft::irc::message::message()
+{
 }
 
 ft::irc::message::message(int command)
@@ -244,7 +252,7 @@ std::string ft::irc::message::to_pretty_string() const
     oss << "\tCOMMAND=\"" << this->get_command() << "\"" << std::endl;
     oss << "\tPREFIX=\"" << this->get_prefix() << "\"" << std::endl;
     oss << "\tPARAMS = [" << this->size_param() << "] {" << std::endl;
-    for (std::size_t i = 1; i <= this->size_param(); i++)
+    for (std::size_t i = 0; i < this->size_param(); i++)
     {
         oss << "\t\t[" << i << "] = \"" << this->operator[](i) << "\"" << std::endl;
     }
