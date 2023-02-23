@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "irc_constants.hpp"
+
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
@@ -25,7 +27,7 @@ namespace ft
                         out.push_back(ft::make_shared<std::string>(&arr[begin], &arr[i - 1]));
                         begin = i + 1;
                     }
-                    else if (i - begin >= 512)
+                    else if (i - begin >= FT_IRC_MESSAGE_LINE_LIMIT)
                     {
                         // FIXME: throw exceed 512 bytes without CR-LF
                     }

@@ -1,10 +1,16 @@
 /* Any copyright is dedicated to the Public Domain.
  * https://creativecommons.org/publicdomain/zero/1.0/ */
 
+#include "irc_constants.hpp"
+
 #include "server_handler.hpp"
 
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
+
+#if not FT_IRC_HARDWARE_CONCURRENCY > 0
+#include <unistd.h> // sysconf
+#endif
 
 namespace ft
 {
@@ -24,8 +30,16 @@ int main()
     // FIXME: 임시 코드
     ft::shared_ptr<ft::serv::event_worker_group> boss_group = ft::make_shared<ft::serv::event_worker_group>();
     ft::shared_ptr<ft::serv::event_worker_group> child_group = ft::make_shared<ft::serv::event_worker_group>();
+    // TODO: sigaction
     boss_group->put_worker(ft::make_shared<ft::serv::event_worker>());
-    for (int i = 0; i < 5; i++)
+    const long hardware_concurrency =
+#if FT_IRC_HARDWARE_CONCURRENCY > 0
+        FT_IRC_HARDWARE_CONCURRENCY
+#else
+        ::sysconf(_SC_NPROCESSORS_ONLN)
+#endif
+        ;
+    for (long i = 0; i < hardware_concurrency; i++)
     {
         child_group->put_worker(ft::make_shared<ft::serv::event_worker>());
     }
