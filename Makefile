@@ -8,6 +8,7 @@ CXXFLAGS += -MMD -MF $(@:.o=.d) -MT $@ -MP
 CXXFLAGS += --std=c++98 -Wall -Wextra -Werror
 CXXFLAGS += -Iincludes
 
+CXXFLAGS += -Iincludes/libserv/includes
 LDFLAGS += -Lincludes/libserv -lserv
 
 TARGET = ircserv.out

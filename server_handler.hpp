@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "irc_constants.hpp"
+
 #include "client_handler.hpp"
 #include "message_decoder.hpp"
 #include "string_line_decoder.hpp"

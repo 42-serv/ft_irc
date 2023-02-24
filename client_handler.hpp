@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "irc_constants.hpp"
+
 #include "message.hpp"
 
 #include <libserv/libserv.hpp>

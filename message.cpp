@@ -1,6 +1,8 @@
 /* Any copyright is dedicated to the Public Domain.
  * https://creativecommons.org/publicdomain/zero/1.0/ */
 
+#include "irc_constants.hpp"
+
 #include "message.hpp"
 
 #include <algorithm>
@@ -120,9 +122,8 @@ bool ft::irc::message::try_parse(const std::string& line, message& out_msg)
     if (pos_begin != std::string::npos)
     {
         params = message::split(line.substr(pos_begin), ' ', ':');
-        if (params.size() > 15)
+        if (params.size() > FT_IRC_MESSAGE_PARAM_LIMIT)
         {
-            // TODO: configurable limit
             return false;
         }
     }
