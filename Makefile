@@ -15,7 +15,7 @@ OBJECTS_DIR = objs/
 
 SOURCES += \
 	message.cpp \
-	server.cpp \
+	main.cpp \
 
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(SOURCES:.cpp=.o))
 
