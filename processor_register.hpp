@@ -12,6 +12,8 @@ namespace ft
 {
     namespace irc
     {
+        // Command: PASS
+        // Parameters: <password>
         class processor_pass : public processor_base
         {
         public:
@@ -26,6 +28,8 @@ namespace ft
             }
         };
 
+        // Command: NICK
+        // Parameters: <nickname> [ <hopcount> ]
         class processor_nick : public processor_base
         {
         public:
@@ -40,6 +44,8 @@ namespace ft
             }
         };
 
+        // Command: USER
+        // Parameters: <username> <hostname> <servername> <realname>
         class processor_user : public processor_base
         {
         public:
@@ -54,6 +60,8 @@ namespace ft
             }
         };
 
+        // Command: OPER
+        // Parameters: <user> <password>
         class processor_oper : public processor_base
         {
         public:
@@ -66,6 +74,8 @@ namespace ft
             }
         };
 
+        // Command: QUIT
+        // Parameters: [<Quit message>]
         class processor_quit : public processor_base
         {
         public:
@@ -79,6 +89,8 @@ namespace ft
             }
         };
 
+        // Command: SQUIT
+        // Parameters: <server> <comment>
         class processor_squit : public processor_base // FIXME is this necessary???
         {
         public:

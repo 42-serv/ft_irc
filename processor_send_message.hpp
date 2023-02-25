@@ -12,6 +12,8 @@ namespace ft
 {
     namespace irc
     {
+        // Command: PRIVMSG
+        // Parameters: <receiver>{,<receiver>} <text to be sent>
         class processor_privmsg : public processor_base
         {
         public:
@@ -23,6 +25,8 @@ namespace ft
             }
         };
 
+        // Command: NOTICE
+        // Parameters: <nickname> <text>
         class processor_notice : public processor_base
         {
         public:

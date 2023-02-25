@@ -12,6 +12,8 @@ namespace ft
 {
     namespace irc
     {
+        // Command: KILL
+        // Parameters: <nickname> <comment>
         class processor_kill : public processor_base
         {
         public:
@@ -26,6 +28,8 @@ namespace ft
             bool is_operator_only() { return true; }
         };
 
+        // Command: PING
+        // Parameters: <server1> [<server2>]
         class processor_ping : public processor_base
         {
         public:
@@ -38,6 +42,8 @@ namespace ft
             }
         };
 
+        // Command: PONG
+        // Parameters: <daemon> [<daemon2>]
         class processor_pong : public processor_base
         {
         public:
@@ -50,6 +56,8 @@ namespace ft
             }
         };
 
+        // Command: ERROR
+        // Parameters: <error message>
         class processor_error : public processor_base
         {
         public:

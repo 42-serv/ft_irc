@@ -12,6 +12,8 @@ namespace ft
 {
     namespace irc
     {
+        // Command: WHO
+        // Parameters: [<name> [<o>]]
         class processor_who : public processor_base
         {
         public:
@@ -21,6 +23,8 @@ namespace ft
             }
         };
 
+        // Command: WHOIS
+        // Parameters: [<server>] <nickmask>[,<nickmask>[,...]]
         class processor_whois : public processor_base
         {
         public:
@@ -32,6 +36,8 @@ namespace ft
             }
         };
 
+        // Command: WHOWAS
+        // Parameters: <nickname> [<count> [<server>]]
         class processor_whowas : public processor_base
         {
         public:
