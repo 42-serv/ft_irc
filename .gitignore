@@ -17,3 +17,7 @@
 *.a
 *.dylib
 *.out
+
+# ClangD files
+.cache
+compile_commands.json

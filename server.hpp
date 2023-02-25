@@ -3,6 +3,10 @@
 
 #pragma once
 
+#include "channel.hpp"
+#include "client.hpp"
+
+#include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
 namespace ft
@@ -12,8 +16,8 @@ namespace ft
         class server : public ft::enable_shared_from_this<server>
         {
         public:
-            typedef ft::fast_dictionary<std::string, ft::shared_ptr<channel> >::type channel_dictionary;
-            typedef ft::fast_dictionary<std::string, ft::shared_ptr<client> >::type client_dictionary;
+            typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<channel> >::type channel_dictionary;
+            typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<client> >::type client_dictionary;
 
         private:
             std::string pass;

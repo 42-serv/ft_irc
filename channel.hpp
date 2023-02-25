@@ -3,6 +3,9 @@
 
 #pragma once
 
+#include "client.hpp"
+
+#include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
 namespace ft
@@ -13,7 +16,7 @@ namespace ft
         {
         public:
             typedef int channel_mode;
-            typedef ft::fast_dictionary<std::string, ft::shared_ptr<client> >::type client_dictionary;
+            typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<client> >::type client_dictionary;
 
         private:
             std::string host;

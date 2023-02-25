@@ -56,7 +56,7 @@ cleanbin:	;	$(RM) $(TARGET)
 re: clean	;	$(MAKE)
 
 $(OBJECTS_DIR):
-	mkdir $(OBJECTS_DIR)
+	mkdir -p $(OBJECTS_DIR)
 
 $(OBJECTS_DIR)%.o: %.cpp | $(OBJECTS_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@

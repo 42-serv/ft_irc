@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
 namespace ft
@@ -12,7 +13,7 @@ namespace ft
         class client : public ft::enable_shared_from_this<client>
         {
         public:
-            typedef ft::dynamic_array<std::string>::type channel_list;
+            typedef ft::serv::dynamic_array<std::string>::type channel_list;
             typedef int user_mode;
 
         private:
@@ -26,7 +27,7 @@ namespace ft
 
         public:
             // FIXME 3 steps needed to register: PASS, NICK, USER commands.
-            client(const std::string& nick, const std::string& username, const std::string& hostname, const std::string& servername, const std::string& realname); // FIXME if directly connected client, ignore  hostname, servername ??
+            client(); // FIXME if directly connected client, ignore  hostname, servername ??
             ~client();
 
         public:
