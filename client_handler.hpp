@@ -20,7 +20,7 @@ namespace ft
         {
         public:
             ft::irc::server& server;
-            ft::irc::user* user;
+            ft::shared_ptr<ft::irc::user> user;
 
             client_handler(ft::irc::server& server)
                 : server(server)
@@ -31,8 +31,7 @@ namespace ft
             void on_active(ft::serv::event_layer& layer)
             {
                 std::cout << __PRETTY_FUNCTION__ << std::endl;
-                // save server and layer to user
-                static_cast<void>(layer);
+                user = ft::make_shared<ft::irc::user>(server, layer);
             }
 
             void on_read(ft::serv::event_layer& layer, ft::shared_ptr<void> arg)
@@ -65,6 +64,7 @@ namespace ft
             void on_inactive(ft::serv::event_layer&)
             {
                 std::cout << __PRETTY_FUNCTION__ << std::endl;
+                user.reset();
             }
         };
     }

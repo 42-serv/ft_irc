@@ -3,6 +3,8 @@
 
 #include "channel.hpp"
 
+#include "user.hpp"
+
 ft::irc::channel::channel(const std::string& name)
     : name(name)
 {

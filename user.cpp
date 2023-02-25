@@ -2,10 +2,16 @@
  * https://creativecommons.org/publicdomain/zero/1.0/ */
 
 #include "user.hpp"
+
+#include "message.hpp"
+#include "server.hpp"
+
 #include <algorithm>
 
-ft::irc::user::user()
-    : nick(),
+ft::irc::user::user(ft::irc::server& server, ft::serv::event_layer& layer)
+    : server(server),
+      layer(layer),
+      nick(),
       username(),
       hostname(),
       servername(),
@@ -88,4 +94,10 @@ void ft::irc::user::part_channel(const std::string& channelname)
     {
         this->channels.erase(it);
     }
+}
+
+void ft::irc::user::send_message(const ft::irc::message& message)
+{
+    this->layer.post_write(ft::make_shared<ft::irc::message>(message));
+    this->layer.post_flush();
 }

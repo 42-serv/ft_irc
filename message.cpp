@@ -79,7 +79,7 @@ static bool _validate_command(std::string& command)
     return true;
 }
 
-bool ft::irc::message::try_parse(const std::string& line, message& out_msg)
+bool ft::irc::message::try_parse(const std::string& line, message& out)
 {
     if (line.empty())
     {
@@ -128,7 +128,7 @@ bool ft::irc::message::try_parse(const std::string& line, message& out_msg)
         }
     }
 
-    out_msg = message(prefix, command, params);
+    out = message(prefix, command, params);
     return true;
 }
 

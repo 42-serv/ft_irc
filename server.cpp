@@ -3,7 +3,12 @@
 
 #include "server.hpp"
 
-ft::irc::server::server() : pass(), channels()
+#include "channel.hpp"
+#include "user.hpp"
+
+ft::irc::server::server()
+    : pass(),
+      channels()
 {
 }
 

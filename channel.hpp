@@ -3,8 +3,6 @@
 
 #pragma once
 
-#include "user.hpp"
-
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
@@ -14,6 +12,8 @@ namespace ft
 {
     namespace irc
     {
+        class user;
+
         class channel : public ft::enable_shared_from_this<channel>
         {
         public:

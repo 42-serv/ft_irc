@@ -20,7 +20,7 @@ namespace ft
             virtual int get_max_params();
             virtual bool is_registered_only();
             virtual bool is_operator_only();
-            virtual void execute(const ft::irc::user& user, const ft::irc::message& msg) = 0;
+            virtual void execute(const ft::irc::user& user, const ft::irc::message& message) = 0;
         };
     }
 }
