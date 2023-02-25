@@ -21,12 +21,17 @@ namespace ft
 
         private:
             std::string pass;
+
             channel_dictionary channels;
             // user_dictionary users;
 
         public:
             server();
             ~server();
+
+        public:
+            ft::shared_ptr<ft::irc::channel> get_or_new_channel(const std::string& name);
+            void remove_channel(const std::string& name);
 
         private:
             server(const server&);

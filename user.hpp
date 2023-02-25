@@ -20,6 +20,16 @@ namespace ft
                 USER_MODE_C,
                 NUMBEROF_USER_MODE
             };
+
+            enum register_state
+            {
+                REGISTER_STATE_PASS,
+                REGISTER_STATE_NICK,
+                REGISTER_STATE_USER,
+                NUMBEROF_REGISTER_STATE
+
+            };
+
             typedef ft::serv::dynamic_array<std::string>::type channel_list;
 
         private:
@@ -30,6 +40,7 @@ namespace ft
             std::string realname;
             channel_list channels;
             std::bitset<NUMBEROF_USER_MODE> mode;
+            std::bitset<NUMBEROF_REGISTER_STATE> state;
 
         public:
             // FIXME 3 steps needed to register: PASS, NICK, USER commands.

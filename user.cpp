@@ -11,7 +11,8 @@ ft::irc::user::user()
       servername(),
       realname(),
       channels(),
-      mode()
+      mode(),
+      state()
 {
 }
 
