@@ -16,6 +16,10 @@ namespace ft
             typedef ft::fast_dictionary<std::string, ft::shared_ptr<client> >::type client_dictionary;
 
         private:
+            std::string host;
+            std::string serv;
+            std::string pass;
+
             std::string channelname;
             channel_mode mode;
             client_dictionary clients;
@@ -24,6 +28,15 @@ namespace ft
         public:
             channel(const std::string& host, const std::string& serv, const std::string& pass);
             ~channel();
+
+        public:
+            const std::string& get_host() const throw();
+            const std::string& get_serv() const throw();
+            const std::string& get_pass() const throw();
+
+            const std::string& get_channelname() const throw();
+            const channel_mode& get_mode() const throw();
+            const client_dictionary& get_clients() const throw();
 
         private:
             channel(const channel&);
