@@ -66,8 +66,6 @@ namespace ft
         class processor_list : public processor_base
         {
         public:
-            int get_min_params() const throw() { return 1; }
-
             void execute(const ft::irc::user& user, const ft::irc::message& message)
             {
                 // FIXME
