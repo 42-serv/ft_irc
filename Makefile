@@ -1,5 +1,5 @@
 .SUFFIXES: .cpp .o .hpp .h .tpp
-.PHONY: all clean cleanobj cleanbin re
+.PHONY: all clean cleanobj cleanbin re deps depsclean depsre
 
 CXX = c++
 RM = rm -f
@@ -8,8 +8,9 @@ CXXFLAGS += -MMD -MF $(@:.o=.d) -MT $@ -MP
 CXXFLAGS += --std=c++98 -Wall -Wextra -Werror
 CXXFLAGS += -Iincludes
 
-CXXFLAGS += -Iincludes/libserv/includes
-LDFLAGS += -Lincludes/libserv -lserv
+LIBSERV := includes/libserv/
+CXXFLAGS += -I$(LIBSERV)includes
+LDFLAGS += -L$(LIBSERV) -lserv
 
 TARGET = ircserv.out
 OBJECTS_DIR = objs/
@@ -64,3 +65,12 @@ $(TARGET): $(OBJECTS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 -include $(OBJECTS:.o=.d)
+
+deps:
+	$(MAKE) -C $(LIBSERV)
+
+depsclean:
+	$(MAKE) -C $(LIBSERV) clean
+
+depsre:
+	$(MAKE) -C $(LIBSERV) re
