@@ -6,6 +6,8 @@
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
+#include <bitset>
+
 namespace ft
 {
     namespace irc
