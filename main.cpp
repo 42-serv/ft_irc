@@ -3,6 +3,7 @@
 
 #include "irc_constants.hpp"
 
+#include "server.hpp"
 #include "server_handler.hpp"
 
 #include <libserv/libserv.hpp>
@@ -16,10 +17,10 @@ namespace ft
 {
     namespace irc
     {
-        static ft::shared_ptr<ft::serv::event_channel_base> _make_server(ft::serv::ident_t ident, const std::string& host, int serv, const ft::shared_ptr<ft::serv::event_worker_group>& child_group)
+        static ft::shared_ptr<ft::serv::event_channel_base> _make_server(ft::serv::ident_t ident, const std::string& host, int serv, const ft::shared_ptr<ft::serv::event_worker_group>& child_group, void* arg)
         {
             ft::shared_ptr<ft::serv::event_channel_base> server = ft::make_shared<ft::serv::server_channel>(ident, host, serv, child_group);
-            server->add_last_handler(ft::make_shared<server_handler>());
+            server->add_last_handler(ft::make_shared<ft::irc::server_handler>(*static_cast<ft::irc::server*>(arg)));
             return server;
         }
     }
@@ -44,6 +45,7 @@ int main()
         child_group->put_worker(ft::make_shared<ft::serv::event_worker>());
     }
     ft::serv::bootstrap boot(boss_group, child_group, &ft::irc::_make_server, null);
-    boot.start_server("localhost", "4242");
+    ft::irc::server server;
+    boot.start_server("localhost", "4242", &server);
     return 0;
 }

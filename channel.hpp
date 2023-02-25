@@ -3,10 +3,12 @@
 
 #pragma once
 
-#include "client.hpp"
+#include "user.hpp"
 
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
+
+#include <bitset>
 
 namespace ft
 {
@@ -15,13 +17,19 @@ namespace ft
         class channel : public ft::enable_shared_from_this<channel>
         {
         public:
-            typedef int channel_mode;
-            typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<client> >::type client_dictionary;
+            enum channel_mode
+            {
+                CHANNEL_MODE_A,
+                CHANNEL_MODE_B,
+                CHANNEL_MODE_C,
+                NUMBEROF_CHANNEL_MODE
+            };
+            typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<ft::irc::user> >::type user_dictionary;
 
         private:
             std::string name;
-            channel_mode mode;
-            client_dictionary clients;
+            std::bitset<NUMBEROF_CHANNEL_MODE> mode;
+            user_dictionary users;
             // FIXME channel operator info?
 
         public:
@@ -30,8 +38,8 @@ namespace ft
 
         public:
             const std::string& get_name() const throw();
-            const channel_mode& get_mode() const throw();
-            const client_dictionary& get_clients() const throw();
+            bool get_mode(channel_mode index) const throw();
+            const user_dictionary& get_users() const throw();
 
         private:
             channel(const channel&);

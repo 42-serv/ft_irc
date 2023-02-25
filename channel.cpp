@@ -17,12 +17,12 @@ const std::string& ft::irc::channel::get_name() const throw()
     return this->name;
 }
 
-const ft::irc::channel::channel_mode& ft::irc::channel::get_mode() const throw()
+bool ft::irc::channel::get_mode(channel_mode index) const throw()
 {
-    return this->mode;
+    return this->mode[index];
 }
 
-const ft::irc::channel::client_dictionary& ft::irc::channel::get_clients() const throw()
+const ft::irc::channel::user_dictionary& ft::irc::channel::get_users() const throw()
 {
-    return this->clients;
+    return this->users;
 }

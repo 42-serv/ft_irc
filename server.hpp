@@ -4,7 +4,7 @@
 #pragma once
 
 #include "channel.hpp"
-#include "client.hpp"
+#include "user.hpp"
 
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
@@ -16,16 +16,16 @@ namespace ft
         class server : public ft::enable_shared_from_this<server>
         {
         public:
-            typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<channel> >::type channel_dictionary;
-            typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<client> >::type client_dictionary;
+            typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<ft::irc::channel> >::type channel_dictionary;
+            // typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<ft::irc::user> >::type user_dictionary;
 
         private:
             std::string pass;
             channel_dictionary channels;
-            client_dictionary clients;
+            // user_dictionary users;
 
         public:
-            server(const std::string& host, const std::string& serv, const std::string& pass);
+            server();
             ~server();
 
         private:

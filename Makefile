@@ -16,8 +16,12 @@ TARGET = ircserv.out
 OBJECTS_DIR = objs/
 
 SOURCES += \
-	message.cpp \
+	channel.cpp \
 	main.cpp \
+	message.cpp \
+	processor_base.cpp \
+	server.cpp \
+	user.cpp \
 
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(SOURCES:.cpp=.o))
 

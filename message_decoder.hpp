@@ -22,13 +22,16 @@ namespace ft
                 while (!obj.empty())
                 {
                     ft::shared_ptr<std::string> line = ft::static_pointer_cast<std::string>(obj.front());
-                    ft::shared_ptr<message> msg = ft::make_shared<message>();
+                    ft::shared_ptr<ft::irc::message> message = ft::make_shared<ft::irc::message>();
                     obj.pop_front();
-                    if (!message::try_parse(*line, *msg))
+                    if (ft::irc::message::try_parse(*line, *message))
+                    {
+                        out.push_back(message);
+                    }
+                    else
                     {
                         // FIXME: throw malformed message
                     }
-                    out.push_back(msg);
                 }
             }
         };

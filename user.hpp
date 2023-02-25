@@ -10,11 +10,17 @@ namespace ft
 {
     namespace irc
     {
-        class client : public ft::enable_shared_from_this<client>
+        class user : public ft::enable_shared_from_this<user>
         {
         public:
+            enum user_mode
+            {
+                USER_MODE_A,
+                USER_MODE_B,
+                USER_MODE_C,
+                NUMBEROF_USER_MODE
+            };
             typedef ft::serv::dynamic_array<std::string>::type channel_list;
-            typedef int user_mode;
 
         private:
             std::string nick;
@@ -23,12 +29,12 @@ namespace ft
             std::string servername;
             std::string realname;
             channel_list channels;
-            user_mode mode;
+            std::bitset<NUMBEROF_USER_MODE> mode;
 
         public:
             // FIXME 3 steps needed to register: PASS, NICK, USER commands.
-            client(); // FIXME if directly connected client, ignore  hostname, servername ??
-            ~client();
+            user(); // FIXME if directly connected client, ignore  hostname, servername ??
+            ~user();
 
         public:
             const std::string& get_nick() const throw();
@@ -37,19 +43,19 @@ namespace ft
             const std::string& get_servername() const throw();
             const std::string& get_realname() const throw();
             const channel_list& get_channels() const throw();
-            const user_mode& get_mode() const throw();
+            bool get_mode(user_mode index) const throw();
 
             bool is_member_of(const std::string& channelname) const throw();
             channel_list::size_type get_channel_number() const throw();
 
             void set_nick(const std::string& nick);
-            void set_mode(const std::string& nick);
+            void set_mode(user_mode index, bool value);
             void join_channel(const std::string& channelname);
             void part_channel(const std::string& channelname);
 
         private:
-            client(const client&);
-            client& operator=(const client&);
+            user(const user&);
+            user& operator=(const user&);
         };
     }
 }
