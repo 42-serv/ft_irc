@@ -5,8 +5,10 @@
 
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
+#include <thread/readwrite_lock.hpp>
 
 #include <bitset>
+#include <string>
 
 namespace ft
 {

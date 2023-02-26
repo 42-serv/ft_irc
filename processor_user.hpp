@@ -18,7 +18,7 @@ namespace ft
     {
         // Command: WHO
         // Parameters: [<name> [<o>]]
-        class processor_who : public processor_base
+        class processor_who : public ft::irc::processor_base
         {
         public:
             void execute(ft::irc::user& user, const ft::irc::message& message) const
@@ -30,7 +30,7 @@ namespace ft
 
         // Command: WHOIS
         // Parameters: [<server>] <nickmask>[,<nickmask>[,...]]
-        class processor_whois : public processor_base
+        class processor_whois : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }
@@ -44,7 +44,7 @@ namespace ft
 
         // Command: WHOWAS
         // Parameters: <nickname> [<count> [<server>]]
-        class processor_whowas : public processor_base
+        class processor_whowas : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }

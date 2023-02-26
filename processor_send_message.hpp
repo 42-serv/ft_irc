@@ -18,7 +18,7 @@ namespace ft
     {
         // Command: PRIVMSG
         // Parameters: <receiver>{,<receiver>} <text to be sent>
-        class processor_privmsg : public processor_base
+        class processor_privmsg : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 2; }
@@ -32,7 +32,7 @@ namespace ft
 
         // Command: NOTICE
         // Parameters: <nickname> <text>
-        class processor_notice : public processor_base
+        class processor_notice : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 2; }

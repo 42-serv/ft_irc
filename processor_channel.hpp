@@ -18,7 +18,7 @@ namespace ft
     {
         // Command: JOIN
         // Parameters: <channel>{,<channel>} [<key>{,<key>}]
-        class processor_join : public processor_base
+        class processor_join : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }
@@ -32,7 +32,7 @@ namespace ft
 
         // Command: PART
         // Parameters: <channel>{,<channel>}
-        class processor_part : public processor_base
+        class processor_part : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }
@@ -47,7 +47,7 @@ namespace ft
         // Command: MODE
         // Parameters: <channel> {[+|-]|o|p|s|i|t|n|b|v} [<limit>] [<user>] [<ban mask>] // channel mode
         // Parameters: <nickname> {[+|-]|i|w|s|o}                                        // user mode
-        class processor_mode : public processor_base
+        class processor_mode : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }
@@ -61,7 +61,7 @@ namespace ft
 
         // Command: TOPIC
         // Parameters: <channel> [<topic>]
-        class processor_topic : public processor_base
+        class processor_topic : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }
@@ -76,7 +76,7 @@ namespace ft
 
         // Command: NAMES
         // Parameters: [<channel>{,<channel>}]
-        class processor_names : public processor_base
+        class processor_names : public ft::irc::processor_base
         {
         public:
             void execute(ft::irc::user& user, const ft::irc::message& message) const
@@ -88,7 +88,7 @@ namespace ft
 
         // Command: LIST
         // Parameters: [<channel>{,<channel>} [<server>]]
-        class processor_list : public processor_base
+        class processor_list : public ft::irc::processor_base
         {
         public:
             void execute(ft::irc::user& user, const ft::irc::message& message) const
@@ -100,7 +100,7 @@ namespace ft
 
         // Command: INVITE
         // Parameters: <nickname> <channel>
-        class processor_invite : public processor_base
+        class processor_invite : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 2; }
@@ -115,7 +115,7 @@ namespace ft
 
         // Command: KICK
         // Parameters: <channel> <user> [<comment>]
-        class processor_kick : public processor_base
+        class processor_kick : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 2; }

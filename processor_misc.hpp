@@ -18,7 +18,7 @@ namespace ft
     {
         // Command: KILL
         // Parameters: <nickname> <comment>
-        class processor_kill : public processor_base
+        class processor_kill : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 2; }
@@ -35,7 +35,7 @@ namespace ft
 
         // Command: PING
         // Parameters: <server1> [<server2>]
-        class processor_ping : public processor_base
+        class processor_ping : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }
@@ -50,7 +50,7 @@ namespace ft
 
         // Command: PONG
         // Parameters: <daemon> [<daemon2>]
-        class processor_pong : public processor_base
+        class processor_pong : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }
@@ -65,7 +65,7 @@ namespace ft
 
         // Command: ERROR
         // Parameters: <error message>
-        class processor_error : public processor_base
+        class processor_error : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }

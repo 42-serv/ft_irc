@@ -18,7 +18,7 @@ namespace ft
     {
         // Command: PASS
         // Parameters: <password>
-        class processor_pass : public processor_base
+        class processor_pass : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }
@@ -35,7 +35,7 @@ namespace ft
 
         // Command: NICK
         // Parameters: <nickname> [ <hopcount> ]
-        class processor_nick : public processor_base
+        class processor_nick : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 1; }
@@ -52,7 +52,7 @@ namespace ft
 
         // Command: USER
         // Parameters: <username> <hostname> <servername> <realname>
-        class processor_user : public processor_base
+        class processor_user : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 4; }
@@ -69,7 +69,7 @@ namespace ft
 
         // Command: OPER
         // Parameters: <user> <password>
-        class processor_oper : public processor_base
+        class processor_oper : public ft::irc::processor_base
         {
         public:
             std::size_t get_min_params() const throw() { return 2; }
@@ -84,7 +84,7 @@ namespace ft
 
         // Command: QUIT
         // Parameters: [<Quit message>]
-        class processor_quit : public processor_base
+        class processor_quit : public ft::irc::processor_base
         {
         public:
             std::size_t get_max_params() const throw() { return 1; }

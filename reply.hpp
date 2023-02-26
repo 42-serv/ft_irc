@@ -177,224 +177,224 @@ namespace ft
 
         struct make_error : make_reply_base
         {
-            static inline message no_such_nickname(param_t nickname)
+            static inline ft::irc::message no_such_nickname(param_t nickname)
             {
-                return message(ERR_NOSUCHNICK) << nickname << "No such nick/channel";
+                return ft::irc::message(ERR_NOSUCHNICK) << nickname << "No such nick/channel";
             }
 
-            static inline message no_such_server(param_t server_name)
+            static inline ft::irc::message no_such_server(param_t server_name)
             {
-                return message(ERR_NOSUCHSERVER) << server_name << "No such server";
+                return ft::irc::message(ERR_NOSUCHSERVER) << server_name << "No such server";
             }
 
-            static inline message no_such_channel(param_t channel_name)
+            static inline ft::irc::message no_such_channel(param_t channel_name)
             {
-                return message(ERR_NOSUCHCHANNEL) << channel_name << "No such channel";
+                return ft::irc::message(ERR_NOSUCHCHANNEL) << channel_name << "No such channel";
             }
 
-            static inline message cannot_send_to_channel(param_t channel_name)
+            static inline ft::irc::message cannot_send_to_channel(param_t channel_name)
             {
-                return message(ERR_CANNOTSENDTOCHAN) << channel_name << "Cannot send to channel";
+                return ft::irc::message(ERR_CANNOTSENDTOCHAN) << channel_name << "Cannot send to channel";
             }
 
-            static inline message too_many_channels(param_t channel_name)
+            static inline ft::irc::message too_many_channels(param_t channel_name)
             {
-                return message(ERR_TOOMANYCHANNELS) << channel_name << "You have joined too many channels";
+                return ft::irc::message(ERR_TOOMANYCHANNELS) << channel_name << "You have joined too many channels";
             }
 
-            static inline message was_no_such_nickname(param_t nickname)
+            static inline ft::irc::message was_no_such_nickname(param_t nickname)
             {
-                return message(ERR_WASNOSUCHNICK) << nickname << "There was no such nickname";
+                return ft::irc::message(ERR_WASNOSUCHNICK) << nickname << "There was no such nickname";
             }
 
-            static inline message too_many_targets(param_t target)
+            static inline ft::irc::message too_many_targets(param_t target)
             {
-                return message(ERR_TOOMANYTARGETS) << target << "Duplicate recipients. No message delivered";
+                return ft::irc::message(ERR_TOOMANYTARGETS) << target << "Duplicate recipients. No ft::irc::message delivered";
             }
 
-            static inline message no_origin()
+            static inline ft::irc::message no_origin()
             {
-                return message(ERR_NOORIGIN) << "No origin specified";
+                return ft::irc::message(ERR_NOORIGIN) << "No origin specified";
             }
 
-            static inline message no_recipient(param_t command)
+            static inline ft::irc::message no_recipient(param_t command)
             {
-                return message(ERR_NORECIPIENT) << "No recipient given (" + command + ")";
+                return ft::irc::message(ERR_NORECIPIENT) << "No recipient given (" + command + ")";
             }
 
-            static inline message no_text_to_send()
+            static inline ft::irc::message no_text_to_send()
             {
-                return message(ERR_NOTEXTTOSEND) << "No text to send";
+                return ft::irc::message(ERR_NOTEXTTOSEND) << "No text to send";
             }
 
-            static inline message no_toplevel(param_t mask)
+            static inline ft::irc::message no_toplevel(param_t mask)
             {
-                return message(ERR_NOTOPLEVEL) << mask << "No toplevel domain specified";
+                return ft::irc::message(ERR_NOTOPLEVEL) << mask << "No toplevel domain specified";
             }
 
-            static inline message wildcard_toplevel(param_t mask)
+            static inline ft::irc::message wildcard_toplevel(param_t mask)
             {
-                return message(ERR_WILDTOPLEVEL) << mask << "Wildcard in toplevel domain";
+                return ft::irc::message(ERR_WILDTOPLEVEL) << mask << "Wildcard in toplevel domain";
             }
 
-            static inline message unknown_command(param_t command)
+            static inline ft::irc::message unknown_command(param_t command)
             {
-                return message(ERR_UNKNOWNCOMMAND) << command << "Unknown command";
+                return ft::irc::message(ERR_UNKNOWNCOMMAND) << command << "Unknown command";
             }
 
-            static inline message no_motd()
+            static inline ft::irc::message no_motd()
             {
-                return message(ERR_NOMOTD) << "MOTD File is missing";
+                return ft::irc::message(ERR_NOMOTD) << "MOTD File is missing";
             }
 
-            static inline message no_admin_info(param_t server_name)
+            static inline ft::irc::message no_admin_info(param_t server_name)
             {
-                return message(ERR_NOADMININFO) << server_name << "No administrative info available";
+                return ft::irc::message(ERR_NOADMININFO) << server_name << "No administrative info available";
             }
 
-            static inline message file_error(param_t file_operation, param_t filename)
+            static inline ft::irc::message file_error(param_t file_operation, param_t filename)
             {
-                return message(ERR_FILEERROR) << "File error doing " + file_operation + " on " + filename;
+                return ft::irc::message(ERR_FILEERROR) << "File error doing " + file_operation + " on " + filename;
             }
 
-            static inline message no_nickname_given()
+            static inline ft::irc::message no_nickname_given()
             {
-                return message(ERR_NONICKNAMEGIVEN) << "No nickname given";
+                return ft::irc::message(ERR_NONICKNAMEGIVEN) << "No nickname given";
             }
 
-            static inline message erroneous_nickname(param_t nickname)
+            static inline ft::irc::message erroneous_nickname(param_t nickname)
             {
-                return message(ERR_ERRONEUSNICKNAME) << nickname << "Erroneus nickname";
+                return ft::irc::message(ERR_ERRONEUSNICKNAME) << nickname << "Erroneus nickname";
             }
 
-            static inline message nickname_in_use(param_t nickname)
+            static inline ft::irc::message nickname_in_use(param_t nickname)
             {
-                return message(ERR_NICKNAMEINUSE) << nickname << "Nickname is already in use";
+                return ft::irc::message(ERR_NICKNAMEINUSE) << nickname << "Nickname is already in use";
             }
 
-            static inline message nickname_collision(param_t nickname)
+            static inline ft::irc::message nickname_collision(param_t nickname)
             {
-                return message(ERR_NICKCOLLISION) << nickname << "Nickname collision KILL";
+                return ft::irc::message(ERR_NICKCOLLISION) << nickname << "Nickname collision KILL";
             }
 
-            static inline message user_not_in_channel(param_t nickname, param_t channel_name)
+            static inline ft::irc::message user_not_in_channel(param_t nickname, param_t channel_name)
             {
-                return message(ERR_USERNOTINCHANNEL) << nickname << channel_name << "They aren't on that channel";
+                return ft::irc::message(ERR_USERNOTINCHANNEL) << nickname << channel_name << "They aren't on that channel";
             }
 
-            static inline message not_on_channel(param_t channel_name)
+            static inline ft::irc::message not_on_channel(param_t channel_name)
             {
-                return message(ERR_NOTONCHANNEL) << channel_name << "You're not on that channel";
+                return ft::irc::message(ERR_NOTONCHANNEL) << channel_name << "You're not on that channel";
             }
 
-            static inline message user_on_channel(param_t username, param_t channel_name)
+            static inline ft::irc::message user_on_channel(param_t username, param_t channel_name)
             {
-                return message(ERR_USERONCHANNEL) << username << channel_name << "is already on channel";
+                return ft::irc::message(ERR_USERONCHANNEL) << username << channel_name << "is already on channel";
             }
 
-            static inline message no_login(param_t username)
+            static inline ft::irc::message no_login(param_t username)
             {
-                return message(ERR_NOLOGIN) << username << "User not logged in";
+                return ft::irc::message(ERR_NOLOGIN) << username << "User not logged in";
             }
 
-            static inline message summon_disabled()
+            static inline ft::irc::message summon_disabled()
             {
-                return message(ERR_SUMMONDISABLED) << "SUMMON has been disabled";
+                return ft::irc::message(ERR_SUMMONDISABLED) << "SUMMON has been disabled";
             }
 
-            static inline message users_disabled()
+            static inline ft::irc::message users_disabled()
             {
-                return message(ERR_USERSDISABLED) << "USERS has been disabled";
+                return ft::irc::message(ERR_USERSDISABLED) << "USERS has been disabled";
             }
 
-            static inline message not_registered()
+            static inline ft::irc::message not_registered()
             {
-                return message(ERR_NOTREGISTERED) << "You have not registered";
+                return ft::irc::message(ERR_NOTREGISTERED) << "You have not registered";
             }
 
-            static inline message need_more_parameters(param_t command)
+            static inline ft::irc::message need_more_parameters(param_t command)
             {
-                return message(ERR_NEEDMOREPARAMS) << command << "Not enough parameters";
+                return ft::irc::message(ERR_NEEDMOREPARAMS) << command << "Not enough parameters";
             }
 
-            static inline message already_registered()
+            static inline ft::irc::message already_registered()
             {
-                return message(ERR_ALREADYREGISTRED) << "You may not reregister";
+                return ft::irc::message(ERR_ALREADYREGISTRED) << "You may not reregister";
             }
 
-            static inline message no_permission_for_host()
+            static inline ft::irc::message no_permission_for_host()
             {
-                return message(ERR_NOPERMFORHOST) << "Your host isn't among the privileged";
+                return ft::irc::message(ERR_NOPERMFORHOST) << "Your host isn't among the privileged";
             }
 
-            static inline message password_mismatch()
+            static inline ft::irc::message password_mismatch()
             {
-                return message(ERR_PASSWDMISMATCH) << "Password incorrect";
+                return ft::irc::message(ERR_PASSWDMISMATCH) << "Password incorrect";
             }
 
-            static inline message banned_from_server()
+            static inline ft::irc::message banned_from_server()
             {
-                return message(ERR_YOUREBANNEDCREEP) << "You are banned from this server";
+                return ft::irc::message(ERR_YOUREBANNEDCREEP) << "You are banned from this server";
             }
 
-            static inline message channel_key_already_set(param_t channel_name)
+            static inline ft::irc::message channel_key_already_set(param_t channel_name)
             {
-                return message(ERR_KEYSET) << channel_name << "Channel key already set";
+                return ft::irc::message(ERR_KEYSET) << channel_name << "Channel key already set";
             }
 
-            static inline message channel_is_full(param_t channel_name)
+            static inline ft::irc::message channel_is_full(param_t channel_name)
             {
-                return message(ERR_CHANNELISFULL) << channel_name << "Cannot join channel (+l)";
+                return ft::irc::message(ERR_CHANNELISFULL) << channel_name << "Cannot join channel (+l)";
             }
 
-            static inline message unknown_mode(char mode_char)
+            static inline ft::irc::message unknown_mode(char mode_char)
             {
-                return message(ERR_UNKNOWNMODE) << mode_char << "is unknown mode char to me";
+                return ft::irc::message(ERR_UNKNOWNMODE) << mode_char << "is unknown mode char to me";
             }
 
-            static inline message invite_only_channel(param_t channel_name)
+            static inline ft::irc::message invite_only_channel(param_t channel_name)
             {
-                return message(ERR_INVITEONLYCHAN) << channel_name << "Cannot join channel (+i)";
+                return ft::irc::message(ERR_INVITEONLYCHAN) << channel_name << "Cannot join channel (+i)";
             }
 
-            static inline message banned_from_channel(param_t channel_name)
+            static inline ft::irc::message banned_from_channel(param_t channel_name)
             {
-                return message(ERR_BANNEDFROMCHAN) << channel_name << "Cannot join channel (+b)";
+                return ft::irc::message(ERR_BANNEDFROMCHAN) << channel_name << "Cannot join channel (+b)";
             }
 
-            static inline message bad_channel_key(param_t channel_name)
+            static inline ft::irc::message bad_channel_key(param_t channel_name)
             {
-                return message(ERR_BADCHANNELKEY) << channel_name << "Cannot join channel (+k)";
+                return ft::irc::message(ERR_BADCHANNELKEY) << channel_name << "Cannot join channel (+k)";
             }
 
-            static inline message no_privileges()
+            static inline ft::irc::message no_privileges()
             {
-                return message(ERR_NOPRIVILEGES) << "Permission Denied- You're not an IRC operator";
+                return ft::irc::message(ERR_NOPRIVILEGES) << "Permission Denied- You're not an IRC operator";
             }
 
-            static inline message channel_operator_privileges_needed(param_t channel_name)
+            static inline ft::irc::message channel_operator_privileges_needed(param_t channel_name)
             {
-                return message(ERR_CHANOPRIVSNEEDED) << channel_name << "You're not channel operator";
+                return ft::irc::message(ERR_CHANOPRIVSNEEDED) << channel_name << "You're not channel operator";
             }
 
-            static inline message cannot_kill_server()
+            static inline ft::irc::message cannot_kill_server()
             {
-                return message(ERR_CANTKILLSERVER) << "You cant kill a server!";
+                return ft::irc::message(ERR_CANTKILLSERVER) << "You cant kill a server!";
             }
 
-            static inline message no_operator_host()
+            static inline ft::irc::message no_operator_host()
             {
-                return message(ERR_NOOPERHOST) << "No O-lines for your host";
+                return ft::irc::message(ERR_NOOPERHOST) << "No O-lines for your host";
             }
 
-            static inline message user_mode_unknown_flag()
+            static inline ft::irc::message user_mode_unknown_flag()
             {
-                return message(ERR_UMODEUNKNOWNFLAG) << "Unknown MODE flag";
+                return ft::irc::message(ERR_UMODEUNKNOWNFLAG) << "Unknown MODE flag";
             }
 
-            static inline message users_donot_match()
+            static inline ft::irc::message users_donot_match()
             {
-                return message(ERR_USERSDONTMATCH) << "Cant change mode for other users";
+                return ft::irc::message(ERR_USERSDONTMATCH) << "Cant change mode for other users";
             }
         };
 
@@ -423,424 +423,424 @@ namespace ft
 
         struct make_reply : make_reply_base
         {
-            static inline message none()
+            static inline ft::irc::message none()
             {
-                return message(RPL_NONE);
+                return ft::irc::message(RPL_NONE);
             }
 
-            static inline message user_host(const std::vector<person_info>& found_person_list)
+            static inline ft::irc::message user_host(const std::vector<person_info>& found_person_list)
             {
                 std::ostringstream oss;
                 foreach (std::vector<person_info>::const_iterator, it, found_person_list)
                 {
                     oss << it->nickname << (it->is_operator ? "*" : "") << '=' << (it->is_away ? '-' : '+') << it->username << '@' << it->host << ' ';
                 }
-                return message(RPL_USERHOST) << oss.str();
+                return ft::irc::message(RPL_USERHOST) << oss.str();
             }
 
-            static inline message ison(const std::vector<std::string>& nickname_list)
+            static inline ft::irc::message ison(const std::vector<std::string>& nickname_list)
             {
                 std::ostringstream oss;
                 foreach (std::vector<std::string>::const_iterator, it, nickname_list)
                 {
                     oss << *it << ' ';
                 }
-                return message(RPL_ISON);
+                return ft::irc::message(RPL_ISON);
             }
 
-            static inline message away(param_t nickname, param_t msg)
+            static inline ft::irc::message away(param_t nickname, param_t msg)
             {
-                return message(RPL_AWAY) << nickname << msg;
+                return ft::irc::message(RPL_AWAY) << nickname << msg;
             }
 
-            static inline message unaway()
+            static inline ft::irc::message unaway()
             {
-                return message(RPL_UNAWAY) << "You are no longer marked as being away";
+                return ft::irc::message(RPL_UNAWAY) << "You are no longer marked as being away";
             }
 
-            static inline message now_away()
+            static inline ft::irc::message now_away()
             {
-                return message(RPL_NOWAWAY) << "You have been marked as being away";
+                return ft::irc::message(RPL_NOWAWAY) << "You have been marked as being away";
             }
 
-            static inline message whois_user(param_t nickname, param_t username, param_t host, param_t info)
+            static inline ft::irc::message whois_user(param_t nickname, param_t username, param_t host, param_t info)
             {
                 const char* const pass = "*";
-                return message(RPL_WHOISUSER) << nickname << username << host << pass << info;
+                return ft::irc::message(RPL_WHOISUSER) << nickname << username << host << pass << info;
             }
 
-            static inline message whois_server(param_t nickname, param_t server_name, param_t info)
+            static inline ft::irc::message whois_server(param_t nickname, param_t server_name, param_t info)
             {
-                return message(RPL_WHOISSERVER) << nickname << server_name << info;
+                return ft::irc::message(RPL_WHOISSERVER) << nickname << server_name << info;
             }
 
-            static inline message whois_operator(param_t nickname)
+            static inline ft::irc::message whois_operator(param_t nickname)
             {
-                return message(RPL_WHOISOPERATOR) << nickname << "is an IRC operator";
+                return ft::irc::message(RPL_WHOISOPERATOR) << nickname << "is an IRC operator";
             }
 
-            static inline message whois_idle(param_t nickname, long idle_time_second)
+            static inline ft::irc::message whois_idle(param_t nickname, long idle_time_second)
             {
-                return message(RPL_WHOISIDLE) << nickname << idle_time_second << "seconds idle";
+                return ft::irc::message(RPL_WHOISIDLE) << nickname << idle_time_second << "seconds idle";
             }
 
-            static inline message end_of_whois(param_t nickname)
+            static inline ft::irc::message end_of_whois(param_t nickname)
             {
-                return message(RPL_ENDOFWHOIS) << nickname << "End of /WHOIS list";
+                return ft::irc::message(RPL_ENDOFWHOIS) << nickname << "End of /WHOIS list";
             }
 
-            static inline message whois_channels(param_t nickname, const std::vector<channel_info>& channel_list)
+            static inline ft::irc::message whois_channels(param_t nickname, const std::vector<channel_info>& channel_list)
             {
                 std::ostringstream oss;
                 foreach (std::vector<channel_info>::const_iterator, it, channel_list)
                 {
                     oss << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << it->channel_name << ' ';
                 }
-                return message(RPL_WHOISCHANNELS) << nickname << oss.str();
+                return ft::irc::message(RPL_WHOISCHANNELS) << nickname << oss.str();
             }
 
-            static inline message whowas_user(param_t nickname, param_t username, param_t host, param_t info)
+            static inline ft::irc::message whowas_user(param_t nickname, param_t username, param_t host, param_t info)
             {
                 const char* const pass = "*";
-                return message(RPL_WHOWASUSER) << nickname << username << host << pass << info;
+                return ft::irc::message(RPL_WHOWASUSER) << nickname << username << host << pass << info;
             }
 
-            static inline message end_of_whowas(param_t nickname)
+            static inline ft::irc::message end_of_whowas(param_t nickname)
             {
-                return message(RPL_ENDOFWHOWAS) << nickname << "End of WHOWAS";
+                return ft::irc::message(RPL_ENDOFWHOWAS) << nickname << "End of WHOWAS";
             }
 
-            static inline message list_start()
+            static inline ft::irc::message list_start()
             {
-                return message(RPL_LISTSTART) << "Channel"
-                                              << "Users  Name";
+                return ft::irc::message(RPL_LISTSTART) << "Channel"
+                                                       << "Users  Name";
             }
 
-            static inline message list(param_t channel_name, int visible_count, param_t channel_topic)
+            static inline ft::irc::message list(param_t channel_name, int visible_count, param_t channel_topic)
             {
-                return message(RPL_LIST) << channel_name << visible_count << channel_topic;
+                return ft::irc::message(RPL_LIST) << channel_name << visible_count << channel_topic;
             }
 
-            static inline message list_end()
+            static inline ft::irc::message list_end()
             {
-                return message(RPL_LISTEND) << "End of /LIST";
+                return ft::irc::message(RPL_LISTEND) << "End of /LIST";
             }
 
-            static inline message channel_mode_is(param_t channel_name, param_t channel_mode, param_t member_mode_param)
+            static inline ft::irc::message channel_mode_is(param_t channel_name, param_t channel_mode, param_t member_mode_param)
             {
-                return message(RPL_CHANNELMODEIS) << channel_name << channel_mode << member_mode_param;
+                return ft::irc::message(RPL_CHANNELMODEIS) << channel_name << channel_mode << member_mode_param;
             }
 
-            static inline message no_topic(param_t channel_name)
+            static inline ft::irc::message no_topic(param_t channel_name)
             {
-                return message(RPL_NOTOPIC) << channel_name << "No topic is set";
+                return ft::irc::message(RPL_NOTOPIC) << channel_name << "No topic is set";
             }
 
-            static inline message topic(param_t channel_name, param_t channel_topic)
+            static inline ft::irc::message topic(param_t channel_name, param_t channel_topic)
             {
-                return message(RPL_TOPIC) << channel_name << channel_topic;
+                return ft::irc::message(RPL_TOPIC) << channel_name << channel_topic;
             }
 
-            static inline message inviting(param_t channel_name, param_t nickname)
+            static inline ft::irc::message inviting(param_t channel_name, param_t nickname)
             {
-                return message(RPL_INVITING) << channel_name << nickname;
+                return ft::irc::message(RPL_INVITING) << channel_name << nickname;
             }
 
-            static inline message summoning(param_t username)
+            static inline ft::irc::message summoning(param_t username)
             {
-                return message(RPL_SUMMONING) << username << "Summoning user to IRC";
+                return ft::irc::message(RPL_SUMMONING) << username << "Summoning user to IRC";
             }
 
-            static inline message version(param_t version, int debug_level, param_t server_name, param_t comments)
+            static inline ft::irc::message version(param_t version, int debug_level, param_t server_name, param_t comments)
             {
                 std::ostringstream oss;
                 oss << version << "." << debug_level;
-                return message(RPL_VERSION) << oss.str() << server_name << comments;
+                return ft::irc::message(RPL_VERSION) << oss.str() << server_name << comments;
             }
 
-            static inline message who_reply(param_t channel_name, param_t username, param_t host, param_t server_name, param_t nickname, bool is_away, bool is_operator, bool is_chanop, bool is_chanspk, int hop_count, param_t info)
+            static inline ft::irc::message who_reply(param_t channel_name, param_t username, param_t host, param_t server_name, param_t nickname, bool is_away, bool is_operator, bool is_chanop, bool is_chanspk, int hop_count, param_t info)
             {
                 std::ostringstream status, oss;
                 status << (is_away ? "G" : "H") << (is_operator ? "*" : "") << (is_chanop ? "@" : (is_chanspk ? "+" : ""));
                 oss << hop_count << " " << info;
-                return message(RPL_WHOREPLY) << channel_name << username << host << server_name << nickname << status.str() << oss.str();
+                return ft::irc::message(RPL_WHOREPLY) << channel_name << username << host << server_name << nickname << status.str() << oss.str();
             }
 
-            static inline message end_of_who(param_t name)
+            static inline ft::irc::message end_of_who(param_t name)
             {
-                return message(RPL_ENDOFWHO) << name << "End of /WHO list";
+                return ft::irc::message(RPL_ENDOFWHO) << name << "End of /WHO list";
             }
 
-            static inline message name_reply(param_t channel_name, const std::vector<member_info>& user_list)
+            static inline ft::irc::message name_reply(param_t channel_name, const std::vector<member_info>& user_list)
             {
                 std::ostringstream oss;
                 foreach (std::vector<member_info>::const_iterator, it, user_list)
                 {
                     oss << it->nickname << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << ' ';
                 }
-                return message(RPL_NAMREPLY) << channel_name << oss.str();
+                return ft::irc::message(RPL_NAMREPLY) << channel_name << oss.str();
             }
 
-            static inline message end_of_names(param_t channel_name)
+            static inline ft::irc::message end_of_names(param_t channel_name)
             {
-                return message(RPL_ENDOFNAMES) << channel_name << "End of /NAMES list";
+                return ft::irc::message(RPL_ENDOFNAMES) << channel_name << "End of /NAMES list";
             }
 
-            static inline message links(param_t mask, param_t server_name, int hop_count, param_t info)
+            static inline ft::irc::message links(param_t mask, param_t server_name, int hop_count, param_t info)
             {
                 std::ostringstream oss;
                 oss << hop_count << " " << info;
-                return message(RPL_LINKS) << mask << server_name << oss.str();
+                return ft::irc::message(RPL_LINKS) << mask << server_name << oss.str();
             }
 
-            static inline message end_of_links(param_t mask)
+            static inline ft::irc::message end_of_links(param_t mask)
             {
-                return message(RPL_ENDOFLINKS) << mask << "End of /LINKS list";
+                return ft::irc::message(RPL_ENDOFLINKS) << mask << "End of /LINKS list";
             }
 
-            static inline message ban_list(param_t channel_name, int ban_id)
+            static inline ft::irc::message ban_list(param_t channel_name, int ban_id)
             {
-                return message(RPL_BANLIST) << channel_name << ban_id;
+                return ft::irc::message(RPL_BANLIST) << channel_name << ban_id;
             }
 
-            static inline message end_of_ban_list(param_t channel_name)
+            static inline ft::irc::message end_of_ban_list(param_t channel_name)
             {
-                return message(RPL_ENDOFBANLIST) << channel_name << "End of channel ban list";
+                return ft::irc::message(RPL_ENDOFBANLIST) << channel_name << "End of channel ban list";
             }
 
-            static inline message info(param_t info)
+            static inline ft::irc::message info(param_t info)
             {
-                return message(RPL_INFO) << info;
+                return ft::irc::message(RPL_INFO) << info;
             }
 
-            static inline message end_of_info()
+            static inline ft::irc::message end_of_info()
             {
-                return message(RPL_ENDOFINFO) << "End of /INFO list";
+                return ft::irc::message(RPL_ENDOFINFO) << "End of /INFO list";
             }
 
-            static inline message motd_start(param_t server_name)
+            static inline ft::irc::message motd_start(param_t server_name)
             {
-                return message(RPL_MOTDSTART) << "- " + server_name + " Message of the day - ";
+                return ft::irc::message(RPL_MOTDSTART) << "- " + server_name + " Message of the day - ";
             }
 
-            static inline message motd(param_t text)
+            static inline ft::irc::message motd(param_t text)
             {
-                return message(RPL_MOTD) << "- " + text;
+                return ft::irc::message(RPL_MOTD) << "- " + text;
             }
 
-            static inline message end_of_motd()
+            static inline ft::irc::message end_of_motd()
             {
-                return message(RPL_ENDOFMOTD) << "End of /MOTD command";
+                return ft::irc::message(RPL_ENDOFMOTD) << "End of /MOTD command";
             }
 
-            static inline message now_operator()
+            static inline ft::irc::message now_operator()
             {
-                return message(RPL_YOUREOPER) << "You are now an IRC operator";
+                return ft::irc::message(RPL_YOUREOPER) << "You are now an IRC operator";
             }
 
-            static inline message rehashing(param_t config_filename)
+            static inline ft::irc::message rehashing(param_t config_filename)
             {
-                return message(RPL_REHASHING) << config_filename << "Rehashing";
+                return ft::irc::message(RPL_REHASHING) << config_filename << "Rehashing";
             }
 
-            static inline message time(param_t server_name, param_t local_time_str)
+            static inline ft::irc::message time(param_t server_name, param_t local_time_str)
             {
-                return message(RPL_TIME) << server_name << local_time_str;
+                return ft::irc::message(RPL_TIME) << server_name << local_time_str;
             }
 
-            static inline message users_start()
+            static inline ft::irc::message users_start()
             {
-                return message(RPL_USERSSTART) << "UserID   Terminal  Host";
+                return ft::irc::message(RPL_USERSSTART) << "UserID   Terminal  Host";
             }
 
-            static inline message users(param_t utmp_name, param_t utmp_line, param_t utmp_host)
+            static inline ft::irc::message users(param_t utmp_name, param_t utmp_line, param_t utmp_host)
             {
                 // NOTE: utmp.h
                 std::ostringstream oss;
                 oss << std::left << std::setw(8) << utmp_name << ' ' // "%-8s "
                     << std::left << std::setw(9) << utmp_line << ' ' // "%-9s "
                     << std::left << std::setw(8) << utmp_host;       // "%-8s"
-                return message(RPL_USERS) << oss.str();
+                return ft::irc::message(RPL_USERS) << oss.str();
             }
 
-            static inline message end_of_users()
+            static inline ft::irc::message end_of_users()
             {
-                return message(RPL_ENDOFUSERS) << "End of users";
+                return ft::irc::message(RPL_ENDOFUSERS) << "End of users";
             }
 
-            static inline message no_users()
+            static inline ft::irc::message no_users()
             {
-                return message(RPL_NOUSERS) << "Nobody logged in";
+                return ft::irc::message(RPL_NOUSERS) << "Nobody logged in";
             }
 
-            static inline message trace_link(param_t version, int debug_level, param_t destination_server_name, param_t next_server_name)
+            static inline ft::irc::message trace_link(param_t version, int debug_level, param_t destination_server_name, param_t next_server_name)
             {
                 std::ostringstream oss;
                 oss << version << debug_level;
-                return message(RPL_TRACELINK) << "Link" << oss.str() << destination_server_name << next_server_name;
+                return ft::irc::message(RPL_TRACELINK) << "Link" << oss.str() << destination_server_name << next_server_name;
             }
 
-            static inline message trace_connecting(int client_class, param_t client_name)
+            static inline ft::irc::message trace_connecting(int client_class, param_t client_name)
             {
-                return message(RPL_TRACECONNECTING) << "Try." << client_class << client_name;
+                return ft::irc::message(RPL_TRACECONNECTING) << "Try." << client_class << client_name;
             }
 
-            static inline message trace_handshake(int client_class, param_t client_name)
+            static inline ft::irc::message trace_handshake(int client_class, param_t client_name)
             {
-                return message(RPL_TRACEHANDSHAKE) << "H.S." << client_class << client_name;
+                return ft::irc::message(RPL_TRACEHANDSHAKE) << "H.S." << client_class << client_name;
             }
 
-            static inline message trace_unknown(int client_class, param_t client_name)
+            static inline ft::irc::message trace_unknown(int client_class, param_t client_name)
             {
-                return message(RPL_TRACEUNKNOWN) << "????" << client_class << client_name;
+                return ft::irc::message(RPL_TRACEUNKNOWN) << "????" << client_class << client_name;
             }
 
-            static inline message trace_operator(int client_class, param_t client_name)
+            static inline ft::irc::message trace_operator(int client_class, param_t client_name)
             {
-                return message(RPL_TRACEOPERATOR) << "Oper" << client_class << client_name;
+                return ft::irc::message(RPL_TRACEOPERATOR) << "Oper" << client_class << client_name;
             }
 
-            static inline message trace_user(int client_class, param_t client_name)
+            static inline ft::irc::message trace_user(int client_class, param_t client_name)
             {
-                return message(RPL_TRACEUSER) << "User" << client_class << client_name;
+                return ft::irc::message(RPL_TRACEUSER) << "User" << client_class << client_name;
             }
 
-            static inline message trace_server(int client_class, int server_count, int client_count, param_t client_name, param_t by, param_t username, param_t host)
+            static inline ft::irc::message trace_server(int client_class, int server_count, int client_count, param_t client_name, param_t by, param_t username, param_t host)
             {
                 std::ostringstream oss_s, oss_c, oss;
                 oss_s << server_count << 'S';
                 oss_c << client_count << 'C';
                 oss << by << '!' << username << '@' << host; // ME: <by or '*'>!*@<my name>
-                return message(RPL_TRACESERVER) << "Serv" << client_class << oss_s.str() << oss_c.str() << client_name << oss.str();
+                return ft::irc::message(RPL_TRACESERVER) << "Serv" << client_class << oss_s.str() << oss_c.str() << client_name << oss.str();
             }
 
-            static inline message trace_new_type(param_t new_type, param_t client_name)
+            static inline ft::irc::message trace_new_type(param_t new_type, param_t client_name)
             {
-                return message(RPL_TRACENEWTYPE) << new_type << "0" << client_name;
+                return ft::irc::message(RPL_TRACENEWTYPE) << new_type << "0" << client_name;
             }
 
-            static inline message trace_log(param_t log_filename, int debug_level)
+            static inline ft::irc::message trace_log(param_t log_filename, int debug_level)
             {
-                return message(RPL_TRACELOG) << "File" << log_filename << debug_level;
+                return ft::irc::message(RPL_TRACELOG) << "File" << log_filename << debug_level;
             }
 
-            static inline message stats_link_info(param_t linkname, int sendq, param_t sent_messages, int sent_bytes, param_t received_messages, int received_bytes, int time_open)
+            static inline ft::irc::message stats_link_info(param_t linkname, int sendq, param_t sent_messages, int sent_bytes, param_t received_messages, int received_bytes, int time_open)
             {
-                return message(RPL_STATSLINKINFO) << linkname << sendq << sent_messages << sent_bytes << received_messages << received_bytes << time_open;
+                return ft::irc::message(RPL_STATSLINKINFO) << linkname << sendq << sent_messages << sent_bytes << received_messages << received_bytes << time_open;
             }
 
-            static inline message stats_commands(param_t command, unsigned count)
+            static inline ft::irc::message stats_commands(param_t command, unsigned count)
             {
-                return message(RPL_STATSCOMMANDS) << command << count;
+                return ft::irc::message(RPL_STATSCOMMANDS) << command << count;
             }
 
-            static inline message stats_c_line(param_t host, param_t pass, param_t name, int port, int conf_class)
+            static inline ft::irc::message stats_c_line(param_t host, param_t pass, param_t name, int port, int conf_class)
             {
-                return message(RPL_STATSCLINE) << 'C' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
+                return ft::irc::message(RPL_STATSCLINE) << 'C' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
             }
 
-            static inline message stats_n_line(param_t host, param_t pass, param_t name, int port, int conf_class)
+            static inline ft::irc::message stats_n_line(param_t host, param_t pass, param_t name, int port, int conf_class)
             {
-                return message(RPL_STATSNLINE) << 'N' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
+                return ft::irc::message(RPL_STATSNLINE) << 'N' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
             }
 
-            static inline message stats_i_line(param_t host, param_t pass, param_t name, int port, int conf_class)
+            static inline ft::irc::message stats_i_line(param_t host, param_t pass, param_t name, int port, int conf_class)
             {
-                return message(RPL_STATSILINE) << 'I' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
+                return ft::irc::message(RPL_STATSILINE) << 'I' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
             }
 
-            static inline message stats_k_line(param_t host, param_t pass, param_t name, int port, int conf_class)
+            static inline ft::irc::message stats_k_line(param_t host, param_t pass, param_t name, int port, int conf_class)
             {
-                return message(RPL_STATSKLINE) << 'K' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
+                return ft::irc::message(RPL_STATSKLINE) << 'K' << host << (!pass.empty() ? "*" : "<NULL>") << name << port << conf_class;
             }
 
-            static inline message stats_y_line(int class_class, int ping_freq, int conn_freq, int max_sendq)
+            static inline ft::irc::message stats_y_line(int class_class, int ping_freq, int conn_freq, int max_sendq)
             {
-                return message(RPL_STATSYLINE) << 'Y' << class_class << ping_freq << conn_freq << max_sendq;
+                return ft::irc::message(RPL_STATSYLINE) << 'Y' << class_class << ping_freq << conn_freq << max_sendq;
             }
 
-            static inline message end_of_stats(char stats_letter)
+            static inline ft::irc::message end_of_stats(char stats_letter)
             {
-                return message(RPL_ENDOFSTATS) << stats_letter << "End of /STATS report";
+                return ft::irc::message(RPL_ENDOFSTATS) << stats_letter << "End of /STATS report";
             }
 
-            static inline message stats_l_line(param_t host, param_t pass, param_t name, int max_depth)
+            static inline ft::irc::message stats_l_line(param_t host, param_t pass, param_t name, int max_depth)
             {
-                return message(RPL_STATSLLINE) << 'L' << host << (!pass.empty() ? "*" : "<NULL>") << name << max_depth;
+                return ft::irc::message(RPL_STATSLLINE) << 'L' << host << (!pass.empty() ? "*" : "<NULL>") << name << max_depth;
             }
 
-            static inline message stats_uptime(int days, int hours, int minutes, int seconds)
+            static inline ft::irc::message stats_uptime(int days, int hours, int minutes, int seconds)
             {
                 std::ostringstream oss;
                 oss << "Server Up " << days << " days "
                     << hours << ":"
                     << std::setfill('0') << std::setw(2) << std::dec << minutes << ":" // "%02d:"
                     << std::setfill('0') << std::setw(2) << std::dec << seconds;       // "%02d"
-                return message(RPL_STATSUPTIME) << oss.str();
+                return ft::irc::message(RPL_STATSUPTIME) << oss.str();
             }
 
-            static inline message stats_o_line(param_t host, param_t pass, param_t name)
+            static inline ft::irc::message stats_o_line(param_t host, param_t pass, param_t name)
             {
-                return message(RPL_STATSOLINE) << 'O' << host << (!pass.empty() ? "*" : "<NULL>") << name;
+                return ft::irc::message(RPL_STATSOLINE) << 'O' << host << (!pass.empty() ? "*" : "<NULL>") << name;
             }
 
-            static inline message stats_h_line(param_t host, param_t pass, param_t name)
+            static inline ft::irc::message stats_h_line(param_t host, param_t pass, param_t name)
             {
-                return message(RPL_STATSHLINE) << 'H' << host << (!pass.empty() ? "*" : "<NULL>") << name;
+                return ft::irc::message(RPL_STATSHLINE) << 'H' << host << (!pass.empty() ? "*" : "<NULL>") << name;
             }
 
-            static inline message user_mode_is(param_t user_mode)
+            static inline ft::irc::message user_mode_is(param_t user_mode)
             {
-                return message(RPL_UMODEIS) << user_mode;
+                return ft::irc::message(RPL_UMODEIS) << user_mode;
             }
 
-            static inline message luser_client(int user_count, int invisible_count, int server_count)
+            static inline ft::irc::message luser_client(int user_count, int invisible_count, int server_count)
             {
                 std::ostringstream oss;
                 oss << "There are " << user_count << " users and " << invisible_count << " invisible on " << server_count << " servers";
-                return message(RPL_LUSERCLIENT) << oss.str();
+                return ft::irc::message(RPL_LUSERCLIENT) << oss.str();
             }
 
-            static inline message luser_operator(int op_count)
+            static inline ft::irc::message luser_operator(int op_count)
             {
-                return message(RPL_LUSEROP) << op_count << "operator(s) online";
+                return ft::irc::message(RPL_LUSEROP) << op_count << "operator(s) online";
             }
 
-            static inline message luser_unknown(int unknown_count)
+            static inline ft::irc::message luser_unknown(int unknown_count)
             {
-                return message(RPL_LUSERUNKNOWN) << unknown_count << "unknown connection(s)";
+                return ft::irc::message(RPL_LUSERUNKNOWN) << unknown_count << "unknown connection(s)";
             }
 
-            static inline message luser_channels(int channel_count)
+            static inline ft::irc::message luser_channels(int channel_count)
             {
-                return message(RPL_LUSERCHANNELS) << channel_count << "channels formed";
+                return ft::irc::message(RPL_LUSERCHANNELS) << channel_count << "channels formed";
             }
 
-            static inline message luser_me(int client_count, int server_count)
+            static inline ft::irc::message luser_me(int client_count, int server_count)
             {
                 std::ostringstream oss;
                 oss << "I have " << client_count << " clients and " << server_count << " servers";
-                return message(RPL_LUSERME) << oss.str();
+                return ft::irc::message(RPL_LUSERME) << oss.str();
             }
 
-            static inline message admin_me(param_t server_name)
+            static inline ft::irc::message admin_me(param_t server_name)
             {
-                return message(RPL_ADMINME) << server_name << ":Administrative info";
+                return ft::irc::message(RPL_ADMINME) << server_name << ":Administrative info";
             }
 
-            static inline message admin_loc1(param_t location)
+            static inline ft::irc::message admin_loc1(param_t location)
             {
-                return message(RPL_ADMINLOC1) << location;
+                return ft::irc::message(RPL_ADMINLOC1) << location;
             }
 
-            static inline message admin_loc2(param_t location_detail)
+            static inline ft::irc::message admin_loc2(param_t location_detail)
             {
-                return message(RPL_ADMINLOC2) << location_detail;
+                return ft::irc::message(RPL_ADMINLOC2) << location_detail;
             }
 
-            static inline message admin_email(param_t email_address)
+            static inline ft::irc::message admin_email(param_t email_address)
             {
-                return message(RPL_ADMINEMAIL) << email_address;
+                return ft::irc::message(RPL_ADMINEMAIL) << email_address;
             }
         };
     }
