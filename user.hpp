@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "irc_constants.hpp"
+
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
@@ -17,14 +19,16 @@ namespace ft
 
         class server;
 
+        class channel;
+
         class user : public ft::enable_shared_from_this<user>
         {
         public:
             enum user_mode
             {
-                USER_MODE_A,
-                USER_MODE_B,
-                USER_MODE_C,
+                USER_MODE_OPERATOR,
+                USER_MODE_INVISIBLE,
+                USER_MODE_AWAY,
                 NUMBEROF_USER_MODE
             };
 

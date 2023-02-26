@@ -3,6 +3,8 @@
 
 #pragma once
 
+#include "irc_constants.hpp"
+
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 #include <thread/readwrite_lock.hpp>

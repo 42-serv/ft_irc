@@ -3,8 +3,16 @@
 
 #include "server.hpp"
 
+#include "irc_constants.hpp"
+
+#include <libserv/libserv.hpp>
+#include <smart_ptr/smart_ptr.hpp>
+#include <thread/readwrite_lock.hpp>
+
 #include "channel.hpp"
 #include "user.hpp"
+
+#include <string>
 
 ft::irc::server::server()
     : pass(),

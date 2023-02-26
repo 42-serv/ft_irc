@@ -3,6 +3,8 @@
 
 #include "processor.hpp"
 
+#include "irc_constants.hpp"
+
 #include "processor_channel.hpp"
 #include "processor_misc.hpp"
 #include "processor_register.hpp"
