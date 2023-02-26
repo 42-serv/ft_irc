@@ -69,6 +69,11 @@ bool ft::irc::user::get_mode(user_mode index) const throw()
     return this->mode[index];
 }
 
+bool ft::irc::user::get_state(register_state index) const throw()
+{
+    return this->state[index];
+}
+
 bool ft::irc::user::is_member_of(const std::string& channelname) const throw()
 {
     return std::find(this->channels.begin(), this->channels.end(), channelname) != this->channels.end();
@@ -84,9 +89,14 @@ void ft::irc::user::set_nick(const std::string& nick)
     this->nick = nick;
 }
 
-void ft::irc::user::set_mode(user_mode index, bool value)
+void ft::irc::user::set_mode(user_mode index, bool value) throw()
 {
     this->mode[index] = value;
+}
+
+void ft::irc::user::set_state(register_state index, bool value) throw()
+{
+    this->state[index] = value;
 }
 
 void ft::irc::user::join_channel(const std::string& channelname)

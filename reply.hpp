@@ -264,7 +264,7 @@ namespace ft
 
             static inline ft::irc::message erroneous_nickname(param_t nickname)
             {
-                return ft::irc::message(ERR_ERRONEUSNICKNAME) << nickname << "Erroneus nickname";
+                return ft::irc::message(ERR_ERRONEUSNICKNAME) << nickname << "Erroneous nickname";
             }
 
             static inline ft::irc::message nickname_in_use(param_t nickname)

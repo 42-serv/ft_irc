@@ -67,12 +67,14 @@ namespace ft
             const std::string& get_realname() const throw();
             const channel_list& get_channels() const throw();
             bool get_mode(user_mode index) const throw();
+            bool get_state(register_state index) const throw();
 
             bool is_member_of(const std::string& channelname) const throw();
             channel_list::size_type get_channel_number() const throw();
 
             void set_nick(const std::string& nick);
-            void set_mode(user_mode index, bool value);
+            void set_mode(user_mode index, bool value) throw();
+            void set_state(register_state index, bool value) throw();
             void join_channel(const std::string& channelname);
             void part_channel(const std::string& channelname);
             void finalize();
