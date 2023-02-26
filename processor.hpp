@@ -33,14 +33,15 @@ namespace ft
 
         class processor_dictionary
         {
-
         private:
             typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<ft::irc::processor_base> >::type dictionary_type;
 
+        private:
             static ft::shared_ptr<ft::irc::processor_base> null_processor_ptr;
             static dictionary_type dictionary;
             static ft::once_flag init_once_flag;
 
+        private:
             static void init();
             static const ft::shared_ptr<ft::irc::processor_base>& get(const std::string& command);
 

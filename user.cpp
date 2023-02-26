@@ -96,6 +96,11 @@ void ft::irc::user::part_channel(const std::string& channelname)
     }
 }
 
+void ft::irc::user::finalize()
+{
+    // TODO: 모든 방에서 나가기 같은 정리 작업
+}
+
 void ft::irc::user::send_message(const ft::irc::message& message) const
 {
     this->layer.post_write(ft::make_shared<ft::irc::message>(message));

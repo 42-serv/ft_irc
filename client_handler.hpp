@@ -14,6 +14,8 @@
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
+#include <string>
+
 namespace ft
 {
     namespace irc
@@ -32,33 +34,40 @@ namespace ft
         private:
             void on_active(ft::serv::event_layer& layer)
             {
-                std::cout << __PRETTY_FUNCTION__ << std::endl;
                 this->user = ft::make_shared<ft::irc::user>(server, layer);
+
+                ft::serv::logger::debug(__PRETTY_FUNCTION__);
             }
 
             void on_read(ft::serv::event_layer&, ft::shared_ptr<void> arg)
             {
                 ft::shared_ptr<ft::irc::message> message = ft::static_pointer_cast<ft::irc::message>(arg);
-                std::cout << __PRETTY_FUNCTION__ << " : " << message->to_pretty_string() << std::endl;
-
                 ft::irc::processor_dictionary::execute(*this->user, *message);
+
+                ft::serv::logger::debug(__PRETTY_FUNCTION__ + (" : " + message->to_pretty_string()));
             }
 
             void on_read_complete(ft::serv::event_layer&)
             {
-                std::cout << __PRETTY_FUNCTION__ << std::endl;
+                ft::serv::logger::debug(__PRETTY_FUNCTION__);
             }
 
             void on_error(ft::serv::event_layer& layer, ft::shared_ptr<const std::exception> eptr)
             {
-                std::cout << __PRETTY_FUNCTION__ << " : " << eptr->what() << std::endl;
                 layer.post_disconnect();
+
+                ft::serv::logger::debug(__PRETTY_FUNCTION__ + (" : " + std::string(eptr->what())));
             }
 
             void on_inactive(ft::serv::event_layer&)
             {
-                std::cout << __PRETTY_FUNCTION__ << std::endl;
-                this->user.reset();
+                if (this->user)
+                {
+                    this->user->finalize();
+                    this->user.reset();
+                }
+
+                ft::serv::logger::debug(__PRETTY_FUNCTION__);
             }
         };
     }

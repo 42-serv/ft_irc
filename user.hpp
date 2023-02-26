@@ -7,6 +7,7 @@
 #include <smart_ptr/smart_ptr.hpp>
 
 #include <bitset>
+#include <string>
 
 namespace ft
 {
@@ -51,8 +52,7 @@ namespace ft
             std::bitset<NUMBEROF_REGISTER_STATE> state;
 
         public:
-            // FIXME 3 steps needed to register: PASS, NICK, USER commands.
-            user(ft::irc::server& server, ft::serv::event_layer& layer); // FIXME if directly connected client, ignore  hostname, servername ??
+            user(ft::irc::server& server, ft::serv::event_layer& layer);
             ~user();
 
         public:
@@ -71,6 +71,7 @@ namespace ft
             void set_mode(user_mode index, bool value);
             void join_channel(const std::string& channelname);
             void part_channel(const std::string& channelname);
+            void finalize();
 
         public:
             void send_message(const ft::irc::message& message) const;

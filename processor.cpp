@@ -60,39 +60,39 @@ static std::string _make_key(const char* s)
 
 void ft::irc::processor_dictionary::init()
 {
-#define _REGISTER_PROCESSOR(_cmd) ft::irc::processor_dictionary::dictionary.insert(std::make_pair(_make_key(#_cmd), ft::make_shared<ft::irc::processor_##_cmd>()))
+#define _INSERT_PROCESSOR(_cmd) ft::irc::processor_dictionary::dictionary.insert(std::make_pair(_make_key(#_cmd), ft::make_shared<ft::irc::processor_##_cmd>()))
     // register
-    _REGISTER_PROCESSOR(pass);
-    _REGISTER_PROCESSOR(nick);
-    _REGISTER_PROCESSOR(user);
-    _REGISTER_PROCESSOR(oper);
-    _REGISTER_PROCESSOR(quit);
+    _INSERT_PROCESSOR(pass);
+    _INSERT_PROCESSOR(nick);
+    _INSERT_PROCESSOR(user);
+    _INSERT_PROCESSOR(oper);
+    _INSERT_PROCESSOR(quit);
 
     // channel
-    _REGISTER_PROCESSOR(join);
-    _REGISTER_PROCESSOR(part);
-    _REGISTER_PROCESSOR(mode);
-    _REGISTER_PROCESSOR(topic);
-    _REGISTER_PROCESSOR(names);
-    _REGISTER_PROCESSOR(invite);
-    _REGISTER_PROCESSOR(list);
-    _REGISTER_PROCESSOR(kick);
+    _INSERT_PROCESSOR(join);
+    _INSERT_PROCESSOR(part);
+    _INSERT_PROCESSOR(mode);
+    _INSERT_PROCESSOR(topic);
+    _INSERT_PROCESSOR(names);
+    _INSERT_PROCESSOR(invite);
+    _INSERT_PROCESSOR(list);
+    _INSERT_PROCESSOR(kick);
 
     // send_message
-    _REGISTER_PROCESSOR(privmsg);
-    _REGISTER_PROCESSOR(notice);
+    _INSERT_PROCESSOR(privmsg);
+    _INSERT_PROCESSOR(notice);
 
     // user
-    _REGISTER_PROCESSOR(who);
-    _REGISTER_PROCESSOR(whois);
-    _REGISTER_PROCESSOR(whowas);
+    _INSERT_PROCESSOR(who);
+    _INSERT_PROCESSOR(whois);
+    _INSERT_PROCESSOR(whowas);
 
     // misc
-    _REGISTER_PROCESSOR(kill);
-    _REGISTER_PROCESSOR(ping);
-    _REGISTER_PROCESSOR(pong);
-    _REGISTER_PROCESSOR(error);
-#undef _REGISTER_PROCESSOR
+    _INSERT_PROCESSOR(kill);
+    _INSERT_PROCESSOR(ping);
+    _INSERT_PROCESSOR(pong);
+    _INSERT_PROCESSOR(error);
+#undef _INSERT_PROCESSOR
 }
 
 const ft::shared_ptr<ft::irc::processor_base>& ft::irc::processor_dictionary::get(const std::string& command)
