@@ -60,39 +60,39 @@ static std::string _make_key(const char* s)
 
 void ft::irc::processor_dictionary::init()
 {
-#define FT_REGISTER_PROCESSOR(_cmd) ft::irc::processor_dictionary::dictionary.insert(std::make_pair(_make_key(#_cmd), ft::make_shared<ft::irc::processor_##_cmd>()))
+#define _REGISTER_PROCESSOR(_cmd) ft::irc::processor_dictionary::dictionary.insert(std::make_pair(_make_key(#_cmd), ft::make_shared<ft::irc::processor_##_cmd>()))
     // register
-    FT_REGISTER_PROCESSOR(pass);
-    FT_REGISTER_PROCESSOR(nick);
-    FT_REGISTER_PROCESSOR(user);
-    FT_REGISTER_PROCESSOR(oper);
-    FT_REGISTER_PROCESSOR(quit);
+    _REGISTER_PROCESSOR(pass);
+    _REGISTER_PROCESSOR(nick);
+    _REGISTER_PROCESSOR(user);
+    _REGISTER_PROCESSOR(oper);
+    _REGISTER_PROCESSOR(quit);
 
     // channel
-    FT_REGISTER_PROCESSOR(join);
-    FT_REGISTER_PROCESSOR(part);
-    FT_REGISTER_PROCESSOR(mode);
-    FT_REGISTER_PROCESSOR(topic);
-    FT_REGISTER_PROCESSOR(names);
-    FT_REGISTER_PROCESSOR(invite);
-    FT_REGISTER_PROCESSOR(list);
-    FT_REGISTER_PROCESSOR(kick);
+    _REGISTER_PROCESSOR(join);
+    _REGISTER_PROCESSOR(part);
+    _REGISTER_PROCESSOR(mode);
+    _REGISTER_PROCESSOR(topic);
+    _REGISTER_PROCESSOR(names);
+    _REGISTER_PROCESSOR(invite);
+    _REGISTER_PROCESSOR(list);
+    _REGISTER_PROCESSOR(kick);
 
     // send_message
-    FT_REGISTER_PROCESSOR(privmsg);
-    FT_REGISTER_PROCESSOR(notice);
+    _REGISTER_PROCESSOR(privmsg);
+    _REGISTER_PROCESSOR(notice);
 
     // user
-    FT_REGISTER_PROCESSOR(who);
-    FT_REGISTER_PROCESSOR(whois);
-    FT_REGISTER_PROCESSOR(whowas);
+    _REGISTER_PROCESSOR(who);
+    _REGISTER_PROCESSOR(whois);
+    _REGISTER_PROCESSOR(whowas);
 
     // misc
-    FT_REGISTER_PROCESSOR(kill);
-    FT_REGISTER_PROCESSOR(ping);
-    FT_REGISTER_PROCESSOR(pong);
-    FT_REGISTER_PROCESSOR(error);
-#undef FT_REGISTER_PROCESSOR
+    _REGISTER_PROCESSOR(kill);
+    _REGISTER_PROCESSOR(ping);
+    _REGISTER_PROCESSOR(pong);
+    _REGISTER_PROCESSOR(error);
+#undef _REGISTER_PROCESSOR
 }
 
 const ft::shared_ptr<ft::irc::processor_base>& ft::irc::processor_dictionary::get(const std::string& command)
