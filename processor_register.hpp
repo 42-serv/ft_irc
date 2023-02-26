@@ -6,6 +6,7 @@
 #include "irc_constants.hpp"
 
 #include "message.hpp"
+#include "processor_base.hpp"
 #include "user.hpp"
 
 namespace ft
@@ -20,11 +21,12 @@ namespace ft
             int get_min_params() const throw() { return 1; }
             int get_max_params() const throw() { return 1; }
 
-            bool ft::irc::processor_base::is_registered_only() { return false; }
+            bool is_registered_only() const throw() { return false; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message)
+            void execute(const ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME
+                // FIXME: implement
+                static_cast<void>(user), static_cast<void>(message);
             }
         };
 
@@ -36,11 +38,12 @@ namespace ft
             int get_min_params() const throw() { return 1; }
             int get_max_params() const throw() { return 2; }
 
-            bool ft::irc::processor_base::is_registered_only() { return false; }
+            bool is_registered_only() const throw() { return false; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message)
+            void execute(const ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME
+                // FIXME: implement
+                static_cast<void>(user), static_cast<void>(message);
             }
         };
 
@@ -52,11 +55,12 @@ namespace ft
             int get_min_params() const throw() { return 4; }
             int get_max_params() const throw() { return 4; }
 
-            bool ft::irc::processor_base::is_registered_only() { return false; }
+            bool is_registered_only() const throw() { return false; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message)
+            void execute(const ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME
+                // FIXME: implement
+                static_cast<void>(user), static_cast<void>(message);
             }
         };
 
@@ -68,9 +72,10 @@ namespace ft
             int get_min_params() const throw() { return 2; }
             int get_max_params() const throw() { return 2; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message)
+            void execute(const ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME
+                // FIXME: implement
+                static_cast<void>(user), static_cast<void>(message);
             }
         };
 
@@ -81,27 +86,12 @@ namespace ft
         public:
             int get_max_params() const throw() { return 1; }
 
-            bool ft::irc::processor_base::is_registered_only() { return false; }
+            bool is_registered_only() const throw() { return false; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message)
+            void execute(const ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME
-            }
-        };
-
-        // Command: SQUIT
-        // Parameters: <server> <comment>
-        class processor_squit : public processor_base // FIXME is this necessary???
-        {
-        public:
-            int get_min_params() const throw() { return 2; }
-            int get_max_params() const throw() { return 2; }
-
-            bool ft::irc::processor_base::is_operator_only() { return true; }
-
-            void execute(const ft::irc::user& user, const ft::irc::message& message)
-            {
-                // FIXME
+                // FIXME: implement
+                static_cast<void>(user), static_cast<void>(message);
             }
         };
     }

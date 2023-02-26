@@ -6,6 +6,7 @@
 #include "irc_constants.hpp"
 
 #include "message.hpp"
+#include "processor_base.hpp"
 #include "user.hpp"
 
 namespace ft
@@ -17,9 +18,10 @@ namespace ft
         class processor_who : public processor_base
         {
         public:
-            void execute(const ft::irc::user& user, const ft::irc::message& message)
+            void execute(const ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME
+                // FIXME: implement
+                static_cast<void>(user), static_cast<void>(message);
             }
         };
 
@@ -30,9 +32,10 @@ namespace ft
         public:
             int get_min_params() const throw() { return 1; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message)
+            void execute(const ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME
+                // FIXME: implement
+                static_cast<void>(user), static_cast<void>(message);
             }
         };
 
@@ -44,9 +47,10 @@ namespace ft
             int get_min_params() const throw() { return 1; }
             int get_max_params() const throw() { return 3; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message)
+            void execute(const ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME
+                // FIXME: implement
+                static_cast<void>(user), static_cast<void>(message);
             }
         };
     }
