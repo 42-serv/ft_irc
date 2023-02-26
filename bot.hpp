@@ -17,8 +17,10 @@ namespace ft
         {
         public:
         private:
+            std::string pass;
+
         public:
-            bot() {}
+            bot() : pass() {}
             ~bot() {}
 
         public:
