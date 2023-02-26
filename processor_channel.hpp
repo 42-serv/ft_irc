@@ -6,8 +6,11 @@
 #include "irc_constants.hpp"
 
 #include "message.hpp"
-#include "processor_base.hpp"
+#include "processor.hpp"
+#include "reply.hpp"
 #include "user.hpp"
+
+#include <cstdlib>
 
 namespace ft
 {
@@ -18,9 +21,9 @@ namespace ft
         class processor_join : public processor_base
         {
         public:
-            int get_min_params() const throw() { return 1; }
+            std::size_t get_min_params() const throw() { return 1; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message) const
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
                 static_cast<void>(user), static_cast<void>(message);
@@ -32,9 +35,9 @@ namespace ft
         class processor_part : public processor_base
         {
         public:
-            int get_min_params() const throw() { return 1; }
+            std::size_t get_min_params() const throw() { return 1; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message) const
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
                 static_cast<void>(user), static_cast<void>(message);
@@ -47,9 +50,9 @@ namespace ft
         class processor_mode : public processor_base
         {
         public:
-            int get_min_params() const throw() { return 1; }
+            std::size_t get_min_params() const throw() { return 1; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message) const
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
                 static_cast<void>(user), static_cast<void>(message);
@@ -61,10 +64,10 @@ namespace ft
         class processor_topic : public processor_base
         {
         public:
-            int get_min_params() const throw() { return 1; }
-            int get_max_params() const throw() { return 2; }
+            std::size_t get_min_params() const throw() { return 1; }
+            std::size_t get_max_params() const throw() { return 2; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message) const
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
                 static_cast<void>(user), static_cast<void>(message);
@@ -76,7 +79,7 @@ namespace ft
         class processor_names : public processor_base
         {
         public:
-            void execute(const ft::irc::user& user, const ft::irc::message& message) const
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
                 static_cast<void>(user), static_cast<void>(message);
@@ -88,7 +91,7 @@ namespace ft
         class processor_list : public processor_base
         {
         public:
-            void execute(const ft::irc::user& user, const ft::irc::message& message) const
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
                 static_cast<void>(user), static_cast<void>(message);
@@ -100,10 +103,10 @@ namespace ft
         class processor_invite : public processor_base
         {
         public:
-            int get_min_params() const throw() { return 2; }
-            int get_max_params() const throw() { return 2; }
+            std::size_t get_min_params() const throw() { return 2; }
+            std::size_t get_max_params() const throw() { return 2; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message) const
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
                 static_cast<void>(user), static_cast<void>(message);
@@ -115,10 +118,10 @@ namespace ft
         class processor_kick : public processor_base
         {
         public:
-            int get_min_params() const throw() { return 2; }
-            int get_max_params() const throw() { return 3; }
+            std::size_t get_min_params() const throw() { return 2; }
+            std::size_t get_max_params() const throw() { return 3; }
 
-            void execute(const ft::irc::user& user, const ft::irc::message& message) const
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
                 static_cast<void>(user), static_cast<void>(message);

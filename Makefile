@@ -10,7 +10,7 @@ CXXFLAGS += -Iincludes
 
 LIBSERV := includes/libserv/
 CXXFLAGS += -I$(LIBSERV)includes
-LDFLAGS += -L$(LIBSERV) -lserv
+LDFLAGS += -L$(LIBSERV) -lserv -pthread
 
 TARGET = ircserv.out
 OBJECTS_DIR = objs/
@@ -19,7 +19,7 @@ SOURCES += \
 	channel.cpp \
 	main.cpp \
 	message.cpp \
-	processor_base.cpp \
+	processor.cpp \
 	server.cpp \
 	user.cpp \
 

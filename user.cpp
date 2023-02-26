@@ -96,7 +96,7 @@ void ft::irc::user::part_channel(const std::string& channelname)
     }
 }
 
-void ft::irc::user::send_message(const ft::irc::message& message)
+void ft::irc::user::send_message(const ft::irc::message& message) const
 {
     this->layer.post_write(ft::make_shared<ft::irc::message>(message));
     this->layer.post_flush();

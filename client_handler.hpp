@@ -6,6 +6,8 @@
 #include "irc_constants.hpp"
 
 #include "message.hpp"
+#include "processor.hpp"
+#include "reply.hpp"
 #include "server.hpp"
 #include "user.hpp"
 
@@ -31,23 +33,15 @@ namespace ft
             void on_active(ft::serv::event_layer& layer)
             {
                 std::cout << __PRETTY_FUNCTION__ << std::endl;
-                user = ft::make_shared<ft::irc::user>(server, layer);
+                this->user = ft::make_shared<ft::irc::user>(server, layer);
             }
 
-            void on_read(ft::serv::event_layer& layer, ft::shared_ptr<void> arg)
+            void on_read(ft::serv::event_layer&, ft::shared_ptr<void> arg)
             {
                 ft::shared_ptr<ft::irc::message> message = ft::static_pointer_cast<ft::irc::message>(arg);
                 std::cout << __PRETTY_FUNCTION__ << " : " << message->to_pretty_string() << std::endl;
 
-                if (message->get_command() == "QUIT")
-                {
-                    layer.post_disconnect();
-                }
-                else
-                {
-                    layer.post_write(message);
-                    layer.post_flush();
-                }
+                ft::irc::processor_dictionary::execute(*this->user, *message);
             }
 
             void on_read_complete(ft::serv::event_layer&)
@@ -64,7 +58,7 @@ namespace ft
             void on_inactive(ft::serv::event_layer&)
             {
                 std::cout << __PRETTY_FUNCTION__ << std::endl;
-                user.reset();
+                this->user.reset();
             }
         };
     }

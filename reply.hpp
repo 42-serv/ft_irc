@@ -7,6 +7,8 @@
 
 #include "message.hpp"
 
+#include <libserv/libserv.hpp>
+
 #include <iomanip>
 #include <sstream>
 #include <string>
@@ -429,7 +431,7 @@ namespace ft
             static inline message user_host(const std::vector<person_info>& found_person_list)
             {
                 std::ostringstream oss;
-                for (std::vector<person_info>::const_iterator it = found_person_list.begin(); it != found_person_list.end(); ++it)
+                foreach (std::vector<person_info>::const_iterator, it, found_person_list)
                 {
                     oss << it->nickname << (it->is_operator ? "*" : "") << '=' << (it->is_away ? '-' : '+') << it->username << '@' << it->host << ' ';
                 }
@@ -439,7 +441,7 @@ namespace ft
             static inline message ison(const std::vector<std::string>& nickname_list)
             {
                 std::ostringstream oss;
-                for (std::vector<std::string>::const_iterator it = nickname_list.begin(); it != nickname_list.end(); ++it)
+                foreach (std::vector<std::string>::const_iterator, it, nickname_list)
                 {
                     oss << *it << ' ';
                 }
@@ -490,7 +492,7 @@ namespace ft
             static inline message whois_channels(param_t nickname, const std::vector<channel_info>& channel_list)
             {
                 std::ostringstream oss;
-                for (std::vector<channel_info>::const_iterator it = channel_list.begin(); it != channel_list.end(); ++it)
+                foreach (std::vector<channel_info>::const_iterator, it, channel_list)
                 {
                     oss << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << it->channel_name << ' ';
                 }
@@ -572,7 +574,7 @@ namespace ft
             static inline message name_reply(param_t channel_name, const std::vector<member_info>& user_list)
             {
                 std::ostringstream oss;
-                for (std::vector<member_info>::const_iterator it = user_list.begin(); it != user_list.end(); ++it)
+                foreach (std::vector<member_info>::const_iterator, it, user_list)
                 {
                     oss << it->nickname << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << ' ';
                 }

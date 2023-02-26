@@ -73,7 +73,7 @@ namespace ft
             void part_channel(const std::string& channelname);
 
         public:
-            void send_message(const ft::irc::message& message);
+            void send_message(const ft::irc::message& message) const;
 
         private:
             user(const user&);

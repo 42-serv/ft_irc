@@ -55,3 +55,5 @@ namespace ft
         };
     }
 }
+
+#include "message.tpp"

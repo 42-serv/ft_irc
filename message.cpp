@@ -5,9 +5,12 @@
 
 #include "message.hpp"
 
+#include <libserv/libserv.hpp>
+
 #include <algorithm>
 #include <cassert>
 #include <cctype>
+#include <cstdlib>
 #include <iomanip>
 #include <sstream>
 #include <stdexcept>
@@ -48,7 +51,7 @@ static bool _validate_command(std::string& command)
 
     if (std::isalpha(command[0]))
     {
-        for (std::string::iterator it = command.begin(); it != command.end(); ++it)
+        foreach (std::string::iterator, it, command)
         {
             if (!std::isalpha(*it))
             {
@@ -63,7 +66,7 @@ static bool _validate_command(std::string& command)
         {
             return false;
         }
-        for (std::string::iterator it = command.begin(); it != command.end(); ++it)
+        foreach (std::string::iterator, it, command)
         {
             if (!std::isdigit(*it))
             {
@@ -179,14 +182,6 @@ ft::irc::message& ft::irc::message::operator<<(const std::string& str)
 {
     this->add_param(str);
     return *this;
-}
-
-template <typename T>
-ft::irc::message& ft::irc::message::operator<<(const T& chr)
-{
-    std::ostringstream oss;
-    oss << chr;
-    return this->operator<<(oss.str());
 }
 
 const std::string& ft::irc::message::get_command() const
