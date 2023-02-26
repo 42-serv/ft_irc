@@ -1,5 +1,5 @@
 .SUFFIXES: .cpp .o .hpp .h .tpp
-.PHONY: all clean cleanobj cleanbin re deps depsclean depsre
+.PHONY: all clean cleanobj cleanbin re deps depsclean depsre bot
 
 CXX = c++
 RM = rm -f
@@ -13,6 +13,7 @@ CXXFLAGS += -I$(LIBSERV)includes
 LDFLAGS += -L$(LIBSERV) -lserv -pthread
 
 TARGET = ircserv.out
+BOT_TARGET = bot.out
 OBJECTS_DIR = objs/
 
 SOURCES += \
@@ -24,6 +25,16 @@ SOURCES += \
 	user.cpp \
 
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(SOURCES:.cpp=.o))
+
+BOT_SOURCES += \
+	channel.cpp \
+	bot_main.cpp \
+	message.cpp \
+	processor.cpp \
+	server.cpp \
+	user.cpp \
+
+BOT_OBJECTS = $(addprefix $(OBJECTS_DIR), $(BOT_SOURCES:.cpp=.o))
 
 ifdef ASAN
 	CXXFLAGS += -fsanitize=address
@@ -54,9 +65,10 @@ ifdef DEBUG
 endif
 
 all: $(TARGET)
+bot: $(BOT_TARGET)
 clean: cleanobj cleanbin
 cleanobj:	;	$(RM) -r $(OBJECTS_DIR)
-cleanbin:	;	$(RM) $(TARGET)
+cleanbin:	;	$(RM) $(TARGET) $(BOT_TARGET)
 re: clean	;	$(MAKE)
 
 $(OBJECTS_DIR):
@@ -66,6 +78,9 @@ $(OBJECTS_DIR)%.o: %.cpp | $(OBJECTS_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJECTS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
+
+$(BOT_TARGET): $(BOT_OBJECTS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 -include $(OBJECTS:.o=.d)
