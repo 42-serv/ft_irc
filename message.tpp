@@ -5,6 +5,8 @@
 
 #include "message.hpp"
 
+#include "irc_constants.hpp"
+
 #include <sstream>
 #include <string>
 

@@ -3,10 +3,17 @@
 
 #include "user.hpp"
 
+#include "irc_constants.hpp"
+
 #include "message.hpp"
 #include "server.hpp"
 
+#include <libserv/libserv.hpp>
+#include <smart_ptr/smart_ptr.hpp>
+
 #include <algorithm>
+#include <bitset>
+#include <string>
 
 ft::irc::user::user(ft::irc::server& server, ft::serv::event_layer& layer)
     : server(server),
@@ -20,6 +27,7 @@ ft::irc::user::user(ft::irc::server& server, ft::serv::event_layer& layer)
       mode(),
       state()
 {
+    this->channels.reserve(FT_IRC_CHANNEL_LIMIT_PER_USER);
 }
 
 ft::irc::user::~user()

@@ -3,10 +3,24 @@
 
 #include "channel.hpp"
 
+#include "irc_constants.hpp"
+
+#include "message.hpp"
 #include "user.hpp"
 
+#include <libserv/libserv.hpp>
+#include <smart_ptr/smart_ptr.hpp>
+#include <thread/readwrite_lock.hpp>
+
+#include <algorithm>
+#include <bitset>
+#include <string>
+
 ft::irc::channel::channel(const std::string& name)
-    : name(name)
+    : name(name),
+      mode(),
+      users(),
+      lock()
 {
 }
 
@@ -27,4 +41,12 @@ bool ft::irc::channel::get_mode(channel_mode index) const throw()
 const ft::irc::channel::user_dictionary& ft::irc::channel::get_users() const throw()
 {
     return this->users;
+}
+
+void ft::irc::channel::broadcast(const ft::irc::message& message) const
+{
+    foreach (user_dictionary::const_iterator, it, this->users)
+    {
+        it->second.first->send_message(message);
+    }
 }
