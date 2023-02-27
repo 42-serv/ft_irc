@@ -20,6 +20,14 @@ namespace ft
                 // TODO: FIXME 고치기
                 return nick.length() < FT_IRC_NICK_LIMIT;
             }
+
+            static inline bool is_valid_channelname(const std::string& channelname)
+            {
+                // TODO: non printable
+                // FIXME: 위의 TODO를 하세요.
+                // TODO: FIXME 고치기
+                return channelname.length() < FT_IRC_CHANNEL_NAME_LIMIT;
+            }
         };
     }
 }

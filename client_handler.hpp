@@ -63,18 +63,7 @@ namespace ft
             {
                 if (this->user)
                 {
-                    ft::irc::user& user = *this->user;
-                    ft::irc::server& server = user.get_server();
-
-                    if (user.is_registered())
-                    {
-                        user.finalize_channels();
-                    }
-                    if (user.get_register_state(ft::irc::user::REGISTER_STATE_NICK))
-                    {
-                        server.release_nick(user.get_nick());
-                    }
-
+                    this->user->deregister_from_server();
                     this->user.reset();
                 }
 

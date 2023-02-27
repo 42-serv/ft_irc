@@ -5,11 +5,14 @@
 
 #include "irc_constants.hpp"
 
+#include "channel.hpp"
+#include "libserv/serv_types.hpp"
 #include "message.hpp"
 #include "server.hpp"
 
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
+#include <thread/readwrite_lock.hpp>
 
 #include <algorithm>
 #include <bitset>
@@ -25,7 +28,8 @@ ft::irc::user::user(ft::irc::server& server, ft::serv::event_layer& layer)
       realname(),
       channels(),
       mode(),
-      registered_state()
+      registered_state(),
+      lock()
 {
     this->channels.reserve(FT_IRC_CHANNEL_LIMIT_PER_USER);
 }
@@ -133,13 +137,43 @@ bool ft::irc::user::is_registered() const throw()
     return this->registered_state.all();
 }
 
-void ft::irc::user::register_user()
+void ft::irc::user::register_to_server()
 {
-    set_register_state(ft::irc::user::REGISTER_STATE_COMPLETED, true);
+    ft::irc::server& server = this->get_server();
+
+    server.register_user(this->shared_from_this());
+    this->set_register_state(ft::irc::user::REGISTER_STATE_COMPLETED, true);
 
     this->send_message(ft::irc::message("NOTICE") >> "ft_irc"
                                                          << "hello?"
                                                          << "abc");
+}
+
+void ft::irc::user::deregister_from_server()
+{
+    ft::irc::server& server = this->get_server();
+
+    if (this->is_registered())
+    {
+        this->set_register_state(ft::irc::user::REGISTER_STATE_COMPLETED, false);
+
+        channel_list channels_snapshot;
+        synchronized (this->lock.get_write_lock())
+        {
+            this->channels.swap(channels_snapshot);
+        }
+        foreach (channel_list::iterator, it, channels_snapshot)
+        {
+            ft::shared_ptr<ft::irc::channel> channel = server.find_channel(*it);
+            channel->leave_user(this->shared_from_this());
+        }
+
+        server.deregister_user(this->shared_from_this());
+    }
+    if (this->get_register_state(ft::irc::user::REGISTER_STATE_NICK))
+    {
+        server.release_nick(this->get_nick());
+    }
 }
 
 const ft::irc::user::channel_list& ft::irc::user::get_channels() const throw()
@@ -147,34 +181,41 @@ const ft::irc::user::channel_list& ft::irc::user::get_channels() const throw()
     return this->channels;
 }
 
-ft::irc::user::channel_list::size_type ft::irc::user::get_channel_count() const throw()
+ft::irc::user::channel_list::size_type ft::irc::user::channel_count() const throw()
 {
-    return this->channels.size();
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->channels.size();
+    }
 }
 
 bool ft::irc::user::is_channel_member(const std::string& channelname) const throw()
 {
-    return std::find(this->channels.begin(), this->channels.end(), channelname) != this->channels.end();
+    synchronized (this->lock.get_read_lock())
+    {
+        return std::find(this->channels.begin(), this->channels.end(), channelname) != this->channels.end();
+    }
 }
 
 void ft::irc::user::join_channel(const std::string& channelname)
 {
-    this->channels.push_back(channelname);
+    synchronized (this->lock.get_write_lock())
+    {
+        this->channels.push_back(channelname);
+    }
 }
 
 void ft::irc::user::part_channel(const std::string& channelname)
 {
-    channel_list::iterator it = std::find(this->channels.begin(), this->channels.end(), channelname);
-
-    if (it != this->channels.end())
+    synchronized (this->lock.get_write_lock())
     {
-        this->channels.erase(it);
-    }
-}
+        channel_list::iterator it = std::find(this->channels.begin(), this->channels.end(), channelname);
 
-void ft::irc::user::finalize_channels()
-{
-    // TODO: 모든 방에서 나가기 같은 정리 작업
+        if (it != this->channels.end())
+        {
+            this->channels.erase(it);
+        }
+    }
 }
 
 void ft::irc::user::send_message(const ft::irc::message& message) const

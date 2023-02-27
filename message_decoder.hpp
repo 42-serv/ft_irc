@@ -10,6 +10,8 @@
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
+#include <stdexcept>
+
 namespace ft
 {
     namespace irc
@@ -30,7 +32,7 @@ namespace ft
                     }
                     else
                     {
-                        // FIXME: throw malformed message
+                        throw std::runtime_error("malformed IRC message");
                     }
                 }
             }

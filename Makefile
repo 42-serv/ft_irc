@@ -27,12 +27,8 @@ SOURCES += \
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(SOURCES:.cpp=.o))
 
 BOT_SOURCES += \
-	channel.cpp \
 	bot_main.cpp \
 	message.cpp \
-	processor.cpp \
-	server.cpp \
-	user.cpp \
 
 BOT_OBJECTS = $(addprefix $(OBJECTS_DIR), $(BOT_SOURCES:.cpp=.o))
 
@@ -64,8 +60,7 @@ ifdef DEBUG
 	CXXFLAGS += -g3 -O0
 endif
 
-all: $(TARGET)
-bot: $(BOT_TARGET)
+all: $(TARGET) $(BOT_TARGET)
 clean: cleanobj cleanbin
 cleanobj:	;	$(RM) -r $(OBJECTS_DIR)
 cleanbin:	;	$(RM) $(TARGET) $(BOT_TARGET)

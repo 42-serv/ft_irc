@@ -6,16 +6,18 @@
 #include "irc_constants.hpp"
 
 #include "bot.hpp"
-#include "bot_message_handler.hpp"
 #include "message_decoder.hpp"
 #include "message_encoder.hpp"
+#include "processor.hpp"
+#include "reply.hpp"
+#include "server.hpp"
 #include "string_line_decoder.hpp"
 #include "string_line_encoder.hpp"
 
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
-#include "debug.hpp"
+#include <string>
 
 namespace ft
 {
@@ -38,15 +40,21 @@ namespace ft
                 ft::serv::logger::debug(__PRETTY_FUNCTION__);
             }
 
-            void on_read_complete(ft::serv::event_layer& layer)
+            void on_read(ft::serv::event_layer&, ft::shared_ptr<void> arg)
             {
-                static_cast<void>(layer);
+                ft::shared_ptr<ft::irc::message> message = ft::static_pointer_cast<ft::irc::message>(arg);
+                // ft::irc::processor_dictionary::execute(*this->user, *message);
+
+                ft::serv::logger::debug(__PRETTY_FUNCTION__ + (" : " + message->to_pretty_string()));
+            }
+
+            void on_read_complete(ft::serv::event_layer&)
+            {
                 ft::serv::logger::debug(__PRETTY_FUNCTION__);
             }
 
             void on_error(ft::serv::event_layer& layer, ft::shared_ptr<const std::exception> eptr)
             {
-                static_cast<void>(layer);
                 layer.post_disconnect();
 
                 ft::serv::logger::debug(__PRETTY_FUNCTION__ + (" : " + std::string(eptr->what())));
@@ -54,32 +62,7 @@ namespace ft
 
             void on_inactive(ft::serv::event_layer&)
             {
-                // if (this->bot)
-                // {
-                // std::cout << __PRETTY_FUNCTION__ << std::endl;
-                // this->bot->finalize();
-                //     this->bot.reset();
-                // }
-
                 ft::serv::logger::debug(__PRETTY_FUNCTION__);
-            }
-
-            void on_read(ft::serv::event_layer&, ft::shared_ptr<void> arg)
-            {
-                std::cout << __PRETTY_FUNCTION__ << std::endl;
-
-                ft::shared_ptr<ft::serv::event_channel_base> child = ft::static_pointer_cast<ft::serv::event_channel_base>(arg);
-
-                const ft::serv::ident_t child_ident = child->get_ident();
-                ft::serv::socket_utils::set_tcp_nodelay(child_ident, true);
-                ft::serv::socket_utils::set_socket_linger(child_ident, true, 5);
-
-                child->add_last_handler(ft::make_shared<ft::irc::string_line_encoder>());
-                child->add_last_handler(ft::make_shared<ft::irc::string_line_decoder>());
-                child->add_last_handler(ft::make_shared<ft::irc::message_encoder>());
-                child->add_last_handler(ft::make_shared<ft::irc::message_decoder>());
-                child->add_first_handler(ft::make_shared<byte_buffer_dump_logger_handler>()); // NOTE: DEBUG
-                child->add_last_handler(ft::make_shared<ft::irc::bot_message_handler>());
             }
         };
     }

@@ -8,6 +8,8 @@
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
+#include <stdexcept>
+
 namespace ft
 {
     namespace irc
@@ -29,7 +31,7 @@ namespace ft
                     }
                     else if (i - begin >= FT_IRC_MESSAGE_LINE_LIMIT)
                     {
-                        // FIXME: throw exceed 512 bytes without CR-LF
+                        throw std::runtime_error("exceed 512 bytes without CR-LF");
                     }
 
                     cr = arr[i] == '\r';

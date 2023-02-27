@@ -120,7 +120,7 @@ void ft::irc::processor_dictionary::execute(ft::irc::user& user, const ft::irc::
         return;
     }
 
-    if (message.size_param() < processor->get_min_params())
+    if (message.param_size() < processor->get_min_params())
     {
         user.send_message(ft::irc::make_error::need_more_parameters(command));
         return;

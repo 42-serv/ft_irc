@@ -82,7 +82,7 @@ namespace ft
 
                 if (!user.is_registered() && user.get_register_state(ft::irc::user::REGISTER_STATE_USER))
                 {
-                    user.register_user();
+                    user.register_to_server();
                 }
             }
         };
@@ -118,7 +118,7 @@ namespace ft
 
                 if (user.get_register_state(ft::irc::user::REGISTER_STATE_NICK))
                 {
-                    user.register_user();
+                    user.register_to_server();
                 }
             }
         };
@@ -150,7 +150,7 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 std::string quit_message;
-                if (message.size_param() >= 1)
+                if (message.param_size() >= 1)
                 {
                     quit_message = message[0];
                 }

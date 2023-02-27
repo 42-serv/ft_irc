@@ -212,7 +212,7 @@ void ft::irc::message::set_prefix(const std::string& prefix)
     this->prefix = prefix;
 }
 
-std::size_t ft::irc::message::size_param() const
+std::size_t ft::irc::message::param_size() const
 {
     return this->params.size();
 }
@@ -255,8 +255,8 @@ std::string ft::irc::message::to_pretty_string() const
     oss << "{" << std::endl;
     oss << "\tCOMMAND=\"" << this->get_command() << "\"" << std::endl;
     oss << "\tPREFIX=\"" << this->get_prefix() << "\"" << std::endl;
-    oss << "\tPARAMS = [" << this->size_param() << "] {" << std::endl;
-    for (std::size_t i = 0; i < this->size_param(); i++)
+    oss << "\tPARAMS = [" << this->param_size() << "] {" << std::endl;
+    for (std::size_t i = 0; i < this->param_size(); i++)
     {
         oss << "\t\t[" << i << "] = \"" << this->operator[](i) << "\"" << std::endl;
     }

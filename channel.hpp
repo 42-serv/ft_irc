@@ -5,6 +5,8 @@
 
 #include "irc_constants.hpp"
 
+#include "reply.hpp"
+
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 #include <thread/readwrite_lock.hpp>
@@ -18,6 +20,8 @@ namespace ft
     namespace irc
     {
         class message;
+
+        class server;
 
         class user;
 
@@ -37,30 +41,50 @@ namespace ft
                 // CHANNEL_MODE_LIMIT,
                 NUMBEROF_CHANNEL_MODE
             };
-            enum member_mode
+
+            struct member
             {
-                MEMBER_MODE_OWNER,
-                MEMBER_MODE_OPERATOR,
-                MEMBER_MODE_VOICE,
-                NUMBEROF_MEMBER_MODE
+                enum member_mode
+                {
+                    MEMBER_MODE_OWNER,
+                    MEMBER_MODE_OPERATOR,
+                    MEMBER_MODE_VOICE,
+                    NUMBEROF_MEMBER_MODE
+                };
+
+                explicit member(const ft::shared_ptr<ft::irc::user>& user)
+                    : user(user),
+                      mode()
+                {
+                }
+
+                ft::shared_ptr<ft::irc::user> user;
+                std::bitset<NUMBEROF_MEMBER_MODE> mode;
+
+                bool operator==(ft::shared_ptr<ft::irc::user> that);
             };
-            typedef ft::serv::fast_dictionary<std::string, std::pair<ft::shared_ptr<ft::irc::user>, member_mode> >::type user_dictionary;
+
+            typedef ft::serv::dynamic_array<member>::type member_list;
 
         private:
+            ft::irc::server& server;
             std::string name;
             std::bitset<NUMBEROF_CHANNEL_MODE> mode;
-            user_dictionary users;
+            member_list members;
             mutable ft::readwrite_lock lock;
-            // FIXME channel operator info?
+            bool invalidated;
 
         public:
-            channel(const std::string& pass);
+            channel(ft::irc::server& server, const std::string& pass);
             ~channel();
 
         public:
             const std::string& get_name() const throw();
             bool get_mode(channel_mode index) const throw();
-            const user_dictionary& get_users() const throw();
+            const member_list& get_members() const throw();
+
+            ft::irc::reply_numerics enter_user(const ft::shared_ptr<ft::irc::user>& user);
+            void leave_user(const ft::shared_ptr<ft::irc::user>& user);
 
         public:
             void broadcast(const ft::irc::message& message) const;

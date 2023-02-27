@@ -3,14 +3,18 @@
 
 #pragma once
 
+#include "channel.hpp"
 #include "irc_constants.hpp"
 
 #include "message.hpp"
 #include "processor.hpp"
 #include "reply.hpp"
+#include "server.hpp"
+#include "string_utils.hpp"
 #include "user.hpp"
 
 #include <cstdlib>
+#include <string>
 
 namespace ft
 {
@@ -25,8 +29,62 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                ft::irc::server& server = user.get_server();
+                ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
+                ft::irc::message::param_vector keys;
+                if (message.param_size() > 1)
+                {
+                    keys = ft::irc::message::split(message[1], ',');
+                }
+                static_cast<void>(keys); // TODO: secret channel
+                foreach (ft::irc::message::param_vector::iterator, it, channelnames)
+                {
+                    const std::string& channelname = *it;
+
+                    if (!ft::irc::string_utils::is_valid_channelname(channelname))
+                    {
+                        user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                        continue;
+                    }
+
+                    if (user.channel_count() >= FT_IRC_CHANNEL_LIMIT_PER_USER)
+                    {
+                        user.send_message(ft::irc::make_error::too_many_channels(channelname));
+                        continue;
+                    }
+
+                    ft::shared_ptr<ft::irc::channel> channel = server.ensure_channel(channelname);
+                    ft::irc::reply_numerics rpl = channel->enter_user(user.shared_from_this());
+                    if (rpl == RPL_NONE)
+                    {
+                        user.join_channel(channel->get_name());
+                    }
+                    else
+                    {
+                        switch (rpl)
+                        {
+                        case ERR_NOSUCHCHANNEL:
+                            user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                            break;
+
+                        case ERR_CHANNELISFULL:
+                            user.send_message(ft::irc::make_error::channel_is_full(channelname));
+                            break;
+                        case ERR_INVITEONLYCHAN:
+                            user.send_message(ft::irc::make_error::invite_only_channel(channelname));
+                            break;
+                        case ERR_BANNEDFROMCHAN:
+                            user.send_message(ft::irc::make_error::banned_from_channel(channelname));
+                            break;
+                        case ERR_BADCHANNELKEY:
+                            user.send_message(ft::irc::make_error::bad_channel_key(channelname));
+                            break;
+
+                        default:
+                            assert(false);
+                        }
+                    }
+                }
             }
         };
 

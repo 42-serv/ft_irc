@@ -48,7 +48,7 @@ namespace ft
             const std::string& get_prefix() const;
             void set_prefix(const std::string& prefix);
 
-            std::size_t size_param() const;
+            std::size_t param_size() const;
             void add_param(const std::string& param);
             void remove_all_param();
 
