@@ -1,0 +1,31 @@
+name: doxygen automation
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        submodules: "true"
+
+    - name: Install Doxygen
+      run: sudo apt-get install doxygen -y
+      shell: bash
+
+    - name: Install Graphviz
+      run: sudo apt-get install graphviz -y
+      shell: bash
+
+    - name: Doxygen Action
+      uses: mattnotmitt/doxygen-action@1.9.5
+      with:
+        doxyfile-path: './Doxyfile'
