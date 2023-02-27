@@ -30,7 +30,7 @@ namespace ft
 int main(int argc, char* argv[])
 {
     // FIXME: 임시 코드
-    if (argc < 3)
+    if (argc != 3)
     {
         std::cout << "Usage: " << argv[0] << " <port> <pass>" << std::endl;
         return EXIT_FAILURE;

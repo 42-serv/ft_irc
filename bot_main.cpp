@@ -37,15 +37,15 @@ namespace ft
 int main(int argc, char* argv[])
 {
     // FIXME: 임시 코드
-    if (argc < 3)
+    if (argc != 4)
     {
-        std::cout << "Usage: " << argv[0] << " <host> <port>" << std::endl;
+        std::cout << "Usage: " << argv[0] << " <host> <port> <pass>" << std::endl;
         return EXIT_FAILURE;
     }
     ft::shared_ptr<ft::serv::event_worker_group> child_group = ft::make_shared<ft::serv::event_worker_group>();
     // TODO: sigaction
     child_group->put_worker(ft::make_shared<ft::serv::event_worker>());
-    ft::irc::bot bot;
+    ft::irc::bot bot(argv[3]);
     {
         ft::serv::bootstrap boot(child_group, child_group, null, &ft::irc::_make_client);
         try

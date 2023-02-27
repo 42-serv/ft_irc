@@ -19,11 +19,27 @@ namespace ft
         private:
             std::string pass;
 
-        public:
-            bot() : pass() {}
-            ~bot() {}
+            std::string nick;
+
+            std::string username;
+            std::string hostname;
+            std::string servername;
+            std::string realname;
 
         public:
+            bot(const std::string& pass); // FIXME
+            ~bot();
+
+        public:
+            const std::string& get_pass() const throw();
+
+            const std::string& get_nick() const throw();
+
+            const std::string& get_username() const throw();
+            const std::string& get_hostname() const throw();
+            const std::string& get_servername() const throw();
+            const std::string& get_realname() const throw();
+
         private:
             bot(const bot&);
             bot& operator=(const bot&);

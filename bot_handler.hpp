@@ -38,6 +38,27 @@ namespace ft
             {
                 static_cast<void>(layer);
                 ft::serv::logger::debug(__PRETTY_FUNCTION__);
+                {
+                    ft::irc::message message("PASS");
+                    message << bot.get_pass();
+
+                    layer.post_write(ft::make_shared<ft::irc::message>(message));
+                    layer.post_flush();
+                }
+                {
+                    ft::irc::message message("NICK");
+                    message << bot.get_nick();
+
+                    layer.post_write(ft::make_shared<ft::irc::message>(message));
+                    layer.post_flush();
+                }
+                {
+                    ft::irc::message message("USER");
+                    message << bot.get_username() << bot.get_hostname() << bot.get_servername() << bot.get_realname();
+
+                    layer.post_write(ft::make_shared<ft::irc::message>(message));
+                    layer.post_flush();
+                }
             }
 
             void on_read(ft::serv::event_layer&, ft::shared_ptr<void> arg)

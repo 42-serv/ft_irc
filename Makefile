@@ -27,6 +27,7 @@ SOURCES += \
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(SOURCES:.cpp=.o))
 
 BOT_SOURCES += \
+	bot.cpp \
 	bot_main.cpp \
 	message.cpp \
 
