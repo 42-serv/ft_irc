@@ -52,11 +52,7 @@ namespace ft
                     NUMBEROF_MEMBER_MODE
                 };
 
-                explicit member(const ft::shared_ptr<ft::irc::user>& user)
-                    : user(user),
-                      mode()
-                {
-                }
+                explicit member(const ft::shared_ptr<ft::irc::user>& user);
 
                 ft::shared_ptr<ft::irc::user> user;
                 std::bitset<NUMBEROF_MEMBER_MODE> mode;

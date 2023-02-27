@@ -43,8 +43,8 @@ ft::shared_ptr<ft::irc::channel> ft::irc::server::find_channel(const std::string
         {
             return it->second;
         }
-        return ft::shared_ptr<ft::irc::channel>();
     }
+    return ft::shared_ptr<ft::irc::channel>();
 }
 
 ft::shared_ptr<ft::irc::channel> ft::irc::server::ensure_channel(const std::string& name)
@@ -72,7 +72,7 @@ bool ft::irc::server::hold_nick(const std::string& nick)
 {
     synchronized (this->lock.get_write_lock())
     {
-        return this->nicks.insert(std::make_pair(nick, true)).second;
+        return this->nicks.insert(std::make_pair(ft::irc::string_utils::to_lower(nick), true)).second;
     }
 }
 
@@ -80,7 +80,7 @@ void ft::irc::server::release_nick(const std::string& nick) throw()
 {
     synchronized (this->lock.get_write_lock())
     {
-        this->nicks.erase(nick);
+        this->nicks.erase(ft::irc::string_utils::to_lower(nick));
     }
 }
 
@@ -109,11 +109,10 @@ void ft::irc::server::deregister_user(const ft::shared_ptr<ft::irc::user>& user)
 {
     synchronized (this->lock.get_write_lock())
     {
-        user_list::const_iterator it = std::find(this->users.begin(), this->users.end(), user);
-        if (it == this->users.end())
+        user_list::/*const_*/ iterator it = std::find(this->users.begin(), this->users.end(), user);
+        if (it != this->users.end())
         {
-            return;
+            this->users.erase(it);
         }
-        this->users.erase(it);
     }
 }

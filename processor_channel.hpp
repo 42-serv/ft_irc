@@ -31,15 +31,22 @@ namespace ft
             {
                 ft::irc::server& server = user.get_server();
                 ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
+
                 ft::irc::message::param_vector keys;
                 if (message.param_size() > 1)
                 {
                     keys = ft::irc::message::split(message[1], ',');
                 }
                 static_cast<void>(keys); // TODO: secret channel
+
                 foreach (ft::irc::message::param_vector::iterator, it, channelnames)
                 {
                     const std::string& channelname = *it;
+
+                    if (user.is_channel_member(channelname))
+                    {
+                        continue;
+                    }
 
                     if (!ft::irc::string_utils::is_valid_channelname(channelname))
                     {
@@ -97,8 +104,32 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                ft::irc::server& server = user.get_server();
+                ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
+
+                foreach (ft::irc::message::param_vector::iterator, it, channelnames)
+                {
+                    const std::string& channelname = *it;
+
+                    if (user.is_channel_member(channelname))
+                    {
+                        user.part_channel(channelname);
+
+                        ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
+                        if (channel)
+                        {
+                            channel->leave_user(user.shared_from_this());
+                        }
+                        else
+                        {
+                            user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                        }
+                    }
+                    else
+                    {
+                        user.send_message(ft::irc::make_error::not_on_channel(channelname));
+                    }
+                }
             }
         };
 

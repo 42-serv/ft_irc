@@ -168,6 +168,8 @@ namespace ft
 #undef _MAKE_ENUM
         };
 
+        // FIXME: TSS로 me.name 정해두고 prefix로 사용하기
+
         struct make_reply_base
         {
             typedef const std::string& param_t;

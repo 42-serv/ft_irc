@@ -10,10 +10,6 @@
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
-#if not FT_IRC_HARDWARE_CONCURRENCY > 0
-#include <unistd.h> // sysconf
-#endif
-
 #include "debug.hpp"
 
 namespace ft

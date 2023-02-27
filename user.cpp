@@ -8,6 +8,7 @@
 #include "channel.hpp"
 #include "libserv/serv_types.hpp"
 #include "message.hpp"
+#include "reply.hpp"
 #include "server.hpp"
 
 #include <libserv/libserv.hpp>
@@ -144,9 +145,39 @@ void ft::irc::user::register_to_server()
     server.register_user(this->shared_from_this());
     this->set_register_state(ft::irc::user::REGISTER_STATE_COMPLETED, true);
 
-    this->send_message(ft::irc::message("NOTICE") >> "ft_irc"
-                                                         << "hello?"
-                                                         << "abc");
+    // FIXME: fill data
+    int user_count = 42;
+    int invisible_count = 42;
+    int server_count = 42;
+    int operator_count = 42;
+    int unknown_count = 42;
+    int channel_count = 42;
+    int my_client_count = 42;
+    int my_server_count = 42;
+    this->send_message(ft::irc::make_reply::luser_client(user_count, invisible_count, server_count));
+    if (operator_count > 0)
+    {
+        this->send_message(ft::irc::make_reply::luser_operator(operator_count));
+    }
+    if (unknown_count > 0)
+    {
+        this->send_message(ft::irc::make_reply::luser_unknown(unknown_count));
+    }
+    this->send_message(ft::irc::make_reply::luser_channels(channel_count));
+    this->send_message(ft::irc::make_reply::luser_me(my_client_count, my_server_count));
+
+    if (true)
+    {
+        this->send_message(ft::irc::make_reply::motd_start("irc.42seoul.kr"));
+        this->send_message(ft::irc::make_reply::motd("example motd"));
+        this->send_message(ft::irc::make_reply::end_of_motd());
+    }
+    else
+    {
+        this->send_message(ft::irc::make_error::no_motd());
+    }
+
+    this->send_message(ft::irc::make_reply::user_mode_is("+Oexamplo"));
 }
 
 void ft::irc::user::deregister_from_server()

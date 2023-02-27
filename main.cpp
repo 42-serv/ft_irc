@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
         ft::serv::bootstrap boot(boss_group, child_group, &ft::irc::_make_server, null);
         try
         {
-            if (!boot.start_server("localhost", argv[1], &server))
+            if (!boot.start_server("", argv[1], &server))
             {
                 std::cerr << "bind failed. Is port \"" << argv[1] << "\" wrong?" << std::endl;
                 boss_group->shutdown_all();

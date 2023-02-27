@@ -69,6 +69,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
 
         const bool first = this->members.empty();
         // TODO: check invite, limit, key, ban
+
         member_list::iterator it = this->members.insert(this->members.end(), member(user));
         if (first)
         {
@@ -77,6 +78,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
             it->user->send_message(ft::irc::message("NOTICE") >> "ft_irc"
                                                                      << "You're new owner.");
         }
+        it->user->send_message(ft::irc::make_reply::topic(this->name, "This is topic"));
     }
     this->broadcast(ft::irc::message("NOTICE") >> "ft_irc"
                                                       << "User " + user->get_nick() + " joined.");
@@ -115,6 +117,12 @@ void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
     {
         this->server.remove_channel(this->get_name());
     }
+}
+
+ft::irc::channel::member::member(const ft::shared_ptr<ft::irc::user>& user)
+    : user(user),
+      mode()
+{
 }
 
 bool ft::irc::channel::member::operator==(ft::shared_ptr<ft::irc::user> that)
