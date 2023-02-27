@@ -8,6 +8,8 @@
 #include "message.hpp"
 #include "processor.hpp"
 #include "reply.hpp"
+#include "server.hpp"
+#include "string_utils.hpp"
 #include "user.hpp"
 
 #include <cstdlib>
@@ -28,8 +30,14 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                if (user.is_registered())
+                {
+                    user.send_message(ft::irc::make_error::already_registered());
+                    return;
+                }
+
+                const ft::irc::server& server = user.get_server();
+                user.set_register_state(ft::irc::user::REGISTER_STATE_PASS, message[0] == server.get_pass());
             }
         };
 
@@ -45,8 +53,37 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                if (!user.get_register_state(ft::irc::user::REGISTER_STATE_PASS))
+                {
+                    return;
+                }
+
+                const std::string& nick = message[0];
+
+                if (nick.empty())
+                {
+                    user.send_message(ft::irc::make_error::no_nickname_given());
+                    return;
+                }
+
+                if (!ft::irc::string_utils::is_valid_nick(nick))
+                {
+                    user.send_message(ft::irc::make_error::erroneous_nickname(nick));
+                    return;
+                }
+
+                if (!user.change_nick(nick))
+                {
+                    user.send_message(ft::irc::make_error::nickname_in_use(nick));
+                    return;
+                }
+
+                user.set_register_state(ft::irc::user::REGISTER_STATE_NICK, true);
+
+                if (!user.is_registered() && user.get_register_state(ft::irc::user::REGISTER_STATE_USER))
+                {
+                    user.register_user();
+                }
             }
         };
 
@@ -62,8 +99,27 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                if (!user.get_register_state(ft::irc::user::REGISTER_STATE_PASS))
+                {
+                    return;
+                }
+
+                if (user.is_registered())
+                {
+                    user.send_message(ft::irc::make_error::already_registered());
+                    return;
+                }
+
+                user.set_username(message[0]);
+                user.set_hostname(message[1]);
+                user.set_servername(message[2]);
+                user.set_realname(message[3]);
+                user.set_register_state(ft::irc::user::REGISTER_STATE_USER, true);
+
+                if (user.get_register_state(ft::irc::user::REGISTER_STATE_NICK))
+                {
+                    user.register_user();
+                }
             }
         };
 
@@ -93,9 +149,18 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
-                user.send_message(ft::irc::make_error::no_privileges());
+                std::string quit_message;
+                if (message.size_param() >= 1)
+                {
+                    quit_message = message[0];
+                }
+                else
+                {
+                    // default message
+                    quit_message = user.get_nick();
+                }
+
+                user.exit_client(quit_message);
             }
         };
     }

@@ -5,8 +5,9 @@
 
 #include "irc_constants.hpp"
 
+#include <libserv/libserv.hpp>
+
 #include <string>
-#include <vector>
 
 namespace ft
 {
@@ -15,11 +16,11 @@ namespace ft
         class message
         {
         public:
-            static std::vector<std::string> split(const std::string& str, std::string::value_type delim = ' ', std::string::value_type limit = '\0');
-            static bool try_parse(const std::string& str, message& out_msg);
+            typedef ft::serv::dynamic_array<std::string>::type param_vector;
 
         public:
-            typedef std::vector<std::string> param_vector;
+            static param_vector split(const std::string& str, std::string::value_type delim = ' ', std::string::value_type limit = '\0');
+            static bool try_parse(const std::string& str, message& out_msg);
 
         private:
             std::string command;
@@ -30,7 +31,8 @@ namespace ft
         public:
             message();
             message(int command);
-            message(const std::string& prefix, const std::string& command, const std::vector<std::string>& params);
+            message(const std::string& command);
+            message(const std::string& prefix, const std::string& command, const param_vector& params);
 
             std::string& operator[](param_vector::size_type n);
             const std::string& operator[](param_vector::size_type n) const;

@@ -15,11 +15,10 @@
 #include <sstream>
 #include <stdexcept>
 #include <string>
-#include <vector>
 
-std::vector<std::string> ft::irc::message::split(const std::string& str, std::string::value_type delim, std::string::value_type limit)
+ft::irc::message::param_vector ft::irc::message::split(const std::string& str, std::string::value_type delim, std::string::value_type limit)
 {
-    std::vector<std::string> vec;
+    param_vector vec;
 
     for (std::string::size_type beg = str.find_first_not_of(delim), end; beg != std::string::npos; beg = str.find_first_not_of(delim, end))
     {
@@ -121,7 +120,7 @@ bool ft::irc::message::try_parse(const std::string& line, message& out)
         pos_begin = pos_end_command;
     }
 
-    std::vector<std::string> params;
+    param_vector params;
     if (pos_begin != std::string::npos)
     {
         params = message::split(line.substr(pos_begin), ' ', ':');
@@ -152,7 +151,16 @@ ft::irc::message::message(int command)
     assert(_validate_command(this->command));
 }
 
-ft::irc::message::message(const std::string& prefix, const std::string& command, const std::vector<std::string>& params)
+ft::irc::message::message(const std::string& command)
+    : command(command),
+      prefix(),
+      params(),
+      end(false)
+{
+    assert(_validate_command(this->command));
+}
+
+ft::irc::message::message(const std::string& prefix, const std::string& command, const param_vector& params)
     : command(command),
       prefix(prefix),
       params(params),
@@ -234,7 +242,7 @@ std::string ft::irc::message::to_string() const
         oss << ":" << this->prefix << " ";
     }
     oss << this->command;
-    for (std::vector<std::string>::const_iterator it = this->params.begin(); it != this->params.end(); ++it)
+    foreach (param_vector::const_iterator, it, this->params)
     {
         oss << ((this->end && it + 1 == this->params.end()) ? " :" : " ") << *it;
     }

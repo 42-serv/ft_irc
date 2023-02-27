@@ -50,7 +50,7 @@ namespace ft
             std::string name;
             std::bitset<NUMBEROF_CHANNEL_MODE> mode;
             user_dictionary users;
-            ft::readwrite_lock lock;
+            mutable ft::readwrite_lock lock;
             // FIXME channel operator info?
 
         public:

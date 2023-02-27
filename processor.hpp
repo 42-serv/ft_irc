@@ -5,7 +5,6 @@
 
 #include "irc_constants.hpp"
 
-#include "libserv/serv_types.hpp"
 #include "message.hpp"
 #include "user.hpp"
 

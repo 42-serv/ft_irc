@@ -6,6 +6,7 @@
 #include "server.hpp"
 #include "server_handler.hpp"
 
+#include <cstdlib>
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
@@ -26,9 +27,14 @@ namespace ft
     }
 }
 
-int main()
+int main(int argc, char* argv[])
 {
     // FIXME: 임시 코드
+    if (argc < 3)
+    {
+        std::cout << "Usage: " << argv[0] << " <port> <pass>" << std::endl;
+        return EXIT_FAILURE;
+    }
     ft::shared_ptr<ft::serv::event_worker_group> boss_group = ft::make_shared<ft::serv::event_worker_group>();
     ft::shared_ptr<ft::serv::event_worker_group> child_group = ft::make_shared<ft::serv::event_worker_group>();
     // TODO: sigaction
@@ -44,8 +50,24 @@ int main()
     {
         child_group->put_worker(ft::make_shared<ft::serv::event_worker>());
     }
-    ft::serv::bootstrap boot(boss_group, child_group, &ft::irc::_make_server, null);
-    ft::irc::server server;
-    boot.start_server("localhost", "4242", &server);
-    return 0;
+    ft::irc::server server(argv[2]);
+    {
+        ft::serv::bootstrap boot(boss_group, child_group, &ft::irc::_make_server, null);
+        try
+        {
+            if (!boot.start_server("localhost", argv[1], &server))
+            {
+                std::cerr << "bind failed. Is port \"" << argv[1] << "\" wrong?" << std::endl;
+                boss_group->shutdown_all();
+                child_group->shutdown_all();
+            }
+        }
+        catch (const ft::serv::syscall_failed& e)
+        {
+            std::cerr << "bind failed. System error occured: " << e.what() << std::endl;
+            boss_group->shutdown_all();
+            child_group->shutdown_all();
+        }
+    }
+    return EXIT_SUCCESS;
 }

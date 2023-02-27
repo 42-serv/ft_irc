@@ -126,7 +126,17 @@ void ft::irc::processor_dictionary::execute(ft::irc::user& user, const ft::irc::
         return;
     }
 
-    // TODO: check operator, register
+    if (processor->is_registered_only() && !user.is_registered())
+    {
+        user.send_message(ft::irc::make_error::not_registered());
+        return;
+    }
+
+    if (processor->is_operator_only() && !user.get_mode(ft::irc::user::USER_MODE_OPERATOR))
+    {
+        user.send_message(ft::irc::make_error::no_privileges());
+        return;
+    }
 
     processor->execute(user, message);
 }
