@@ -87,7 +87,7 @@ namespace ft
                 }
                 else
                 {
-                    user.notify_message(ft::irc::message(message) >> user.make_full_name());
+                    user.notify_message(ft::irc::make_reply::replicate(message));
                 }
             }
         };

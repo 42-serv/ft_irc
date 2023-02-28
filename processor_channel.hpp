@@ -31,7 +31,6 @@ namespace ft
             {
                 ft::irc::server& server = user.get_server();
                 const ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
-                const std::string full_name = user.make_full_name();
 
                 ft::irc::message::param_vector keys;
                 if (message.param_size() > 1)
@@ -66,7 +65,7 @@ namespace ft
                     if (rpl == ft::irc::RPL_NONE)
                     {
                         user.join_channel(channelname);
-                        channel->broadcast(ft::irc::message(message) >> full_name);
+                        channel->broadcast(ft::irc::make_reply::replicate(message));
                         // TODO: Delete invite list
                         // TODO: send TOPIC if not empty
                         // TODO: NAMES
@@ -111,7 +110,6 @@ namespace ft
             {
                 ft::irc::server& server = user.get_server();
                 const ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
-                const std::string full_name = user.make_full_name();
 
                 foreach (ft::irc::message::param_vector::const_iterator, it, channelnames)
                 {
@@ -124,7 +122,7 @@ namespace ft
                         ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
                         if (channel)
                         {
-                            channel->broadcast(ft::irc::message(message) >> full_name);
+                            channel->broadcast(ft::irc::make_reply::replicate(message));
                             channel->leave_user(user.shared_from_this());
                         }
                         else
@@ -189,7 +187,7 @@ namespace ft
                         ft::irc::reply_numerics rpl = channel->change_topic(user, message[1]);
                         if (rpl == ft::irc::RPL_NONE)
                         {
-                            channel->broadcast(ft::irc::message(message) >> user.make_full_name());
+                            channel->broadcast(ft::irc::make_reply::replicate(message));
                         }
                         else
                         {

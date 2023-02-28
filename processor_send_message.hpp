@@ -28,7 +28,6 @@ namespace ft
             {
                 ft::irc::server& server = user.get_server();
                 const ft::irc::message::param_vector receivers = ft::irc::message::split(message[0], ',');
-                const std::string full_name = user.make_full_name();
 
                 foreach (ft::irc::message::param_vector::const_iterator, it, receivers)
                 {
@@ -40,7 +39,7 @@ namespace ft
                     ft::shared_ptr<ft::irc::channel> channel = server.find_channel(receiver);
                     if (channel)
                     {
-                        channel->broadcast(ft::irc::message(message) >> full_name, user.shared_from_this());
+                        channel->broadcast(ft::irc::make_reply::replicate(message), user.shared_from_this());
                     }
                 }
             }

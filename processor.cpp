@@ -116,6 +116,7 @@ void ft::irc::processor_dictionary::execute(ft::irc::user& user, const ft::irc::
     const ft::shared_ptr<ft::irc::processor_base>& processor = ft::irc::processor_dictionary::get(command);
 
     ft::irc::make_reply_base::set_server_name(user.get_server().make_full_name());
+    ft::irc::make_reply_base::set_user_name(user.make_full_name());
     ft::irc::make_reply_base::set_user_nick(user.load_nick());
 
     if (!processor)

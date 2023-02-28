@@ -174,9 +174,11 @@ namespace ft
             typedef const std::string& param_t;
 
             static ft::thread_specific_ptr<std::string> my_server_name;
+            static ft::thread_specific_ptr<std::string> my_user_name;
             static ft::thread_specific_ptr<std::string> my_user_nick;
 
             static void set_server_name(const std::string& str);
+            static void set_user_name(const std::string& str);
             static void set_user_nick(const std::string& str);
         };
 
@@ -428,6 +430,11 @@ namespace ft
 
         struct make_reply : make_reply_base
         {
+            static inline ft::irc::message replicate(const ft::irc::message& message)
+            {
+                return ft::irc::message(message) >> *my_user_name;
+            }
+
             static inline ft::irc::message none()
             {
                 return ft::irc::message(RPL_NONE) >> *my_server_name << *my_user_nick;

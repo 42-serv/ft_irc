@@ -12,6 +12,7 @@
 #include <string>
 
 ft::thread_specific_ptr<std::string> ft::irc::make_reply_base::my_server_name;
+ft::thread_specific_ptr<std::string> ft::irc::make_reply_base::my_user_name;
 ft::thread_specific_ptr<std::string> ft::irc::make_reply_base::my_user_nick;
 
 void ft::irc::make_reply_base::set_server_name(const std::string& str)
@@ -23,6 +24,18 @@ void ft::irc::make_reply_base::set_server_name(const std::string& str)
     else
     {
         ft::irc::make_reply_base::my_server_name.reset(new std::string(str));
+    }
+}
+
+void ft::irc::make_reply_base::set_user_name(const std::string& str)
+{
+    if (ft::irc::make_reply_base::my_user_name.get())
+    {
+        *ft::irc::make_reply_base::my_user_name = str;
+    }
+    else
+    {
+        ft::irc::make_reply_base::my_user_name.reset(new std::string(str));
     }
 }
 
