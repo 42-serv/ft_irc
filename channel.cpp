@@ -48,6 +48,22 @@ void ft::irc::channel::set_topic(const std::string& topic)
     this->topic = topic;
 }
 
+std::string ft::irc::channel::load_topic() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->get_topic();
+    }
+}
+
+void ft::irc::channel::store_topic(const std::string& topic)
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->set_topic(topic);
+    }
+}
+
 bool ft::irc::channel::get_mode(channel_mode index) const throw()
 {
     return this->mode[index];
@@ -58,19 +74,19 @@ void ft::irc::channel::set_mode(channel_mode index, bool value) throw()
     this->mode[index] = value;
 }
 
-const ft::irc::channel::member_list& ft::irc::channel::get_members() const throw()
-{
-    return this->members;
-}
-
-void ft::irc::channel::broadcast(const ft::irc::message& message) const
+bool ft::irc::channel::load_mode(channel_mode index) const throw()
 {
     synchronized (this->lock.get_read_lock())
     {
-        foreach (member_list::const_iterator, it, this->members)
-        {
-            it->user->send_message(message);
-        }
+        return this->get_mode(index);
+    }
+}
+
+void ft::irc::channel::store_mode(channel_mode index, bool value) throw()
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->set_mode(index, value);
     }
 }
 
@@ -80,7 +96,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
     {
         if (this->invalidated)
         {
-            return ERR_NOSUCHCHANNEL;
+            return ft::irc::ERR_NOSUCHCHANNEL;
         }
 
         const bool first = this->members.empty();
@@ -97,13 +113,13 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
         it->user->send_message(ft::irc::make_reply::topic(this->name, "This is topic"));
     }
     this->broadcast(ft::irc::message("NOTICE") >> "ft_irc"
-                                                      << "User " + user->get_nick() + " joined.");
-    return RPL_NONE;
+                                                      << "User " + user->load_nick() + " joined.");
+    return ft::irc::RPL_NONE;
 }
 
 void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
 {
-    bool remove_channel = false;
+    std::string remove_channel_name;
     synchronized (this->lock.get_write_lock())
     {
         member_list::iterator it = std::find(this->members.begin(), this->members.end(), user);
@@ -116,7 +132,7 @@ void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
         if (this->members.empty())
         {
             this->invalidated = true;
-            remove_channel = true;
+            remove_channel_name = this->name;
         }
         else if (owner)
         {
@@ -128,10 +144,65 @@ void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
         }
     }
     this->broadcast(ft::irc::message("NOTICE") >> "ft_irc"
-                                                      << "User " + user->get_nick() + " leaved.");
-    if (remove_channel)
+                                                      << "User " + user->load_nick() + " leaved.");
+    if (!remove_channel_name.empty())
     {
-        this->server.remove_channel(this->get_name());
+        this->server.remove_channel(remove_channel_name);
+    }
+}
+
+ft::irc::reply_numerics ft::irc::channel::change_topic(ft::irc::user& user, const std::string& new_topic)
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        if (this->invalidated)
+        {
+            return ft::irc::ERR_NOSUCHCHANNEL;
+        }
+
+        foreach (member_list::const_iterator, it, this->members)
+        {
+            if (it->user.get() == &user)
+            {
+                if (this->get_mode(CHANNEL_MODE_TOPIC_LIMIT) && !it->mode[member::MEMBER_MODE_OPERATOR])
+                {
+                    return ft::irc::ERR_CHANOPRIVSNEEDED;
+                }
+
+                this->set_topic(new_topic);
+                return ft::irc::RPL_NONE;
+            }
+        }
+    }
+    return ft::irc::ERR_NOTONCHANNEL;
+}
+
+void ft::irc::channel::broadcast(const ft::irc::message& message, ft::shared_ptr<ft::irc::user> except) const
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        foreach (member_list::const_iterator, it, this->members)
+        {
+            if (it->user != except)
+            {
+                it->user->send_message(message);
+            }
+        }
+    }
+}
+
+void ft::irc::channel::broadcast_unique(const ft::irc::message& message, ft::serv::unique_set<ft::shared_ptr<ft::irc::user> >::type& unique_set) const
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        foreach (member_list::const_iterator, it, this->members)
+        {
+            if (unique_set.find(it->user) == unique_set.end())
+            {
+                it->user->send_message(message);
+                unique_set.insert(it->user);
+            }
+        }
     }
 }
 

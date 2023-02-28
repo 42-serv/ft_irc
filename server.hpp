@@ -23,13 +23,13 @@ namespace ft
         {
         public:
             typedef ft::serv::fast_dictionary<std::string, ft::shared_ptr<ft::irc::channel> >::type channel_dictionary;
-            typedef ft::serv::fast_dictionary<std::string, bool>::type nick_dictionary;
+            typedef ft::serv::unique_set<std::string>::type nick_set;
             typedef ft::serv::dynamic_array<ft::shared_ptr<ft::irc::user> >::type user_list;
 
         private:
             std::string pass;
             channel_dictionary channels;
-            nick_dictionary nicks;
+            nick_set nicks;
             user_list users;
             mutable ft::readwrite_lock lock;
 
@@ -38,6 +38,7 @@ namespace ft
             ~server();
 
         public:
+            std::string make_full_name() const throw();
             const std::string& get_pass() const throw();
 
             ft::shared_ptr<ft::irc::channel> find_channel(const std::string& name) const throw();

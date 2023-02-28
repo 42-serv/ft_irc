@@ -6,7 +6,6 @@
 #include "irc_constants.hpp"
 
 #include "channel.hpp"
-#include "libserv/serv_types.hpp"
 #include "message.hpp"
 #include "reply.hpp"
 #include "server.hpp"
@@ -24,8 +23,6 @@ ft::irc::user::user(ft::irc::server& server, ft::serv::event_layer& layer)
       layer(layer),
       nick(),
       username(),
-      hostname(),
-      servername(),
       realname(),
       channels(),
       mode(),
@@ -54,17 +51,29 @@ void ft::irc::user::set_nick(const std::string& nick)
     this->nick = nick;
 }
 
+std::string ft::irc::user::load_nick() const
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->nick;
+    }
+}
+
 bool ft::irc::user::change_nick(const std::string& nick)
 {
-    if (this->nick == nick)
+    std::string old_nick = this->load_nick();
+    if (old_nick == nick)
     {
         return true;
     }
 
     if (this->server.hold_nick(nick))
     {
-        this->server.release_nick(this->nick);
-        this->set_nick(nick); // TODO: consider lock
+        this->server.release_nick(old_nick);
+        synchronized (this->lock.get_write_lock())
+        {
+            this->nick = nick;
+        }
         return true;
     }
     else
@@ -83,24 +92,25 @@ void ft::irc::user::set_username(const std::string& username)
     this->username = username;
 }
 
+std::string ft::irc::user::load_username() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->username;
+    }
+}
+
 const std::string& ft::irc::user::get_hostname() const throw()
 {
-    return this->hostname;
+    return this->layer.get_host();
 }
 
-void ft::irc::user::set_hostname(const std::string& hostname)
+std::string ft::irc::user::make_full_name() const throw()
 {
-    this->hostname = hostname;
-}
-
-const std::string& ft::irc::user::get_servername() const throw()
-{
-    return this->servername;
-}
-
-void ft::irc::user::set_servername(const std::string& servername)
-{
-    this->servername = servername;
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->get_nick() + "!" + this->get_username() + "@" + this->get_hostname();
+    }
 }
 
 const std::string& ft::irc::user::get_realname() const throw()
@@ -123,18 +133,36 @@ void ft::irc::user::set_mode(user_mode index, bool value) throw()
     this->mode[index] = value;
 }
 
+// TODO: 필요한가?
+// FT_SERV_DEFINE_TASK_3(task_user_set_mode,
+//                       ft::shared_ptr<ft::irc::user>, user,
+//                       ft::irc::user::user_mode, index,
+//                       bool, value,
+//                       user->set_mode(index, value));
+
+// void ft::irc::user::post_set_mode(user_mode index, bool value)
+// {
+//     this->layer.invoke_task(ft::make_shared<task_user_set_mode>(this->shared_from_this(), index, value));
+// }
+
 bool ft::irc::user::get_register_state(register_state index) const throw()
 {
+    // assert(is_in_event_loop());
+
     return this->registered_state[index];
 }
 
 void ft::irc::user::set_register_state(register_state index, bool value) throw()
 {
+    // assert(is_in_event_loop());
+
     this->registered_state[index] = value;
 }
 
 bool ft::irc::user::is_registered() const throw()
 {
+    // assert(is_in_event_loop());
+
     return this->registered_state.all();
 }
 
@@ -177,7 +205,7 @@ void ft::irc::user::register_to_server()
         this->send_message(ft::irc::make_error::no_motd());
     }
 
-    this->send_message(ft::irc::make_reply::user_mode_is("+Oexamplo"));
+    // this->send_message(ft::irc::make_reply::user_mode_is("+Oexamplo"));
 }
 
 void ft::irc::user::deregister_from_server()
@@ -203,13 +231,10 @@ void ft::irc::user::deregister_from_server()
     }
     if (this->get_register_state(ft::irc::user::REGISTER_STATE_NICK))
     {
-        server.release_nick(this->get_nick());
-    }
-}
+        this->set_register_state(ft::irc::user::REGISTER_STATE_NICK, false);
 
-const ft::irc::user::channel_list& ft::irc::user::get_channels() const throw()
-{
-    return this->channels;
+        server.release_nick(this->load_nick());
+    }
 }
 
 ft::irc::user::channel_list::size_type ft::irc::user::channel_count() const throw()
@@ -255,8 +280,40 @@ void ft::irc::user::send_message(const ft::irc::message& message) const
     this->layer.post_flush();
 }
 
-void ft::irc::user::exit_client(const std::string& quit_message) const
+void ft::irc::user::notify_message(const ft::irc::message& message) const
 {
-    static_cast<void>(quit_message);
+    synchronized (this->lock.get_write_lock())
+    {
+        ft::serv::unique_set<ft::shared_ptr<ft::irc::user> >::type unique_set;
+        foreach (channel_list::const_iterator, it, this->channels)
+        {
+            ft::shared_ptr<ft::irc::channel> channel = server.find_channel(*it);
+            channel->broadcast_unique(message, unique_set);
+        }
+    }
+}
+
+void ft::irc::user::exit_client() const
+{
     this->layer.post_disconnect();
+}
+
+ft::irc::user::pred_equals_nick::pred_equals_nick(const std::string& nick) throw()
+    : nick(nick)
+{
+}
+
+bool ft::irc::user::pred_equals_nick::operator()(const ft::irc::user& user) const throw()
+{
+    return this->nick == user.load_nick();
+}
+
+bool ft::irc::user::pred_equals_nick::operator()(const ft::irc::user* user) const throw()
+{
+    return this->nick == user->load_nick();
+}
+
+bool ft::irc::user::pred_equals_nick::operator()(const ft::shared_ptr<ft::irc::user>& user) const throw()
+{
+    return this->nick == user->load_nick();
 }

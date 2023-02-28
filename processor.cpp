@@ -10,6 +10,7 @@
 #include "processor_register.hpp"
 #include "processor_send_message.hpp"
 #include "processor_user.hpp"
+#include "reply.hpp"
 
 #include <cctype>
 #include <libserv/libserv.hpp>
@@ -113,6 +114,9 @@ void ft::irc::processor_dictionary::execute(ft::irc::user& user, const ft::irc::
 {
     const std::string& command = message.get_command();
     const ft::shared_ptr<ft::irc::processor_base>& processor = ft::irc::processor_dictionary::get(command);
+
+    ft::irc::make_reply_base::set_server_name(user.get_server().make_full_name());
+    ft::irc::make_reply_base::set_user_nick(user.make_full_name());
 
     if (!processor)
     {

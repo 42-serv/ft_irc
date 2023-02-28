@@ -80,17 +80,23 @@ namespace ft
 
             const std::string& get_topic() const throw();
             void set_topic(const std::string& topic);
+            std::string load_topic() const throw();
+            void store_topic(const std::string& topic);
 
             bool get_mode(channel_mode index) const throw();
             void set_mode(channel_mode index, bool value) throw();
+            bool load_mode(channel_mode index) const throw();
+            void store_mode(channel_mode index, bool value) throw();
 
-            const member_list& get_members() const throw();
-
+        public:
             ft::irc::reply_numerics enter_user(const ft::shared_ptr<ft::irc::user>& user);
             void leave_user(const ft::shared_ptr<ft::irc::user>& user);
 
+            ft::irc::reply_numerics change_topic(ft::irc::user& user, const std::string& new_topic);
+
         public:
-            void broadcast(const ft::irc::message& message) const;
+            void broadcast(const ft::irc::message& message, ft::shared_ptr<ft::irc::user> except = ft::shared_ptr<ft::irc::user>()) const;
+            void broadcast_unique(const ft::irc::message& message, ft::serv::unique_set<ft::shared_ptr<ft::irc::user> >::type& unique_set) const;
 
         private:
             channel(const channel&);

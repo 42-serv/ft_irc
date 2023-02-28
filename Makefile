@@ -21,6 +21,7 @@ SOURCES += \
 	main.cpp \
 	message.cpp \
 	processor.cpp \
+	reply.cpp \
 	server.cpp \
 	user.cpp \
 

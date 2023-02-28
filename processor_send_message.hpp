@@ -27,9 +27,10 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 ft::irc::server& server = user.get_server();
-                ft::irc::message::param_vector receivers = ft::irc::message::split(message[0], ',');
+                const ft::irc::message::param_vector receivers = ft::irc::message::split(message[0], ',');
+                const std::string full_name = user.make_full_name();
 
-                foreach (ft::irc::message::param_vector::iterator, it, receivers)
+                foreach (ft::irc::message::param_vector::const_iterator, it, receivers)
                 {
                     const std::string& receiver = *it;
 
@@ -39,7 +40,7 @@ namespace ft
                     ft::shared_ptr<ft::irc::channel> channel = server.find_channel(receiver);
                     if (channel)
                     {
-                        channel->broadcast(ft::irc::message(message) >> "nick!username@hostname");
+                        channel->broadcast(ft::irc::message(message) >> full_name, user.shared_from_this());
                     }
                 }
             }

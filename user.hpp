@@ -49,8 +49,6 @@ namespace ft
             ft::serv::event_layer& layer;
             std::string nick;
             std::string username;
-            std::string hostname;
-            std::string servername;
             std::string realname;
             channel_list channels;
             std::bitset<NUMBEROF_USER_MODE> mode;
@@ -66,22 +64,23 @@ namespace ft
 
             const std::string& get_nick() const throw();
             void set_nick(const std::string& nick);
+            std::string load_nick() const;
             bool change_nick(const std::string& nick);
 
             const std::string& get_username() const throw();
             void set_username(const std::string& username);
+            std::string load_username() const throw();
 
             const std::string& get_hostname() const throw();
-            void set_hostname(const std::string& hostname);
 
-            const std::string& get_servername() const throw();
-            void set_servername(const std::string& servername);
+            std::string make_full_name() const throw();
 
             const std::string& get_realname() const throw();
             void set_realname(const std::string& realname);
 
             bool get_mode(user_mode index) const throw();
             void set_mode(user_mode index, bool value) throw();
+            // void post_set_mode(user_mode index, bool value); // TODO: 필요한가?
 
             bool get_register_state(register_state index) const throw();
             void set_register_state(register_state index, bool value) throw();
@@ -89,7 +88,6 @@ namespace ft
             void register_to_server();
             void deregister_from_server();
 
-            const channel_list& get_channels() const throw();
             channel_list::size_type channel_count() const throw();
             bool is_channel_member(const std::string& channelname) const throw();
             void join_channel(const std::string& channelname);
@@ -97,32 +95,19 @@ namespace ft
 
         public:
             void send_message(const ft::irc::message& message) const;
-            void exit_client(const std::string& quit_message) const;
+            void notify_message(const ft::irc::message& message) const;
+            void exit_client() const;
 
         public:
             struct pred_equals_nick
             {
                 const std::string& nick;
 
-                pred_equals_nick(const std::string& nick) throw()
-                    : nick(nick)
-                {
-                }
+                pred_equals_nick(const std::string& nick) throw();
 
-                bool operator()(const user& user) const throw()
-                {
-                    return user.get_nick() == this->nick;
-                }
-
-                bool operator()(const user* user) const throw()
-                {
-                    return user->get_nick() == this->nick;
-                }
-
-                bool operator()(const ft::shared_ptr<user>& user) const throw()
-                {
-                    return user->get_nick() == this->nick;
-                }
+                bool operator()(const user& user) const throw();
+                bool operator()(const user* user) const throw();
+                bool operator()(const ft::shared_ptr<user>& user) const throw();
             };
 
         private:

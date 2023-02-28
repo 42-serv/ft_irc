@@ -29,6 +29,11 @@ ft::irc::server::~server()
 {
 }
 
+std::string ft::irc::server::make_full_name() const throw()
+{
+    return "irc.v42.dev";
+}
+
 const std::string& ft::irc::server::get_pass() const throw()
 {
     return this->pass;
@@ -72,7 +77,7 @@ bool ft::irc::server::hold_nick(const std::string& nick)
 {
     synchronized (this->lock.get_write_lock())
     {
-        return this->nicks.insert(std::make_pair(ft::irc::string_utils::to_lower(nick), true)).second;
+        return this->nicks.insert(ft::irc::string_utils::to_lower(nick)).second;
     }
 }
 

@@ -30,7 +30,8 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 ft::irc::server& server = user.get_server();
-                ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
+                const ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
+                const std::string full_name = user.make_full_name();
 
                 ft::irc::message::param_vector keys;
                 if (message.param_size() > 1)
@@ -39,7 +40,7 @@ namespace ft
                 }
                 static_cast<void>(keys); // TODO: secret channel
 
-                foreach (ft::irc::message::param_vector::iterator, it, channelnames)
+                foreach (ft::irc::message::param_vector::const_iterator, it, channelnames)
                 {
                     const std::string& channelname = *it;
 
@@ -62,28 +63,32 @@ namespace ft
 
                     ft::shared_ptr<ft::irc::channel> channel = server.ensure_channel(channelname);
                     ft::irc::reply_numerics rpl = channel->enter_user(user.shared_from_this());
-                    if (rpl == RPL_NONE)
+                    if (rpl == ft::irc::RPL_NONE)
                     {
-                        user.join_channel(channel->get_name());
+                        user.join_channel(channelname);
+                        channel->broadcast(ft::irc::message(message) >> full_name);
+                        // TODO: Delete invite list
+                        // TODO: send TOPIC if not empty
+                        // TODO: NAMES
                     }
                     else
                     {
                         switch (rpl)
                         {
-                        case ERR_NOSUCHCHANNEL:
+                        case ft::irc::ERR_NOSUCHCHANNEL:
                             user.send_message(ft::irc::make_error::no_such_channel(channelname));
                             break;
 
-                        case ERR_CHANNELISFULL:
+                        case ft::irc::ERR_CHANNELISFULL:
                             user.send_message(ft::irc::make_error::channel_is_full(channelname));
                             break;
-                        case ERR_INVITEONLYCHAN:
+                        case ft::irc::ERR_INVITEONLYCHAN:
                             user.send_message(ft::irc::make_error::invite_only_channel(channelname));
                             break;
-                        case ERR_BANNEDFROMCHAN:
+                        case ft::irc::ERR_BANNEDFROMCHAN:
                             user.send_message(ft::irc::make_error::banned_from_channel(channelname));
                             break;
-                        case ERR_BADCHANNELKEY:
+                        case ft::irc::ERR_BADCHANNELKEY:
                             user.send_message(ft::irc::make_error::bad_channel_key(channelname));
                             break;
 
@@ -105,9 +110,10 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 ft::irc::server& server = user.get_server();
-                ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
+                const ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
+                const std::string full_name = user.make_full_name();
 
-                foreach (ft::irc::message::param_vector::iterator, it, channelnames)
+                foreach (ft::irc::message::param_vector::const_iterator, it, channelnames)
                 {
                     const std::string& channelname = *it;
 
@@ -118,6 +124,7 @@ namespace ft
                         ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
                         if (channel)
                         {
+                            channel->broadcast(ft::irc::message(message) >> full_name);
                             channel->leave_user(user.shared_from_this());
                         }
                         else
@@ -158,53 +165,50 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-
                 ft::irc::server& server = user.get_server();
                 const std::string& channelname = message[0];
+                const std::string full_name = user.make_full_name();
 
                 ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
                 if (channel)
                 {
-                    if (message.param_size() == 1)
+                    if (message.param_size() <= 1)
                     {
-                        const std::string& topic = channel->get_topic();
+                        std::string topic = channel->load_topic();
                         if (!topic.empty())
                         {
-                            user.send_message(ft::irc::make_reply::topic(channel->get_name(), channel->get_topic()));
+                            user.send_message(ft::irc::make_reply::topic(channelname, topic));
                         }
                         else
                         {
-                            user.send_message(ft::irc::make_reply::no_topic(channel->get_name()));
+                            user.send_message(ft::irc::make_reply::no_topic(channelname));
                         }
                     }
                     else
                     {
-                        if (user.is_channel_member(channelname))
+                        ft::irc::reply_numerics rpl = channel->change_topic(user, message[1]);
+                        if (rpl == ft::irc::RPL_NONE)
                         {
-                            if (!channel->get_mode(ft::irc::channel::CHANNEL_MODE_TOPIC_LIMIT))  // FIXME: check is_channel_member && permission if channel mode require
-                            {
-                                const std::string& topic = message[1];
-                                channel->set_topic(topic);
-                                if (!topic.empty())
-                                {
-                                    channel->broadcast(ft::irc::message("NOTICE") >> "ft_irc"
-                                                                                         << "channel " + channelname + "'s topic changed to " + channel->get_topic());
-                                }
-                                else
-                                {
-                                    channel->broadcast(ft::irc::message("NOTICE") >> "ft_irc"
-                                                                                         << "channel " + channelname + "'s topic cleared");
-                                }
-                            }
-                            else
-                            {
-                                user.send_message(ft::irc::make_error::channel_operator_privileges_needed(channelname));
-                            }
+                            channel->broadcast(ft::irc::message(message) >> user.make_full_name());
                         }
                         else
                         {
-                            user.send_message(ft::irc::make_error::not_on_channel(channel->get_name()));
+                            switch (rpl)
+                            {
+                            case ft::irc::ERR_NOSUCHCHANNEL:
+                                user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                                break;
+
+                            case ft::irc::ERR_NOTONCHANNEL:
+                                user.send_message(ft::irc::make_error::not_on_channel(channelname));
+                                break;
+                            case ft::irc::ERR_CHANOPRIVSNEEDED:
+                                user.send_message(ft::irc::make_error::channel_operator_privileges_needed(channelname));
+                                break;
+
+                            default:
+                                assert(false);
+                            }
                         }
                     }
                 }

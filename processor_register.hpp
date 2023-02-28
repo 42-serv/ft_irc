@@ -82,7 +82,12 @@ namespace ft
 
                 if (!user.is_registered() && user.get_register_state(ft::irc::user::REGISTER_STATE_USER))
                 {
+                    // first
                     user.register_to_server();
+                }
+                else
+                {
+                    user.notify_message(ft::irc::message(message) >> user.make_full_name());
                 }
             }
         };
@@ -111,8 +116,8 @@ namespace ft
                 }
 
                 user.set_username(message[0]);
-                user.set_hostname(message[1]);
-                user.set_servername(message[2]);
+                static_cast<void>(message[1]); // ignore user input hostname
+                static_cast<void>(message[2]); // ignore user input servername
                 user.set_realname(message[3]);
                 user.set_register_state(ft::irc::user::REGISTER_STATE_USER, true);
 
@@ -157,10 +162,10 @@ namespace ft
                 else
                 {
                     // default message
-                    quit_message = user.get_nick();
+                    quit_message = user.load_nick();
                 }
-
-                user.exit_client(quit_message);
+                user.notify_message(ft::irc::message(message.get_command()) >> user.make_full_name() << quit_message);
+                user.exit_client();
             }
         };
     }
