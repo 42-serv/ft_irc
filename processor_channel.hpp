@@ -159,7 +159,59 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+
+                ft::irc::server& server = user.get_server();
+                const std::string& channelname = message[0];
+
+                ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
+                if (channel)
+                {
+                    if (message.param_size() == 1)
+                    {
+                        const std::string& topic = channel->get_topic();
+                        if (!topic.empty())
+                        {
+                            user.send_message(ft::irc::make_reply::topic(channel->get_name(), channel->get_topic()));
+                        }
+                        else
+                        {
+                            user.send_message(ft::irc::make_reply::no_topic(channel->get_name()));
+                        }
+                    }
+                    else
+                    {
+                        if (user.is_channel_member(channelname))
+                        {
+                            if (!channel->get_mode(ft::irc::channel::CHANNEL_MODE_TOPIC_LIMIT))  // FIXME: check is_channel_member && permission if channel mode require
+                            {
+                                const std::string& topic = message[1];
+                                channel->set_topic(topic);
+                                if (!topic.empty())
+                                {
+                                    channel->broadcast(ft::irc::message("NOTICE") >> "ft_irc"
+                                                                                         << "channel " + channelname + "'s topic changed to " + channel->get_topic());
+                                }
+                                else
+                                {
+                                    channel->broadcast(ft::irc::message("NOTICE") >> "ft_irc"
+                                                                                         << "channel " + channelname + "'s topic cleared");
+                                }
+                            }
+                            else
+                            {
+                                user.send_message(ft::irc::make_error::channel_operator_privileges_needed(channelname));
+                            }
+                        }
+                        else
+                        {
+                            user.send_message(ft::irc::make_error::not_on_channel(channel->get_name()));
+                        }
+                    }
+                }
+                else
+                {
+                    user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                }
             }
         };
 

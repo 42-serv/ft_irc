@@ -21,6 +21,7 @@
 ft::irc::channel::channel(ft::irc::server& server, const std::string& name)
     : server(server),
       name(name),
+      topic(),
       mode(),
       members(),
       lock(),
@@ -37,9 +38,24 @@ const std::string& ft::irc::channel::get_name() const throw()
     return this->name;
 }
 
+const std::string& ft::irc::channel::get_topic() const throw()
+{
+    return this->topic;
+}
+
+void ft::irc::channel::set_topic(const std::string& topic)
+{
+    this->topic = topic;
+}
+
 bool ft::irc::channel::get_mode(channel_mode index) const throw()
 {
     return this->mode[index];
+}
+
+void ft::irc::channel::set_mode(channel_mode index, bool value) throw()
+{
+    this->mode[index] = value;
 }
 
 const ft::irc::channel::member_list& ft::irc::channel::get_members() const throw()

@@ -65,6 +65,7 @@ namespace ft
         private:
             ft::irc::server& server;
             std::string name;
+            std::string topic;
             std::bitset<NUMBEROF_CHANNEL_MODE> mode;
             member_list members;
             mutable ft::readwrite_lock lock;
@@ -76,7 +77,13 @@ namespace ft
 
         public:
             const std::string& get_name() const throw();
+
+            const std::string& get_topic() const throw();
+            void set_topic(const std::string& topic);
+
             bool get_mode(channel_mode index) const throw();
+            void set_mode(channel_mode index, bool value) throw();
+
             const member_list& get_members() const throw();
 
             ft::irc::reply_numerics enter_user(const ft::shared_ptr<ft::irc::user>& user);
