@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>ft_irc: includes/libserv/event_handler_base.hpp Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ft_irc
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('event__handler__base_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">event_handler_base.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="event__handler__base_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Any copyright is dedicated to the Public Domain.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * https://creativecommons.org/publicdomain/zero/1.0/ */</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="serv__types_8hpp.html">serv_types.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;smart_ptr/shared_ptr.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceft.html">ft</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">namespace </span>serv</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">class </span>event_layer;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classft_1_1serv_1_1event__handler__base.html">   18</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classft_1_1serv_1_1event__handler__base.html">event_handler_base</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <a class="code" href="classft_1_1serv_1_1event__handler__base.html#ac3dbb9a39706e5bb94e5cdfe7f56c499">event_handler_base</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">virtual</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#a3064d8f428ba065d1ab4b8eab914408a">~event_handler_base</a>();</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#aa79284e6bc9b88181c5e521978a1407b">on_active</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#a308ab6b1d7fbe6e8005aff55be15e5c5">on_read</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer, ft::shared_ptr&lt;void&gt;);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#a9fb54123551d1465900289d74d927d9f">on_read_complete</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#acc822d227b76cfa4d3400a6be8ddf1ba">on_error</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer, ft::shared_ptr&lt;const std::exception&gt;);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#aec9a6a3ddda62d5fa1fb1d15ff7f0bf5">on_inactive</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#a0162bfba9db707c34eaed4371ca9ca6b">on_register</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#a7e9917a28399ab9d29b65aced49e0752">on_write</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer, ft::shared_ptr&lt;const void&gt;);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#a2cc3c0a501117821cb3abd312f9d5faf">on_flush</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#a06294ee017cae4e85485961f206f51ba">on_finish</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html#a704e086376f7d61f0cb9695e3368b911">on_disconnect</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">event_layer</a>&amp; layer);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classft_1_1serv_1_1event__handler__base.html#af3f7bf90a4a8a03e0e4f722f05e555a8">   37</a></span>&#160;            <a class="code" href="classft_1_1serv_1_1event__handler__base.html#af3f7bf90a4a8a03e0e4f722f05e555a8">event_handler_base</a>(<span class="keyword">const</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html">event_handler_base</a>&amp;);</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classft_1_1serv_1_1event__handler__base.html#af63a93f381a2d77988935420daa9b6e2">   38</a></span>&#160;            <a class="code" href="classft_1_1serv_1_1event__handler__base.html">event_handler_base</a>&amp; <a class="code" href="classft_1_1serv_1_1event__handler__base.html#af63a93f381a2d77988935420daa9b6e2">operator=</a>(<span class="keyword">const</span> <a class="code" href="classft_1_1serv_1_1event__handler__base.html">event_handler_base</a>&amp;);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        };</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html">ft::serv::event_handler_base</a></div><div class="ttdef"><b>Definition:</b> event_handler_base.hpp:19</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_a0162bfba9db707c34eaed4371ca9ca6b"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#a0162bfba9db707c34eaed4371ca9ca6b">ft::serv::event_handler_base::on_register</a></div><div class="ttdeci">virtual void on_register(event_layer &amp;layer)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:46</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_a06294ee017cae4e85485961f206f51ba"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#a06294ee017cae4e85485961f206f51ba">ft::serv::event_handler_base::on_finish</a></div><div class="ttdeci">virtual void on_finish(event_layer &amp;layer)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:61</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_a2cc3c0a501117821cb3abd312f9d5faf"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#a2cc3c0a501117821cb3abd312f9d5faf">ft::serv::event_handler_base::on_flush</a></div><div class="ttdeci">virtual void on_flush(event_layer &amp;layer)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:56</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_a3064d8f428ba065d1ab4b8eab914408a"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#a3064d8f428ba065d1ab4b8eab914408a">ft::serv::event_handler_base::~event_handler_base</a></div><div class="ttdeci">virtual ~event_handler_base()</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:17</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_a308ab6b1d7fbe6e8005aff55be15e5c5"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#a308ab6b1d7fbe6e8005aff55be15e5c5">ft::serv::event_handler_base::on_read</a></div><div class="ttdeci">virtual void on_read(event_layer &amp;layer, ft::shared_ptr&lt; void &gt;)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:26</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_a704e086376f7d61f0cb9695e3368b911"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#a704e086376f7d61f0cb9695e3368b911">ft::serv::event_handler_base::on_disconnect</a></div><div class="ttdeci">virtual void on_disconnect(event_layer &amp;layer)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:66</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_a7e9917a28399ab9d29b65aced49e0752"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#a7e9917a28399ab9d29b65aced49e0752">ft::serv::event_handler_base::on_write</a></div><div class="ttdeci">virtual void on_write(event_layer &amp;layer, ft::shared_ptr&lt; const void &gt;)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:51</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_a9fb54123551d1465900289d74d927d9f"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#a9fb54123551d1465900289d74d927d9f">ft::serv::event_handler_base::on_read_complete</a></div><div class="ttdeci">virtual void on_read_complete(event_layer &amp;layer)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:31</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_aa79284e6bc9b88181c5e521978a1407b"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#aa79284e6bc9b88181c5e521978a1407b">ft::serv::event_handler_base::on_active</a></div><div class="ttdeci">virtual void on_active(event_layer &amp;layer)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:21</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_ac3dbb9a39706e5bb94e5cdfe7f56c499"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#ac3dbb9a39706e5bb94e5cdfe7f56c499">ft::serv::event_handler_base::event_handler_base</a></div><div class="ttdeci">event_handler_base()</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:13</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_acc822d227b76cfa4d3400a6be8ddf1ba"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#acc822d227b76cfa4d3400a6be8ddf1ba">ft::serv::event_handler_base::on_error</a></div><div class="ttdeci">virtual void on_error(event_layer &amp;layer, ft::shared_ptr&lt; const std::exception &gt;)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:36</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_aec9a6a3ddda62d5fa1fb1d15ff7f0bf5"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#aec9a6a3ddda62d5fa1fb1d15ff7f0bf5">ft::serv::event_handler_base::on_inactive</a></div><div class="ttdeci">virtual void on_inactive(event_layer &amp;layer)</div><div class="ttdef"><b>Definition:</b> event_handler_base.cpp:41</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_af3f7bf90a4a8a03e0e4f722f05e555a8"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#af3f7bf90a4a8a03e0e4f722f05e555a8">ft::serv::event_handler_base::event_handler_base</a></div><div class="ttdeci">event_handler_base(const event_handler_base &amp;)</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__handler__base_html_af63a93f381a2d77988935420daa9b6e2"><div class="ttname"><a href="classft_1_1serv_1_1event__handler__base.html#af63a93f381a2d77988935420daa9b6e2">ft::serv::event_handler_base::operator=</a></div><div class="ttdeci">event_handler_base &amp; operator=(const event_handler_base &amp;)</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1event__layer_html"><div class="ttname"><a href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a></div><div class="ttdef"><b>Definition:</b> event_layer.hpp:26</div></div>
+<div class="ttc" id="anamespaceft_html"><div class="ttname"><a href="namespaceft.html">ft</a></div><div class="ttdef"><b>Definition:</b> bot.hpp:13</div></div>
+<div class="ttc" id="aserv__types_8hpp_html"><div class="ttname"><a href="serv__types_8hpp.html">serv_types.hpp</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_09e761304027c904456130627fd4dcf5.html">includes</a></li><li class="navelem"><a class="el" href="dir_218aa11be66f727e8701f2757c75b0f5.html">libserv</a></li><li class="navelem"><a class="el" href="event__handler__base_8hpp.html">event_handler_base.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

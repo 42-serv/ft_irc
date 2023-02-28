@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="Doxygen Awesome" />
+<meta property="og:image" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta property="og:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<meta property="og:url" content="https://jothepro.github.io/doxygen-awesome-css/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452" />
+<meta name="twitter:title" content="Doxygen Awesome" />
+<meta name="twitter:description" content="Custom CSS theme for doxygen html-documentation with lots of customization parameters." />
+<!-- END twitter metadata -->
+<title>ft_irc: processor_send_message.hpp Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.drawio.svg"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/jothepro/doxygen-awesome-css" class="github-corner" title="View source on GitHub" target="_blank">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ft_irc
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('processor__send__message_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">processor_send_message.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="processor__send__message_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* Any copyright is dedicated to the Public Domain.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * https://creativecommons.org/publicdomain/zero/1.0/ */</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="irc__constants_8hpp.html">irc_constants.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="channel_8hpp.html">channel.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="message_8hpp.html">message.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="processor_8hpp.html">processor.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="reply_8hpp.html">reply.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="server_8hpp.html">server.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="user_8hpp.html">user.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceft.html">ft</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">namespace </span>irc</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__message__base.html">   21</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classft_1_1irc_1_1processor__message__base.html">processor_message_base</a> : <span class="keyword">public</span> <a class="code" href="classft_1_1irc_1_1processor__base.html">ft::irc::processor_base</a></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__message__base.html#ac60db201b65d2bd1085bd40a697f5f44">   24</a></span>&#160;            std::size_t <a class="code" href="classft_1_1irc_1_1processor__message__base.html#ac60db201b65d2bd1085bd40a697f5f44">get_min_params</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> 2; }</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__message__base.html#afb9bf9930477bf13ae50eb350251d31b">   25</a></span>&#160;            <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classft_1_1irc_1_1processor__message__base.html#afb9bf9930477bf13ae50eb350251d31b">is_notice</a>() <span class="keyword">const</span> throw() = 0;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__message__base.html#ab3fba6f27483543b9c7a559fd2e1402b">   27</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classft_1_1irc_1_1processor__message__base.html#ab3fba6f27483543b9c7a559fd2e1402b">execute</a>(<a class="code" href="namespaceft.html">ft</a>::irc::<a class="code" href="classft_1_1irc_1_1user.html">user</a>&amp; <a class="code" href="classft_1_1irc_1_1user.html">user</a>, const <a class="code" href="namespaceft.html">ft</a>::irc::<a class="code" href="classft_1_1irc_1_1message.html">message</a>&amp; <a class="code" href="classft_1_1irc_1_1message.html">message</a>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">            </span>{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                <a class="code" href="classft_1_1irc_1_1server.html">ft::irc::server</a>&amp; <a class="code" href="classft_1_1irc_1_1server.html">server</a> = <a class="code" href="classft_1_1irc_1_1user.html">user</a>.<a class="code" href="classft_1_1irc_1_1user.html#ae476cc31795df7fbb726b193ab887e75">get_server</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keyword">const</span> <a class="code" href="classft_1_1irc_1_1message.html#ae9c2b56853d2beaba7abef1e7c116dd6">ft::irc::message::param_vector</a> receivers = <a class="code" href="classft_1_1irc_1_1message.html#adf434fdc28e74fb166c6046c0ac5c6d5">ft::irc::message::split</a>(<a class="code" href="classft_1_1irc_1_1message.html">message</a>[0], <span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <span class="keyword">const</span> std::string full_name = <a class="code" href="classft_1_1irc_1_1user.html">user</a>.<a class="code" href="classft_1_1irc_1_1user.html#a7406ed193e13a3c39ee16c9ac7a8b16e">make_full_name</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keywordflow">foreach</span> (ft::irc::message::param_vector::const_iterator, it, receivers)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                    <span class="keyword">const</span> std::string&amp; receiver = *it;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                    <span class="comment">// TODO: check channel if &#39;#&#39; or &#39;&amp;&#39;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                    <span class="comment">// TODO: check pattern?</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    <span class="comment">// TODO: use `if (this-&gt;is_notice());`?</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                    ft::shared_ptr&lt;ft::irc::channel&gt; <a class="code" href="classft_1_1irc_1_1channel.html">channel</a> = <a class="code" href="classft_1_1irc_1_1server.html">server</a>.<a class="code" href="classft_1_1irc_1_1server.html#a0e7dee7efef3f36af15d1a3b97f3bad9">find_channel</a>(receiver);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="classft_1_1irc_1_1channel.html">channel</a>)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                        <a class="code" href="classft_1_1irc_1_1channel.html">channel</a>-&gt;<a class="code" href="classft_1_1irc_1_1channel.html#ab1490dfbf6b3d9c13887c214200df7bf">broadcast</a>(<a class="code" href="classft_1_1irc_1_1message.html">ft::irc::message</a>(<a class="code" href="classft_1_1irc_1_1message.html">message</a>) &gt;&gt; full_name, <a class="code" href="classft_1_1irc_1_1user.html">user</a>.shared_from_this());</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        };</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// Command: PRIVMSG</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">// Parameters: &lt;receiver&gt;{,&lt;receiver&gt;} &lt;text to be sent&gt;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__privmsg.html">   51</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classft_1_1irc_1_1processor__privmsg.html">processor_privmsg</a> : <span class="keyword">public</span> <a class="code" href="classft_1_1irc_1_1processor__message__base.html">ft::irc::processor_message_base</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__privmsg.html#a9efbe465c423e4dadd7a508a99bac9d9">   54</a></span>&#160;            std::size_t <a class="code" href="classft_1_1irc_1_1processor__privmsg.html#a9efbe465c423e4dadd7a508a99bac9d9">get_min_params</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> 2; }</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__privmsg.html#a610c6e56d1af89def2d90b4556f0ada5">   55</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classft_1_1irc_1_1processor__privmsg.html#a610c6e56d1af89def2d90b4556f0ada5">is_notice</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        };</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// Command: NOTICE</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// Parameters: &lt;nickname&gt; &lt;text&gt;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__notice.html">   60</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classft_1_1irc_1_1processor__notice.html">processor_notice</a> : <span class="keyword">public</span> <a class="code" href="classft_1_1irc_1_1processor__message__base.html">ft::irc::processor_message_base</a></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__notice.html#ac98a9b8daf87e613b19fa7438d3c2436">   63</a></span>&#160;            std::size_t <a class="code" href="classft_1_1irc_1_1processor__notice.html#ac98a9b8daf87e613b19fa7438d3c2436">get_min_params</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> 2; }</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1processor__notice.html#adf9dd7adfd7a245fb010831175686c3e">   64</a></span>&#160;            <span class="keywordtype">bool</span> <a class="code" href="classft_1_1irc_1_1processor__notice.html#adf9dd7adfd7a245fb010831175686c3e">is_notice</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        };</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="ttc" id="achannel_8hpp_html"><div class="ttname"><a href="channel_8hpp.html">channel.hpp</a></div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1channel_html"><div class="ttname"><a href="classft_1_1irc_1_1channel.html">ft::irc::channel</a></div><div class="ttdef"><b>Definition:</b> channel.hpp:29</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1channel_html_ab1490dfbf6b3d9c13887c214200df7bf"><div class="ttname"><a href="classft_1_1irc_1_1channel.html#ab1490dfbf6b3d9c13887c214200df7bf">ft::irc::channel::broadcast</a></div><div class="ttdeci">void broadcast(const ft::irc::message &amp;message, ft::shared_ptr&lt; ft::irc::user &gt; except=ft::shared_ptr&lt; ft::irc::user &gt;()) const</div><div class="ttdef"><b>Definition:</b> channel.cpp:180</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1message_html"><div class="ttname"><a href="classft_1_1irc_1_1message.html">ft::irc::message</a></div><div class="ttdef"><b>Definition:</b> message.hpp:17</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1message_html_adf434fdc28e74fb166c6046c0ac5c6d5"><div class="ttname"><a href="classft_1_1irc_1_1message.html#adf434fdc28e74fb166c6046c0ac5c6d5">ft::irc::message::split</a></div><div class="ttdeci">static param_vector split(const std::string &amp;str, std::string::value_type delim=' ', std::string::value_type limit='\0')</div><div class="ttdef"><b>Definition:</b> message.cpp:19</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1message_html_ae9c2b56853d2beaba7abef1e7c116dd6"><div class="ttname"><a href="classft_1_1irc_1_1message.html#ae9c2b56853d2beaba7abef1e7c116dd6">ft::irc::message::param_vector</a></div><div class="ttdeci">ft::serv::dynamic_array&lt; std::string &gt;::type param_vector</div><div class="ttdef"><b>Definition:</b> message.hpp:19</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__base_html"><div class="ttname"><a href="classft_1_1irc_1_1processor__base.html">ft::irc::processor_base</a></div><div class="ttdef"><b>Definition:</b> processor.hpp:23</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__message__base_html"><div class="ttname"><a href="classft_1_1irc_1_1processor__message__base.html">ft::irc::processor_message_base</a></div><div class="ttdef"><b>Definition:</b> processor_send_message.hpp:22</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__message__base_html_ab3fba6f27483543b9c7a559fd2e1402b"><div class="ttname"><a href="classft_1_1irc_1_1processor__message__base.html#ab3fba6f27483543b9c7a559fd2e1402b">ft::irc::processor_message_base::execute</a></div><div class="ttdeci">void execute(ft::irc::user &amp;user, const ft::irc::message &amp;message) const</div><div class="ttdef"><b>Definition:</b> processor_send_message.hpp:27</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__message__base_html_ac60db201b65d2bd1085bd40a697f5f44"><div class="ttname"><a href="classft_1_1irc_1_1processor__message__base.html#ac60db201b65d2bd1085bd40a697f5f44">ft::irc::processor_message_base::get_min_params</a></div><div class="ttdeci">std::size_t get_min_params() const</div><div class="ttdef"><b>Definition:</b> processor_send_message.hpp:24</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__message__base_html_afb9bf9930477bf13ae50eb350251d31b"><div class="ttname"><a href="classft_1_1irc_1_1processor__message__base.html#afb9bf9930477bf13ae50eb350251d31b">ft::irc::processor_message_base::is_notice</a></div><div class="ttdeci">virtual bool is_notice() const =0</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__notice_html"><div class="ttname"><a href="classft_1_1irc_1_1processor__notice.html">ft::irc::processor_notice</a></div><div class="ttdef"><b>Definition:</b> processor_send_message.hpp:61</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__notice_html_ac98a9b8daf87e613b19fa7438d3c2436"><div class="ttname"><a href="classft_1_1irc_1_1processor__notice.html#ac98a9b8daf87e613b19fa7438d3c2436">ft::irc::processor_notice::get_min_params</a></div><div class="ttdeci">std::size_t get_min_params() const</div><div class="ttdef"><b>Definition:</b> processor_send_message.hpp:63</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__notice_html_adf9dd7adfd7a245fb010831175686c3e"><div class="ttname"><a href="classft_1_1irc_1_1processor__notice.html#adf9dd7adfd7a245fb010831175686c3e">ft::irc::processor_notice::is_notice</a></div><div class="ttdeci">bool is_notice() const</div><div class="ttdef"><b>Definition:</b> processor_send_message.hpp:64</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__privmsg_html"><div class="ttname"><a href="classft_1_1irc_1_1processor__privmsg.html">ft::irc::processor_privmsg</a></div><div class="ttdef"><b>Definition:</b> processor_send_message.hpp:52</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__privmsg_html_a610c6e56d1af89def2d90b4556f0ada5"><div class="ttname"><a href="classft_1_1irc_1_1processor__privmsg.html#a610c6e56d1af89def2d90b4556f0ada5">ft::irc::processor_privmsg::is_notice</a></div><div class="ttdeci">bool is_notice() const</div><div class="ttdef"><b>Definition:</b> processor_send_message.hpp:55</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1processor__privmsg_html_a9efbe465c423e4dadd7a508a99bac9d9"><div class="ttname"><a href="classft_1_1irc_1_1processor__privmsg.html#a9efbe465c423e4dadd7a508a99bac9d9">ft::irc::processor_privmsg::get_min_params</a></div><div class="ttdeci">std::size_t get_min_params() const</div><div class="ttdef"><b>Definition:</b> processor_send_message.hpp:54</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1server_html"><div class="ttname"><a href="classft_1_1irc_1_1server.html">ft::irc::server</a></div><div class="ttdef"><b>Definition:</b> server.hpp:23</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1server_html_a0e7dee7efef3f36af15d1a3b97f3bad9"><div class="ttname"><a href="classft_1_1irc_1_1server.html#a0e7dee7efef3f36af15d1a3b97f3bad9">ft::irc::server::find_channel</a></div><div class="ttdeci">ft::shared_ptr&lt; ft::irc::channel &gt; find_channel(const std::string &amp;name) const</div><div class="ttdef"><b>Definition:</b> server.cpp:42</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1user_html"><div class="ttname"><a href="classft_1_1irc_1_1user.html">ft::irc::user</a></div><div class="ttdef"><b>Definition:</b> user.hpp:26</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1user_html_a7406ed193e13a3c39ee16c9ac7a8b16e"><div class="ttname"><a href="classft_1_1irc_1_1user.html#a7406ed193e13a3c39ee16c9ac7a8b16e">ft::irc::user::make_full_name</a></div><div class="ttdeci">std::string make_full_name() const</div><div class="ttdef"><b>Definition:</b> user.cpp:108</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1user_html_ae476cc31795df7fbb726b193ab887e75"><div class="ttname"><a href="classft_1_1irc_1_1user.html#ae476cc31795df7fbb726b193ab887e75">ft::irc::user::get_server</a></div><div class="ttdeci">ft::irc::server &amp; get_server() const</div><div class="ttdef"><b>Definition:</b> user.cpp:39</div></div>
+<div class="ttc" id="airc__constants_8hpp_html"><div class="ttname"><a href="irc__constants_8hpp.html">irc_constants.hpp</a></div></div>
+<div class="ttc" id="amessage_8hpp_html"><div class="ttname"><a href="message_8hpp.html">message.hpp</a></div></div>
+<div class="ttc" id="anamespaceft_html"><div class="ttname"><a href="namespaceft.html">ft</a></div><div class="ttdef"><b>Definition:</b> bot.hpp:13</div></div>
+<div class="ttc" id="aprocessor_8hpp_html"><div class="ttname"><a href="processor_8hpp.html">processor.hpp</a></div></div>
+<div class="ttc" id="areply_8hpp_html"><div class="ttname"><a href="reply_8hpp.html">reply.hpp</a></div></div>
+<div class="ttc" id="aserver_8hpp_html"><div class="ttname"><a href="server_8hpp.html">server.hpp</a></div></div>
+<div class="ttc" id="auser_8hpp_html"><div class="ttname"><a href="user_8hpp.html">user.hpp</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="processor__send__message_8hpp.html">processor_send_message.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
