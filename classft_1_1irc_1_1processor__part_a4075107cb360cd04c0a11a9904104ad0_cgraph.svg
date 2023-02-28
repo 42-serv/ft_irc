@@ -146,26 +146,26 @@ var sectionId = 'dynsection-2';
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="classft_1_1irc_1_1user.html#a7406ed193e13a3c39ee16c9ac7a8b16e" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="153,-235 153,-265 254,-265 254,-235 153,-235"/>
-<text text-anchor="start" x="161" y="-253" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::user::make</text>
-<text text-anchor="middle" x="203.5" y="-242" font-family="Helvetica,sans-Serif" font-size="10.00">_full_name</text>
+<g id="a_node9"><a xlink:href="structft_1_1irc_1_1make__error.html#a8ad003c713b8ee5ebbf4691dd2be83fe" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="150.5,-235 150.5,-265 256.5,-265 256.5,-235 150.5,-235"/>
+<text text-anchor="start" x="158.5" y="-253" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::make_error</text>
+<text text-anchor="middle" x="203.5" y="-242" font-family="Helvetica,sans-Serif" font-size="10.00">::no_such_channel</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
 <title>Node1&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M95.12,-250C110.08,-250 126.86,-250 142.64,-250"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="142.82,-253.5 152.82,-250 142.82,-246.5 142.82,-253.5"/>
+<path fill="none" stroke="midnightblue" d="M95.12,-250C109.29,-250 125.1,-250 140.13,-250"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="140.38,-253.5 150.38,-250 140.38,-246.5 140.38,-253.5"/>
 </g>
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="structft_1_1irc_1_1make__error.html#a8ad003c713b8ee5ebbf4691dd2be83fe" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="150.5,-186 150.5,-216 256.5,-216 256.5,-186 150.5,-186"/>
-<text text-anchor="start" x="158.5" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::make_error</text>
-<text text-anchor="middle" x="203.5" y="-193" font-family="Helvetica,sans-Serif" font-size="10.00">::no_such_channel</text>
+<g id="a_node10"><a xlink:href="structft_1_1irc_1_1make__error.html#a85c1af0e7b2940c1aff650d1a78b9847" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="152,-186 152,-216 255,-216 255,-186 152,-186"/>
+<text text-anchor="start" x="160" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::make_error</text>
+<text text-anchor="middle" x="203.5" y="-193" font-family="Helvetica,sans-Serif" font-size="10.00">::not_on_channel</text>
 </a>
 </g>
 </g>
@@ -178,34 +178,34 @@ var sectionId = 'dynsection-2';
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="structft_1_1irc_1_1make__error.html#a85c1af0e7b2940c1aff650d1a78b9847" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="152,-137 152,-167 255,-167 255,-137 152,-137"/>
-<text text-anchor="start" x="160" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::make_error</text>
-<text text-anchor="middle" x="203.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">::not_on_channel</text>
+<g id="a_node11"><a xlink:href="classft_1_1irc_1_1user.html#a3dcb054e616907f4ff2ec8d11563c978" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="156.5,-137 156.5,-167 250.5,-167 250.5,-137 156.5,-137"/>
+<text text-anchor="start" x="164.5" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::user::part</text>
+<text text-anchor="middle" x="203.5" y="-144" font-family="Helvetica,sans-Serif" font-size="10.00">_channel</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node11 -->
 <g id="edge10" class="edge">
 <title>Node1&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M61.69,-234.95C76.91,-218.42 103.4,-192.08 131,-176 134.63,-173.89 138.47,-171.93 142.41,-170.11"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="143.91,-173.28 151.75,-166.15 141.17,-166.84 143.91,-173.28"/>
+<path fill="none" stroke="midnightblue" d="M61.69,-234.95C76.91,-218.42 103.4,-192.08 131,-176 136,-173.09 141.41,-170.46 146.93,-168.12"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="148.26,-171.35 156.28,-164.43 145.69,-164.84 148.26,-171.35"/>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="classft_1_1irc_1_1user.html#a3dcb054e616907f4ff2ec8d11563c978" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="156.5,-88 156.5,-118 250.5,-118 250.5,-88 156.5,-88"/>
-<text text-anchor="start" x="164.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::user::part</text>
-<text text-anchor="middle" x="203.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">_channel</text>
+<g id="a_node12"><a xlink:href="structft_1_1irc_1_1make__reply.html#a5bc514d5b05cc15d799aba1944a18386" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="151.5,-88 151.5,-118 255.5,-118 255.5,-88 151.5,-88"/>
+<text text-anchor="start" x="159.5" y="-106" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::make_reply</text>
+<text text-anchor="middle" x="203.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">::replicate</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node12 -->
 <g id="edge11" class="edge">
 <title>Node1&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M54.74,-234.78C66.09,-208.92 92.57,-156.33 131,-127 135.8,-123.34 141.19,-120.21 146.81,-117.56"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="148.55,-120.62 156.4,-113.51 145.83,-114.17 148.55,-120.62"/>
+<path fill="none" stroke="midnightblue" d="M54.74,-234.78C66.09,-208.92 92.57,-156.33 131,-127 134.4,-124.41 138.09,-122.09 141.94,-120.01"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="143.67,-123.06 151.18,-115.59 140.65,-116.75 143.67,-123.06"/>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node">

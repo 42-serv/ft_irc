@@ -72,7 +72,7 @@ var NAVTREEINDEX =
 "classft_1_1irc_1_1server.html#a12f90407ddc81ee4ab362152740c0a0b",
 "classft_1_1serv_1_1event__worker.html",
 "namespaceft_1_1serv.html",
-"structft_1_1irc_1_1user_1_1pred__equals__nick.html#aa4bfdd8756482385798ed7fd8197f1e1"
+"structft_1_1irc_1_1user_1_1pred__equals__nick.html#a45212f4ee428d339b4abf55a0ef44f94"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

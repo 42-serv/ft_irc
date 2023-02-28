@@ -38,6 +38,7 @@ var structft_1_1irc_1_1make__reply =
     [ "now_away", "structft_1_1irc_1_1make__reply.html#afac30180f3a3fcdbcddc6770412fad1c", null ],
     [ "now_operator", "structft_1_1irc_1_1make__reply.html#aae00da90d0ee120265c4712affebebc5", null ],
     [ "rehashing", "structft_1_1irc_1_1make__reply.html#a163de520a360afbf6dceac2787a32a1e", null ],
+    [ "replicate", "structft_1_1irc_1_1make__reply.html#a5bc514d5b05cc15d799aba1944a18386", null ],
     [ "stats_c_line", "structft_1_1irc_1_1make__reply.html#a75e362e1e11f0121f4199f40a3aa2882", null ],
     [ "stats_commands", "structft_1_1irc_1_1make__reply.html#a46092fdb799313274646079222c747cc", null ],
     [ "stats_h_line", "structft_1_1irc_1_1make__reply.html#a1be5461e8f8b934364bf18a3ca586221", null ],

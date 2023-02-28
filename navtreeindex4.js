@@ -1,5 +1,8 @@
 var NAVTREEINDEX4 =
 {
+"structft_1_1irc_1_1user_1_1pred__equals__nick.html#a45212f4ee428d339b4abf55a0ef44f94":[5,0,0,0,43,0,0],
+"structft_1_1irc_1_1user_1_1pred__equals__nick.html#a483d770cc8f2e3c75bd042debba2a52b":[5,0,0,0,43,0,1],
+"structft_1_1irc_1_1user_1_1pred__equals__nick.html#a5234382afcd612332e6797dedb1a862b":[5,0,0,0,43,0,3],
 "structft_1_1irc_1_1user_1_1pred__equals__nick.html#aa4bfdd8756482385798ed7fd8197f1e1":[5,0,0,0,43,0,2],
 "structft_1_1irc_1_1user_1_1pred__equals__nick.html#ad6f371bf39a731d9429cee14fc9ef312":[5,0,0,0,43,0,4],
 "structft_1_1nothing.html":[5,0,0,2],

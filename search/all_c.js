@@ -24,16 +24,17 @@ var searchData=
   ['member_5fmode_5fowner_330',['MEMBER_MODE_OWNER',['../structft_1_1irc_1_1channel_1_1member.html#a6ccd7b4e1a05f1beff704e6f7086ac55ad1e44bcacba0ef8bba820e64ca78be4d',1,'ft::irc::channel::member']]],
   ['member_5fmode_5fvoice_331',['MEMBER_MODE_VOICE',['../structft_1_1irc_1_1channel_1_1member.html#a6ccd7b4e1a05f1beff704e6f7086ac55acbb8ad3aee2a9b2cb9c289e7c154359a',1,'ft::irc::channel::member']]],
   ['members_332',['members',['../classft_1_1irc_1_1channel.html#a6fe5941bcbbb6be6c2f0ea5c6a0eba40',1,'ft::irc::channel']]],
-  ['message_333',['message',['../classft_1_1irc_1_1message.html',1,'ft::irc::message'],['../classft_1_1irc_1_1message.html#ad0cb451eefde1d795edb1ece9a75b146',1,'ft::irc::message::message(int command)'],['../classft_1_1irc_1_1message.html#a38e736a3c12f78a2517edbc3e48410a9',1,'ft::irc::message::message(const std::string &amp;prefix, const std::string &amp;command, const param_vector &amp;params)'],['../classft_1_1irc_1_1message.html#abbd06805cd6c55956aa14935a9643d12',1,'ft::irc::message::message(const std::string &amp;command)'],['../classft_1_1irc_1_1message.html#a1aa15b26e7b7c9b88e29e4890479404c',1,'ft::irc::message::message()']]],
+  ['message_333',['message',['../classft_1_1irc_1_1message.html',1,'ft::irc::message'],['../classft_1_1irc_1_1message.html#ad0cb451eefde1d795edb1ece9a75b146',1,'ft::irc::message::message(int command)'],['../classft_1_1irc_1_1message.html#a38e736a3c12f78a2517edbc3e48410a9',1,'ft::irc::message::message(const std::string &amp;prefix, const std::string &amp;command, const param_vector &amp;params)'],['../classft_1_1irc_1_1message.html#a1aa15b26e7b7c9b88e29e4890479404c',1,'ft::irc::message::message()'],['../classft_1_1irc_1_1message.html#abbd06805cd6c55956aa14935a9643d12',1,'ft::irc::message::message(const std::string &amp;command)']]],
   ['message_2ecpp_334',['message.cpp',['../message_8cpp.html',1,'']]],
   ['message_2ehpp_335',['message.hpp',['../message_8hpp.html',1,'']]],
   ['message_5fdecoder_336',['message_decoder',['../classft_1_1irc_1_1message__decoder.html',1,'ft::irc']]],
   ['message_5fdecoder_2ehpp_337',['message_decoder.hpp',['../message__decoder_8hpp.html',1,'']]],
   ['message_5fencoder_338',['message_encoder',['../classft_1_1irc_1_1message__encoder.html',1,'ft::irc']]],
   ['message_5fencoder_2ehpp_339',['message_encoder.hpp',['../message__encoder_8hpp.html',1,'']]],
-  ['mode_340',['mode',['../structft_1_1irc_1_1channel_1_1member.html#ad47d115b3ba66d7b1d6afea24f71bbd1',1,'ft::irc::channel::member::mode()'],['../classft_1_1irc_1_1channel.html#ac0677f541d34fed15de348b91cf6fb49',1,'ft::irc::channel::mode()'],['../classft_1_1irc_1_1user.html#aa6421aa2cc848b6236f5e457c0a11b50',1,'ft::irc::user::mode()']]],
+  ['mode_340',['mode',['../structft_1_1irc_1_1channel_1_1member.html#ad47d115b3ba66d7b1d6afea24f71bbd1',1,'ft::irc::channel::member::mode()'],['../classft_1_1irc_1_1user.html#aa6421aa2cc848b6236f5e457c0a11b50',1,'ft::irc::user::mode()'],['../classft_1_1irc_1_1channel.html#ac0677f541d34fed15de348b91cf6fb49',1,'ft::irc::channel::mode()']]],
   ['motd_341',['motd',['../structft_1_1irc_1_1make__reply.html#a09ef279f20aef8d899a8a1f6e1f843c8',1,'ft::irc::make_reply']]],
   ['motd_5fstart_342',['motd_start',['../structft_1_1irc_1_1make__reply.html#ac487f0bab92e860c91305ed0b7f02dbe',1,'ft::irc::make_reply']]],
   ['my_5fserver_5fname_343',['my_server_name',['../structft_1_1irc_1_1make__reply__base.html#a6295b9a03bb340fa27aaf771fddb4cf8',1,'ft::irc::make_reply_base']]],
-  ['my_5fuser_5fnick_344',['my_user_nick',['../structft_1_1irc_1_1make__reply__base.html#a8486749dd928630daafd95efc72b8dec',1,'ft::irc::make_reply_base']]]
+  ['my_5fuser_5fname_344',['my_user_name',['../structft_1_1irc_1_1make__reply__base.html#a4bff1ff2c182cbae371580c28eec8ebb',1,'ft::irc::make_reply_base']]],
+  ['my_5fuser_5fnick_345',['my_user_nick',['../structft_1_1irc_1_1make__reply__base.html#a8486749dd928630daafd95efc72b8dec',1,'ft::irc::make_reply_base']]]
 ];
