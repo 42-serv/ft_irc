@@ -110,10 +110,8 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
             it->user->send_message(ft::irc::message("NOTICE") >> "ft_irc"
                                                                      << "You're new owner.");
         }
-        it->user->send_message(ft::irc::make_reply::topic(this->name, "This is topic"));
+        it->user->send_message(ft::irc::make_reply::topic(this->name, this->topic));
     }
-    this->broadcast(ft::irc::message("NOTICE") >> "ft_irc"
-                                                      << "User " + user->load_nick() + " joined.");
     return ft::irc::RPL_NONE;
 }
 
@@ -143,8 +141,6 @@ void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
                                                                            << "You're new owner.");
         }
     }
-    this->broadcast(ft::irc::message("NOTICE") >> "ft_irc"
-                                                      << "User " + user->load_nick() + " leaved.");
     if (!remove_channel_name.empty())
     {
         this->server.remove_channel(remove_channel_name);
@@ -169,7 +165,7 @@ ft::irc::reply_numerics ft::irc::channel::change_topic(ft::irc::user& user, cons
                     return ft::irc::ERR_CHANOPRIVSNEEDED;
                 }
 
-                this->set_topic(new_topic);
+                this->topic = new_topic;
                 return ft::irc::RPL_NONE;
             }
         }
