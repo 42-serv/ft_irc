@@ -7,7 +7,7 @@ var structft_1_1irc_1_1channel_1_1member =
       [ "NUMBEROF_MEMBER_MODE", "structft_1_1irc_1_1channel_1_1member.html#a6ccd7b4e1a05f1beff704e6f7086ac55a91bd4a4f822799a66fc03d3c86e941f7", null ]
     ] ],
     [ "member", "structft_1_1irc_1_1channel_1_1member.html#a448c5a5517e2d604b11dba30f8395a70", null ],
-    [ "operator==", "structft_1_1irc_1_1channel_1_1member.html#a16f19a9521cc3f5744b2ffddd2f2b1ac", null ],
+    [ "operator==", "structft_1_1irc_1_1channel_1_1member.html#a80ff4daa47d930a387359c6b35eff19a", null ],
     [ "mode", "structft_1_1irc_1_1channel_1_1member.html#ad47d115b3ba66d7b1d6afea24f71bbd1", null ],
     [ "user", "structft_1_1irc_1_1channel_1_1member.html#aa7c63dddc620a12024070569d0753a80", null ]
 ];
