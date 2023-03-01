@@ -2,6 +2,7 @@ var NAVTREEINDEX0 =
 {
 "annotated.html":[5,0],
 "bootstrap_8cpp.html":[6,0,0,0,0],
+"bootstrap_8cpp.html#acf03e66a45bc7cc346d17d294290c024":[6,0,0,0,0,0],
 "bootstrap_8hpp.html":[6,0,0,0,1],
 "bootstrap_8hpp_source.html":[6,0,0,0,1],
 "bot_8cpp.html":[6,0,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classft_1_1irc_1_1processor__whowas.html#ac65f3f6d6e47e3579a0fd58648771cc5":[5,0,0,0,31,2],
 "classft_1_1irc_1_1server.html":[5,0,0,0,38],
 "classft_1_1irc_1_1server.html#a06242c53cf587417b6cd4bd0db6194a9":[5,0,0,0,38,19],
-"classft_1_1irc_1_1server.html#a0e7dee7efef3f36af15d1a3b97f3bad9":[5,0,0,0,38,8],
-"classft_1_1irc_1_1server.html#a0fe95c6f1065898e1229d51c4a6244c6":[5,0,0,0,38,4]
+"classft_1_1irc_1_1server.html#a0e7dee7efef3f36af15d1a3b97f3bad9":[5,0,0,0,38,8]
 };
