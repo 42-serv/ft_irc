@@ -284,7 +284,7 @@ void ft::irc::user::notify_message(const ft::irc::message& message) const
 {
     synchronized (this->lock.get_write_lock())
     {
-        ft::serv::unique_set<ft::shared_ptr<ft::irc::user> >::type unique_set;
+        ft::serv::unique_set<ft::shared_ptr<const ft::irc::user> >::type unique_set;
         send_message(message);
         unique_set.insert(this->shared_from_this());
         foreach (channel_list::const_iterator, it, this->channels)
@@ -315,7 +315,7 @@ bool ft::irc::user::pred_equals_nick::operator()(const ft::irc::user* user) cons
     return this->nick == user->load_nick();
 }
 
-bool ft::irc::user::pred_equals_nick::operator()(const ft::shared_ptr<ft::irc::user>& user) const throw()
+bool ft::irc::user::pred_equals_nick::operator()(const ft::shared_ptr<const ft::irc::user>& user) const throw()
 {
     return this->nick == user->load_nick();
 }

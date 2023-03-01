@@ -147,7 +147,7 @@ void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
     }
 }
 
-ft::irc::reply_numerics ft::irc::channel::change_topic(ft::irc::user& user, const std::string& new_topic)
+ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::shared_ptr<const ft::irc::user>& user, const std::string& new_topic)
 {
     synchronized (this->lock.get_write_lock())
     {
@@ -158,7 +158,7 @@ ft::irc::reply_numerics ft::irc::channel::change_topic(ft::irc::user& user, cons
 
         foreach (member_list::const_iterator, it, this->members)
         {
-            if (it->user.get() == &user)
+            if (it->user == user)
             {
                 if (this->get_mode(CHANNEL_MODE_TOPIC_LIMIT) && !it->mode[member::MEMBER_MODE_OPERATOR])
                 {
@@ -173,7 +173,7 @@ ft::irc::reply_numerics ft::irc::channel::change_topic(ft::irc::user& user, cons
     return ft::irc::ERR_NOTONCHANNEL;
 }
 
-void ft::irc::channel::broadcast(const ft::irc::message& message, ft::shared_ptr<ft::irc::user> except) const
+void ft::irc::channel::broadcast(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except) const
 {
     synchronized (this->lock.get_read_lock())
     {
@@ -187,7 +187,7 @@ void ft::irc::channel::broadcast(const ft::irc::message& message, ft::shared_ptr
     }
 }
 
-void ft::irc::channel::broadcast_unique(const ft::irc::message& message, ft::serv::unique_set<ft::shared_ptr<ft::irc::user> >::type& unique_set) const
+void ft::irc::channel::broadcast_unique(const ft::irc::message& message, ft::serv::unique_set<ft::shared_ptr<const ft::irc::user> >::type& unique_set) const
 {
     synchronized (this->lock.get_read_lock())
     {
@@ -208,7 +208,7 @@ ft::irc::channel::member::member(const ft::shared_ptr<ft::irc::user>& user)
 {
 }
 
-bool ft::irc::channel::member::operator==(ft::shared_ptr<ft::irc::user> that)
+bool ft::irc::channel::member::operator==(const ft::shared_ptr<const ft::irc::user>& that)
 {
     return this->user == that;
 }

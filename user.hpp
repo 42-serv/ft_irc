@@ -107,7 +107,7 @@ namespace ft
 
                 bool operator()(const user& user) const throw();
                 bool operator()(const user* user) const throw();
-                bool operator()(const ft::shared_ptr<user>& user) const throw();
+                bool operator()(const ft::shared_ptr<const user>& user) const throw();
             };
 
         private:
