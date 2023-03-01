@@ -184,7 +184,7 @@ namespace ft
                     }
                     else
                     {
-                        ft::irc::reply_numerics rpl = channel->change_topic(user, message[1]);
+                        ft::irc::reply_numerics rpl = channel->change_topic(user.shared_from_this(), message[1]);
                         if (rpl == ft::irc::RPL_NONE)
                         {
                             channel->broadcast(ft::irc::make_reply::replicate(message));
@@ -238,6 +238,8 @@ namespace ft
             {
                 // FIXME: implement
                 static_cast<void>(user), static_cast<void>(message);
+                // ft::irc::server& server = user.get_server();
+                // server.send_list();
             }
         };
 
@@ -267,7 +269,18 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
+                std::string kick_comment;
+                if (message.param_size() >= 3)
+                {
+                    kick_comment = message[2];
+                }
+                else
+                {
+                    // default message
+                    kick_comment = "";
+                }
                 static_cast<void>(user), static_cast<void>(message);
+                user.part_channel("kick reflected. please purchase super operator item.");
             }
         };
     }
