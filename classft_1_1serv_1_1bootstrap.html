@@ -127,7 +127,7 @@ $(document).ready(function(){initNavTree('classft_1_1serv_1_1bootstrap.html','')
 <div class="dynheader">
 Collaboration diagram for ft::serv::bootstrap:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1bootstrap__coll__graph.svg" width="303" height="156"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1bootstrap__coll__graph.svg" width="388" height="156"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -148,6 +148,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a61642849334859472e690b615dc6fdeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd923d6b838022038f437dad3e58abf0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1serv_1_1bootstrap.html#acd923d6b838022038f437dad3e58abf0">start_client</a> (const std::string &amp;host_str, const std::string &amp;serv_str, void *arg)</td></tr>
 <tr class="separator:acd923d6b838022038f437dad3e58abf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6e5ff5dc242e571b22a4625e4ad8f5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1serv_1_1bootstrap.html#aa6e5ff5dc242e571b22a4625e4ad8f5f">set_success</a> ()</td></tr>
+<tr class="separator:aa6e5ff5dc242e571b22a4625e4ad8f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b94aedd9970843c6c049f19cebaf7fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1serv_1_1bootstrap.html#a9b94aedd9970843c6c049f19cebaf7fe">finalize</a> ()</td></tr>
+<tr class="separator:a9b94aedd9970843c6c049f19cebaf7fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -166,6 +170,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a7ed2873321016ce2723df1f41d2f35b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeccd084c3c554d32cac0fa15eb579dd2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classft_1_1serv_1_1bootstrap.html#aa9b27dd66dd18cbc40c2314ad9cae3cc">make_client_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1serv_1_1bootstrap.html#aeccd084c3c554d32cac0fa15eb579dd2">make_client</a></td></tr>
 <tr class="separator:aeccd084c3c554d32cac0fa15eb579dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c748d7561c7b6ab90a8541c0a461600"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1serv_1_1bootstrap.html#a8c748d7561c7b6ab90a8541c0a461600">success</a></td></tr>
+<tr class="separator:a8c748d7561c7b6ab90a8541c0a461600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fae715040453dc6d1cf7821f43b78fd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1serv_1_1bootstrap.html#a5fae715040453dc6d1cf7821f43b78fd">ended</a></td></tr>
+<tr class="separator:a5fae715040453dc6d1cf7821f43b78fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="aa9b27dd66dd18cbc40c2314ad9cae3cc"></a>
@@ -283,6 +291,31 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9b94aedd9970843c6c049f19cebaf7fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b94aedd9970843c6c049f19cebaf7fe">&#9670;&nbsp;</a></span>finalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ft::serv::bootstrap::finalize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="main_8cpp.html#a950830a6fd50437aa19263f9f349218a">boss_group</a>, and <a class="el" href="main_8cpp.html#aafbc4a3b189f32732001041e2788cd15">child_group</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1bootstrap_a9b94aedd9970843c6c049f19cebaf7fe_icgraph.svg" width="250" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a460cbd048a187b886765f722f50ac55f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a460cbd048a187b886765f722f50ac55f">&#9670;&nbsp;</a></span>operator=()</h2>
 
@@ -306,6 +339,29 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6e5ff5dc242e571b22a4625e4ad8f5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6e5ff5dc242e571b22a4625e4ad8f5f">&#9670;&nbsp;</a></span>set_success()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ft::serv::bootstrap::set_success </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1bootstrap_aa6e5ff5dc242e571b22a4625e4ad8f5f_icgraph.svg" width="250" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -341,7 +397,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="bootstrap_8cpp.html#acf03e66a45bc7cc346d17d294290c024">_to_c_str_nullable()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#ad0dccc18b1c71b736ffcd2328c3f3ccd">ft::serv::socket_utils::close_socket()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#a56120e0cd1c6aef9b5bef57bc37b85eb">ft::serv::socket_utils::connect_socket()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#af26c480a74e72a232aca84cd17e2de61">ft::serv::socket_utils::name_socket()</a>, and <a class="el" href="structft_1_1serv_1_1socket__utils.html#a818575bfd7756e64e4226b85a7492bc7">ft::serv::socket_utils::set_nonblocking()</a>.</p>
+<p class="reference">References <a class="el" href="bootstrap_8cpp.html#acf03e66a45bc7cc346d17d294290c024">_to_c_str_nullable()</a>, <a class="el" href="main_8cpp.html#aafbc4a3b189f32732001041e2788cd15">child_group</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#ad0dccc18b1c71b736ffcd2328c3f3ccd">ft::serv::socket_utils::close_socket()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#a56120e0cd1c6aef9b5bef57bc37b85eb">ft::serv::socket_utils::connect_socket()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#af26c480a74e72a232aca84cd17e2de61">ft::serv::socket_utils::name_socket()</a>, and <a class="el" href="structft_1_1serv_1_1socket__utils.html#a818575bfd7756e64e4226b85a7492bc7">ft::serv::socket_utils::set_nonblocking()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -389,7 +445,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="bootstrap_8cpp.html#acf03e66a45bc7cc346d17d294290c024">_to_c_str_nullable()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#a6ad8ff64c40ce8341bee05803ca0b2bd">ft::serv::socket_utils::bind_socket()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#ad0dccc18b1c71b736ffcd2328c3f3ccd">ft::serv::socket_utils::close_socket()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#af0c7d126407d94cc7a1b083141ff2388">ft::serv::socket_utils::listen_socket()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#af26c480a74e72a232aca84cd17e2de61">ft::serv::socket_utils::name_socket()</a>, and <a class="el" href="structft_1_1serv_1_1socket__utils.html#a818575bfd7756e64e4226b85a7492bc7">ft::serv::socket_utils::set_nonblocking()</a>.</p>
+<p class="reference">References <a class="el" href="bootstrap_8cpp.html#acf03e66a45bc7cc346d17d294290c024">_to_c_str_nullable()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#a6ad8ff64c40ce8341bee05803ca0b2bd">ft::serv::socket_utils::bind_socket()</a>, <a class="el" href="main_8cpp.html#a950830a6fd50437aa19263f9f349218a">boss_group</a>, <a class="el" href="main_8cpp.html#aafbc4a3b189f32732001041e2788cd15">child_group</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#ad0dccc18b1c71b736ffcd2328c3f3ccd">ft::serv::socket_utils::close_socket()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#af0c7d126407d94cc7a1b083141ff2388">ft::serv::socket_utils::listen_socket()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#af26c480a74e72a232aca84cd17e2de61">ft::serv::socket_utils::name_socket()</a>, and <a class="el" href="structft_1_1serv_1_1socket__utils.html#a818575bfd7756e64e4226b85a7492bc7">ft::serv::socket_utils::set_nonblocking()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -450,6 +506,28 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a5fae715040453dc6d1cf7821f43b78fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fae715040453dc6d1cf7821f43b78fd">&#9670;&nbsp;</a></span>ended</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ft::serv::bootstrap::ended</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aeccd084c3c554d32cac0fa15eb579dd2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeccd084c3c554d32cac0fa15eb579dd2">&#9670;&nbsp;</a></span>make_client</h2>
 
@@ -483,6 +561,28 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classft_1_1serv_1_1bootstrap.html#a04c7ef4b71fd966eae9814078fb23a3d">make_server_t</a> ft::serv::bootstrap::make_server</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c748d7561c7b6ab90a8541c0a461600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c748d7561c7b6ab90a8541c0a461600">&#9670;&nbsp;</a></span>success</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ft::serv::bootstrap::success</td>
         </tr>
       </table>
   </td>

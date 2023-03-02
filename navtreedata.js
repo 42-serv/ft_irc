@@ -38,7 +38,8 @@ var NAVTREE =
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ]
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -59,6 +60,7 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
         [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
@@ -70,9 +72,9 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "classft_1_1irc_1_1server.html#a0fe95c6f1065898e1229d51c4a6244c6",
-"classft_1_1serv_1_1event__layer.html#afe324474cd5105d96cdc6340396cd447",
-"namespaceft_1_1irc_1_1__internal.html#ac421a738f6d955bab8b862fca8bd7159",
-"structft_1_1irc_1_1user_1_1pred__equals__nick.html"
+"classft_1_1serv_1_1event__layer.html#aedcaa2a608f294b0b1cd2fd4202d57ea",
+"namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931",
+"structft_1_1irc_1_1member__info.html#a4ab9abf4a97f5eccc37c22a3129d81f3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

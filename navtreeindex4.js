@@ -1,5 +1,18 @@
 var NAVTREEINDEX4 =
 {
+"structft_1_1irc_1_1member__info.html#a4ab9abf4a97f5eccc37c22a3129d81f3":[5,0,0,0,36,1],
+"structft_1_1irc_1_1member__info.html#abb2358fbcca93d626046714ef4c0818b":[5,0,0,0,36,2],
+"structft_1_1irc_1_1person__info.html":[5,0,0,0,34],
+"structft_1_1irc_1_1person__info.html#a2fd983a4c2d78e9b8daf3eac169b3a26":[5,0,0,0,34,3],
+"structft_1_1irc_1_1person__info.html#a5f079d741b7dc7df10fb70f57a56085c":[5,0,0,0,34,4],
+"structft_1_1irc_1_1person__info.html#aa415aa4295312205cccda31a893bf499":[5,0,0,0,34,2],
+"structft_1_1irc_1_1person__info.html#ab3b0b5c74a5706f5bf42cc94d03c6edd":[5,0,0,0,34,1],
+"structft_1_1irc_1_1person__info.html#aea8584034df2b537b1f4e8aa863f9b5a":[5,0,0,0,34,0],
+"structft_1_1irc_1_1string__utils.html":[5,0,0,0,42],
+"structft_1_1irc_1_1string__utils.html#a2fcf209970f5b02422129e1d9ff28a72":[5,0,0,0,42,1],
+"structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9":[5,0,0,0,42,2],
+"structft_1_1irc_1_1string__utils.html#a38cd804a5b73843f0fd63a027dd0dee0":[5,0,0,0,42,0],
+"structft_1_1irc_1_1string__utils.html#ab18511c9107e828924f75099c8500d03":[5,0,0,0,42,3],
 "structft_1_1irc_1_1user_1_1pred__equals__nick.html":[5,0,0,0,43,0],
 "structft_1_1irc_1_1user_1_1pred__equals__nick.html#a45212f4ee428d339b4abf55a0ef44f94":[5,0,0,0,43,0,0],
 "structft_1_1irc_1_1user_1_1pred__equals__nick.html#a5234382afcd612332e6797dedb1a862b":[5,0,0,0,43,0,3],

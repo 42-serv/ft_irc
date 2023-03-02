@@ -30,6 +30,8 @@ var namespaceft_1_1serv =
     [ "event_list", "namespaceft_1_1serv.html#ac7a1cd16df4b5f07598697c84ead0f84", null ],
     [ "ident_t", "namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492", null ],
     [ "_epoll_operation", "namespaceft_1_1serv.html#a8ea5500bde828d4c21df0d6536cfa19c", null ],
+    [ "EVFD_NORMAL", "namespaceft_1_1serv.html#adad86be21f1f878590755bfaf4c01823", null ],
+    [ "EVFD_SHUTDOWN", "namespaceft_1_1serv.html#a9b50b423374fcb8f34f9adebaf6b0247", null ],
     [ "MAX_EVENTS", "namespaceft_1_1serv.html#a0fe84f8852be2408536897bbd263e422", null ],
     [ "MAX_EVENTS", "namespaceft_1_1serv.html#a0fe84f8852be2408536897bbd263e422", null ]
 ];
