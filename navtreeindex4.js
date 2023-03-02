@@ -1,5 +1,12 @@
 var NAVTREEINDEX4 =
 {
+"structft_1_1irc_1_1make__reply__base.html#a488f2be061e722bd858d7285d1028eaf":[5,0,0,0,32,2],
+"structft_1_1irc_1_1make__reply__base.html#a4bff1ff2c182cbae371580c28eec8ebb":[5,0,0,0,32,5],
+"structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a":[5,0,0,0,32,0],
+"structft_1_1irc_1_1make__reply__base.html#a6295b9a03bb340fa27aaf771fddb4cf8":[5,0,0,0,32,4],
+"structft_1_1irc_1_1make__reply__base.html#a8486749dd928630daafd95efc72b8dec":[5,0,0,0,32,6],
+"structft_1_1irc_1_1member__info.html":[5,0,0,0,36],
+"structft_1_1irc_1_1member__info.html#a3f6304abbcdf421f22e56280cb86ff62":[5,0,0,0,36,0],
 "structft_1_1irc_1_1member__info.html#a4ab9abf4a97f5eccc37c22a3129d81f3":[5,0,0,0,36,1],
 "structft_1_1irc_1_1member__info.html#abb2358fbcca93d626046714ef4c0818b":[5,0,0,0,36,2],
 "structft_1_1irc_1_1person__info.html":[5,0,0,0,34],

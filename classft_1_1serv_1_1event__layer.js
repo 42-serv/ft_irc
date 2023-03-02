@@ -40,6 +40,8 @@ var classft_1_1serv_1_1event__layer =
     [ "post_write", "classft_1_1serv_1_1event__layer.html#add4946138f5f8a5870d52c44ca435aab", null ],
     [ "set_next", "classft_1_1serv_1_1event__layer.html#a8fba2e0084ceb69300a402111ff74e13", null ],
     [ "set_prev", "classft_1_1serv_1_1event__layer.html#a68e5a60a09f60ba8d781d4f1e81003f7", null ],
+    [ "shared_from_channel", "classft_1_1serv_1_1event__layer.html#a3153c0b405c034e066e5d488617d7ea7", null ],
+    [ "shared_from_channel", "classft_1_1serv_1_1event__layer.html#a088f9c6bfd69143a9dfdfaa1c116ac9a", null ],
     [ "channel", "classft_1_1serv_1_1event__layer.html#ae7962247a145d6a50fd08500970035ce", null ],
     [ "handler", "classft_1_1serv_1_1event__layer.html#a5365f18500a42e7c31d7521561c804f6", null ],
     [ "next", "classft_1_1serv_1_1event__layer.html#afe324474cd5105d96cdc6340396cd447", null ],

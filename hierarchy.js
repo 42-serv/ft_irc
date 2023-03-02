@@ -5,6 +5,7 @@ var hierarchy =
     [ "ft::irc::channel_info", "structft_1_1irc_1_1channel__info.html", null ],
     [ "ft::serv::dynamic_array< T >", "structft_1_1serv_1_1dynamic__array.html", null ],
     [ "ft::serv::dynamic_array< byte_t >", "structft_1_1serv_1_1dynamic__array.html", null ],
+    [ "ft::serv::dynamic_array< ft::shared_ptr< channel >::element_type * >", "structft_1_1serv_1_1dynamic__array.html", null ],
     [ "ft::serv::dynamic_array< ft::shared_ptr< ft::irc::user > >", "structft_1_1serv_1_1dynamic__array.html", null ],
     [ "ft::serv::dynamic_array< member >", "structft_1_1serv_1_1dynamic__array.html", null ],
     [ "ft::serv::dynamic_array< std::string >", "structft_1_1serv_1_1dynamic__array.html", null ],

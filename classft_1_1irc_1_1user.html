@@ -163,11 +163,13 @@ Public Types</h2></td></tr>
 <tr class="separator:a1197663ac80be93031f62dacc3365412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b0206b618f8983ba5a7a2ba42e68b06"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structft_1_1serv_1_1dynamic__array.html">ft::serv::dynamic_array</a>&lt; std::string &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a0b0206b618f8983ba5a7a2ba42e68b06">channel_list</a></td></tr>
 <tr class="separator:a0b0206b618f8983ba5a7a2ba42e68b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa83dc984558cd4c100f45d2a73124150"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structft_1_1serv_1_1dynamic__array.html">ft::serv::dynamic_array</a>&lt; ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1channel.html">channel</a> &gt;::element_type * &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#aa83dc984558cd4c100f45d2a73124150">invite_list</a></td></tr>
+<tr class="separator:aa83dc984558cd4c100f45d2a73124150"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ace43a80657fbc5198ebb61960274ef7f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#ace43a80657fbc5198ebb61960274ef7f">user</a> (<a class="el" href="classft_1_1irc_1_1server.html">ft::irc::server</a> &amp;<a class="el" href="classft_1_1irc_1_1server.html">server</a>, <a class="el" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a> &amp;<a class="el" href="classft_1_1irc_1_1user.html#afcccbc87be8a4213cd68fc5f8af8611f">layer</a>)</td></tr>
-<tr class="separator:ace43a80657fbc5198ebb61960274ef7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b15c3c488436f09ea3245b6f535f3f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a8b15c3c488436f09ea3245b6f535f3f8">user</a> (<a class="el" href="classft_1_1irc_1_1server.html">ft::irc::server</a> &amp;<a class="el" href="classft_1_1irc_1_1server.html">server</a>, const ft::shared_ptr&lt; <a class="el" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a> &gt; &amp;<a class="el" href="classft_1_1irc_1_1user.html#ad97623fbc5cd5a635a00e476c7d30b8f">layer</a>)</td></tr>
+<tr class="separator:a8b15c3c488436f09ea3245b6f535f3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a946beea5b549319767471a458070b5ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a946beea5b549319767471a458070b5ff">~user</a> ()</td></tr>
 <tr class="separator:a946beea5b549319767471a458070b5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae476cc31795df7fbb726b193ab887e75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classft_1_1irc_1_1server.html">ft::irc::server</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#ae476cc31795df7fbb726b193ab887e75">get_server</a> () const  throw ()</td></tr>
@@ -216,6 +218,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af78a2901a6ffa0a6b2cbfc8a8e83bcaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3dcb054e616907f4ff2ec8d11563c978"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a3dcb054e616907f4ff2ec8d11563c978">part_channel</a> (const std::string &amp;channelname)</td></tr>
 <tr class="separator:a3dcb054e616907f4ff2ec8d11563c978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc67d7989bbf81352af7d5242c7c74e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#afc67d7989bbf81352af7d5242c7c74e3">contains_invite</a> (const ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1channel.html">channel</a> &gt; &amp;<a class="el" href="classft_1_1irc_1_1channel.html">channel</a>)</td></tr>
+<tr class="separator:afc67d7989bbf81352af7d5242c7c74e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2733a9946020ef55cf0eb6d1255a5556"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a2733a9946020ef55cf0eb6d1255a5556">add_invite</a> (const ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1channel.html">channel</a> &gt; &amp;<a class="el" href="classft_1_1irc_1_1channel.html">channel</a>)</td></tr>
+<tr class="separator:a2733a9946020ef55cf0eb6d1255a5556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1475337459c0c597d62a5ef698d545dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a1475337459c0c597d62a5ef698d545dc">remove_invite</a> (const ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1channel.html">channel</a> &gt; &amp;<a class="el" href="classft_1_1irc_1_1channel.html">channel</a>)</td></tr>
+<tr class="separator:a1475337459c0c597d62a5ef698d545dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1db558d6d694ca943224c2440fe36c50"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a1db558d6d694ca943224c2440fe36c50">send_message</a> (const <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a> &amp;<a class="el" href="classft_1_1irc_1_1message.html">message</a>) const</td></tr>
 <tr class="separator:a1db558d6d694ca943224c2440fe36c50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29eb92f8b7e66851cd4634d98aa57dc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a29eb92f8b7e66851cd4634d98aa57dc6">notify_message</a> (const <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a> &amp;<a class="el" href="classft_1_1irc_1_1message.html">message</a>) const</td></tr>
@@ -234,8 +242,8 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a700adae72c4a97ef4c372464c56afccc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classft_1_1irc_1_1server.html">ft::irc::server</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a700adae72c4a97ef4c372464c56afccc">server</a></td></tr>
 <tr class="separator:a700adae72c4a97ef4c372464c56afccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcccbc87be8a4213cd68fc5f8af8611f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#afcccbc87be8a4213cd68fc5f8af8611f">layer</a></td></tr>
-<tr class="separator:afcccbc87be8a4213cd68fc5f8af8611f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad97623fbc5cd5a635a00e476c7d30b8f"><td class="memItemLeft" align="right" valign="top">ft::shared_ptr&lt; <a class="el" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#ad97623fbc5cd5a635a00e476c7d30b8f">layer</a></td></tr>
+<tr class="separator:ad97623fbc5cd5a635a00e476c7d30b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00375ca0bcedecb3d58eafda8f7d4acb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a00375ca0bcedecb3d58eafda8f7d4acb">nick</a></td></tr>
 <tr class="separator:a00375ca0bcedecb3d58eafda8f7d4acb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88737d9e2897a30bfd4d13bd5ca91fa7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#a88737d9e2897a30bfd4d13bd5ca91fa7">username</a></td></tr>
@@ -244,6 +252,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:adcfb1167e565ccad700a81785d611149"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5aa04b8a521e65070d2d56923946b34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classft_1_1irc_1_1user.html#a0b0206b618f8983ba5a7a2ba42e68b06">channel_list</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#ad5aa04b8a521e65070d2d56923946b34">channels</a></td></tr>
 <tr class="separator:ad5aa04b8a521e65070d2d56923946b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada18f9e166bd6cdc9b3a4fc574f24389"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classft_1_1irc_1_1user.html#aa83dc984558cd4c100f45d2a73124150">invite_list</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#ada18f9e166bd6cdc9b3a4fc574f24389">invites</a></td></tr>
+<tr class="separator:ada18f9e166bd6cdc9b3a4fc574f24389"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6421aa2cc848b6236f5e457c0a11b50"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; <a class="el" href="classft_1_1irc_1_1user.html#a00f58c5bbcf52483e4a5c8ffdef72bf1a8290b15729a90083eaa91f3c4883aa51">NUMBEROF_USER_MODE</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#aa6421aa2cc848b6236f5e457c0a11b50">mode</a></td></tr>
 <tr class="separator:aa6421aa2cc848b6236f5e457c0a11b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb91a4a1f872f3d78c9337c7bea2668e"><td class="memItemLeft" align="right" valign="top">std::bitset&lt; <a class="el" href="classft_1_1irc_1_1user.html#a1197663ac80be93031f62dacc3365412a91c11d1ebee3581a21df2486de9c578c">NUMBEROF_REGISTER_STATE</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1user.html#acb91a4a1f872f3d78c9337c7bea2668e">registered_state</a></td></tr>
@@ -260,6 +270,20 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef <a class="el" href="structft_1_1serv_1_1dynamic__array.html">ft::serv::dynamic_array</a>&lt;std::string&gt;::type <a class="el" href="classft_1_1irc_1_1user.html#a0b0206b618f8983ba5a7a2ba42e68b06">ft::irc::user::channel_list</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa83dc984558cd4c100f45d2a73124150"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa83dc984558cd4c100f45d2a73124150">&#9670;&nbsp;</a></span>invite_list</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="structft_1_1serv_1_1dynamic__array.html">ft::serv::dynamic_array</a>&lt;ft::shared_ptr&lt;<a class="el" href="classft_1_1irc_1_1channel.html">channel</a>&gt;::element_type*&gt;::type <a class="el" href="classft_1_1irc_1_1user.html#aa83dc984558cd4c100f45d2a73124150">ft::irc::user::invite_list</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -309,8 +333,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ace43a80657fbc5198ebb61960274ef7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace43a80657fbc5198ebb61960274ef7f">&#9670;&nbsp;</a></span>user() <span class="overload">[1/2]</span></h2>
+<a id="a8b15c3c488436f09ea3245b6f535f3f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b15c3c488436f09ea3245b6f535f3f8">&#9670;&nbsp;</a></span>user() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,7 +348,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a> &amp;&#160;</td>
+          <td class="paramtype">const ft::shared_ptr&lt; <a class="el" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>layer</em>&#160;</td>
         </tr>
         <tr>
@@ -383,6 +407,24 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2733a9946020ef55cf0eb6d1255a5556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2733a9946020ef55cf0eb6d1255a5556">&#9670;&nbsp;</a></span>add_invite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ft::irc::user::add_invite </td>
+          <td>(</td>
+          <td class="paramtype">const ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1channel.html">channel</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="af02e786035bc1122895f36f9db8f2c9a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af02e786035bc1122895f36f9db8f2c9a">&#9670;&nbsp;</a></span>change_nick()</h2>
 
@@ -441,6 +483,24 @@ Here is the caller graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1user_ad9cf185a314b035b4613b26495032c54_icgraph.svg" width="336" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+
+</div>
+</div>
+<a id="afc67d7989bbf81352af7d5242c7c74e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc67d7989bbf81352af7d5242c7c74e3">&#9670;&nbsp;</a></span>contains_invite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ft::irc::user::contains_invite </td>
+          <td>(</td>
+          <td class="paramtype">const ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1channel.html">channel</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -944,6 +1004,24 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a1475337459c0c597d62a5ef698d545dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1475337459c0c597d62a5ef698d545dc">&#9670;&nbsp;</a></span>remove_invite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ft::irc::user::remove_invite </td>
+          <td>(</td>
+          <td class="paramtype">const ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1channel.html">channel</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1db558d6d694ca943224c2440fe36c50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1db558d6d694ca943224c2440fe36c50">&#9670;&nbsp;</a></span>send_message()</h2>
 
@@ -1131,8 +1209,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="afcccbc87be8a4213cd68fc5f8af8611f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcccbc87be8a4213cd68fc5f8af8611f">&#9670;&nbsp;</a></span>layer</h2>
+<a id="ada18f9e166bd6cdc9b3a4fc574f24389"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada18f9e166bd6cdc9b3a4fc574f24389">&#9670;&nbsp;</a></span>invites</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1141,7 +1219,29 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a>&amp; ft::irc::user::layer</td>
+          <td class="memname"><a class="el" href="classft_1_1irc_1_1user.html#aa83dc984558cd4c100f45d2a73124150">invite_list</a> ft::irc::user::invites</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad97623fbc5cd5a635a00e476c7d30b8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad97623fbc5cd5a635a00e476c7d30b8f">&#9670;&nbsp;</a></span>layer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ft::shared_ptr&lt;<a class="el" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a>&gt; ft::irc::user::layer</td>
         </tr>
       </table>
   </td>

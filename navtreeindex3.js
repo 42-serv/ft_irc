@@ -1,5 +1,12 @@
 var NAVTREEINDEX3 =
 {
+"message__decoder_8hpp.html":[6,0,13],
+"message__decoder_8hpp_source.html":[6,0,13],
+"message__encoder_8hpp.html":[6,0,14],
+"message__encoder_8hpp_source.html":[6,0,14],
+"namespaceft.html":[4,0,0],
+"namespaceft_1_1irc.html":[4,0,0,0],
+"namespaceft_1_1irc.html#a9036d887eb28cf0fe185eea0a70d1844":[4,0,0,0,46],
 "namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931":[4,0,0,0,45],
 "namespaceft_1_1irc.html#aa1775a5000d1e48b0418ea5a01f71b87":[4,0,0,0,47],
 "namespaceft_1_1irc_1_1__internal.html":[4,0,0,0,0],
@@ -12,8 +19,8 @@ var NAVTREEINDEX3 =
 "namespaceft_1_1irc_1_1__internal.html#ac09c58af01ac5157df95267114af820a":[4,0,0,0,0,7],
 "namespaceft_1_1irc_1_1__internal.html#ac421a738f6d955bab8b862fca8bd7159":[4,0,0,0,0,1],
 "namespaceft_1_1serv.html":[4,0,0,1],
-"namespaceft_1_1serv.html#a0fe84f8852be2408536897bbd263e422":[4,0,0,1,32],
 "namespaceft_1_1serv.html#a0fe84f8852be2408536897bbd263e422":[4,0,0,1,33],
+"namespaceft_1_1serv.html#a0fe84f8852be2408536897bbd263e422":[4,0,0,1,32],
 "namespaceft_1_1serv.html#a1aa2c1656fd49d111e86ff4c147bc938":[4,0,0,1,25],
 "namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492":[4,0,0,1,28],
 "namespaceft_1_1serv.html#a6b9b992a67fd257c9e6959a4f694f649":[4,0,0,1,26],
@@ -242,12 +249,5 @@ var NAVTREEINDEX3 =
 "structft_1_1irc_1_1make__reply.html#afac30180f3a3fcdbcddc6770412fad1c":[5,0,0,0,37,35],
 "structft_1_1irc_1_1make__reply__base.html":[5,0,0,0,32],
 "structft_1_1irc_1_1make__reply__base.html#a0286978513d0078fa15b5a0b68b326a4":[5,0,0,0,32,1],
-"structft_1_1irc_1_1make__reply__base.html#a05d12bbf99ce4c8fde3cbb731135ff26":[5,0,0,0,32,3],
-"structft_1_1irc_1_1make__reply__base.html#a488f2be061e722bd858d7285d1028eaf":[5,0,0,0,32,2],
-"structft_1_1irc_1_1make__reply__base.html#a4bff1ff2c182cbae371580c28eec8ebb":[5,0,0,0,32,5],
-"structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a":[5,0,0,0,32,0],
-"structft_1_1irc_1_1make__reply__base.html#a6295b9a03bb340fa27aaf771fddb4cf8":[5,0,0,0,32,4],
-"structft_1_1irc_1_1make__reply__base.html#a8486749dd928630daafd95efc72b8dec":[5,0,0,0,32,6],
-"structft_1_1irc_1_1member__info.html":[5,0,0,0,36],
-"structft_1_1irc_1_1member__info.html#a3f6304abbcdf421f22e56280cb86ff62":[5,0,0,0,36,0]
+"structft_1_1irc_1_1make__reply__base.html#a05d12bbf99ce4c8fde3cbb731135ff26":[5,0,0,0,32,3]
 };
