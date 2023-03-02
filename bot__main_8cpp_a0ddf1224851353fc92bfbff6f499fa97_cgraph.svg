@@ -59,8 +59,8 @@ var sectionId = 'dynsection-1';
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="0,-104 0,-123 41,-123 41,-104 0,-104"/>
-<text text-anchor="middle" x="20.5" y="-111" font-family="Helvetica,sans-Serif" font-size="10.00">main</text>
+<polygon fill="#bfbfbf" stroke="black" points="0,-128 0,-147 41,-147 41,-128 0,-128"/>
+<text text-anchor="middle" x="20.5" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00">main</text>
 </a>
 </g>
 </g>
@@ -68,189 +68,205 @@ var sectionId = 'dynsection-1';
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="namespaceft_1_1irc.html#a9036d887eb28cf0fe185eea0a70d1844" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="82,-148 82,-167 194,-167 194,-148 82,-148"/>
-<text text-anchor="middle" x="138" y="-155" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::_make_client</text>
+<polygon fill="white" stroke="black" points="82,-197 82,-216 194,-216 194,-197 82,-197"/>
+<text text-anchor="middle" x="138" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::_make_client</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M41.11,-122.47C51.65,-127.17 64.94,-132.89 77,-137.5 83.41,-139.95 90.26,-142.39 96.97,-144.69"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="96.01,-148.06 106.6,-147.93 98.24,-141.43 96.01,-148.06"/>
+<path fill="none" stroke="midnightblue" d="M29.96,-147.33C40.1,-158.52 58.09,-176.67 77,-187.5 80.68,-189.61 84.62,-191.51 88.67,-193.23"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="87.61,-196.57 98.2,-196.89 90.12,-190.04 87.61,-196.57"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="classft_1_1serv_1_1bootstrap.html#acd923d6b838022038f437dad3e58abf0" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="87,-98.5 87,-128.5 189,-128.5 189,-98.5 87,-98.5"/>
-<text text-anchor="start" x="95" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::bootstrap</text>
-<text text-anchor="middle" x="138" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_client</text>
+<g id="a_node3"><a xlink:href="classft_1_1serv_1_1bootstrap.html#aa6e5ff5dc242e571b22a4625e4ad8f5f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="87,-147.5 87,-177.5 189,-177.5 189,-147.5 87,-147.5"/>
+<text text-anchor="start" x="95" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::bootstrap</text>
+<text text-anchor="middle" x="138" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_success</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node1&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M41.09,-113.5C51.05,-113.5 63.74,-113.5 76.6,-113.5"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="76.91,-117 86.91,-113.5 76.91,-110 76.91,-117"/>
+<path fill="none" stroke="midnightblue" d="M41.09,-141.74C51.15,-143.92 63.99,-146.7 76.99,-149.51"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="76.4,-152.96 86.91,-151.66 77.88,-146.12 76.4,-152.96"/>
 </g>
-<!-- Node13 -->
-<g id="node13" class="node">
-<title>Node13</title>
-<g id="a_node13"><a xlink:href="classft_1_1serv_1_1syscall__failed.html#a75eee00e267e027bb79a3de94a408bf1" target="_top" xlink:title=" ">
+<!-- Node4 -->
+<g id="node4" class="node">
+<title>Node4</title>
+<g id="a_node4"><a xlink:href="classft_1_1serv_1_1bootstrap.html#acd923d6b838022038f437dad3e58abf0" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="87,-98.5 87,-128.5 189,-128.5 189,-98.5 87,-98.5"/>
+<text text-anchor="start" x="95" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::bootstrap</text>
+<text text-anchor="middle" x="138" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::start_client</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node4 -->
+<g id="edge3" class="edge">
+<title>Node1&#45;&gt;Node4</title>
+<path fill="none" stroke="midnightblue" d="M41.09,-133.43C51.15,-131.34 63.99,-128.67 76.99,-125.97"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="77.83,-129.37 86.91,-123.91 76.41,-122.52 77.83,-129.37"/>
+</g>
+<!-- Node14 -->
+<g id="node14" class="node">
+<title>Node14</title>
+<g id="a_node14"><a xlink:href="classft_1_1serv_1_1syscall__failed.html#a75eee00e267e027bb79a3de94a408bf1" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="77,-49.5 77,-79.5 199,-79.5 199,-49.5 77,-49.5"/>
 <text text-anchor="start" x="85" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::syscall_failed</text>
 <text text-anchor="middle" x="138" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::what</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node13 -->
-<g id="edge12" class="edge">
-<title>Node1&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M41.19,-104.38C51.76,-99.55 65.04,-93.58 77,-88.5 80.89,-86.85 84.94,-85.16 89.01,-83.48"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="90.55,-86.64 98.49,-79.62 87.91,-80.15 90.55,-86.64"/>
+<!-- Node1&#45;&gt;Node14 -->
+<g id="edge13" class="edge">
+<title>Node1&#45;&gt;Node14</title>
+<path fill="none" stroke="midnightblue" d="M30.52,-127.74C40.89,-116.97 58.83,-99.69 77,-88.5 79.59,-86.9 82.31,-85.38 85.09,-83.92"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="86.68,-87.04 94.15,-79.53 83.63,-80.74 86.68,-87.04"/>
 </g>
-<!-- Node4 -->
-<g id="node4" class="node">
-<title>Node4</title>
-<g id="a_node4"><a xlink:href="bootstrap_8cpp.html#acf03e66a45bc7cc346d17d294290c024" target="_top" xlink:title=" ">
+<!-- Node5 -->
+<g id="node5" class="node">
+<title>Node5</title>
+<g id="a_node5"><a xlink:href="bootstrap_8cpp.html#acf03e66a45bc7cc346d17d294290c024" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="239.5,-197 239.5,-216 343.5,-216 343.5,-197 239.5,-197"/>
 <text text-anchor="middle" x="291.5" y="-204" font-family="Helvetica,sans-Serif" font-size="10.00">_to_c_str_nullable</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node4 -->
-<g id="edge3" class="edge">
-<title>Node3&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M183.17,-128.6C188.77,-131.45 194.21,-134.74 199,-138.5 220.25,-155.2 213.22,-171.5 235,-187.5 237.63,-189.43 240.46,-191.17 243.42,-192.75"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="241.99,-195.94 252.54,-196.98 244.94,-189.6 241.99,-195.94"/>
+<!-- Node4&#45;&gt;Node5 -->
+<g id="edge4" class="edge">
+<title>Node4&#45;&gt;Node5</title>
+<path fill="none" stroke="midnightblue" d="M184.75,-128.56C189.8,-131.14 194.67,-134.11 199,-137.5 220.57,-154.37 213.01,-171.18 235,-187.5 237.5,-189.35 240.19,-191.03 242.99,-192.56"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="241.68,-195.81 252.22,-196.9 244.66,-189.48 241.68,-195.81"/>
 </g>
-<!-- Node5 -->
-<g id="node5" class="node">
-<title>Node5</title>
-<g id="a_node5"><a xlink:href="structft_1_1serv_1_1socket__utils.html#ad0dccc18b1c71b736ffcd2328c3f3ccd" target="_top" xlink:title=" ">
+<!-- Node6 -->
+<g id="node6" class="node">
+<title>Node6</title>
+<g id="a_node6"><a xlink:href="structft_1_1serv_1_1socket__utils.html#ad0dccc18b1c71b736ffcd2328c3f3ccd" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="235,-147.5 235,-177.5 348,-177.5 348,-147.5 235,-147.5"/>
 <text text-anchor="start" x="243" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::socket_utils</text>
 <text text-anchor="middle" x="291.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::close_socket</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node5 -->
-<g id="edge4" class="edge">
-<title>Node3&#45;&gt;Node5</title>
+<!-- Node4&#45;&gt;Node6 -->
+<g id="edge5" class="edge">
+<title>Node4&#45;&gt;Node6</title>
 <path fill="none" stroke="midnightblue" d="M185.69,-128.6C201.03,-133.56 218.24,-139.13 234.21,-144.29"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="233.37,-147.7 243.96,-147.45 235.53,-141.04 233.37,-147.7"/>
 </g>
-<!-- Node6 -->
-<g id="node6" class="node">
-<title>Node6</title>
-<g id="a_node6"><a xlink:href="structft_1_1serv_1_1socket__utils.html#a56120e0cd1c6aef9b5bef57bc37b85eb" target="_top" xlink:title=" ">
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="structft_1_1serv_1_1socket__utils.html#a56120e0cd1c6aef9b5bef57bc37b85eb" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="235,-98.5 235,-128.5 348,-128.5 348,-98.5 235,-98.5"/>
 <text text-anchor="start" x="243" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::socket_utils</text>
 <text text-anchor="middle" x="291.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::connect_socket</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node6 -->
-<g id="edge5" class="edge">
-<title>Node3&#45;&gt;Node6</title>
+<!-- Node4&#45;&gt;Node7 -->
+<g id="edge6" class="edge">
+<title>Node4&#45;&gt;Node7</title>
 <path fill="none" stroke="midnightblue" d="M189.03,-113.5C200.36,-113.5 212.56,-113.5 224.44,-113.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="224.77,-117 234.77,-113.5 224.77,-110 224.77,-117"/>
 </g>
-<!-- Node10 -->
-<g id="node10" class="node">
-<title>Node10</title>
-<g id="a_node10"><a xlink:href="structft_1_1serv_1_1socket__utils.html#af26c480a74e72a232aca84cd17e2de61" target="_top" xlink:title=" ">
+<!-- Node11 -->
+<g id="node11" class="node">
+<title>Node11</title>
+<g id="a_node11"><a xlink:href="structft_1_1serv_1_1socket__utils.html#af26c480a74e72a232aca84cd17e2de61" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="235,-49.5 235,-79.5 348,-79.5 348,-49.5 235,-49.5"/>
 <text text-anchor="start" x="243" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::socket_utils</text>
 <text text-anchor="middle" x="291.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::name_socket</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node10 -->
-<g id="edge9" class="edge">
-<title>Node3&#45;&gt;Node10</title>
+<!-- Node4&#45;&gt;Node11 -->
+<g id="edge10" class="edge">
+<title>Node4&#45;&gt;Node11</title>
 <path fill="none" stroke="midnightblue" d="M185.69,-98.4C201.03,-93.44 218.24,-87.87 234.21,-82.71"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="235.53,-85.96 243.96,-79.55 233.37,-79.3 235.53,-85.96"/>
 </g>
-<!-- Node12 -->
-<g id="node12" class="node">
-<title>Node12</title>
-<g id="a_node12"><a xlink:href="structft_1_1serv_1_1socket__utils.html#a818575bfd7756e64e4226b85a7492bc7" target="_top" xlink:title=" ">
+<!-- Node13 -->
+<g id="node13" class="node">
+<title>Node13</title>
+<g id="a_node13"><a xlink:href="structft_1_1serv_1_1socket__utils.html#a818575bfd7756e64e4226b85a7492bc7" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="235,-0.5 235,-30.5 348,-30.5 348,-0.5 235,-0.5"/>
 <text text-anchor="start" x="243" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::socket_utils</text>
 <text text-anchor="middle" x="291.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::set_nonblocking</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node12 -->
-<g id="edge11" class="edge">
-<title>Node3&#45;&gt;Node12</title>
+<!-- Node4&#45;&gt;Node13 -->
+<g id="edge12" class="edge">
+<title>Node4&#45;&gt;Node13</title>
 <path fill="none" stroke="midnightblue" d="M183.17,-98.4C188.77,-95.55 194.21,-92.26 199,-88.5 220.25,-71.8 213.86,-56.34 235,-39.5 236.57,-38.25 238.22,-37.05 239.92,-35.91"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="242,-38.74 248.79,-30.6 238.41,-32.73 242,-38.74"/>
 </g>
-<!-- Node7 -->
-<g id="node7" class="node">
-<title>Node7</title>
-<g id="a_node7"><a xlink:href="structft_1_1serv_1_1socket__utils.html#af1553b9c3e9cdc5e38f7ecf6c10fb3c1" target="_top" xlink:title=" ">
+<!-- Node8 -->
+<g id="node8" class="node">
+<title>Node8</title>
+<g id="a_node8"><a xlink:href="structft_1_1serv_1_1socket__utils.html#af1553b9c3e9cdc5e38f7ecf6c10fb3c1" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="384,-147.5 384,-177.5 497,-177.5 497,-147.5 384,-147.5"/>
 <text text-anchor="start" x="392" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::socket_utils</text>
 <text text-anchor="middle" x="440.5" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::forward_lookup</text>
 </a>
 </g>
 </g>
-<!-- Node6&#45;&gt;Node7 -->
-<g id="edge6" class="edge">
-<title>Node6&#45;&gt;Node7</title>
+<!-- Node7&#45;&gt;Node8 -->
+<g id="edge7" class="edge">
+<title>Node7&#45;&gt;Node8</title>
 <path fill="none" stroke="midnightblue" d="M337.8,-128.6C352.54,-133.51 369.07,-139.02 384.44,-144.15"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="383.75,-147.61 394.35,-147.45 385.97,-140.97 383.75,-147.61"/>
 </g>
-<!-- Node9 -->
-<g id="node9" class="node">
-<title>Node9</title>
-<g id="a_node9"><a xlink:href="structft_1_1serv_1_1socket__utils.html#aae3d021284dea2fa5ae81820b522cfe4" target="_top" xlink:title=" ">
+<!-- Node10 -->
+<g id="node10" class="node">
+<title>Node10</title>
+<g id="a_node10"><a xlink:href="structft_1_1serv_1_1socket__utils.html#aae3d021284dea2fa5ae81820b522cfe4" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="384,-98.5 384,-128.5 497,-128.5 497,-98.5 384,-98.5"/>
 <text text-anchor="start" x="392" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::socket_utils</text>
 <text text-anchor="middle" x="440.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">::nosigpipe_connect</text>
 </a>
 </g>
 </g>
-<!-- Node6&#45;&gt;Node9 -->
-<g id="edge8" class="edge">
-<title>Node6&#45;&gt;Node9</title>
+<!-- Node7&#45;&gt;Node10 -->
+<g id="edge9" class="edge">
+<title>Node7&#45;&gt;Node10</title>
 <path fill="none" stroke="midnightblue" d="M348.07,-113.5C356.49,-113.5 365.24,-113.5 373.84,-113.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="373.85,-117 383.85,-113.5 373.85,-110 373.85,-117"/>
 </g>
-<!-- Node8 -->
-<g id="node8" class="node">
-<title>Node8</title>
-<g id="a_node8"><a xlink:href="classft_1_1serv_1_1__internal_1_1ai__failed.html#ad3aa900794508d370ef6e1b3c104a39e" target="_top" xlink:title=" ">
+<!-- Node9 -->
+<g id="node9" class="node">
+<title>Node9</title>
+<g id="a_node9"><a xlink:href="classft_1_1serv_1_1__internal_1_1ai__failed.html#ad3aa900794508d370ef6e1b3c104a39e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="533,-147.5 533,-177.5 631,-177.5 631,-147.5 533,-147.5"/>
 <text text-anchor="start" x="541" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::_internal</text>
 <text text-anchor="middle" x="582" y="-154.5" font-family="Helvetica,sans-Serif" font-size="10.00">::ai_failed::error</text>
 </a>
 </g>
 </g>
-<!-- Node7&#45;&gt;Node8 -->
-<g id="edge7" class="edge">
-<title>Node7&#45;&gt;Node8</title>
+<!-- Node8&#45;&gt;Node9 -->
+<g id="edge8" class="edge">
+<title>Node8&#45;&gt;Node9</title>
 <path fill="none" stroke="midnightblue" d="M497.03,-162.5C505.46,-162.5 514.18,-162.5 522.66,-162.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="522.86,-166 532.86,-162.5 522.86,-159 522.86,-166"/>
 </g>
-<!-- Node11 -->
-<g id="node11" class="node">
-<title>Node11</title>
-<g id="a_node11"><a xlink:href="structft_1_1serv_1_1socket__utils.html#aef0594e2d9bdc8b8e15bcab89950e093" target="_top" xlink:title=" ">
+<!-- Node12 -->
+<g id="node12" class="node">
+<title>Node12</title>
+<g id="a_node12"><a xlink:href="structft_1_1serv_1_1socket__utils.html#aef0594e2d9bdc8b8e15bcab89950e093" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="384,-49.5 384,-79.5 497,-79.5 497,-49.5 384,-49.5"/>
 <text text-anchor="start" x="392" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::socket_utils</text>
 <text text-anchor="middle" x="440.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">::reverse_lookup</text>
 </a>
 </g>
 </g>
-<!-- Node10&#45;&gt;Node11 -->
-<g id="edge10" class="edge">
-<title>Node10&#45;&gt;Node11</title>
+<!-- Node11&#45;&gt;Node12 -->
+<g id="edge11" class="edge">
+<title>Node11&#45;&gt;Node12</title>
 <path fill="none" stroke="midnightblue" d="M348.07,-64.5C356.49,-64.5 365.24,-64.5 373.84,-64.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="373.85,-68 383.85,-64.5 373.85,-61 373.85,-68"/>
 </g>
