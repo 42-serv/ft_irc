@@ -49,13 +49,14 @@ int main(int argc, char* argv[])
             if (!boot.start_client(argv[1], argv[2], &bot))
             {
                 std::cerr << "bind failed. Is host \"" << argv[1] << "\" or port \"" << argv[2] << "\" wrong?" << std::endl;
-                child_group->shutdown_all();
+                return 1;
             }
+            boot.set_success();
         }
         catch (const ft::serv::syscall_failed& e)
         {
             std::cerr << "bind failed. System error occured: " << e.what() << std::endl;
-            child_group->shutdown_all();
+            return 1;
         }
     }
     return 0;
