@@ -42,14 +42,9 @@ namespace ft
             void on_read(ft::serv::event_layer&, ft::shared_ptr<void> arg)
             {
                 ft::shared_ptr<ft::irc::message> message = ft::static_pointer_cast<ft::irc::message>(arg);
-                if (!this->user)
-                {
-                    ft::serv::logger::debug(__PRETTY_FUNCTION__ + (" : " + message->to_pretty_string()));
-                    return;
-                }
                 ft::irc::processor_dictionary::execute(*this->user, *message);
 
-                // ft::serv::logger::debug(__PRETTY_FUNCTION__ + (" : " + message->to_pretty_string()));
+                ft::serv::logger::debug(__PRETTY_FUNCTION__ + (" : " + message->to_pretty_string()));
             }
 
             void on_read_complete(ft::serv::event_layer&)
@@ -66,11 +61,7 @@ namespace ft
 
             void on_inactive(ft::serv::event_layer&)
             {
-                if (this->user)
-                {
-                    this->user->deregister_from_server();
-                    this->user.reset();
-                }
+                this->user->deregister_from_server();
 
                 ft::serv::logger::debug(__PRETTY_FUNCTION__);
             }
