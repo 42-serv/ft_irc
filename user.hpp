@@ -43,20 +43,22 @@ namespace ft
             };
 
             typedef ft::serv::dynamic_array<std::string>::type channel_list;
+            typedef ft::serv::dynamic_array<ft::shared_ptr<channel>::element_type*>::type invite_list;
 
         private:
             ft::irc::server& server;
-            ft::serv::event_layer& layer;
+            ft::shared_ptr<ft::serv::event_layer> layer;
             std::string nick;
             std::string username;
             std::string realname;
             channel_list channels;
+            invite_list invites;
             std::bitset<NUMBEROF_USER_MODE> mode;
             std::bitset<NUMBEROF_REGISTER_STATE> registered_state;
             mutable ft::readwrite_lock lock;
 
         public:
-            user(ft::irc::server& server, ft::serv::event_layer& layer);
+            user(ft::irc::server& server, const ft::shared_ptr<ft::serv::event_layer>& layer);
             ~user();
 
         public:
@@ -92,6 +94,10 @@ namespace ft
             bool is_channel_member(const std::string& channelname) const throw();
             void join_channel(const std::string& channelname);
             void part_channel(const std::string& channelname);
+
+            bool contains_invite(const ft::shared_ptr<channel>& channel);
+            void add_invite(const ft::shared_ptr<channel>& channel);
+            void remove_invite(const ft::shared_ptr<channel>& channel);
 
         public:
             void send_message(const ft::irc::message& message) const;

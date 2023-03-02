@@ -18,7 +18,7 @@
 #include <bitset>
 #include <string>
 
-ft::irc::user::user(ft::irc::server& server, ft::serv::event_layer& layer)
+ft::irc::user::user(ft::irc::server& server, const ft::shared_ptr<ft::serv::event_layer>& layer)
     : server(server),
       layer(layer),
       nick(),
@@ -102,7 +102,7 @@ std::string ft::irc::user::load_username() const throw()
 
 const std::string& ft::irc::user::get_hostname() const throw()
 {
-    return this->layer.get_host();
+    return this->layer->get_host();
 }
 
 std::string ft::irc::user::make_full_name() const throw()
@@ -142,7 +142,7 @@ void ft::irc::user::set_mode(user_mode index, bool value) throw()
 
 // void ft::irc::user::post_set_mode(user_mode index, bool value)
 // {
-//     this->layer.invoke_task(ft::make_shared<task_user_set_mode>(this->shared_from_this(), index, value));
+//     this->layer->invoke_task(ft::make_shared<task_user_set_mode>(this->shared_from_this(), index, value));
 // }
 
 bool ft::irc::user::get_register_state(register_state index) const throw()
@@ -274,10 +274,39 @@ void ft::irc::user::part_channel(const std::string& channelname)
     }
 }
 
+bool ft::irc::user::contains_invite(const ft::shared_ptr<channel>& channel)
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return std::find(this->invites.begin(), this->invites.end(), channel.get()) != this->invites.end();
+    }
+}
+
+void ft::irc::user::add_invite(const ft::shared_ptr<channel>& channel)
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->invites.push_back(channel.get());
+    }
+}
+
+void ft::irc::user::remove_invite(const ft::shared_ptr<channel>& channel)
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        invite_list::iterator it = std::find(this->invites.begin(), this->invites.end(), channel.get());
+
+        if (it != this->invites.end())
+        {
+            this->invites.erase(it);
+        }
+    }
+}
+
 void ft::irc::user::send_message(const ft::irc::message& message) const
 {
-    this->layer.post_write(ft::make_shared<ft::irc::message>(message));
-    this->layer.post_flush();
+    this->layer->post_write(ft::make_shared<ft::irc::message>(message));
+    this->layer->post_flush();
 }
 
 void ft::irc::user::notify_message(const ft::irc::message& message) const
@@ -297,7 +326,7 @@ void ft::irc::user::notify_message(const ft::irc::message& message) const
 
 void ft::irc::user::exit_client() const
 {
-    this->layer.post_disconnect();
+    this->layer->post_disconnect();
 }
 
 ft::irc::user::pred_equals_nick::pred_equals_nick(const std::string& nick) throw()

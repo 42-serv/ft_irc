@@ -34,7 +34,7 @@ namespace ft
         private:
             void on_active(ft::serv::event_layer& layer)
             {
-                this->user = ft::make_shared<ft::irc::user>(server, layer);
+                this->user = ft::make_shared<ft::irc::user>(server, layer.shared_from_channel());
 
                 ft::serv::logger::debug(__PRETTY_FUNCTION__);
             }
