@@ -379,7 +379,7 @@ AUTOLINK_SUPPORT       = YES
 # diagrams that involve STL classes more complete and accurate.
 # The default value is: NO.
 
-BUILTIN_STL_SUPPORT    = YES
+BUILTIN_STL_SUPPORT    = NO
 
 # If you use Microsoft's C++/CLI language, you should set this option to YES to
 # enable parsing support.
@@ -1714,7 +1714,6 @@ GRAPHICAL_HIERARCHY    = YES
 DIRECTORY_GRAPH        = YES
 DOT_IMAGE_FORMAT       = svg
 INTERACTIVE_SVG        = YES
-DOT_PATH               = /opt/homebrew/bin/dot
 DOTFILE_DIRS           = 
 MSCFILE_DIRS           = 
 DIAFILE_DIRS           = 
@@ -1739,7 +1738,6 @@ GENERATE_LATEX = NO
 GENERATE_TREEVIEW      = YES # optional. Also works without treeview
 DISABLE_INDEX = NO
 FULL_SIDEBAR = NO
-HTML
 HTML_EXTRA_STYLESHEET = .doxygen-awesome-css/doxygen-awesome.css      \
                         .doxygen-awesome-css/doxygen-awesome-sidebar-only-darkmode-toggle.css 
 
