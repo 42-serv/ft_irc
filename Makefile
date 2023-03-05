@@ -90,3 +90,7 @@ depsclean:
 
 depsre:
 	$(MAKE) -C $(LIBSERV) re
+
+allre:
+	$(MAKE) depsre
+	$(MAKE) re
