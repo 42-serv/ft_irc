@@ -20,6 +20,33 @@
 ### Bonus part
 
 </div>
+## TODO
+
+### Commands
+
+ - [ ] PASS
+ - [ ] NICK
+ - [ ] USER
+ - [ ] OPER
+ - [ ] QUIT
+ - [ ] JOIN
+ - [ ] PART
+ - [ ] MODE
+ - [ ] TOPIC
+ - [ ] NAMES
+ - [ ] LIST
+ - [ ] INVITE
+ - [ ] KICK
+ - [ ] PRIVMSG
+ - [ ] NOTICE
+ - [ ] WHO
+ - [ ] WHOIS
+ - [ ] WHOWAS
+ - [ ] KILL
+ - [ ] PING
+ - [ ] PONG
+ - [ ] ERROR
+
 
 ## OS support
 
