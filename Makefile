@@ -62,6 +62,10 @@ ifdef DEBUG
 	CXXFLAGS += -g3 -O0
 endif
 
+ifdef MJ
+	CXXFLAGS += -MJ $@.part.json
+endif
+
 all: $(TARGET) $(BOT_TARGET)
 clean: cleanobj cleanbin
 cleanobj:	;	$(RM) -r $(OBJECTS_DIR)
