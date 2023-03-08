@@ -121,7 +121,14 @@ void ft::irc::processor_dictionary::execute(ft::irc::user& user, const ft::irc::
 
     if (!processor)
     {
-        user.send_message(ft::irc::make_error::unknown_command(command));
+        if (user.is_registered())
+        {
+            user.send_message(ft::irc::make_error::unknown_command(command));
+        }
+        else
+        {
+            // NOTE: suspicious
+        }
         return;
     }
 

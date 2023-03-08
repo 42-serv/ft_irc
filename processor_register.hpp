@@ -80,10 +80,13 @@ namespace ft
 
                 user.set_register_state(ft::irc::user::REGISTER_STATE_NICK, true);
 
-                if (!user.is_registered() && user.get_register_state(ft::irc::user::REGISTER_STATE_USER))
+                if (!user.is_registered())
                 {
-                    // first
-                    user.register_to_server();
+                    if (user.get_register_state(ft::irc::user::REGISTER_STATE_USER))
+                    {
+                        // first
+                        user.register_to_server();
+                    }
                 }
                 else
                 {
