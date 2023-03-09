@@ -9,5 +9,7 @@ var namespaceft_1_1serv_1_1__internal =
     [ "forward_reference< volatile T & >", "structft_1_1serv_1_1__internal_1_1forward__reference_3_01volatile_01T_01_6_01_4.html", "structft_1_1serv_1_1__internal_1_1forward__reference_3_01volatile_01T_01_6_01_4" ],
     [ "forward_reference< const volatile T & >", "structft_1_1serv_1_1__internal_1_1forward__reference_3_01const_01volatile_01T_01_6_01_4.html", "structft_1_1serv_1_1__internal_1_1forward__reference_3_01const_01volatile_01T_01_6_01_4" ],
     [ "_lock", "namespaceft_1_1serv_1_1__internal.html#a63a294827dc9ef4ff10f32ce57100d0e", null ],
-    [ "_unlock", "namespaceft_1_1serv_1_1__internal.html#aae0ea811c4ad37b4a62ce40961caaad3", null ]
+    [ "_unlock", "namespaceft_1_1serv_1_1__internal.html#aae0ea811c4ad37b4a62ce40961caaad3", null ],
+    [ "make_format_string", "namespaceft_1_1serv_1_1__internal.html#a909a2a84f5b086a5535cf537c8aca885", null ],
+    [ "make_utc_string", "namespaceft_1_1serv_1_1__internal.html#aad4af39d62c2b1687b0bef7a91bf6c60", null ]
 ];

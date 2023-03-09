@@ -115,17 +115,22 @@ $(document).ready(function(){initNavTree('logger_8hpp.html',''); initResizable()
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">logger.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<div class="textblock"><code>#include &lt;cstdarg&gt;</code><br />
+<code>#include &lt;ctime&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;cassert&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for logger.hpp:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="logger_8hpp__incl.svg" width="207" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="logger_8hpp__incl.svg" width="544" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -148,11 +153,20 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceft_1_1serv"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv.html">ft::serv</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespaceft_1_1serv_1_1__internal"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv_1_1__internal.html">ft::serv::_internal</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a8875baf2896a2e0e588d3b58d1a8d64a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8hpp.html#a8875baf2896a2e0e588d3b58d1a8d64a">FT_SERV_WRITE_LOG</a>(msg)&#160;&#160;&#160;std::cout &lt;&lt; msg &lt;&lt; std::endl</td></tr>
+<tr class="memitem:a8875baf2896a2e0e588d3b58d1a8d64a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8hpp.html#a8875baf2896a2e0e588d3b58d1a8d64a">FT_SERV_WRITE_LOG</a>(msg)&#160;&#160;&#160;std::cout &lt;&lt; msg</td></tr>
 <tr class="separator:a8875baf2896a2e0e588d3b58d1a8d64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aad4af39d62c2b1687b0bef7a91bf6c60"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv_1_1__internal.html#aad4af39d62c2b1687b0bef7a91bf6c60">ft::serv::_internal::make_utc_string</a> ()</td></tr>
+<tr class="separator:aad4af39d62c2b1687b0bef7a91bf6c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a909a2a84f5b086a5535cf537c8aca885"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv_1_1__internal.html#a909a2a84f5b086a5535cf537c8aca885">ft::serv::_internal::make_format_string</a> (const char *format, va_list &amp;ap)</td></tr>
+<tr class="separator:a909a2a84f5b086a5535cf537c8aca885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a8875baf2896a2e0e588d3b58d1a8d64a"></a>
@@ -166,7 +180,7 @@ Macros</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">msg</td><td>)</td>
-          <td>&#160;&#160;&#160;std::cout &lt;&lt; msg &lt;&lt; std::endl</td>
+          <td>&#160;&#160;&#160;std::cout &lt;&lt; msg</td>
         </tr>
       </table>
 </div><div class="memdoc">

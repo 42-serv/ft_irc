@@ -9,6 +9,9 @@ var classft_1_1irc_1_1channel =
       [ "CHANNEL_MODE_TOPIC_LIMIT", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050abb476e4c1d5020bfd4c5059d9f77d1f6", null ],
       [ "CHANNEL_MODE_INVITE_ONLY", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a0aa7cb1c06f4e8f10b16f64b72d5c802", null ],
       [ "CHANNEL_MODE_NO_PRIVMSG", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a12c3cfa0a8dd00cf0aa1533848ba0b6d", null ],
+      [ "CHANNEL_MODE_KEY", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a70ed95b051246875f3d3117ea23e803d", null ],
+      [ "CHANNEL_MODE_BAN", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a8c529f91a4d5111dd16b85105930386e", null ],
+      [ "CHANNEL_MODE_LIMIT", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a795e5bbdb8205c14782aab40fabfc9c6", null ],
       [ "NUMBEROF_CHANNEL_MODE", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050af82c2bb204aac379828d35e2707c55c6", null ]
     ] ],
     [ "channel", "classft_1_1irc_1_1channel.html#aa812c5a6cfc904a4330456de28701816", null ],
@@ -21,6 +24,7 @@ var classft_1_1irc_1_1channel =
     [ "get_mode", "classft_1_1irc_1_1channel.html#a12e5601d953c913418b0d5d9f64721fc", null ],
     [ "get_name", "classft_1_1irc_1_1channel.html#a5bbaa158b69ee9de49c3402cb76c7e09", null ],
     [ "get_topic", "classft_1_1irc_1_1channel.html#aa46cff5971a7b8071c62fef501814fc3", null ],
+    [ "invite_user", "classft_1_1irc_1_1channel.html#aefa6a88b657202d4f748e9d37353e6bf", null ],
     [ "leave_user", "classft_1_1irc_1_1channel.html#a234b5979ee6b122dec7f2de82614c02a", null ],
     [ "load_mode", "classft_1_1irc_1_1channel.html#a01d060ed582406cbe40ec0889408d5b2", null ],
     [ "load_topic", "classft_1_1irc_1_1channel.html#a9dc33679c51d9af9cc251bbdac49f30c", null ],
