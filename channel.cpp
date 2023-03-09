@@ -99,8 +99,15 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
             return ft::irc::ERR_NOSUCHCHANNEL;
         }
 
+        // TODO: ERR_CHANNELISFULL
+        if (this->get_mode(CHANNEL_MODE_INVITE_ONLY) && user->contains_invite(this->shared_from_this()))
+        {
+            return ft::irc::ERR_INVITEONLYCHAN;
+        }
+        // TODO: ERR_BANNEDFROMCHAN
+        // TODO: ERR_BADCHANNELKEY
+
         const bool first = this->members.empty();
-        // TODO: check invite, limit, key, ban
 
         member_list::iterator it = this->members.insert(this->members.end(), member(user));
         if (first)
@@ -110,7 +117,6 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
             it->user->send_message(ft::irc::message("NOTICE") >> "ft_irc"
                                                                      << "You're new owner.");
         }
-        it->user->send_message(ft::irc::make_reply::topic(this->name, this->topic));
     }
     return ft::irc::RPL_NONE;
 }

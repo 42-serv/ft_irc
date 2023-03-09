@@ -86,5 +86,8 @@ int main(int argc, char* argv[])
         std::cerr << "bind failed. System error occured: " << e.what() << std::endl;
     }
     boot.finalize();
+    std::cerr << "FINAL" << std::endl;
+    boss_group.reset();
+    child_group.reset();
     return EXIT_SUCCESS;
 }

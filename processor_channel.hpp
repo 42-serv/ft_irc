@@ -66,8 +66,12 @@ namespace ft
                     {
                         user.join_channel(channelname);
                         channel->broadcast(ft::irc::make_reply::replicate(message));
-                        // TODO: Delete invite list
-                        // TODO: send TOPIC if not empty
+                        user.remove_invite(channel);
+                        std::string topic = channel->load_topic();
+                        if (!topic.empty())
+                        {
+                            user.send_message(ft::irc::make_reply::topic(channel->get_name(), topic));
+                        }
                         // TODO: NAMES
                     }
                     else
@@ -144,12 +148,105 @@ namespace ft
         class processor_mode : public ft::irc::processor_base
         {
         public:
-            std::size_t get_min_params() const throw() { return 1; }
+            std::size_t get_min_params() const throw() { return 2; }
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                ft::irc::server& server = user.get_server();
+                const std::string& target_name = message[0];
+                if (ft::irc::string_utils::is_valid_channelname(target_name))
+                {
+                    ft::shared_ptr<ft::irc::channel> channel = server.find_channel(target_name);
+                    if (message.param_size() == this->get_min_params())
+                    {
+                        // Read only
+                    }
+                    else
+                    {
+                        this->update_channel_mode(channel, message);
+                    }
+                }
+                else
+                {
+                }
+            }
+
+            void update_channel_mode(const ft::shared_ptr<ft::irc::channel>& channel, const ft::irc::message& message) const
+            {
+                const std::string& mode_str = message[1];
+                enum
+                {
+                    NONE,
+                    ADD,
+                    REMOVE
+                } state = NONE;
+                std::size_t param_index = this->get_min_params();
+                foreach (std::string::const_iterator, it, mode_str)
+                {
+                    std::string::value_type c = *it;
+                    if (c == '+')
+                    {
+                        state = ADD;
+                    }
+                    else if (c == '-')
+                    {
+                        state = REMOVE;
+                    }
+                    else
+                    {
+                        if (state == NONE)
+                        {
+                            // ERROR!
+                            break;
+                        }
+
+                        bool add = state == ADD;
+                        switch (c)
+                        {
+                        case 'o':
+                            // give/take chanop
+                            break;
+                        case 'p':
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_PRIVATE, add);
+                            break;
+                        case 's':
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_SECRET, add);
+                            break;
+                        case 'i':
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_INVITE_ONLY, add);
+                            break;
+                        case 't':
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_TOPIC_LIMIT, add);
+                            break;
+                        case 'n':
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_NO_PRIVMSG, add);
+                            break;
+                        case 'm':
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_MODERATED, add);
+                            break;
+                        case 'l':
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_LIMIT, add);
+                            // limit
+                            if (message.param_size() < param_index)
+                            {
+                                // 매개변수 부족
+                                break;
+                            }
+                            message[param_index++];
+                            break;
+                        case 'b':
+                            // ban
+                            break;
+                        case 'v':
+                            // give/take speak
+                            break;
+                        case 'k':
+                            // key
+                            break;
+                        }
+                    }
+                }
             }
         };
 
@@ -165,7 +262,6 @@ namespace ft
             {
                 ft::irc::server& server = user.get_server();
                 const std::string& channelname = message[0];
-                const std::string full_name = user.make_full_name();
 
                 ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
                 if (channel)

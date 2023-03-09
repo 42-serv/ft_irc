@@ -36,9 +36,9 @@ namespace ft
                 CHANNEL_MODE_TOPIC_LIMIT,
                 CHANNEL_MODE_INVITE_ONLY,
                 CHANNEL_MODE_NO_PRIVMSG,
-                // CHANNEL_MODE_KEY,
-                // CHANNEL_MODE_BAN,
-                // CHANNEL_MODE_LIMIT,
+                CHANNEL_MODE_KEY,
+                CHANNEL_MODE_BAN,
+                CHANNEL_MODE_LIMIT,
                 NUMBEROF_CHANNEL_MODE
             };
 
@@ -68,6 +68,7 @@ namespace ft
             std::string topic;
             std::bitset<NUMBEROF_CHANNEL_MODE> mode;
             member_list members;
+
             mutable ft::readwrite_lock lock;
             bool invalidated;
 
@@ -89,10 +90,12 @@ namespace ft
             void store_mode(channel_mode index, bool value) throw();
 
         public:
+            ft::irc::reply_numerics change_topic(const ft::shared_ptr<const ft::irc::user>& user, const std::string& new_topic);
+
             ft::irc::reply_numerics enter_user(const ft::shared_ptr<ft::irc::user>& user);
             void leave_user(const ft::shared_ptr<ft::irc::user>& user);
 
-            ft::irc::reply_numerics change_topic(const ft::shared_ptr<const ft::irc::user>& user, const std::string& new_topic);
+            ft::irc::reply_numerics invite_user(const ft::shared_ptr<ft::irc::user>& user);
 
         public:
             void broadcast(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except = ft::shared_ptr<ft::irc::user>()) const;

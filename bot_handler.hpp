@@ -37,7 +37,7 @@ namespace ft
             void on_active(ft::serv::event_layer& layer)
             {
                 static_cast<void>(layer);
-                ft::serv::logger::debug(__PRETTY_FUNCTION__);
+                ft::serv::logger::debug("%s", __PRETTY_FUNCTION__);
 
                 layer.post_write(ft::make_shared<ft::irc::message>(ft::irc::message("PASS") << bot.get_pass()));
                 layer.post_write(ft::make_shared<ft::irc::message>(ft::irc::message("NICK") << bot.get_nick()));
@@ -45,29 +45,31 @@ namespace ft
                 layer.post_flush();
             }
 
-            void on_read(ft::serv::event_layer&, ft::shared_ptr<void> arg)
+            void on_read(ft::serv::event_layer& layer, ft::shared_ptr<void> arg)
             {
                 ft::shared_ptr<ft::irc::message> message = ft::static_pointer_cast<ft::irc::message>(arg);
                 // ft::irc::processor_dictionary::execute(*this->user, *message);
 
-                ft::serv::logger::debug(__PRETTY_FUNCTION__ + (" : " + message->to_pretty_string()));
+                ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, message->to_pretty_string().c_str());
+                layer.post_write(message);
+                layer.post_flush();
             }
 
             void on_read_complete(ft::serv::event_layer&)
             {
-                ft::serv::logger::debug(__PRETTY_FUNCTION__);
+                ft::serv::logger::debug("%s", __PRETTY_FUNCTION__);
             }
 
             void on_error(ft::serv::event_layer& layer, ft::shared_ptr<const std::exception> eptr)
             {
                 layer.post_disconnect();
 
-                ft::serv::logger::debug(__PRETTY_FUNCTION__ + (" : " + std::string(eptr->what())));
+                ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, eptr->what());
             }
 
             void on_inactive(ft::serv::event_layer&)
             {
-                ft::serv::logger::debug(__PRETTY_FUNCTION__);
+                ft::serv::logger::debug("%s", __PRETTY_FUNCTION__);
             }
         };
     }
