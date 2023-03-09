@@ -1,11 +1,5 @@
 #  ft_irc
 
-[![GitHub](https://img.shields.io/github/license/jothepro/doxygen-awesome-css)](https://github.com/jothepro/doxygen-awesome-css/blob/main/LICENSE)
-
-<div class="title_screenshot">
-
-</div>
-
 ## Features
 
 - 🚀 Multi-threading worker
@@ -20,6 +14,7 @@
 ### Bonus part
 
 </div>
+
 ## TODO
 
 ### Commands
