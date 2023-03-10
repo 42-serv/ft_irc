@@ -143,8 +143,10 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:aad4af39d62c2b1687b0bef7a91bf6c60"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv_1_1__internal.html#aad4af39d62c2b1687b0bef7a91bf6c60">make_utc_string</a> ()</td></tr>
 <tr class="separator:aad4af39d62c2b1687b0bef7a91bf6c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a909a2a84f5b086a5535cf537c8aca885"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv_1_1__internal.html#a909a2a84f5b086a5535cf537c8aca885">make_format_string</a> (const char *format, va_list &amp;ap)</td></tr>
-<tr class="separator:a909a2a84f5b086a5535cf537c8aca885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff49349b58dc84fa69076e9cd27a1db4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv_1_1__internal.html#aff49349b58dc84fa69076e9cd27a1db4">make_format_string_line</a> (const char *format, va_list &amp;ap)</td></tr>
+<tr class="separator:aff49349b58dc84fa69076e9cd27a1db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dfb80be7b817fc0ee18658f313a6274"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv_1_1__internal.html#a4dfb80be7b817fc0ee18658f313a6274">print</a> (const char *prefix, const char *format, va_list &amp;ap)</td></tr>
+<tr class="separator:a4dfb80be7b817fc0ee18658f313a6274"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63a294827dc9ef4ff10f32ce57100d0e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a63a294827dc9ef4ff10f32ce57100d0e"><td class="memTemplItemLeft" align="right" valign="top">static void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv_1_1__internal.html#a63a294827dc9ef4ff10f32ce57100d0e">_lock</a> (void *self_ptr)</td></tr>
 <tr class="separator:a63a294827dc9ef4ff10f32ce57100d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,8 +211,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="a909a2a84f5b086a5535cf537c8aca885"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a909a2a84f5b086a5535cf537c8aca885">&#9670;&nbsp;</a></span>make_format_string()</h2>
+<a id="aff49349b58dc84fa69076e9cd27a1db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff49349b58dc84fa69076e9cd27a1db4">&#9670;&nbsp;</a></span>make_format_string_line()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,7 +221,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string ft::serv::_internal::make_format_string </td>
+          <td class="memname">std::string ft::serv::_internal::make_format_string_line </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>format</em>, </td>
@@ -245,7 +247,7 @@ template&lt;typename T &gt; </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceft_1_1serv_1_1__internal_a909a2a84f5b086a5535cf537c8aca885_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceft_1_1serv_1_1__internal_aff49349b58dc84fa69076e9cd27a1db4_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -277,6 +279,62 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceft_1_1serv_1_1__internal_aad4af39d62c2b1687b0bef7a91bf6c60_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a4dfb80be7b817fc0ee18658f313a6274"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dfb80be7b817fc0ee18658f313a6274">&#9670;&nbsp;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ft::serv::_internal::print </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>prefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">va_list &amp;&#160;</td>
+          <td class="paramname"><em>ap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="logger_8hpp.html#a8875baf2896a2e0e588d3b58d1a8d64a">FT_SERV_WRITE_LOG</a>, <a class="el" href="namespaceft_1_1serv_1_1__internal.html#aff49349b58dc84fa69076e9cd27a1db4">make_format_string_line()</a>, <a class="el" href="namespaceft_1_1serv_1_1__internal.html#aad4af39d62c2b1687b0bef7a91bf6c60">make_utc_string()</a>, <a class="el" href="logger_8hpp.html#a7c33e46917c548aac43afc26787b4097">T_RESET_REVERSE</a>, and <a class="el" href="logger_8hpp.html#a8c4ed9ec2a8b0311b6715cf6319b193a">T_REVERSE</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceft_1_1serv_1_1__internal_a4dfb80be7b817fc0ee18658f313a6274_cgraph.svg" width="382" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceft_1_1serv_1_1__internal_a4dfb80be7b817fc0ee18658f313a6274_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
