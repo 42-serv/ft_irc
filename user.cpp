@@ -23,6 +23,7 @@ ft::irc::user::user(ft::irc::server& server, const ft::shared_ptr<ft::serv::even
       layer(layer),
       nick(),
       username(),
+      hostname(layer->get_host()),
       realname(),
       channels(),
       mode(),
@@ -102,7 +103,7 @@ std::string ft::irc::user::load_username() const throw()
 
 const std::string& ft::irc::user::get_hostname() const throw()
 {
-    return this->layer->get_host();
+    return this->hostname;
 }
 
 std::string ft::irc::user::make_full_name() const throw()
@@ -142,7 +143,7 @@ void ft::irc::user::set_mode(user_mode index, bool value) throw()
 
 // void ft::irc::user::post_set_mode(user_mode index, bool value)
 // {
-//     this->layer->invoke_task(ft::make_shared<task_user_set_mode>(this->shared_from_this(), index, value));
+//     this->layer.lock()->invoke_task(ft::make_shared<task_user_set_mode>(this->shared_from_this(), index, value));
 // }
 
 bool ft::irc::user::get_register_state(register_state index) const throw()
@@ -305,8 +306,16 @@ void ft::irc::user::remove_invite(const ft::shared_ptr<channel>& channel)
 
 void ft::irc::user::send_message(const ft::irc::message& message) const
 {
-    this->layer->post_write(ft::make_shared<ft::irc::message>(message));
-    this->layer->post_flush();
+    try
+    {
+        const ft::shared_ptr<ft::serv::event_layer>& layer = this->layer.lock();
+        layer->post_write(ft::make_shared<ft::irc::message>(message));
+        layer->post_flush();
+    }
+    catch (const ft::bad_weak_ptr&)
+    {
+        // ignore
+    }
 }
 
 void ft::irc::user::notify_message(const ft::irc::message& message) const
@@ -326,7 +335,14 @@ void ft::irc::user::notify_message(const ft::irc::message& message) const
 
 void ft::irc::user::exit_client() const
 {
-    this->layer->post_disconnect();
+    try
+    {
+        this->layer.lock()->post_disconnect();
+    }
+    catch (const ft::bad_weak_ptr&)
+    {
+        // ignore
+    }
 }
 
 ft::irc::user::pred_equals_nick::pred_equals_nick(const std::string& nick) throw()

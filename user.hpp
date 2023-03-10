@@ -47,9 +47,10 @@ namespace ft
 
         private:
             ft::irc::server& server;
-            ft::shared_ptr<ft::serv::event_layer> layer;
+            ft::weak_ptr<ft::serv::event_layer> layer;
             std::string nick;
             std::string username;
+            std::string hostname;
             std::string realname;
             channel_list channels;
             invite_list invites;
