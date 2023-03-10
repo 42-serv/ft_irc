@@ -21,13 +21,13 @@ private:
 public:
     void on_read(ft::serv::event_layer& layer, ft::shared_ptr<void> arg)
     {
-        std::cout << "[#" << std::setw(3) << layer.get_ident() << ", R] " << _dump(*ft::static_pointer_cast<ft::serv::byte_buffer>(arg)) << std::endl;
+        ft::serv::logger::trace("[#%d, R] %s", layer.get_ident(), _dump(*ft::static_pointer_cast<ft::serv::byte_buffer>(arg)).c_str());
         layer.notify_read(arg);
     }
 
     void on_write(ft::serv::event_layer& layer, ft::shared_ptr<const void> arg)
     {
-        std::cout << "[#" << std::setw(3) << layer.get_ident() << ", S] " << _dump(*ft::static_pointer_cast<const ft::serv::byte_buffer>(arg)) << std::endl;
+        ft::serv::logger::trace("[#%d, S] %s", layer.get_ident(), _dump(*ft::static_pointer_cast<const ft::serv::byte_buffer>(arg)).c_str());
         layer.post_write(arg);
     }
 };

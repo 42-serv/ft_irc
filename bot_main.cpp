@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
     // FIXME: 임시 코드
     if (argc != 4)
     {
-        std::cout << "Usage: " << argv[0] << " <host> <port> <pass>" << std::endl;
+        ft::serv::logger::warn("Usage: %s <host> <port> <pass>", argv[0]);
         return EXIT_FAILURE;
     }
     ft::shared_ptr<ft::serv::event_worker_group> child_group = ft::make_shared<ft::serv::event_worker_group>();
@@ -48,14 +48,14 @@ int main(int argc, char* argv[])
         {
             if (!boot.start_client(argv[1], argv[2], &bot))
             {
-                std::cerr << "bind failed. Is host \"" << argv[1] << "\" or port \"" << argv[2] << "\" wrong?" << std::endl;
+                ft::serv::logger::error("bind failed. Is host \"%s\" or port \"%s\" wrong?", argv[1], argv[2]);
                 return 1;
             }
             boot.set_success();
         }
         catch (const ft::serv::syscall_failed& e)
         {
-            std::cerr << "bind failed. System error occured: " << e.what() << std::endl;
+            ft::serv::logger::error("bind failed. System error occured: %s", e.what());
             return 1;
         }
     }

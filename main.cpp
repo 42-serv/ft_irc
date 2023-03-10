@@ -34,8 +34,7 @@ ft::shared_ptr<ft::serv::event_worker_group> child_group;
 
 static void _on_signal(int signo)
 {
-    static_cast<void>(signo);
-    std::cout << "signaled: " << signo << std::endl;
+    ft::serv::logger::warn("signal %d.", signo);
     boss_group->shutdown_all();
     child_group->shutdown_all();
 }
@@ -45,7 +44,7 @@ int main(int argc, char* argv[])
     // FIXME: 임시 코드
     if (argc != 3)
     {
-        std::cout << "Usage: " << argv[0] << " <port> <pass>" << std::endl;
+        ft::serv::logger::warn("Usage: %s <port> <pass>", argv[0]);
         return EXIT_FAILURE;
     }
     boss_group = ft::make_shared<ft::serv::event_worker_group>();
@@ -71,22 +70,22 @@ int main(int argc, char* argv[])
 
         if (!boot.start_server("", argv[1], &server))
         {
-            std::cerr << "bind failed. Is port \"" << argv[1] << "\" wrong?" << std::endl;
+            ft::serv::logger::error("bind failed. Is port \"%s\" wrong?", argv[1]);
             success = false;
         }
 
         if (success)
         {
-            std::cout << "Server successfully started." << std::endl;
+            ft::serv::logger::info("Server successfully started.");
             boot.set_success();
         }
     }
     catch (const ft::serv::syscall_failed& e)
     {
-        std::cerr << "bind failed. System error occured: " << e.what() << std::endl;
+        ft::serv::logger::error("bind failed. System error occured: %s", e.what());
     }
     boot.finalize();
-    std::cerr << "FINAL" << std::endl;
+    ft::serv::logger::warn("Server finalized.");
     boss_group.reset();
     child_group.reset();
     return EXIT_SUCCESS;
