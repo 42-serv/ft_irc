@@ -25,10 +25,11 @@ var searchData=
   ['replicate_517',['replicate',['../structft_1_1irc_1_1make__reply.html#a5bc514d5b05cc15d799aba1944a18386',1,'ft::irc::make_reply']]],
   ['reply_2ecpp_518',['reply.cpp',['../reply_8cpp.html',1,'']]],
   ['reply_2ehpp_519',['reply.hpp',['../reply_8hpp.html',1,'']]],
-  ['reply_5fnumerics_520',['reply_numerics',['../namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931',1,'ft::irc']]],
-  ['result_521',['result',['../structft_1_1serv_1_1__internal_1_1gai__guard.html#a064513cf4dbb3d678a6b7021e9205d37',1,'ft::serv::_internal::gai_guard']]],
-  ['reuse_5faddress_5fbind_522',['reuse_address_bind',['../structft_1_1serv_1_1socket__utils.html#a579854fb614efa2584ff58edb79974f1',1,'ft::serv::socket_utils']]],
-  ['reverse_5fforeach_523',['reverse_foreach',['../serv__types_8hpp.html#ae00b8321fd9ee6e8d0be5e0ad7680016',1,'serv_types.hpp']]],
-  ['reverse_5flookup_524',['reverse_lookup',['../structft_1_1serv_1_1socket__utils.html#aef0594e2d9bdc8b8e15bcab89950e093',1,'ft::serv::socket_utils']]],
-  ['run_525',['run',['../classft_1_1serv_1_1task__base.html#a1540a79ae9de40f15b933a9529cb89fa',1,'ft::serv::task_base']]]
+  ['reply_5fnumeric_5fend_5fdummy_520',['REPLY_NUMERIC_END_DUMMY',['../namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931a8a6d4d0bf120cea3fffeda17c2e10dc3',1,'ft::irc']]],
+  ['reply_5fnumerics_521',['reply_numerics',['../namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931',1,'ft::irc']]],
+  ['result_522',['result',['../structft_1_1serv_1_1__internal_1_1gai__guard.html#a064513cf4dbb3d678a6b7021e9205d37',1,'ft::serv::_internal::gai_guard']]],
+  ['reuse_5faddress_5fbind_523',['reuse_address_bind',['../structft_1_1serv_1_1socket__utils.html#a579854fb614efa2584ff58edb79974f1',1,'ft::serv::socket_utils']]],
+  ['reverse_5fforeach_524',['reverse_foreach',['../serv__types_8hpp.html#ae00b8321fd9ee6e8d0be5e0ad7680016',1,'serv_types.hpp']]],
+  ['reverse_5flookup_525',['reverse_lookup',['../structft_1_1serv_1_1socket__utils.html#aef0594e2d9bdc8b8e15bcab89950e093',1,'ft::serv::socket_utils']]],
+  ['run_526',['run',['../classft_1_1serv_1_1task__base.html#a1540a79ae9de40f15b933a9529cb89fa',1,'ft::serv::task_base']]]
 ];

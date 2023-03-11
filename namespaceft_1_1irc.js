@@ -54,7 +54,9 @@ var namespaceft_1_1irc =
     [ "string_line_encoder", "classft_1_1irc_1_1string__line__encoder.html", "classft_1_1irc_1_1string__line__encoder" ],
     [ "string_utils", "structft_1_1irc_1_1string__utils.html", "structft_1_1irc_1_1string__utils" ],
     [ "user", "classft_1_1irc_1_1user.html", "classft_1_1irc_1_1user" ],
-    [ "reply_numerics", "namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931", null ],
+    [ "reply_numerics", "namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931", [
+      [ "REPLY_NUMERIC_END_DUMMY", "namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931a8a6d4d0bf120cea3fffeda17c2e10dc3", null ]
+    ] ],
     [ "_make_client", "namespaceft_1_1irc.html#a9036d887eb28cf0fe185eea0a70d1844", null ],
     [ "_make_server", "namespaceft_1_1irc.html#aa1775a5000d1e48b0418ea5a01f71b87", null ]
 ];

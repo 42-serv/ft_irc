@@ -8,5 +8,7 @@ var reply_8hpp =
     [ "make_reply", "structft_1_1irc_1_1make__reply.html", "structft_1_1irc_1_1make__reply" ],
     [ "_MAKE_ENUM", "reply_8hpp.html#a8addee4ffcde7b33e683d30bcf51309e", null ],
     [ "IRC_REP_MAP", "reply_8hpp.html#a4f33c39020c198b51dd7f5c4214f87fb", null ],
-    [ "reply_numerics", "reply_8hpp.html#a96daa8772aa99a894c6aa1cfcac23931", null ]
+    [ "reply_numerics", "reply_8hpp.html#a96daa8772aa99a894c6aa1cfcac23931", [
+      [ "REPLY_NUMERIC_END_DUMMY", "reply_8hpp.html#a96daa8772aa99a894c6aa1cfcac23931a8a6d4d0bf120cea3fffeda17c2e10dc3", null ]
+    ] ]
 ];
