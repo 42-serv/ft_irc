@@ -1,6 +1,15 @@
 .SUFFIXES: .cpp .o .hpp .h .tpp
 .PHONY: all clean cleanobj cleanbin re deps depsclean depsre bot
 
+MAKEFLAGS =
+
+ifeq ($(shell uname -s),Darwin)
+	MAKEFLAGS := --jobs $(shell sysctl -n hw.ncpu)
+else
+	MAKEFLAGS := --jobs $(shell nproc)
+endif
+
+
 CXX = c++
 RM = rm -f
 
