@@ -5,6 +5,8 @@
 
 #include "irc_constants.hpp"
 
+#include "reply.hpp"
+
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 #include <thread/readwrite_lock.hpp>
@@ -15,6 +17,8 @@ namespace ft
 {
     namespace irc
     {
+        class message;
+
         class channel;
 
         class user;
@@ -51,6 +55,12 @@ namespace ft
             ft::shared_ptr<ft::irc::user> find_user(const std::string& name) const throw();
             void register_user(const ft::shared_ptr<ft::irc::user>& user);
             void deregister_user(const ft::shared_ptr<ft::irc::user>& user);
+
+        public:
+            void broadcast_all(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except = ft::shared_ptr<ft::irc::user>()) const;
+
+        public:
+            ft::irc::reply_numerics check_signature(const std::string& user, const std::string& pass) const;
 
         private:
             server(const server&);

@@ -13,6 +13,7 @@
 #include "user.hpp"
 
 #include <cstdlib>
+#include <string>
 
 namespace ft
 {
@@ -138,8 +139,6 @@ namespace ft
         public:
             std::size_t get_min_params() const throw() { return 2; }
             std::size_t get_max_params() const throw() { return 2; }
-            std::string get_oper_user() const throw() { return "hello"; }
-            std::string get_oper_pass() const throw() { return "world!"; }
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
@@ -147,15 +146,32 @@ namespace ft
                 {
                     return;
                 }
+
+                ft::irc::server& server = user.get_server();
+
+                const std::string sign_user = message[0];
+                const std::string sign_pass = message[1];
+
+                ft::irc::reply_numerics rpl = server.check_signature(sign_user, sign_pass);
+                if (rpl == ft::irc::RPL_NONE)
+                {
+                    user.set_mode(user::USER_MODE_OPERATOR, true);
+                    user.send_message(ft::irc::make_reply::now_operator());
+                    server.broadcast_all(ft::irc::make_reply::create("NOTICE") << user.make_full_name() + " is now opped.");
+                }
                 else
                 {
-                    const std::string user_to_check = message[0];
-                    const std::string pass_to_check = message[1];
-
-                    if (user_to_check == get_oper_user() && pass_to_check == get_oper_pass())
+                    switch (rpl)
                     {
-                        user.set_mode(user::USER_MODE_OPERATOR, true);
-                        // TODO: notify -> broadcast_all
+                    case ft::irc::ERR_PASSWDMISMATCH:
+                        user.send_message(ft::irc::make_error::password_mismatch());
+                        break;
+                    case ft::irc::ERR_NOOPERHOST:
+                        user.send_message(ft::irc::make_error::no_operator_host());
+                        break;
+
+                    default:
+                        assert(false);
                     }
                 }
             }

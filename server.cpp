@@ -10,6 +10,7 @@
 #include <thread/readwrite_lock.hpp>
 
 #include "channel.hpp"
+#include "message.hpp"
 #include "string_utils.hpp"
 #include "user.hpp"
 
@@ -120,4 +121,32 @@ void ft::irc::server::deregister_user(const ft::shared_ptr<ft::irc::user>& user)
             this->users.erase(it);
         }
     }
+}
+
+void ft::irc::server::broadcast_all(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except) const
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        foreach (user_list::const_iterator, it, this->users)
+        {
+            const ft::shared_ptr<const ft::irc::user>& user = *it;
+            if (user != except)
+            {
+                user->send_message(message);
+            }
+        }
+    }
+}
+
+ft::irc::reply_numerics ft::irc::server::check_signature(const std::string& user, const std::string& pass) const
+{
+    if (user != "admin") // FIXME: load O-line failed
+    {
+        return ft::irc::ERR_NOOPERHOST;
+    }
+    if (pass != "password") // FIXME: check password failed
+    {
+        return ft::irc::ERR_PASSWDMISMATCH;
+    }
+    return ft::irc::RPL_NONE;
 }

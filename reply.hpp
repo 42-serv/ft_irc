@@ -167,7 +167,7 @@ namespace ft
 #define _MAKE_ENUM(numeric, name) name = numeric,
             IRC_REP_MAP(_MAKE_ENUM)
 #undef _MAKE_ENUM
-            REPLY_NUMERIC_END_DUMMY
+                REPLY_NUMERIC_END_DUMMY
         };
 
         struct make_reply_base
@@ -431,6 +431,11 @@ namespace ft
 
         struct make_reply : make_reply_base
         {
+            static inline ft::irc::message create(const std::string& command)
+            {
+                return ft::irc::message(command) >> *my_server_name;
+            }
+
             static inline ft::irc::message replicate(const ft::irc::message& message)
             {
                 return ft::irc::message(message) >> *my_user_name;
