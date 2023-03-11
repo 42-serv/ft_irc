@@ -6,6 +6,8 @@ var classft_1_1irc_1_1server =
     [ "server", "classft_1_1irc_1_1server.html#a7a4681e329b3570243892594e2788b6a", null ],
     [ "~server", "classft_1_1irc_1_1server.html#a0fe95c6f1065898e1229d51c4a6244c6", null ],
     [ "server", "classft_1_1irc_1_1server.html#ab908703163f134cc4b53f60117a9f211", null ],
+    [ "broadcast_all", "classft_1_1irc_1_1server.html#a773440405607167a9478a54fd8ab90f3", null ],
+    [ "check_signature", "classft_1_1irc_1_1server.html#abbf2cc92532e72a060b811286acf971f", null ],
     [ "deregister_user", "classft_1_1irc_1_1server.html#a12f90407ddc81ee4ab362152740c0a0b", null ],
     [ "ensure_channel", "classft_1_1irc_1_1server.html#a5cfa990dde96357ed1af1e1e1b0e4f7d", null ],
     [ "find_channel", "classft_1_1irc_1_1server.html#a0e7dee7efef3f36af15d1a3b97f3bad9", null ],

@@ -172,6 +172,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9bd0c0f5521a9d823a4d097099ebe4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12f90407ddc81ee4ab362152740c0a0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1server.html#a12f90407ddc81ee4ab362152740c0a0b">deregister_user</a> (const ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt; &amp;<a class="el" href="classft_1_1irc_1_1user.html">user</a>)</td></tr>
 <tr class="separator:a12f90407ddc81ee4ab362152740c0a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a773440405607167a9478a54fd8ab90f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1server.html#a773440405607167a9478a54fd8ab90f3">broadcast_all</a> (const <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a> &amp;<a class="el" href="classft_1_1irc_1_1message.html">message</a>, ft::shared_ptr&lt; const <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt; except=ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt;()) const</td></tr>
+<tr class="separator:a773440405607167a9478a54fd8ab90f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbf2cc92532e72a060b811286acf971f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931">ft::irc::reply_numerics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1server.html#abbf2cc92532e72a060b811286acf971f">check_signature</a> (const std::string &amp;<a class="el" href="classft_1_1irc_1_1user.html">user</a>, const std::string &amp;<a class="el" href="classft_1_1irc_1_1server.html#a5928f776266633202d38b2706de38379">pass</a>) const</td></tr>
+<tr class="separator:abbf2cc92532e72a060b811286acf971f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -299,6 +303,82 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a773440405607167a9478a54fd8ab90f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a773440405607167a9478a54fd8ab90f3">&#9670;&nbsp;</a></span>broadcast_all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ft::irc::server::broadcast_all </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a> &amp;&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ft::shared_ptr&lt; const <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt;&#160;</td>
+          <td class="paramname"><em>except</em> = <code>ft::shared_ptr&lt;<a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a>&gt;()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="classft_1_1irc_1_1user.html#a1db558d6d694ca943224c2440fe36c50">ft::irc::user::send_message()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1server_a773440405607167a9478a54fd8ab90f3_cgraph.svg" width="388" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1server_a773440405607167a9478a54fd8ab90f3_icgraph.svg" width="384" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="abbf2cc92532e72a060b811286acf971f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbf2cc92532e72a060b811286acf971f">&#9670;&nbsp;</a></span>check_signature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931">ft::irc::reply_numerics</a> ft::irc::server::check_signature </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pass</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1server_abbf2cc92532e72a060b811286acf971f_icgraph.svg" width="336" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a12f90407ddc81ee4ab362152740c0a0b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a12f90407ddc81ee4ab362152740c0a0b">&#9670;&nbsp;</a></span>deregister_user()</h2>
 
