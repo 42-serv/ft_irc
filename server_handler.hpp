@@ -15,8 +15,6 @@
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
-#include "debug.hpp"
-
 namespace ft
 {
     namespace irc
@@ -44,7 +42,6 @@ namespace ft
                 child->add_last_handler(ft::make_shared<ft::irc::string_line_decoder>());
                 child->add_last_handler(ft::make_shared<ft::irc::message_encoder>());
                 child->add_last_handler(ft::make_shared<ft::irc::message_decoder>());
-                child->add_first_handler(ft::make_shared<byte_buffer_dump_logger_handler>()); // NOTE: DEBUG
                 child->add_last_handler(ft::make_shared<ft::irc::client_handler>(this->server));
             }
         };

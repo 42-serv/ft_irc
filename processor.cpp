@@ -127,7 +127,7 @@ void ft::irc::processor_dictionary::execute(ft::irc::user& user, const ft::irc::
         }
         else
         {
-            // NOTE: suspicious
+            user.exit_client();
         }
         return;
     }

@@ -68,7 +68,11 @@ ifdef UBSAN
 endif
 
 ifdef DEBUG
-	CXXFLAGS += -g3 -O0
+	CXXFLAGS += -g3 -O0 -DFT_DEBUG
+endif
+
+ifdef TRACE
+	CXXFLAGS += -DFT_TRACE
 endif
 
 ifdef MJ

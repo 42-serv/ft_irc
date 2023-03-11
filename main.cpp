@@ -86,7 +86,5 @@ int main(int argc, char* argv[])
     }
     boot.finalize();
     ft::serv::logger::warn("Server finalized.");
-    boss_group.reset();
-    child_group.reset();
     return EXIT_SUCCESS;
 }
