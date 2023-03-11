@@ -138,11 +138,26 @@ namespace ft
         public:
             std::size_t get_min_params() const throw() { return 2; }
             std::size_t get_max_params() const throw() { return 2; }
+            std::string get_oper_user() const throw() { return "hello"; }
+            std::string get_oper_pass() const throw() { return "world!"; }
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                if (!user.get_register_state(ft::irc::user::REGISTER_STATE_PASS))
+                {
+                    return;
+                }
+                else
+                {
+                    const std::string user_to_check = message[0];
+                    const std::string pass_to_check = message[1];
+
+                    if (user_to_check == get_oper_user() && pass_to_check == get_oper_pass())
+                    {
+                        user.set_mode(user::USER_MODE_OPERATOR, true);
+                        // TODO: notify -> broadcast_all
+                    }
+                }
             }
         };
 
