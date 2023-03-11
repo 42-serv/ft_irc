@@ -39,7 +39,7 @@ namespace ft
                 REGISTER_STATE_NICK,
                 REGISTER_STATE_USER,
                 REGISTER_STATE_COMPLETED,
-                NUMBEROF_REGISTER_STATE,
+                NUMBEROF_REGISTER_STATE
             };
 
             typedef ft::serv::dynamic_array<std::string>::type channel_list;

@@ -14,7 +14,7 @@ CXX = c++
 RM = rm -f
 
 CXXFLAGS += -MMD -MF $(@:.o=.d) -MT $@ -MP
-CXXFLAGS += --std=c++98 -Wall -Wextra -Werror
+CXXFLAGS += --std=c++98 -Wall -Wextra -Werror -pedantic
 CXXFLAGS += -Iincludes
 
 LIBSERV := includes/libserv/
