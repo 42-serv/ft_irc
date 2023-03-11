@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['debug_110',['debug',['../structft_1_1serv_1_1logger.html#a83649a4f3bb804c8fed6dfd130de5ee6',1,'ft::serv::logger']]],
-  ['debug_2ehpp_111',['debug.hpp',['../debug_8hpp.html',1,'']]],
+  ['debug_111',['debug',['../structft_1_1serv_1_1logger.html#a83649a4f3bb804c8fed6dfd130de5ee6',1,'ft::serv::logger']]],
   ['decode_112',['decode',['../classft_1_1irc_1_1string__line__decoder.html#a3d6110ff462e8acf6a148e724fe3a718',1,'ft::irc::string_line_decoder::decode()'],['../classft_1_1irc_1_1message__decoder.html#a3cf75e1ca7bbc38dd026478b40a36855',1,'ft::irc::message_decoder::decode()'],['../classft_1_1serv_1_1object__decoder.html#ac9590b8caf45744f7bd2af183d4ebd69',1,'ft::serv::object_decoder::decode()'],['../classft_1_1serv_1_1bytes__decoder.html#a1824c1796ba3bd9c773276d51089a973',1,'ft::serv::bytes_decoder::decode()']]],
   ['deregister_5ffrom_5fserver_113',['deregister_from_server',['../classft_1_1irc_1_1user.html#af2aa8fcafc015de38938ccccfed4b1c9',1,'ft::irc::user']]],
   ['deregister_5fuser_114',['deregister_user',['../classft_1_1irc_1_1server.html#a12f90407ddc81ee4ab362152740c0a0b',1,'ft::irc::server']]],

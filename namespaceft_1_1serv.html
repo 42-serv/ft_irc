@@ -203,6 +203,12 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a8ea5500bde828d4c21df0d6536cfa19c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv.html#a8ea5500bde828d4c21df0d6536cfa19c">_epoll_operation</a> (<a class="el" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ident_t</a> epoll_fd, int epoll_operation, <a class="el" href="classft_1_1serv_1_1event__channel__base.html">event_channel_base</a> &amp;channel)  throw ()</td></tr>
 <tr class="separator:a8ea5500bde828d4c21df0d6536cfa19c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8613d54693cac3632a272d8c04771b87"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv.html#a8613d54693cac3632a272d8c04771b87">_write_eventfd</a> (<a class="el" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ident_t</a> event_ident, ::eventfd_t value)  throw ()</td></tr>
+<tr class="separator:a8613d54693cac3632a272d8c04771b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3712c359da9de2f8b3fd1b199a112ead"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv.html#a3712c359da9de2f8b3fd1b199a112ead">_kqueue_operation</a> (<a class="el" href="namespaceft_1_1serv.html#ac7a1cd16df4b5f07598697c84ead0f84">event_list</a> &amp;changes, int flags_add, int flags_del, <a class="el" href="classft_1_1serv_1_1event__channel__base.html">event_channel_base</a> &amp;channel)  throw ()</td></tr>
+<tr class="separator:a3712c359da9de2f8b3fd1b199a112ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a37f79cdf1af8a93c0e45163363c8c6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1serv.html#a0a37f79cdf1af8a93c0e45163363c8c6">_trigger_user_event</a> (<a class="el" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ident_t</a> loop_ident, <a class="el" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ident_t</a> target_ident)  throw ()</td></tr>
+<tr class="separator:a0a37f79cdf1af8a93c0e45163363c8c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -342,6 +348,160 @@ Variables</h2></td></tr>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespaceft_1_1serv_a8ea5500bde828d4c21df0d6536cfa19c_icgraph.svg" width="404" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a3712c359da9de2f8b3fd1b199a112ead"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3712c359da9de2f8b3fd1b199a112ead">&#9670;&nbsp;</a></span>_kqueue_operation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ft::serv::_kqueue_operation </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceft_1_1serv.html#ac7a1cd16df4b5f07598697c84ead0f84">event_list</a> &amp;&#160;</td>
+          <td class="paramname"><em>changes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags_add</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flags_del</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classft_1_1serv_1_1event__channel__base.html">event_channel_base</a> &amp;&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="serv__types_8hpp.html#a08bacfd35ec1e81ebfc1e66806187943">beginof</a>.</p>
+
+</div>
+</div>
+<a id="a0a37f79cdf1af8a93c0e45163363c8c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a37f79cdf1af8a93c0e45163363c8c6">&#9670;&nbsp;</a></span>_trigger_user_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ft::serv::_trigger_user_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ident_t</a>&#160;</td>
+          <td class="paramname"><em>loop_ident</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ident_t</a>&#160;</td>
+          <td class="paramname"><em>target_ident</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="serv__types_8hpp.html#a08bacfd35ec1e81ebfc1e66806187943">beginof</a>, <a class="el" href="serv__types_8hpp.html#a39995f96172454526b43ebc17e293352">countof</a>, and <a class="el" href="classft_1_1serv_1_1syscall__failed.html#ad4beae2a2abdd5d44caf5f48b03a5ae0">ft::serv::syscall_failed::error()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceft_1_1serv_a0a37f79cdf1af8a93c0e45163363c8c6_cgraph.svg" width="346" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a8613d54693cac3632a272d8c04771b87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8613d54693cac3632a272d8c04771b87">&#9670;&nbsp;</a></span>_write_eventfd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ft::serv::_write_eventfd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ident_t</a>&#160;</td>
+          <td class="paramname"><em>event_ident</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::eventfd_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="namespaceft_1_1serv_a8613d54693cac3632a272d8c04771b87_icgraph.svg" width="603" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

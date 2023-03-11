@@ -17,9 +17,6 @@ var files_dup =
     [ "client_handler.hpp", "client__handler_8hpp.html", [
       [ "client_handler", "classft_1_1irc_1_1client__handler.html", "classft_1_1irc_1_1client__handler" ]
     ] ],
-    [ "debug.hpp", "debug_8hpp.html", [
-      [ "byte_buffer_dump_logger_handler", "classbyte__buffer__dump__logger__handler.html", "classbyte__buffer__dump__logger__handler" ]
-    ] ],
     [ "irc_constants.hpp", "irc__constants_8hpp.html", "irc__constants_8hpp" ],
     [ "main.cpp", "main_8cpp.html", "main_8cpp" ],
     [ "message.cpp", "message_8cpp.html", "message_8cpp" ],

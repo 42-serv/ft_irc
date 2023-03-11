@@ -14,6 +14,8 @@ var classft_1_1serv_1_1event__channel__base =
     [ "get_loop", "classft_1_1serv_1_1event__channel__base.html#ae9450a57a2bce117b770fc95330c6870", null ],
     [ "get_pipeline", "classft_1_1serv_1_1event__channel__base.html#ae6cb7ac4199a9faf8a243294b4eb0ec1", null ],
     [ "get_serv", "classft_1_1serv_1_1event__channel__base.html#adf3f1cb935f451d8fb023d26f34278c5", null ],
+    [ "is_readability_enabled", "classft_1_1serv_1_1event__channel__base.html#a815de9f95e3371cafb6902a52ebe1132", null ],
+    [ "is_writability_enabled", "classft_1_1serv_1_1event__channel__base.html#a0573838cd4de2d44cef6447e37772efb", null ],
     [ "load_interested", "classft_1_1serv_1_1event__channel__base.html#af2bb3a38eb116dc9779d3600493912da", null ],
     [ "loop_register", "classft_1_1serv_1_1event__channel__base.html#ac6fa55b6f9ce17a9dc6d080c63ab9c02", null ],
     [ "operator=", "classft_1_1serv_1_1event__channel__base.html#a05ac77293629fd940c8dfe887b651e5f", null ],

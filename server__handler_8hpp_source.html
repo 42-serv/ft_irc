@@ -133,50 +133,46 @@ $(document).ready(function(){initNavTree('server__handler_8hpp_source.html','');
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="libserv_8hpp.html">libserv/libserv.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;smart_ptr/smart_ptr.hpp&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="debug_8hpp.html">debug.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceft.html">ft</a></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">namespace </span>irc</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1server__handler.html">   24</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classft_1_1irc_1_1server__handler.html">server_handler</a> : <span class="keyword">public</span> <a class="code" href="classft_1_1serv_1_1logic__adapter.html">ft::serv::logic_adapter</a></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1server__handler.html#af572c598a7d4063070c64479ab806472">   27</a></span>&#160;            <a class="code" href="classft_1_1irc_1_1server.html">ft::irc::server</a>&amp; <a class="code" href="classft_1_1irc_1_1server__handler.html#af572c598a7d4063070c64479ab806472">server</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1server__handler.html#ad6662785c45a022e6fa1b8451e72dc96">   29</a></span>&#160;            <a class="code" href="classft_1_1irc_1_1server__handler.html#ad6662785c45a022e6fa1b8451e72dc96">server_handler</a>(<a class="code" href="classft_1_1irc_1_1server.html">ft::irc::server</a>&amp; <a class="code" href="classft_1_1irc_1_1server.html">server</a>)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                : <a class="code" href="classft_1_1irc_1_1server.html">server</a>(<a class="code" href="classft_1_1irc_1_1server.html">server</a>)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1server__handler.html#a3c8e069c9de7903557826b78cbf17b3a">   35</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classft_1_1irc_1_1server__handler.html#a3c8e069c9de7903557826b78cbf17b3a">on_read</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a>&amp;, ft::shared_ptr&lt;void&gt; arg)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                ft::shared_ptr&lt;ft::serv::event_channel_base&gt; child = ft::static_pointer_cast&lt;ft::serv::event_channel_base&gt;(arg);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keyword">const</span> <a class="code" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ft::serv::ident_t</a> child_ident = child-&gt;get_ident();</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <a class="code" href="structft_1_1serv_1_1socket__utils.html#a9027d8bcbd4da0a01382490ad38ce67c">ft::serv::socket_utils::set_tcp_nodelay</a>(child_ident, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                <a class="code" href="structft_1_1serv_1_1socket__utils.html#ac70f363d3cc87c9e434f7ec4edaf7dfe">ft::serv::socket_utils::set_socket_linger</a>(child_ident, <span class="keyword">true</span>, 5);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::string_line_encoder&gt;());</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::string_line_decoder&gt;());</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::message_encoder&gt;());</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::message_decoder&gt;());</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                child-&gt;add_first_handler(ft::make_shared&lt;byte_buffer_dump_logger_handler&gt;()); <span class="comment">// NOTE: DEBUG</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::client_handler&gt;(this-&gt;server));</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        };</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="ttc" id="aclassft_1_1irc_1_1server__handler_html"><div class="ttname"><a href="classft_1_1irc_1_1server__handler.html">ft::irc::server_handler</a></div><div class="ttdef"><b>Definition:</b> server_handler.hpp:25</div></div>
-<div class="ttc" id="aclassft_1_1irc_1_1server__handler_html_a3c8e069c9de7903557826b78cbf17b3a"><div class="ttname"><a href="classft_1_1irc_1_1server__handler.html#a3c8e069c9de7903557826b78cbf17b3a">ft::irc::server_handler::on_read</a></div><div class="ttdeci">void on_read(ft::serv::event_layer &amp;, ft::shared_ptr&lt; void &gt; arg)</div><div class="ttdef"><b>Definition:</b> server_handler.hpp:35</div></div>
-<div class="ttc" id="aclassft_1_1irc_1_1server__handler_html_ad6662785c45a022e6fa1b8451e72dc96"><div class="ttname"><a href="classft_1_1irc_1_1server__handler.html#ad6662785c45a022e6fa1b8451e72dc96">ft::irc::server_handler::server_handler</a></div><div class="ttdeci">server_handler(ft::irc::server &amp;server)</div><div class="ttdef"><b>Definition:</b> server_handler.hpp:29</div></div>
-<div class="ttc" id="aclassft_1_1irc_1_1server__handler_html_af572c598a7d4063070c64479ab806472"><div class="ttname"><a href="classft_1_1irc_1_1server__handler.html#af572c598a7d4063070c64479ab806472">ft::irc::server_handler::server</a></div><div class="ttdeci">ft::irc::server &amp; server</div><div class="ttdef"><b>Definition:</b> server_handler.hpp:27</div></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceft.html">ft</a></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">namespace </span>irc</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1server__handler.html">   22</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classft_1_1irc_1_1server__handler.html">server_handler</a> : <span class="keyword">public</span> <a class="code" href="classft_1_1serv_1_1logic__adapter.html">ft::serv::logic_adapter</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1server__handler.html#af572c598a7d4063070c64479ab806472">   25</a></span>&#160;            <a class="code" href="classft_1_1irc_1_1server.html">ft::irc::server</a>&amp; <a class="code" href="classft_1_1irc_1_1server__handler.html#af572c598a7d4063070c64479ab806472">server</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1server__handler.html#ad6662785c45a022e6fa1b8451e72dc96">   27</a></span>&#160;            <a class="code" href="classft_1_1irc_1_1server__handler.html#ad6662785c45a022e6fa1b8451e72dc96">server_handler</a>(<a class="code" href="classft_1_1irc_1_1server.html">ft::irc::server</a>&amp; <a class="code" href="classft_1_1irc_1_1server.html">server</a>)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                : <a class="code" href="classft_1_1irc_1_1server.html">server</a>(<a class="code" href="classft_1_1irc_1_1server.html">server</a>)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classft_1_1irc_1_1server__handler.html#a3c8e069c9de7903557826b78cbf17b3a">   33</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classft_1_1irc_1_1server__handler.html#a3c8e069c9de7903557826b78cbf17b3a">on_read</a>(<a class="code" href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a>&amp;, ft::shared_ptr&lt;void&gt; arg)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                ft::shared_ptr&lt;ft::serv::event_channel_base&gt; child = ft::static_pointer_cast&lt;ft::serv::event_channel_base&gt;(arg);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keyword">const</span> <a class="code" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ft::serv::ident_t</a> child_ident = child-&gt;get_ident();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <a class="code" href="structft_1_1serv_1_1socket__utils.html#a9027d8bcbd4da0a01382490ad38ce67c">ft::serv::socket_utils::set_tcp_nodelay</a>(child_ident, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <a class="code" href="structft_1_1serv_1_1socket__utils.html#ac70f363d3cc87c9e434f7ec4edaf7dfe">ft::serv::socket_utils::set_socket_linger</a>(child_ident, <span class="keyword">true</span>, 5);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::string_line_encoder&gt;());</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::string_line_decoder&gt;());</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::message_encoder&gt;());</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::message_decoder&gt;());</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                child-&gt;add_last_handler(ft::make_shared&lt;ft::irc::client_handler&gt;(this-&gt;server));</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        };</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="ttc" id="aclassft_1_1irc_1_1server__handler_html"><div class="ttname"><a href="classft_1_1irc_1_1server__handler.html">ft::irc::server_handler</a></div><div class="ttdef"><b>Definition:</b> server_handler.hpp:23</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1server__handler_html_a3c8e069c9de7903557826b78cbf17b3a"><div class="ttname"><a href="classft_1_1irc_1_1server__handler.html#a3c8e069c9de7903557826b78cbf17b3a">ft::irc::server_handler::on_read</a></div><div class="ttdeci">void on_read(ft::serv::event_layer &amp;, ft::shared_ptr&lt; void &gt; arg)</div><div class="ttdef"><b>Definition:</b> server_handler.hpp:33</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1server__handler_html_ad6662785c45a022e6fa1b8451e72dc96"><div class="ttname"><a href="classft_1_1irc_1_1server__handler.html#ad6662785c45a022e6fa1b8451e72dc96">ft::irc::server_handler::server_handler</a></div><div class="ttdeci">server_handler(ft::irc::server &amp;server)</div><div class="ttdef"><b>Definition:</b> server_handler.hpp:27</div></div>
+<div class="ttc" id="aclassft_1_1irc_1_1server__handler_html_af572c598a7d4063070c64479ab806472"><div class="ttname"><a href="classft_1_1irc_1_1server__handler.html#af572c598a7d4063070c64479ab806472">ft::irc::server_handler::server</a></div><div class="ttdeci">ft::irc::server &amp; server</div><div class="ttdef"><b>Definition:</b> server_handler.hpp:25</div></div>
 <div class="ttc" id="aclassft_1_1irc_1_1server_html"><div class="ttname"><a href="classft_1_1irc_1_1server.html">ft::irc::server</a></div><div class="ttdef"><b>Definition:</b> server.hpp:27</div></div>
 <div class="ttc" id="aclassft_1_1serv_1_1event__layer_html"><div class="ttname"><a href="classft_1_1serv_1_1event__layer.html">ft::serv::event_layer</a></div><div class="ttdef"><b>Definition:</b> event_layer.hpp:26</div></div>
 <div class="ttc" id="aclassft_1_1serv_1_1logic__adapter_html"><div class="ttname"><a href="classft_1_1serv_1_1logic__adapter.html">ft::serv::logic_adapter</a></div><div class="ttdef"><b>Definition:</b> logic_adapter.hpp:16</div></div>
 <div class="ttc" id="aclient__handler_8hpp_html"><div class="ttname"><a href="client__handler_8hpp.html">client_handler.hpp</a></div></div>
-<div class="ttc" id="adebug_8hpp_html"><div class="ttname"><a href="debug_8hpp.html">debug.hpp</a></div></div>
 <div class="ttc" id="airc__constants_8hpp_html"><div class="ttname"><a href="irc__constants_8hpp.html">irc_constants.hpp</a></div></div>
 <div class="ttc" id="alibserv_8hpp_html"><div class="ttname"><a href="libserv_8hpp.html">libserv.hpp</a></div></div>
 <div class="ttc" id="amessage__decoder_8hpp_html"><div class="ttname"><a href="message__decoder_8hpp.html">message_decoder.hpp</a></div></div>

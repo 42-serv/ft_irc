@@ -74,9 +74,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classft_1_1irc_1_1processor__whowas.html#aadd9a1fb5ef559756c115a60b9c4c02d",
-"classft_1_1serv_1_1event__layer.html#aae3e7ef688b628ce05e8cbff0354f955",
-"logger_8hpp.html#a1d11328f2917dbdd7794ee33c1b5dd03",
+"classft_1_1irc_1_1server.html#a0e7dee7efef3f36af15d1a3b97f3bad9",
+"classft_1_1serv_1_1event__layer.html#ab9d9b21415db0eba8cf5cfe8dbb55289",
+"logger_8hpp.html#a25bf12c58f8e9173d6b420e6e42a2c97",
 "structft_1_1irc_1_1make__reply.html#a5f4e76b2d18a4ef47181e986720325f0"
 ];
 

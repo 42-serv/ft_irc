@@ -85,7 +85,6 @@ var annotated_dup =
       ] ],
       [ "nothing", "structft_1_1nothing.html", "structft_1_1nothing" ]
     ] ],
-    [ "byte_buffer_dump_logger_handler", "classbyte__buffer__dump__logger__handler.html", "classbyte__buffer__dump__logger__handler" ],
     [ "dummy_inbound_adapter", "classdummy__inbound__adapter.html", "classdummy__inbound__adapter" ],
     [ "dummy_outbound_adapter", "classdummy__outbound__adapter.html", "classdummy__outbound__adapter" ]
 ];

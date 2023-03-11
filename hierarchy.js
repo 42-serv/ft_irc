@@ -27,7 +27,6 @@ var hierarchy =
     ] ],
     [ "ft::serv::errno_backup", "structft_1_1serv_1_1errno__backup.html", null ],
     [ "ft::serv::event_handler_base", "classft_1_1serv_1_1event__handler__base.html", [
-      [ "byte_buffer_dump_logger_handler", "classbyte__buffer__dump__logger__handler.html", null ],
       [ "dummy_inbound_adapter", "classdummy__inbound__adapter.html", null ],
       [ "dummy_outbound_adapter", "classdummy__outbound__adapter.html", null ],
       [ "ft::serv::bytes_decoder", "classft_1_1serv_1_1bytes__decoder.html", [
