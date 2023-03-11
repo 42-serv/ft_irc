@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['logger_778',['logger',['../structft_1_1serv_1_1logger.html',1,'ft::serv']]],
-  ['logic_5fadapter_779',['logic_adapter',['../classft_1_1serv_1_1logic__adapter.html',1,'ft::serv']]]
+  ['logger_780',['logger',['../structft_1_1serv_1_1logger.html',1,'ft::serv']]],
+  ['logic_5fadapter_781',['logic_adapter',['../classft_1_1serv_1_1logic__adapter.html',1,'ft::serv']]]
 ];
