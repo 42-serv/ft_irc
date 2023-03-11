@@ -3,10 +3,10 @@
 
 MAKEFLAGS =
 
-ifeq ($(shell uname -s),Darwin)
-	MAKEFLAGS := --jobs $(shell sysctl -n hw.ncpu)
-else
+ifeq ($(shell uname),Linux)
 	MAKEFLAGS := --jobs $(shell nproc)
+else
+	MAKEFLAGS := --jobs $(shell sysctl -n hw.ncpu)
 endif
 
 
