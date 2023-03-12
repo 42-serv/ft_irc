@@ -67,7 +67,11 @@ namespace ft
                         user.join_channel(channelname);
                         ft::irc::message payload = ft::irc::make_reply::replicate(message);
                         payload[0] = channelname;
-                        payload[1] = '*';
+                        if (message.param_size() > 1)
+                        {
+                            // mask keys
+                            payload[1] = '*';
+                        }
                         channel->broadcast(payload);
                         user.remove_invite(channel);
                         std::string topic = channel->load_topic();
