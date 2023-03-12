@@ -22,6 +22,7 @@ var classft_1_1irc_1_1user =
     [ "add_invite", "classft_1_1irc_1_1user.html#a2733a9946020ef55cf0eb6d1255a5556", null ],
     [ "change_nick", "classft_1_1irc_1_1user.html#af02e786035bc1122895f36f9db8f2c9a", null ],
     [ "channel_count", "classft_1_1irc_1_1user.html#ad9cf185a314b035b4613b26495032c54", null ],
+    [ "channel_names_snapshot", "classft_1_1irc_1_1user.html#ae7ad74d915c3414aa58fd2fc92791539", null ],
     [ "contains_invite", "classft_1_1irc_1_1user.html#afc67d7989bbf81352af7d5242c7c74e3", null ],
     [ "deregister_from_server", "classft_1_1irc_1_1user.html#af2aa8fcafc015de38938ccccfed4b1c9", null ],
     [ "exit_client", "classft_1_1irc_1_1user.html#ae6c526bd968ba5d22988c9ffc4d9e896", null ],

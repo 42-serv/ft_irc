@@ -32,7 +32,7 @@ var structft_1_1irc_1_1make__reply =
     [ "luser_unknown", "structft_1_1irc_1_1make__reply.html#abb3d19d7dff24cc11ae000c27f2d42f3", null ],
     [ "motd", "structft_1_1irc_1_1make__reply.html#a09ef279f20aef8d899a8a1f6e1f843c8", null ],
     [ "motd_start", "structft_1_1irc_1_1make__reply.html#ac487f0bab92e860c91305ed0b7f02dbe", null ],
-    [ "name_reply", "structft_1_1irc_1_1make__reply.html#a54a6251dbea77869acd934ddea0c427b", null ],
+    [ "name_reply", "structft_1_1irc_1_1make__reply.html#a0c90ffcad98b5d6e775cda7b8a4163fb", null ],
     [ "no_topic", "structft_1_1irc_1_1make__reply.html#a5f4e76b2d18a4ef47181e986720325f0", null ],
     [ "no_users", "structft_1_1irc_1_1make__reply.html#a1129093f9de4ec41e5d6dae142ee43b8", null ],
     [ "none", "structft_1_1irc_1_1make__reply.html#aa48c3fc76edaf2b11c1a662e2c08ef8b", null ],

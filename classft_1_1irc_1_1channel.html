@@ -196,6 +196,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a234b5979ee6b122dec7f2de82614c02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefa6a88b657202d4f748e9d37353e6bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceft_1_1irc.html#a96daa8772aa99a894c6aa1cfcac23931">ft::irc::reply_numerics</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1channel.html#aefa6a88b657202d4f748e9d37353e6bf">invite_user</a> (const ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt; &amp;<a class="el" href="classft_1_1irc_1_1user.html">user</a>)</td></tr>
 <tr class="separator:aefa6a88b657202d4f748e9d37353e6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4c6f3dacebce2ccfecdc92cdd3e1174"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1channel.html#ae4c6f3dacebce2ccfecdc92cdd3e1174">send_names</a> (const ft::shared_ptr&lt; const <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt; &amp;<a class="el" href="classft_1_1irc_1_1user.html">user</a>) const  throw ()</td></tr>
+<tr class="separator:ae4c6f3dacebce2ccfecdc92cdd3e1174"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4d480fe67024e93ec3bfe21f5d82b4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1channel.html#ae4d480fe67024e93ec3bfe21f5d82b4f">broadcast</a> (const <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a> &amp;<a class="el" href="classft_1_1irc_1_1message.html">message</a>, ft::shared_ptr&lt; const <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt; except=ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt;()) const</td></tr>
 <tr class="separator:ae4d480fe67024e93ec3bfe21f5d82b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b2b7e0ac9e2122b7f9e26ce7a851e3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1channel.html#a3b2b7e0ac9e2122b7f9e26ce7a851e3f">broadcast_unique</a> (const <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a> &amp;<a class="el" href="classft_1_1irc_1_1message.html">message</a>, <a class="el" href="structft_1_1serv_1_1unique__set.html">ft::serv::unique_set</a>&lt; ft::shared_ptr&lt; const <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt; &gt;::type &amp;unique_set) const</td></tr>
@@ -458,11 +460,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="classft_1_1irc_1_1user.html#afc67d7989bbf81352af7d5242c7c74e3">ft::irc::user::contains_invite()</a>.</p>
+<p class="reference">References <a class="el" href="classft_1_1irc_1_1user.html#afc67d7989bbf81352af7d5242c7c74e3">ft::irc::user::contains_invite()</a>, and <a class="el" href="structft_1_1irc_1_1make__reply.html#a0f6316e46b6733cefcdcada148b007fe">ft::irc::make_reply::create()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1channel_a0eb614161a17c1778de2b2443ea922e5_cgraph.svg" width="404" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1channel_a0eb614161a17c1778de2b2443ea922e5_cgraph.svg" width="404" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
@@ -566,6 +568,14 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p class="reference">References <a class="el" href="classft_1_1irc_1_1user.html#a2733a9946020ef55cf0eb6d1255a5556">ft::irc::user::add_invite()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1channel_aefa6a88b657202d4f748e9d37353e6bf_cgraph.svg" width="376" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
 </div>
 </div>
 <a id="a234b5979ee6b122dec7f2de82614c02a"></a>
@@ -584,11 +594,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="structft_1_1irc_1_1channel_1_1member.html#ad47d115b3ba66d7b1d6afea24f71bbd1">ft::irc::channel::member::mode</a>, <a class="el" href="classft_1_1irc_1_1server.html#a9fff5c3bf3c7142c557cafbfd22f7767">ft::irc::server::remove_channel()</a>, and <a class="el" href="structft_1_1irc_1_1channel_1_1member.html#aa7c63dddc620a12024070569d0753a80">ft::irc::channel::member::user</a>.</p>
+<p class="reference">References <a class="el" href="structft_1_1irc_1_1make__reply.html#a0f6316e46b6733cefcdcada148b007fe">ft::irc::make_reply::create()</a>, <a class="el" href="structft_1_1irc_1_1channel_1_1member.html#ad47d115b3ba66d7b1d6afea24f71bbd1">ft::irc::channel::member::mode</a>, <a class="el" href="classft_1_1irc_1_1server.html#a9fff5c3bf3c7142c557cafbfd22f7767">ft::irc::server::remove_channel()</a>, and <a class="el" href="structft_1_1irc_1_1channel_1_1member.html#aa7c63dddc620a12024070569d0753a80">ft::irc::channel::member::user</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1channel_a234b5979ee6b122dec7f2de82614c02a_cgraph.svg" width="415" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1channel_a234b5979ee6b122dec7f2de82614c02a_cgraph.svg" width="415" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
@@ -621,6 +631,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1channel_a01d060ed582406cbe40ec0889408d5b2_icgraph.svg" width="439" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -676,6 +692,44 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae4c6f3dacebce2ccfecdc92cdd3e1174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4c6f3dacebce2ccfecdc92cdd3e1174">&#9670;&nbsp;</a></span>send_names()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ft::irc::channel::send_names </td>
+          <td>(</td>
+          <td class="paramtype">const ft::shared_ptr&lt; const <a class="el" href="classft_1_1irc_1_1user.html">ft::irc::user</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>user</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="structft_1_1irc_1_1make__reply.html#a62504faa310fedb0768c15ec641ea748">ft::irc::make_reply::end_of_names()</a>, <a class="el" href="structft_1_1irc_1_1member__info.html#a3f6304abbcdf421f22e56280cb86ff62">ft::irc::member_info::is_chanop</a>, <a class="el" href="structft_1_1irc_1_1member__info.html#a4ab9abf4a97f5eccc37c22a3129d81f3">ft::irc::member_info::is_chanspk</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a0c90ffcad98b5d6e775cda7b8a4163fb">ft::irc::make_reply::name_reply()</a>, <a class="el" href="structft_1_1irc_1_1member__info.html#abb2358fbcca93d626046714ef4c0818b">ft::irc::member_info::nickname</a>, and <a class="el" href="classft_1_1irc_1_1user.html#a1db558d6d694ca943224c2440fe36c50">ft::irc::user::send_message()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1channel_ae4c6f3dacebce2ccfecdc92cdd3e1174_cgraph.svg" width="351" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1channel_ae4c6f3dacebce2ccfecdc92cdd3e1174_icgraph.svg" width="344" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
