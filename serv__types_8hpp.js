@@ -12,6 +12,7 @@ var serv__types_8hpp =
     [ "FT_SERV_DEFAULT_INIT_BUFFER_CAPACITY", "serv__types_8hpp.html#ac4f6a51c8cc9ee06812e8e8828332ca9", null ],
     [ "FT_SERV_DEFAULT_LISTEN_BACKLOG", "serv__types_8hpp.html#ad866c79b7e36634f7aff4b5c6f682a4f", null ],
     [ "FT_SERV_MAX_EVENT_SIZE", "serv__types_8hpp.html#abccdad8338267760ebf4137a9651a347", null ],
+    [ "FT_SERV_WRITE_SPIN_COUNT", "serv__types_8hpp.html#a7e74980705360e8413c5e477028cde7a", null ],
     [ "null", "serv__types_8hpp.html#ac97b8ee753e4405397a42ad5799b0f9e", null ],
     [ "reverse_foreach", "serv__types_8hpp.html#ae00b8321fd9ee6e8d0be5e0ad7680016", null ],
     [ "staticassert", "serv__types_8hpp.html#af0034f4f2fc3fbea95d3c296524d77ca", null ],

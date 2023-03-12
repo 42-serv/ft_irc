@@ -173,6 +173,8 @@ Macros</h2></td></tr>
 <tr class="separator:ac4f6a51c8cc9ee06812e8e8828332ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abccdad8338267760ebf4137a9651a347"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="serv__types_8hpp.html#abccdad8338267760ebf4137a9651a347">FT_SERV_MAX_EVENT_SIZE</a>&#160;&#160;&#160;4096</td></tr>
 <tr class="separator:abccdad8338267760ebf4137a9651a347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e74980705360e8413c5e477028cde7a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="serv__types_8hpp.html#a7e74980705360e8413c5e477028cde7a">FT_SERV_WRITE_SPIN_COUNT</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a7e74980705360e8413c5e477028cde7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac97b8ee753e4405397a42ad5799b0f9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="serv__types_8hpp.html#ac97b8ee753e4405397a42ad5799b0f9e">null</a>&#160;&#160;&#160;NULL</td></tr>
 <tr class="separator:ac97b8ee753e4405397a42ad5799b0f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0034f4f2fc3fbea95d3c296524d77ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="serv__types_8hpp.html#af0034f4f2fc3fbea95d3c296524d77ca">staticassert</a>(_x)&#160;&#160;&#160;static_cast&lt;void&gt;(sizeof(char[(_x) ? 1 : -1]))</td></tr>
@@ -317,6 +319,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a7e74980705360e8413c5e477028cde7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e74980705360e8413c5e477028cde7a">&#9670;&nbsp;</a></span>FT_SERV_WRITE_SPIN_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FT_SERV_WRITE_SPIN_COUNT&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ac97b8ee753e4405397a42ad5799b0f9e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac97b8ee753e4405397a42ad5799b0f9e">&#9670;&nbsp;</a></span>null</h2>
 
@@ -401,7 +417,7 @@ Functions</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (<span class="keyword">const</span> <a class="code" href="classft_1_1serv_1_1__internal_1_1synchronized__helper.html">ft::serv::_internal::synchronized_helper</a> __##__LINE__##helper = (_name)) \</div>
 <div class="line">        assert(<span class="keyword">false</span>);                                                                 \</div>
 <div class="line">    else</div>
-<div class="ttc" id="aclassft_1_1serv_1_1__internal_1_1synchronized__helper_html"><div class="ttname"><a href="classft_1_1serv_1_1__internal_1_1synchronized__helper.html">ft::serv::_internal::synchronized_helper</a></div><div class="ttdef"><b>Definition:</b> serv_types.hpp:82</div></div>
+<div class="ttc" id="aclassft_1_1serv_1_1__internal_1_1synchronized__helper_html"><div class="ttname"><a href="classft_1_1serv_1_1__internal_1_1synchronized__helper.html">ft::serv::_internal::synchronized_helper</a></div><div class="ttdef"><b>Definition:</b> serv_types.hpp:83</div></div>
 </div><!-- fragment -->
 </div>
 </div>
