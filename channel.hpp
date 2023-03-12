@@ -13,6 +13,7 @@
 
 #include <algorithm>
 #include <bitset>
+#include <cstddef>
 #include <string>
 
 namespace ft
@@ -67,6 +68,8 @@ namespace ft
             std::string name;
             std::string topic;
             std::bitset<NUMBEROF_CHANNEL_MODE> mode;
+            std::size_t limit;
+            std::string key;
             member_list members;
 
             mutable ft::readwrite_lock lock;
@@ -89,10 +92,20 @@ namespace ft
             bool load_mode(channel_mode index) const throw();
             void store_mode(channel_mode index, bool value) throw();
 
+            std::size_t get_limit() const throw();
+            void set_limit(std::size_t limit);
+            std::size_t load_limit() const throw();
+            void store_limit(std::size_t limit);
+
+            const std::string& get_key() const throw();
+            void set_key(const std::string& key);
+            std::string load_key() const throw();
+            void store_key(const std::string& key);
+
         public:
             ft::irc::reply_numerics change_topic(const ft::shared_ptr<const ft::irc::user>& user, const std::string& new_topic);
 
-            ft::irc::reply_numerics enter_user(const ft::shared_ptr<ft::irc::user>& user);
+            ft::irc::reply_numerics enter_user(const ft::shared_ptr<ft::irc::user>& user, const std::string& key);
             void leave_user(const ft::shared_ptr<ft::irc::user>& user);
 
             ft::irc::reply_numerics invite_user(const ft::shared_ptr<ft::irc::user>& user);
@@ -102,6 +115,9 @@ namespace ft
         public:
             void broadcast(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except = ft::shared_ptr<ft::irc::user>()) const;
             void broadcast_unique(const ft::irc::message& message, ft::serv::unique_set<ft::shared_ptr<const ft::irc::user> >::type& unique_set) const;
+
+        public:
+            bool is_banned(const ft::shared_ptr<const ft::irc::user>& user) const;
 
         private:
             channel(const channel&);

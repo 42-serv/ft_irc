@@ -90,6 +90,58 @@ void ft::irc::channel::store_mode(channel_mode index, bool value) throw()
     }
 }
 
+std::size_t ft::irc::channel::get_limit() const throw()
+{
+    return this->limit;
+}
+
+void ft::irc::channel::set_limit(std::size_t limit)
+{
+    this->limit = limit;
+}
+
+std::size_t ft::irc::channel::load_limit() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->get_limit();
+    }
+}
+
+void ft::irc::channel::store_limit(std::size_t limit)
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->set_limit(limit);
+    }
+}
+
+const std::string& ft::irc::channel::get_key() const throw()
+{
+    return this->key;
+}
+
+void ft::irc::channel::set_key(const std::string& key)
+{
+    this->key = key;
+}
+
+std::string ft::irc::channel::load_key() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->get_key();
+    }
+}
+
+void ft::irc::channel::store_key(const std::string& key)
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->set_key(key);
+    }
+}
+
 ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::shared_ptr<const ft::irc::user>& user, const std::string& new_topic)
 {
     synchronized (this->lock.get_write_lock())
@@ -116,7 +168,7 @@ ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::shared_ptr<cons
     return ft::irc::ERR_NOTONCHANNEL;
 }
 
-ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::irc::user>& user)
+ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::irc::user>& user, const std::string& key)
 {
     synchronized (this->lock.get_write_lock())
     {
@@ -125,13 +177,29 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
             return ft::irc::ERR_NOSUCHCHANNEL;
         }
 
-        // TODO: ERR_CHANNELISFULL
-        if (this->get_mode(CHANNEL_MODE_INVITE_ONLY) && user->contains_invite(this->shared_from_this()))
+        if (user->get_mode(ft::irc::user::USER_MODE_OPERATOR)) // TODO: 동시성 고려
         {
-            return ft::irc::ERR_INVITEONLYCHAN;
+            // bypass all restrict
         }
-        // TODO: ERR_BANNEDFROMCHAN
-        // TODO: ERR_BADCHANNELKEY
+        else
+        {
+            if (this->get_mode(CHANNEL_MODE_LIMIT) && this->members.size() >= this->get_limit())
+            {
+                return ft::irc::ERR_CHANNELISFULL;
+            }
+            if (this->get_mode(CHANNEL_MODE_INVITE_ONLY) && !user->contains_invite(this->shared_from_this()))
+            {
+                return ft::irc::ERR_INVITEONLYCHAN;
+            }
+            if (this->get_mode(CHANNEL_MODE_BAN) && this->is_banned(user))
+            {
+                return ft::irc::ERR_BANNEDFROMCHAN;
+            }
+            if (this->get_mode(CHANNEL_MODE_KEY) && this->get_key() != key)
+            {
+                return ft::irc::ERR_BADCHANNELKEY;
+            }
+        }
 
         const bool first = this->members.empty();
 
@@ -233,6 +301,12 @@ void ft::irc::channel::broadcast_unique(const ft::irc::message& message, ft::ser
             }
         }
     }
+}
+
+bool ft::irc::channel::is_banned(const ft::shared_ptr<const ft::irc::user>& user) const
+{
+    static_cast<void>(user);
+    return false; // FIXME: check ban
 }
 
 ft::irc::channel::member::member(const ft::shared_ptr<ft::irc::user>& user)

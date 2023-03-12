@@ -13,7 +13,7 @@
 #include "string_utils.hpp"
 #include "user.hpp"
 
-#include <cstdlib>
+#include <cstddef>
 #include <string>
 
 namespace ft
@@ -37,11 +37,18 @@ namespace ft
                 {
                     keys = ft::irc::message::split(message[1], ',');
                 }
-                static_cast<void>(keys); // TODO: secret channel
 
+                std::size_t i = 0;
                 foreach (ft::irc::message::param_vector::const_iterator, it, channelnames)
                 {
                     const std::string& channelname = *it;
+
+                    std::string key;
+                    if (i < keys.size())
+                    {
+                        key = keys[i];
+                    }
+                    i++;
 
                     if (user.is_channel_member(channelname))
                     {
@@ -61,7 +68,7 @@ namespace ft
                     }
 
                     ft::shared_ptr<ft::irc::channel> channel = server.ensure_channel(channelname);
-                    ft::irc::reply_numerics rpl = channel->enter_user(user.shared_from_this());
+                    ft::irc::reply_numerics rpl = channel->enter_user(user.shared_from_this(), key);
                     if (rpl == ft::irc::RPL_NONE)
                     {
                         user.join_channel(channelname);

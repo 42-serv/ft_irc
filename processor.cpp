@@ -17,7 +17,7 @@
 #include <smart_ptr/smart_ptr.hpp>
 #include <thread/once.hpp>
 
-#include <cstdlib>
+#include <cstddef>
 #include <string>
 #include <utility>
 

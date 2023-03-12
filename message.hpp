@@ -7,6 +7,7 @@
 
 #include <libserv/libserv.hpp>
 
+#include <stddef.h>
 #include <string>
 
 namespace ft
