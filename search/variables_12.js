@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['working_5fthread_1409',['working_thread',['../classft_1_1serv_1_1event__worker.html#acc3fcf9685006eca58886706e02b905b',1,'ft::serv::event_worker']]],
-  ['writability_5fenabled_1410',['writability_enabled',['../classft_1_1serv_1_1event__channel__base.html#aa41de487b6d48873d8ea150af9cc9b8e',1,'ft::serv::event_channel_base']]],
-  ['writability_5finterested_1411',['writability_interested',['../classft_1_1serv_1_1event__channel__base.html#ab80971da01797886bf544afcbdf4fd2e',1,'ft::serv::event_channel_base']]],
-  ['written_5fbuf_1412',['written_buf',['../classft_1_1serv_1_1event__channel__base.html#addcb055f4da4994e8a9efcaa11614dc7',1,'ft::serv::event_channel_base']]]
+  ['upper_5ftable_1427',['upper_table',['../namespaceft_1_1irc_1_1__internal.html#ac09c58af01ac5157df95267114af820a',1,'ft::irc::_internal']]],
+  ['user_1428',['user',['../structft_1_1irc_1_1channel_1_1member.html#aa7c63dddc620a12024070569d0753a80',1,'ft::irc::channel::member::user()'],['../classft_1_1irc_1_1client__handler.html#ac0f9dad7ed14dd1743eb0bd532a415b0',1,'ft::irc::client_handler::user()']]],
+  ['username_1429',['username',['../classft_1_1irc_1_1bot.html#aca7fc39a41da90cb9161969504080fbc',1,'ft::irc::bot::username()'],['../structft_1_1irc_1_1person__info.html#a5f079d741b7dc7df10fb70f57a56085c',1,'ft::irc::person_info::username()'],['../classft_1_1irc_1_1user.html#a88737d9e2897a30bfd4d13bd5ca91fa7',1,'ft::irc::user::username()']]],
+  ['users_1430',['users',['../classft_1_1irc_1_1server.html#a84a3a7c81416eca3bb34d934c34f8aeb',1,'ft::irc::server']]]
 ];

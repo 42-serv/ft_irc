@@ -17,7 +17,7 @@ var searchData=
   ['end_5fvararg_152',['END_VARARG',['../logger_8hpp.html#a25bf12c58f8e9173d6b420e6e42a2c97',1,'logger.hpp']]],
   ['ended_153',['ended',['../classft_1_1serv_1_1bootstrap.html#a5fae715040453dc6d1cf7821f43b78fd',1,'ft::serv::bootstrap']]],
   ['ensure_5fchannel_154',['ensure_channel',['../classft_1_1irc_1_1server.html#a5cfa990dde96357ed1af1e1e1b0e4f7d',1,'ft::irc::server']]],
-  ['enter_5fuser_155',['enter_user',['../classft_1_1irc_1_1channel.html#a0eb614161a17c1778de2b2443ea922e5',1,'ft::irc::channel']]],
+  ['enter_5fuser_155',['enter_user',['../classft_1_1irc_1_1channel.html#a5d118d8a0e12009c216ce8b39d02e454',1,'ft::irc::channel']]],
   ['errno_5fbackup_156',['errno_backup',['../structft_1_1serv_1_1errno__backup.html#a6c6ae1d6506517f8726a4a1e511a540d',1,'ft::serv::errno_backup::errno_backup()'],['../structft_1_1serv_1_1errno__backup.html',1,'ft::serv::errno_backup']]],
   ['erroneous_5fnickname_157',['erroneous_nickname',['../structft_1_1irc_1_1make__error.html#ad5903961eb9531f4dad67b0259119c8e',1,'ft::irc::make_error']]],
   ['error_158',['error',['../structft_1_1serv_1_1logger.html#a27e4ab1c4bf29bd34bb166a3ecd76449',1,'ft::serv::logger::error()'],['../classft_1_1serv_1_1syscall__failed.html#ad4beae2a2abdd5d44caf5f48b03a5ae0',1,'ft::serv::syscall_failed::error()'],['../classft_1_1serv_1_1__internal_1_1ai__failed.html#ad3aa900794508d370ef6e1b3c104a39e',1,'ft::serv::_internal::ai_failed::error()']]],

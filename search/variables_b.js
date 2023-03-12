@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['name_1375',['name',['../classft_1_1irc_1_1channel.html#ae67cff9be8b1921bcaf90573f945d3de',1,'ft::irc::channel']]],
-  ['next_1376',['next',['../classft_1_1serv_1_1event__layer.html#afe324474cd5105d96cdc6340396cd447',1,'ft::serv::event_layer']]],
-  ['nick_1377',['nick',['../classft_1_1irc_1_1bot.html#ab523178a76398c7e9af3e7e6628f31d5',1,'ft::irc::bot::nick()'],['../classft_1_1irc_1_1user.html#a00375ca0bcedecb3d58eafda8f7d4acb',1,'ft::irc::user::nick()'],['../structft_1_1irc_1_1user_1_1pred__equals__nick.html#ad6f371bf39a731d9429cee14fc9ef312',1,'ft::irc::user::pred_equals_nick::nick()']]],
-  ['nickname_1378',['nickname',['../structft_1_1irc_1_1person__info.html#a2fd983a4c2d78e9b8daf3eac169b3a26',1,'ft::irc::person_info::nickname()'],['../structft_1_1irc_1_1member__info.html#abb2358fbcca93d626046714ef4c0818b',1,'ft::irc::member_info::nickname()']]],
-  ['nicks_1379',['nicks',['../classft_1_1irc_1_1server.html#a06242c53cf587417b6cd4bd0db6194a9',1,'ft::irc::server']]],
-  ['null_5fprocessor_5fptr_1380',['null_processor_ptr',['../classft_1_1irc_1_1processor__dictionary.html#a9f19a725dcfcd0b78c039feb0a3fcf21',1,'ft::irc::processor_dictionary']]]
+  ['make_5fclient_1389',['make_client',['../classft_1_1serv_1_1bootstrap.html#aeccd084c3c554d32cac0fa15eb579dd2',1,'ft::serv::bootstrap']]],
+  ['make_5fserver_1390',['make_server',['../classft_1_1serv_1_1bootstrap.html#a7ed2873321016ce2723df1f41d2f35b1',1,'ft::serv::bootstrap']]],
+  ['max_5fevents_1391',['MAX_EVENTS',['../namespaceft_1_1serv.html#a0fe84f8852be2408536897bbd263e422',1,'ft::serv::MAX_EVENTS()'],['../namespaceft_1_1serv.html#a0fe84f8852be2408536897bbd263e422',1,'ft::serv::MAX_EVENTS()']]],
+  ['members_1392',['members',['../classft_1_1irc_1_1channel.html#a6fe5941bcbbb6be6c2f0ea5c6a0eba40',1,'ft::irc::channel']]],
+  ['mode_1393',['mode',['../structft_1_1irc_1_1channel_1_1member.html#ad47d115b3ba66d7b1d6afea24f71bbd1',1,'ft::irc::channel::member::mode()'],['../classft_1_1irc_1_1channel.html#ac0677f541d34fed15de348b91cf6fb49',1,'ft::irc::channel::mode()'],['../classft_1_1irc_1_1user.html#aa6421aa2cc848b6236f5e457c0a11b50',1,'ft::irc::user::mode()']]],
+  ['my_5fserver_5fname_1394',['my_server_name',['../structft_1_1irc_1_1make__reply__base.html#a6295b9a03bb340fa27aaf771fddb4cf8',1,'ft::irc::make_reply_base']]],
+  ['my_5fuser_5fname_1395',['my_user_name',['../structft_1_1irc_1_1make__reply__base.html#a4bff1ff2c182cbae371580c28eec8ebb',1,'ft::irc::make_reply_base']]],
+  ['my_5fuser_5fnick_1396',['my_user_nick',['../structft_1_1irc_1_1make__reply__base.html#a8486749dd928630daafd95efc72b8dec',1,'ft::irc::make_reply_base']]]
 ];
