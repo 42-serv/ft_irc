@@ -34,7 +34,7 @@ ft::shared_ptr<ft::serv::event_worker_group> child_group;
 
 static void _on_signal(int signo)
 {
-    ft::serv::logger::warn("signal %d.", signo);
+    static_cast<void>(signo);
     boss_group->shutdown_all();
     child_group->shutdown_all();
 }
