@@ -19,15 +19,15 @@
 
 ### Commands
 
- - [ ] PASS
- - [ ] NICK
- - [ ] USER
- - [ ] OPER
- - [ ] QUIT
- - [ ] JOIN
- - [ ] PART
+ - [x] PASS
+ - [x] NICK
+ - [x] USER
+ - [x] OPER
+ - [x] QUIT
+ - [x] JOIN
+ - [x] PART
  - [ ] MODE
- - [ ] TOPIC
+ - [x] TOPIC
  - [ ] NAMES
  - [ ] LIST
  - [ ] INVITE
