@@ -33,6 +33,9 @@ namespace ft
             message(int command);
             message(const std::string& command);
             message(const std::string& prefix, const std::string& command, const param_vector& params);
+            message(const message& that);
+
+            message& operator=(const message& that);
 
             std::string& operator[](param_vector::size_type n);
             const std::string& operator[](param_vector::size_type n) const;

@@ -90,6 +90,32 @@ void ft::irc::channel::store_mode(channel_mode index, bool value) throw()
     }
 }
 
+ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::shared_ptr<const ft::irc::user>& user, const std::string& new_topic)
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        if (this->invalidated)
+        {
+            return ft::irc::ERR_NOSUCHCHANNEL;
+        }
+
+        foreach (member_list::const_iterator, it, this->members)
+        {
+            if (it->user == user)
+            {
+                if (this->get_mode(CHANNEL_MODE_TOPIC_LIMIT) && !it->mode[member::MEMBER_MODE_OPERATOR])
+                {
+                    return ft::irc::ERR_CHANOPRIVSNEEDED;
+                }
+
+                this->set_topic(new_topic);
+                return ft::irc::RPL_NONE;
+            }
+        }
+    }
+    return ft::irc::ERR_NOTONCHANNEL;
+}
+
 ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::irc::user>& user)
 {
     synchronized (this->lock.get_write_lock())
@@ -114,8 +140,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
         {
             it->mode[member::MEMBER_MODE_OWNER] = true;
             it->mode[member::MEMBER_MODE_OPERATOR] = true;
-            it->user->send_message(ft::irc::message("NOTICE") >> "ft_irc"
-                                                                     << "You're new owner.");
+            it->user->send_message(ft::irc::make_reply::create("NOTICE") << this->get_name() << "You're new owner.");
         }
     }
     return ft::irc::RPL_NONE;
@@ -136,15 +161,14 @@ void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
         if (this->members.empty())
         {
             this->invalidated = true;
-            remove_channel_name = this->name;
+            remove_channel_name = this->get_name();
         }
         else if (owner)
         {
             member& successor = this->members.front();
             successor.mode[member::MEMBER_MODE_OWNER] = true;
             successor.mode[member::MEMBER_MODE_OPERATOR] = true;
-            successor.user->send_message(ft::irc::message("NOTICE") >> "ft_irc"
-                                                                           << "You're new owner.");
+            successor.user->send_message(ft::irc::make_reply::create("NOTICE") << this->get_name() << "You're new owner.");
         }
     }
     if (!remove_channel_name.empty())
@@ -153,30 +177,33 @@ void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
     }
 }
 
-ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::shared_ptr<const ft::irc::user>& user, const std::string& new_topic)
+ft::irc::reply_numerics ft::irc::channel::invite_user(const ft::shared_ptr<ft::irc::user>& user)
 {
-    synchronized (this->lock.get_write_lock())
-    {
-        if (this->invalidated)
-        {
-            return ft::irc::ERR_NOSUCHCHANNEL;
-        }
+    user->add_invite(this->shared_from_this());
+    return ft::irc::RPL_NONE;
+}
 
+void ft::irc::channel::send_names(const ft::shared_ptr<const ft::irc::user>& user) const throw()
+{
+    std::string channel_name;
+    bool is_secret_channel, is_private_channel;
+    std::vector<ft::irc::member_info> user_list;
+    synchronized (this->lock.get_read_lock())
+    {
+        channel_name = this->get_name();
+        is_secret_channel = this->get_mode(CHANNEL_MODE_SECRET);
+        is_private_channel = this->get_mode(CHANNEL_MODE_PRIVATE);
         foreach (member_list::const_iterator, it, this->members)
         {
-            if (it->user == user)
-            {
-                if (this->get_mode(CHANNEL_MODE_TOPIC_LIMIT) && !it->mode[member::MEMBER_MODE_OPERATOR])
-                {
-                    return ft::irc::ERR_CHANOPRIVSNEEDED;
-                }
-
-                this->topic = new_topic;
-                return ft::irc::RPL_NONE;
-            }
+            ft::irc::member_info info;
+            info.nickname = it->user->load_nick();
+            info.is_chanop = it->mode[member::MEMBER_MODE_OPERATOR];
+            info.is_chanspk = it->mode[member::MEMBER_MODE_VOICE];
+            user_list.push_back(info);
         }
     }
-    return ft::irc::ERR_NOTONCHANNEL;
+    user->send_message(ft::irc::make_reply::name_reply(is_secret_channel, is_private_channel, channel_name, user_list));
+    user->send_message(ft::irc::make_reply::end_of_names(channel_name));
 }
 
 void ft::irc::channel::broadcast(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except) const

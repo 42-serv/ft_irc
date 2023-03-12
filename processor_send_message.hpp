@@ -10,6 +10,7 @@
 #include "processor.hpp"
 #include "reply.hpp"
 #include "server.hpp"
+#include "string_utils.hpp"
 #include "user.hpp"
 
 #include <cstdlib>
@@ -33,13 +34,29 @@ namespace ft
                 {
                     const std::string& receiver = *it;
 
-                    // TODO: check channel if '#' or '&'
-                    // TODO: check pattern?
-                    // TODO: use `if (this->is_notice());`?
-                    ft::shared_ptr<ft::irc::channel> channel = server.find_channel(receiver);
-                    if (channel)
+                    ft::irc::message payload = ft::irc::make_reply::replicate(message);
+                    payload[0] = receiver;
+
+                    if (ft::irc::string_utils::is_valid_channelname(receiver))
                     {
-                        channel->broadcast(ft::irc::make_reply::replicate(message), user.shared_from_this());
+                        ft::shared_ptr<ft::irc::channel> channel = server.find_channel(receiver);
+                        if (channel)
+                        {
+                            if (channel->load_mode(ft::irc::channel::CHANNEL_MODE_NO_PRIVMSG) && !user.is_channel_member(receiver))
+                            {
+                                continue;
+                            }
+
+                            channel->broadcast(payload, user.shared_from_this());
+                        }
+                    }
+                    else
+                    {
+                        ft::shared_ptr<ft::irc::user> target = server.find_user(receiver);
+                        if (target)
+                        {
+                            target->send_message(payload);
+                        }
                     }
                 }
             }

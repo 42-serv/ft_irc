@@ -157,7 +157,7 @@ namespace ft
                 {
                     user.set_mode(user::USER_MODE_OPERATOR, true);
                     user.send_message(ft::irc::make_reply::now_operator());
-                    server.broadcast_all(ft::irc::make_reply::create("NOTICE") << user.make_full_name() + " is now opped.");
+                    server.broadcast_all(ft::irc::make_reply::create("NOTICE") << '*' << user.make_full_name() + " is now opped.");
                 }
                 else
                 {
@@ -198,7 +198,7 @@ namespace ft
                     // default message
                     quit_message = user.load_nick();
                 }
-                user.notify_message(ft::irc::message(message.get_command()) >> user.make_full_name() << quit_message);
+                user.notify_message(ft::irc::make_reply::replicate(message));
                 user.exit_client();
             }
         };

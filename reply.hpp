@@ -589,14 +589,14 @@ namespace ft
                 return ft::irc::message(RPL_ENDOFWHO) >> *my_server_name << *my_user_nick << name << "End of /WHO list";
             }
 
-            static inline ft::irc::message name_reply(param_t channel_name, const std::vector<member_info>& user_list)
+            static inline ft::irc::message name_reply(bool is_secret_channel, bool is_private_channel, param_t channel_name, const std::vector<member_info>& user_list)
             {
                 std::ostringstream oss;
                 foreach (std::vector<member_info>::const_iterator, it, user_list)
                 {
-                    oss << it->nickname << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << ' ';
+                    oss << (it->is_chanop ? "@" : (it->is_chanspk ? "+" : "")) << it->nickname << ' ';
                 }
-                return ft::irc::message(RPL_NAMREPLY) >> *my_server_name << *my_user_nick << channel_name << oss.str();
+                return ft::irc::message(RPL_NAMREPLY) >> *my_server_name << *my_user_nick << (is_secret_channel ? '@' : (is_private_channel ? '*' : '=')) << channel_name << oss.str();
             }
 
             static inline ft::irc::message end_of_names(param_t channel_name)

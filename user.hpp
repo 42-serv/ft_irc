@@ -91,6 +91,7 @@ namespace ft
             void register_to_server();
             void deregister_from_server();
 
+            channel_list channel_names_snapshot() const throw();
             channel_list::size_type channel_count() const throw();
             bool is_channel_member(const std::string& channelname) const throw();
             void join_channel(const std::string& channelname);

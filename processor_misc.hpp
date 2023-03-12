@@ -8,6 +8,7 @@
 #include "message.hpp"
 #include "processor.hpp"
 #include "reply.hpp"
+#include "server.hpp"
 #include "user.hpp"
 
 #include <cstdlib>
@@ -28,8 +29,18 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                const std::string& target_nick = message[0];
+                ft::irc::server& server = user.get_server();
+
+                const ft::shared_ptr<ft::irc::user>& target = server.find_user(target_nick);
+                if (!target)
+                {
+                    user.send_message(ft::irc::make_error::no_such_nickname(target_nick));
+                    return;
+                }
+
+                target->notify_message(ft::irc::make_reply::replicate(message));
+                target->exit_client();
             }
         };
 

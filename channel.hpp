@@ -97,6 +97,8 @@ namespace ft
 
             ft::irc::reply_numerics invite_user(const ft::shared_ptr<ft::irc::user>& user);
 
+            void send_names(const ft::shared_ptr<const ft::irc::user>& user) const throw();
+
         public:
             void broadcast(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except = ft::shared_ptr<ft::irc::user>()) const;
             void broadcast_unique(const ft::irc::message& message, ft::serv::unique_set<ft::shared_ptr<const ft::irc::user> >::type& unique_set) const;

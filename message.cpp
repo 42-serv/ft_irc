@@ -169,6 +169,26 @@ ft::irc::message::message(const std::string& prefix, const std::string& command,
     assert(_validate_command(this->command));
 }
 
+ft::irc::message::message(const message& that)
+    : command(that.command),
+      prefix(that.prefix),
+      params(that.params),
+      end(that.end)
+{
+}
+
+ft::irc::message& ft::irc::message::operator=(const message& that)
+{
+    if (this != &that)
+    {
+        this->command = that.command;
+        this->prefix = that.prefix;
+        this->params = that.params;
+        this->end = that.end;
+    }
+    return *this;
+}
+
 std::string& ft::irc::message::operator[](param_vector::size_type n)
 {
     const message* const_this = this;

@@ -238,6 +238,14 @@ void ft::irc::user::deregister_from_server()
     }
 }
 
+ft::irc::user::channel_list ft::irc::user::channel_names_snapshot() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->channels;
+    }
+}
+
 ft::irc::user::channel_list::size_type ft::irc::user::channel_count() const throw()
 {
     synchronized (this->lock.get_read_lock())

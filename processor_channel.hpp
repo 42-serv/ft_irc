@@ -65,14 +65,17 @@ namespace ft
                     if (rpl == ft::irc::RPL_NONE)
                     {
                         user.join_channel(channelname);
-                        channel->broadcast(ft::irc::make_reply::replicate(message));
+                        ft::irc::message payload = ft::irc::make_reply::replicate(message);
+                        payload[0] = channelname;
+                        payload[1] = '*';
+                        channel->broadcast(payload);
                         user.remove_invite(channel);
                         std::string topic = channel->load_topic();
                         if (!topic.empty())
                         {
                             user.send_message(ft::irc::make_reply::topic(channel->get_name(), topic));
                         }
-                        // TODO: NAMES
+                        channel->send_names(user.shared_from_this());
                     }
                     else
                     {
@@ -126,7 +129,9 @@ namespace ft
                         ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
                         if (channel)
                         {
-                            channel->broadcast(ft::irc::make_reply::replicate(message));
+                            ft::irc::message payload = ft::irc::make_reply::replicate(message);
+                            payload[0] = channelname;
+                            channel->broadcast(payload);
                             channel->leave_user(user.shared_from_this());
                         }
                         else
@@ -148,7 +153,7 @@ namespace ft
         class processor_mode : public ft::irc::processor_base
         {
         public:
-            std::size_t get_min_params() const throw() { return 2; }
+            std::size_t get_min_params() const throw() { return 1; }
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
@@ -320,8 +325,33 @@ namespace ft
         public:
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                ft::irc::server& server = user.get_server();
+
+                ft::irc::message::param_vector channel_names;
+                if (message.param_size() == this->get_min_params())
+                {
+                    channel_names = user.channel_names_snapshot();
+                }
+                else
+                {
+                    channel_names = ft::irc::message::split(message[0], ',');
+                }
+
+                foreach (ft::irc::message::param_vector::const_iterator, it, channel_names)
+                {
+                    const std::string& channel_name = *it;
+
+                    if (!ft::irc::string_utils::is_valid_channelname(channel_name))
+                    {
+                        continue;
+                    }
+
+                    ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channel_name);
+                    if (channel)
+                    {
+                        channel->send_names(user.shared_from_this());
+                    }
+                }
             }
         };
 
