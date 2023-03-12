@@ -68,7 +68,7 @@ namespace ft
                     }
 
                     ft::shared_ptr<ft::irc::channel> channel = server.ensure_channel(channelname);
-                    ft::irc::reply_numerics rpl = channel->enter_user(user.shared_from_this(), key);
+                    ft::irc::reply_numerics rpl = channel->enter_user(user, key);
                     if (rpl == ft::irc::RPL_NONE)
                     {
                         user.join_channel(channelname);
@@ -86,7 +86,7 @@ namespace ft
                         {
                             user.send_message(ft::irc::make_reply::topic(channel->get_name(), topic));
                         }
-                        channel->send_names(user.shared_from_this());
+                        channel->send_names(user);
                     }
                     else
                     {
@@ -143,7 +143,7 @@ namespace ft
                             ft::irc::message payload = ft::irc::make_reply::replicate(message);
                             payload[0] = channelname;
                             channel->broadcast(payload);
-                            channel->leave_user(user.shared_from_this());
+                            channel->leave_user(user);
                         }
                         else
                         {
@@ -296,7 +296,7 @@ namespace ft
                     }
                     else
                     {
-                        ft::irc::reply_numerics rpl = channel->change_topic(user.shared_from_this(), message[1]);
+                        ft::irc::reply_numerics rpl = channel->change_topic(user, message[1]);
                         if (rpl == ft::irc::RPL_NONE)
                         {
                             channel->broadcast(ft::irc::make_reply::replicate(message));
@@ -360,7 +360,7 @@ namespace ft
                     ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channel_name);
                     if (channel)
                     {
-                        channel->send_names(user.shared_from_this());
+                        channel->send_names(user);
                     }
                 }
             }

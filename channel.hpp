@@ -58,7 +58,8 @@ namespace ft
                 ft::shared_ptr<ft::irc::user> user;
                 std::bitset<NUMBEROF_MEMBER_MODE> mode;
 
-                bool operator==(const ft::shared_ptr<const ft::irc::user>& that);
+                bool operator==(const ft::shared_ptr<const ft::irc::user>& that) const throw();
+                bool operator==(const ft::irc::user& that) const throw();
             };
 
             typedef ft::serv::dynamic_array<member>::type member_list;
@@ -103,21 +104,23 @@ namespace ft
             void store_key(const std::string& key);
 
         public:
-            ft::irc::reply_numerics change_topic(const ft::shared_ptr<const ft::irc::user>& user, const std::string& new_topic);
+            ft::irc::reply_numerics change_topic(const ft::irc::user& user, const std::string& new_topic);
 
-            ft::irc::reply_numerics enter_user(const ft::shared_ptr<ft::irc::user>& user, const std::string& key);
-            void leave_user(const ft::shared_ptr<ft::irc::user>& user);
+            ft::irc::reply_numerics enter_user(ft::irc::user& user, const std::string& key);
+            void leave_user(const ft::irc::user& user);
 
-            ft::irc::reply_numerics invite_user(const ft::shared_ptr<ft::irc::user>& user);
+            ft::irc::reply_numerics invite_user(ft::irc::user& user);
 
-            void send_names(const ft::shared_ptr<const ft::irc::user>& user) const throw();
+            void send_names(const ft::irc::user& user) const throw();
 
         public:
-            void broadcast(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except = ft::shared_ptr<ft::irc::user>()) const;
+            void broadcast(const ft::irc::message& message, const ft::irc::user* except = null) const;
             void broadcast_unique(const ft::irc::message& message, ft::serv::unique_set<ft::shared_ptr<const ft::irc::user> >::type& unique_set) const;
 
         public:
-            bool is_banned(const ft::shared_ptr<const ft::irc::user>& user) const;
+            bool is_channel_operator(const ft::irc::user& user) const throw();
+            bool is_channel_speaker(const ft::irc::user& user) const throw();
+            bool is_banned(const ft::irc::user& user) const throw();
 
         private:
             channel(const channel&);

@@ -97,7 +97,7 @@ namespace ft
             void join_channel(const std::string& channelname);
             void part_channel(const std::string& channelname);
 
-            bool contains_invite(const ft::shared_ptr<channel>& channel);
+            bool contains_invite(const ft::shared_ptr<channel>& channel) const;
             void add_invite(const ft::shared_ptr<channel>& channel);
             void remove_invite(const ft::shared_ptr<channel>& channel);
 

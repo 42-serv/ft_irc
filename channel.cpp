@@ -5,6 +5,7 @@
 
 #include "irc_constants.hpp"
 
+#include "libserv/serv_types.hpp"
 #include "message.hpp"
 #include "reply.hpp"
 #include "server.hpp"
@@ -142,7 +143,7 @@ void ft::irc::channel::store_key(const std::string& key)
     }
 }
 
-ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::shared_ptr<const ft::irc::user>& user, const std::string& new_topic)
+ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::irc::user& user, const std::string& new_topic)
 {
     synchronized (this->lock.get_write_lock())
     {
@@ -153,7 +154,7 @@ ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::shared_ptr<cons
 
         foreach (member_list::const_iterator, it, this->members)
         {
-            if (it->user == user)
+            if (*it == user)
             {
                 if (this->get_mode(CHANNEL_MODE_TOPIC_LIMIT) && !it->mode[member::MEMBER_MODE_OPERATOR])
                 {
@@ -168,7 +169,7 @@ ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::shared_ptr<cons
     return ft::irc::ERR_NOTONCHANNEL;
 }
 
-ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::irc::user>& user, const std::string& key)
+ft::irc::reply_numerics ft::irc::channel::enter_user(ft::irc::user& user, const std::string& key)
 {
     synchronized (this->lock.get_write_lock())
     {
@@ -177,7 +178,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
             return ft::irc::ERR_NOSUCHCHANNEL;
         }
 
-        if (user->get_mode(ft::irc::user::USER_MODE_OPERATOR)) // TODO: 동시성 고려
+        if (user.get_mode(ft::irc::user::USER_MODE_OPERATOR)) // TODO: 동시성 고려
         {
             // bypass all restrict
         }
@@ -187,7 +188,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
             {
                 return ft::irc::ERR_CHANNELISFULL;
             }
-            if (this->get_mode(CHANNEL_MODE_INVITE_ONLY) && !user->contains_invite(this->shared_from_this()))
+            if (this->get_mode(CHANNEL_MODE_INVITE_ONLY) && !user.contains_invite(this->shared_from_this()))
             {
                 return ft::irc::ERR_INVITEONLYCHAN;
             }
@@ -203,18 +204,17 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(const ft::shared_ptr<ft::ir
 
         const bool first = this->members.empty();
 
-        member_list::iterator it = this->members.insert(this->members.end(), member(user));
+        member_list::iterator it = this->members.insert(this->members.end(), member(user.shared_from_this()));
         if (first)
         {
             it->mode[member::MEMBER_MODE_OWNER] = true;
             it->mode[member::MEMBER_MODE_OPERATOR] = true;
-            it->user->send_message(ft::irc::make_reply::create("NOTICE") << this->get_name() << "You're new owner.");
         }
     }
     return ft::irc::RPL_NONE;
 }
 
-void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
+void ft::irc::channel::leave_user(const ft::irc::user& user)
 {
     std::string remove_channel_name;
     synchronized (this->lock.get_write_lock())
@@ -245,13 +245,13 @@ void ft::irc::channel::leave_user(const ft::shared_ptr<ft::irc::user>& user)
     }
 }
 
-ft::irc::reply_numerics ft::irc::channel::invite_user(const ft::shared_ptr<ft::irc::user>& user)
+ft::irc::reply_numerics ft::irc::channel::invite_user(ft::irc::user& user)
 {
-    user->add_invite(this->shared_from_this());
+    user.add_invite(this->shared_from_this()); // FIXME: 보강
     return ft::irc::RPL_NONE;
 }
 
-void ft::irc::channel::send_names(const ft::shared_ptr<const ft::irc::user>& user) const throw()
+void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
 {
     std::string channel_name;
     bool is_secret_channel, is_private_channel;
@@ -270,17 +270,17 @@ void ft::irc::channel::send_names(const ft::shared_ptr<const ft::irc::user>& use
             user_list.push_back(info);
         }
     }
-    user->send_message(ft::irc::make_reply::name_reply(is_secret_channel, is_private_channel, channel_name, user_list));
-    user->send_message(ft::irc::make_reply::end_of_names(channel_name));
+    user.send_message(ft::irc::make_reply::name_reply(is_secret_channel, is_private_channel, channel_name, user_list)); // FIXME: 과도하게 많아지면 512바이트 제한 돌파 가능. 닉네임 바이트 수 제한 고려해서 32명씩 자르기?
+    user.send_message(ft::irc::make_reply::end_of_names(channel_name));
 }
 
-void ft::irc::channel::broadcast(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except) const
+void ft::irc::channel::broadcast(const ft::irc::message& message, const ft::irc::user* except) const
 {
     synchronized (this->lock.get_read_lock())
     {
         foreach (member_list::const_iterator, it, this->members)
         {
-            if (it->user != except)
+            if (it->user.get() != except)
             {
                 it->user->send_message(message);
             }
@@ -303,7 +303,33 @@ void ft::irc::channel::broadcast_unique(const ft::irc::message& message, ft::ser
     }
 }
 
-bool ft::irc::channel::is_banned(const ft::shared_ptr<const ft::irc::user>& user) const
+bool ft::irc::channel::is_channel_operator(const ft::irc::user& user) const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        member_list::const_iterator it = std::find(this->members.begin(), this->members.end(), user);
+        if (it != this->members.end())
+        {
+            return it->mode[member::MEMBER_MODE_OPERATOR];
+        }
+        return false;
+    }
+}
+
+bool ft::irc::channel::is_channel_speaker(const ft::irc::user& user) const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        member_list::const_iterator it = std::find(this->members.begin(), this->members.end(), user);
+        if (it != this->members.end())
+        {
+            return it->mode[member::MEMBER_MODE_OPERATOR] || it->mode[member::MEMBER_MODE_VOICE];
+        }
+        return false;
+    }
+}
+
+bool ft::irc::channel::is_banned(const ft::irc::user& user) const throw()
 {
     static_cast<void>(user);
     return false; // FIXME: check ban
@@ -315,7 +341,12 @@ ft::irc::channel::member::member(const ft::shared_ptr<ft::irc::user>& user)
 {
 }
 
-bool ft::irc::channel::member::operator==(const ft::shared_ptr<const ft::irc::user>& that)
+bool ft::irc::channel::member::operator==(const ft::shared_ptr<const ft::irc::user>& that) const throw()
 {
     return this->user == that;
+}
+
+bool ft::irc::channel::member::operator==(const ft::irc::user& that) const throw()
+{
+    return this->user.get() == &that;
 }

@@ -225,7 +225,7 @@ void ft::irc::user::deregister_from_server()
         foreach (channel_list::iterator, it, channels_snapshot)
         {
             ft::shared_ptr<ft::irc::channel> channel = server.find_channel(*it);
-            channel->leave_user(this->shared_from_this());
+            channel->leave_user(*this);
         }
 
         server.deregister_user(this->shared_from_this());
@@ -283,7 +283,7 @@ void ft::irc::user::part_channel(const std::string& channelname)
     }
 }
 
-bool ft::irc::user::contains_invite(const ft::shared_ptr<channel>& channel)
+bool ft::irc::user::contains_invite(const ft::shared_ptr<channel>& channel) const
 {
     synchronized (this->lock.get_read_lock())
     {

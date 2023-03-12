@@ -27,6 +27,13 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
+                user.send_message(ft::irc::make_error::no_recipient(message.get_command()));
+                if (message[1].empty())
+                {
+                    user.send_message(ft::irc::make_error::no_text_to_send());
+                    return;
+                }
+
                 ft::irc::server& server = user.get_server();
                 const ft::irc::message::param_vector receivers = ft::irc::message::split(message[0], ',');
 
@@ -44,10 +51,21 @@ namespace ft
                         {
                             if (channel->load_mode(ft::irc::channel::CHANNEL_MODE_NO_PRIVMSG) && !user.is_channel_member(receiver))
                             {
+                                user.send_message(ft::irc::make_error::cannot_send_to_channel(receiver));
                                 continue;
                             }
 
-                            channel->broadcast(payload, user.shared_from_this());
+                            if (channel->load_mode(ft::irc::channel::CHANNEL_MODE_MODERATED) && !channel->is_channel_speaker(user))
+                            {
+                                user.send_message(ft::irc::make_error::cannot_send_to_channel(receiver));
+                                continue;
+                            }
+
+                            channel->broadcast(payload, &user);
+                        }
+                        else
+                        {
+                            user.send_message(ft::irc::make_error::no_such_nickname(receiver));
                         }
                     }
                     else
@@ -56,6 +74,10 @@ namespace ft
                         if (target)
                         {
                             target->send_message(payload);
+                        }
+                        else
+                        {
+                            user.send_message(ft::irc::make_error::no_such_nickname(receiver));
                         }
                     }
                 }
