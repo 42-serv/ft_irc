@@ -19,7 +19,7 @@ var searchData=
   ['bot_5fhandler_52',['bot_handler',['../classft_1_1irc_1_1bot__handler.html#adf03eba520eef519d5261d4b394d7bc0',1,'ft::irc::bot_handler::bot_handler()'],['../classft_1_1irc_1_1bot__handler.html',1,'ft::irc::bot_handler']]],
   ['bot_5fhandler_2ehpp_53',['bot_handler.hpp',['../bot__handler_8hpp.html',1,'']]],
   ['bot_5fmain_2ecpp_54',['bot_main.cpp',['../bot__main_8cpp.html',1,'']]],
-  ['broadcast_55',['broadcast',['../classft_1_1irc_1_1channel.html#ae4d480fe67024e93ec3bfe21f5d82b4f',1,'ft::irc::channel']]],
+  ['broadcast_55',['broadcast',['../classft_1_1irc_1_1channel.html#a4250c6f755016a2f80ae04de5ffed80f',1,'ft::irc::channel']]],
   ['broadcast_5fall_56',['broadcast_all',['../classft_1_1irc_1_1server.html#a773440405607167a9478a54fd8ab90f3',1,'ft::irc::server']]],
   ['broadcast_5funique_57',['broadcast_unique',['../classft_1_1irc_1_1channel.html#a3b2b7e0ac9e2122b7f9e26ce7a851e3f',1,'ft::irc::channel']]],
   ['buffer_58',['buffer',['../classft_1_1serv_1_1byte__buffer.html#ab7aa80f647493399cf1ee73a21eca98d',1,'ft::serv::byte_buffer']]],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['channel_764',['channel',['../classft_1_1irc_1_1channel.html',1,'ft::irc']]],
-  ['channel_5finfo_765',['channel_info',['../structft_1_1irc_1_1channel__info.html',1,'ft::irc']]],
-  ['client_5fhandler_766',['client_handler',['../classft_1_1irc_1_1client__handler.html',1,'ft::irc']]]
+  ['channel_766',['channel',['../classft_1_1irc_1_1channel.html',1,'ft::irc']]],
+  ['channel_5finfo_767',['channel_info',['../structft_1_1irc_1_1channel__info.html',1,'ft::irc']]],
+  ['client_5fhandler_768',['client_handler',['../classft_1_1irc_1_1client__handler.html',1,'ft::irc']]]
 ];
