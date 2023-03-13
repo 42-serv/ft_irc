@@ -107,6 +107,7 @@ namespace ft
             void set_away_message(const std::string& away_message) throw();
             const std::string& load_away_message() const throw();
             void store_away_message(const std::string& away_message) throw();
+            void reset_away_message() throw();
 
         public:
             void send_message(const ft::irc::message& message) const;

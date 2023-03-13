@@ -89,5 +89,29 @@ namespace ft
                 static_cast<void>(user), static_cast<void>(message);
             }
         };
+
+        // Command: AWAY
+        // Parameters: <message>
+        class processor_away : public ft::irc::processor_base
+        {
+        public:
+            std::size_t get_max_params() const throw() { return 1; }
+
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
+            {
+                if (!message[0].empty())
+                {
+                    user.store_mode(user::USER_MODE_AWAY, true);
+                    user.store_away_message(message[0]);
+                    user.send_message(ft::irc::make_reply::now_away());
+                }
+                else
+                {
+                    user.store_mode(user::USER_MODE_AWAY, false);
+                    user.reset_away_message();
+                    user.send_message(ft::irc::make_reply::unaway());
+                }
+            }
+        };
     }
 }

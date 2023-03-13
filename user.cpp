@@ -373,3 +373,11 @@ void ft::irc::user::store_away_message(const std::string& new_away_message) thro
         this->set_away_message(new_away_message);
     }
 }
+
+void ft::irc::user::reset_away_message() throw()
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->away_message.clear();
+    }
+}
