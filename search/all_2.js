@@ -1,7 +1,7 @@
 var searchData=
 [
   ['bad_5fchannel_5fkey_36',['bad_channel_key',['../structft_1_1irc_1_1make__error.html#a86cfaaf2f57c77ec211b569b30a4322f',1,'ft::irc::make_error']]],
-  ['ban_5flist_37',['ban_list',['../structft_1_1irc_1_1make__reply.html#ac76f5ca3eb1df5aa626f42bb5ef52e48',1,'ft::irc::make_reply']]],
+  ['ban_5flist_37',['ban_list',['../structft_1_1irc_1_1make__reply.html#a0a486c23beab946a92e23a95730f5a7e',1,'ft::irc::make_reply']]],
   ['banned_5ffrom_5fchannel_38',['banned_from_channel',['../structft_1_1irc_1_1make__error.html#a31a17f572a4ebafb6a40c1fbe972e679',1,'ft::irc::make_error']]],
   ['banned_5ffrom_5fserver_39',['banned_from_server',['../structft_1_1irc_1_1make__error.html#aa421f4e02d93c3b5d652db5cfb3ad50b',1,'ft::irc::make_error']]],
   ['begin_5fread_40',['begin_read',['../classft_1_1serv_1_1event__channel__base.html#a9e231903746fce1da12ced6da6d880d6',1,'ft::serv::event_channel_base::begin_read()'],['../classft_1_1serv_1_1server__channel.html#a6721bda28cd2b3649985d19cbd407416',1,'ft::serv::server_channel::begin_read()'],['../classft_1_1serv_1_1stream__channel.html#af3673676451a7ba771de3c7814e6edb2',1,'ft::serv::stream_channel::begin_read()']]],
