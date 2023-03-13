@@ -27,7 +27,11 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                user.send_message(ft::irc::make_error::no_recipient(message.get_command()));
+                if (message[0].empty())
+                {
+                    user.send_message(ft::irc::make_error::no_recipient(message.get_command()));
+                    return;
+                }
                 if (message[1].empty())
                 {
                     user.send_message(ft::irc::make_error::no_text_to_send());

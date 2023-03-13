@@ -113,6 +113,8 @@ namespace ft
 
             void send_names(const ft::irc::user& user) const throw();
 
+            ft::irc::message make_list_packet(const ft::irc::user& user) const throw();
+
         public:
             void broadcast(const ft::irc::message& message, const ft::irc::user* except = null) const;
             void broadcast_unique(const ft::irc::message& message, ft::serv::unique_set<ft::shared_ptr<const ft::irc::user> >::type& unique_set) const;

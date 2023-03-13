@@ -10,6 +10,7 @@
 #include <libserv/libserv.hpp>
 #include <thread/thread_specific.hpp>
 
+#include <cstddef>
 #include <iomanip>
 #include <sstream>
 #include <string>
@@ -534,7 +535,7 @@ namespace ft
                                                                           << "Users  Name";
             }
 
-            static inline ft::irc::message list(param_t channel_name, int visible_count, param_t channel_topic)
+            static inline ft::irc::message list(param_t channel_name, std::size_t visible_count, param_t channel_topic)
             {
                 return ft::irc::message(RPL_LIST) >> *my_server_name << *my_user_nick << channel_name << visible_count << channel_topic;
             }
@@ -576,7 +577,7 @@ namespace ft
                 return ft::irc::message(RPL_VERSION) >> *my_server_name << *my_user_nick << oss.str() << server_name << comments;
             }
 
-            static inline ft::irc::message who_reply(param_t channel_name, param_t username, param_t host, param_t server_name, param_t nickname, bool is_away, bool is_operator, bool is_chanop, bool is_chanspk, int hop_count, param_t info)
+            static inline ft::irc::message who_reply(param_t channel_name, param_t username, param_t host, param_t server_name, param_t nickname, bool is_away, bool is_operator, bool is_chanop, bool is_chanspk, std::size_t hop_count, param_t info)
             {
                 std::ostringstream status, oss;
                 status << (is_away ? "G" : "H") << (is_operator ? "*" : "") << (is_chanop ? "@" : (is_chanspk ? "+" : ""));
@@ -604,7 +605,7 @@ namespace ft
                 return ft::irc::message(RPL_ENDOFNAMES) >> *my_server_name << *my_user_nick << channel_name << "End of /NAMES list";
             }
 
-            static inline ft::irc::message links(param_t mask, param_t server_name, int hop_count, param_t info)
+            static inline ft::irc::message links(param_t mask, param_t server_name, std::size_t hop_count, param_t info)
             {
                 std::ostringstream oss;
                 oss << hop_count << " " << info;
@@ -616,7 +617,7 @@ namespace ft
                 return ft::irc::message(RPL_ENDOFLINKS) >> *my_server_name << *my_user_nick << mask << "End of /LINKS list";
             }
 
-            static inline ft::irc::message ban_list(param_t channel_name, int ban_id)
+            static inline ft::irc::message ban_list(param_t channel_name, std::size_t ban_id)
             {
                 return ft::irc::message(RPL_BANLIST) >> *my_server_name << *my_user_nick << channel_name << ban_id;
             }
@@ -723,7 +724,7 @@ namespace ft
                 return ft::irc::message(RPL_TRACEUSER) >> *my_server_name << *my_user_nick << "User" << client_class << client_name;
             }
 
-            static inline ft::irc::message trace_server(int client_class, int server_count, int client_count, param_t client_name, param_t by, param_t username, param_t host)
+            static inline ft::irc::message trace_server(int client_class, std::size_t server_count, std::size_t client_count, param_t client_name, param_t by, param_t username, param_t host)
             {
                 std::ostringstream oss_s, oss_c, oss;
                 oss_s << server_count << 'S';
@@ -812,29 +813,29 @@ namespace ft
                 return ft::irc::message(RPL_UMODEIS) >> *my_server_name << *my_user_nick << user_mode;
             }
 
-            static inline ft::irc::message luser_client(int user_count, int invisible_count, int server_count)
+            static inline ft::irc::message luser_client(std::size_t user_count, std::size_t invisible_count, std::size_t server_count)
             {
                 std::ostringstream oss;
                 oss << "There are " << user_count << " users and " << invisible_count << " invisible on " << server_count << " servers";
                 return ft::irc::message(RPL_LUSERCLIENT) >> *my_server_name << *my_user_nick << oss.str();
             }
 
-            static inline ft::irc::message luser_operator(int op_count)
+            static inline ft::irc::message luser_operator(std::size_t op_count)
             {
                 return ft::irc::message(RPL_LUSEROP) >> *my_server_name << *my_user_nick << op_count << "operator(s) online";
             }
 
-            static inline ft::irc::message luser_unknown(int unknown_count)
+            static inline ft::irc::message luser_unknown(std::size_t unknown_count)
             {
                 return ft::irc::message(RPL_LUSERUNKNOWN) >> *my_server_name << *my_user_nick << unknown_count << "unknown connection(s)";
             }
 
-            static inline ft::irc::message luser_channels(int channel_count)
+            static inline ft::irc::message luser_channels(std::size_t channel_count)
             {
                 return ft::irc::message(RPL_LUSERCHANNELS) >> *my_server_name << *my_user_nick << channel_count << "channels formed";
             }
 
-            static inline ft::irc::message luser_me(int client_count, int server_count)
+            static inline ft::irc::message luser_me(std::size_t client_count, std::size_t server_count)
             {
                 std::ostringstream oss;
                 oss << "I have " << client_count << " clients and " << server_count << " servers";

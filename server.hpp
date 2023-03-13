@@ -12,6 +12,7 @@
 #include <thread/readwrite_lock.hpp>
 
 #include <string>
+#include <vector>
 
 namespace ft
 {
@@ -43,6 +44,7 @@ namespace ft
 
         public:
             std::string make_full_name() const throw();
+            std::vector<std::string> make_motd_lines() const throw();
             const std::string& get_pass() const throw();
 
             ft::shared_ptr<ft::irc::channel> find_channel(const std::string& name) const throw();
@@ -55,6 +57,9 @@ namespace ft
             ft::shared_ptr<ft::irc::user> find_user(const std::string& name) const throw();
             void register_user(const ft::shared_ptr<ft::irc::user>& user);
             void deregister_user(const ft::shared_ptr<ft::irc::user>& user);
+
+            void send_welcome(const ft::irc::user& user) const throw();
+            void send_list(const ft::irc::user& user, const ft::irc::message::param_vector& query) const throw();
 
         public:
             void broadcast_all(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except = ft::shared_ptr<ft::irc::user>()) const;

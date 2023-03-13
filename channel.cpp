@@ -178,7 +178,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(ft::irc::user& user, const 
             return ft::irc::ERR_NOSUCHCHANNEL;
         }
 
-        if (user.get_mode(ft::irc::user::USER_MODE_OPERATOR)) // TODO: 동시성 고려
+        if (user.load_mode(ft::irc::user::USER_MODE_OPERATOR))
         {
             // bypass all restrict
         }
@@ -254,13 +254,15 @@ ft::irc::reply_numerics ft::irc::channel::invite_user(ft::irc::user& user)
 void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
 {
     std::string channel_name;
-    bool is_secret_channel, is_private_channel;
-    std::vector<ft::irc::member_info> user_list;
+    std::vector<ft::irc::message> user_list_packets;
     synchronized (this->lock.get_read_lock())
     {
         channel_name = this->get_name();
-        is_secret_channel = this->get_mode(CHANNEL_MODE_SECRET);
-        is_private_channel = this->get_mode(CHANNEL_MODE_PRIVATE);
+        const bool is_secret_channel = this->get_mode(CHANNEL_MODE_SECRET);
+        const bool is_private_channel = this->get_mode(CHANNEL_MODE_PRIVATE);
+        const std::size_t user_per_page = 32;
+        std::vector<ft::irc::member_info> user_list;
+        user_list.reserve(user_per_page);
         foreach (member_list::const_iterator, it, this->members)
         {
             ft::irc::member_info info;
@@ -268,10 +270,39 @@ void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
             info.is_chanop = it->mode[member::MEMBER_MODE_OPERATOR];
             info.is_chanspk = it->mode[member::MEMBER_MODE_VOICE];
             user_list.push_back(info);
+            if (user_list.size() >= user_per_page)
+            {
+                user_list_packets.push_back(ft::irc::make_reply::name_reply(is_secret_channel, is_private_channel, channel_name, user_list));
+                user_list.clear();
+            }
+        }
+        if (!user_list.empty())
+        {
+            user_list_packets.push_back(ft::irc::make_reply::name_reply(is_secret_channel, is_private_channel, channel_name, user_list));
         }
     }
-    user.send_message(ft::irc::make_reply::name_reply(is_secret_channel, is_private_channel, channel_name, user_list)); // FIXME: 과도하게 많아지면 512바이트 제한 돌파 가능. 닉네임 바이트 수 제한 고려해서 32명씩 자르기?
+    foreach (std::vector<ft::irc::message>::const_iterator, it, user_list_packets)
+    {
+        user.send_message(*it);
+    }
     user.send_message(ft::irc::make_reply::end_of_names(channel_name));
+}
+
+ft::irc::message ft::irc::channel::make_list_packet(const ft::irc::user& user) const throw()
+{
+    const bool force = user.load_mode(ft::irc::user::USER_MODE_OPERATOR);
+    synchronized (this->lock.get_read_lock())
+    {
+        std::size_t visible_count = 0;
+        foreach (member_list::const_iterator, it, this->members)
+        {
+            if (!it->user->load_mode(ft::irc::user::USER_MODE_INVISIBLE) || force)
+            {
+                visible_count++;
+            }
+        }
+        return ft::irc::make_reply::list(this->get_name(), visible_count, this->get_topic());
+    }
 }
 
 void ft::irc::channel::broadcast(const ft::irc::message& message, const ft::irc::user* except) const

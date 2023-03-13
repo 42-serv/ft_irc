@@ -16,6 +16,7 @@
 
 #include <string>
 #include <utility>
+#include <vector>
 
 ft::irc::server::server(const std::string& pass)
     : pass(pass),
@@ -32,7 +33,22 @@ ft::irc::server::~server()
 
 std::string ft::irc::server::make_full_name() const throw()
 {
-    return "irc.v42.dev";
+    synchronized (this->lock.get_read_lock())
+    {
+        return "irc.v42.dev";
+    }
+}
+
+std::vector<std::string> ft::irc::server::make_motd_lines() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        std::vector<std::string> motd;
+        motd.push_back("Welcome to ft_irc server");
+        motd.push_back("This server was created for libserv example");
+        motd.push_back("ENJOY!!");
+        return motd;
+    }
 }
 
 const std::string& ft::irc::server::get_pass() const throw()
@@ -121,6 +137,92 @@ void ft::irc::server::deregister_user(const ft::shared_ptr<ft::irc::user>& user)
             this->users.erase(it);
         }
     }
+}
+
+void ft::irc::server::send_welcome(const ft::irc::user& user) const throw()
+{
+    int user_count = 0;
+    int invisible_count = 0;
+    int server_count = 0;
+    int operator_count = 0;
+    int unknown_count = 0;
+    int channel_count = 0;
+    int my_client_count = 0;
+    int my_server_count = 0;
+
+    synchronized (this->lock.get_read_lock())
+    {
+        user_count = this->users.size();
+        foreach (user_list::const_iterator, it, this->users)
+        {
+            const ft::shared_ptr<ft::irc::user>& u = *it;
+            if (u->load_mode(ft::irc::user::USER_MODE_INVISIBLE))
+            {
+                invisible_count++;
+            }
+            if (u->load_mode(ft::irc::user::USER_MODE_OPERATOR))
+            {
+                operator_count++;
+            }
+        }
+        channel_count = this->channels.size();
+        my_client_count = user_count + server_count + unknown_count;
+    }
+
+    user.send_message(ft::irc::make_reply::luser_client(user_count, invisible_count, server_count));
+    if (operator_count > 0)
+    {
+        user.send_message(ft::irc::make_reply::luser_operator(operator_count));
+    }
+    if (unknown_count > 0)
+    {
+        user.send_message(ft::irc::make_reply::luser_unknown(unknown_count));
+    }
+    user.send_message(ft::irc::make_reply::luser_channels(channel_count));
+    user.send_message(ft::irc::make_reply::luser_me(my_client_count, my_server_count));
+
+    const std::vector<std::string> motd = this->make_motd_lines();
+    if (motd.empty())
+    {
+        user.send_message(ft::irc::make_error::no_motd());
+    }
+    else
+    {
+        user.send_message(ft::irc::make_reply::motd_start(this->make_full_name()));
+        foreach (std::vector<std::string>::const_iterator, it, motd)
+        {
+            user.send_message(ft::irc::make_reply::motd(*it));
+        }
+        user.send_message(ft::irc::make_reply::end_of_motd());
+    }
+}
+
+void ft::irc::server::send_list(const ft::irc::user& user, const ft::irc::message::param_vector& query) const throw()
+{
+    // FIXME: user의 권한 검사
+    user.send_message(ft::irc::make_reply::list_start());
+    if (query.empty())
+    {
+        synchronized (this->lock.get_read_lock())
+        {
+            foreach (channel_dictionary::const_iterator, it, this->channels)
+            {
+                user.send_message(it->second->make_list_packet(user));
+            }
+        }
+    }
+    else
+    {
+        foreach (ft::irc::message::param_vector::const_iterator, it, query)
+        {
+            ft::shared_ptr<ft::irc::channel> ch = this->find_channel(*it);
+            if (ch)
+            {
+                user.send_message(ch->make_list_packet(user));
+            }
+        }
+    }
+    user.send_message(ft::irc::make_reply::list_end());
 }
 
 void ft::irc::server::broadcast_all(const ft::irc::message& message, ft::shared_ptr<const ft::irc::user> except) const

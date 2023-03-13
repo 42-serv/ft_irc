@@ -137,7 +137,7 @@ void ft::irc::processor_dictionary::execute(ft::irc::user& user, const ft::irc::
         return;
     }
 
-    if (processor->is_operator_only() && !user.get_mode(ft::irc::user::USER_MODE_OPERATOR))
+    if (processor->is_operator_only() && !user.load_mode(ft::irc::user::USER_MODE_OPERATOR))
     {
         user.send_message(ft::irc::make_error::no_privileges());
         return;

@@ -373,10 +373,19 @@ namespace ft
         public:
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
-                // ft::irc::server& server = user.get_server();
-                // server.send_list();
+                ft::irc::server& server = user.get_server();
+
+                ft::irc::message::param_vector channel_names;
+                if (message.param_size() == this->get_min_params())
+                {
+                    channel_names = user.channel_names_snapshot();
+                }
+                else
+                {
+                    channel_names = ft::irc::message::split(message[0], ',');
+                }
+
+                server.send_list(user, channel_names);
             }
         };
 

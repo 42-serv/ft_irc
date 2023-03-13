@@ -134,17 +134,21 @@ void ft::irc::user::set_mode(user_mode index, bool value) throw()
     this->mode[index] = value;
 }
 
-// TODO: 필요한가?
-// FT_SERV_DEFINE_TASK_3(task_user_set_mode,
-//                       ft::shared_ptr<ft::irc::user>, user,
-//                       ft::irc::user::user_mode, index,
-//                       bool, value,
-//                       user->set_mode(index, value));
+bool ft::irc::user::load_mode(user_mode index) const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->mode[index];
+    }
+}
 
-// void ft::irc::user::post_set_mode(user_mode index, bool value)
-// {
-//     this->layer.lock()->invoke_task(ft::make_shared<task_user_set_mode>(this->shared_from_this(), index, value));
-// }
+void ft::irc::user::store_mode(user_mode index, bool value) throw()
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->mode[index] = value;
+    }
+}
 
 bool ft::irc::user::get_register_state(register_state index) const throw()
 {
@@ -174,37 +178,7 @@ void ft::irc::user::register_to_server()
     server.register_user(this->shared_from_this());
     this->set_register_state(ft::irc::user::REGISTER_STATE_COMPLETED, true);
 
-    // FIXME: fill data
-    int user_count = 42;
-    int invisible_count = 42;
-    int server_count = 42;
-    int operator_count = 42;
-    int unknown_count = 42;
-    int channel_count = 42;
-    int my_client_count = 42;
-    int my_server_count = 42;
-    this->send_message(ft::irc::make_reply::luser_client(user_count, invisible_count, server_count));
-    if (operator_count > 0)
-    {
-        this->send_message(ft::irc::make_reply::luser_operator(operator_count));
-    }
-    if (unknown_count > 0)
-    {
-        this->send_message(ft::irc::make_reply::luser_unknown(unknown_count));
-    }
-    this->send_message(ft::irc::make_reply::luser_channels(channel_count));
-    this->send_message(ft::irc::make_reply::luser_me(my_client_count, my_server_count));
-
-    if (true)
-    {
-        this->send_message(ft::irc::make_reply::motd_start("irc.42seoul.kr"));
-        this->send_message(ft::irc::make_reply::motd("example motd"));
-        this->send_message(ft::irc::make_reply::end_of_motd());
-    }
-    else
-    {
-        this->send_message(ft::irc::make_error::no_motd());
-    }
+    server.send_welcome(*this);
 
     // this->send_message(ft::irc::make_reply::user_mode_is("+Oexamplo"));
 }

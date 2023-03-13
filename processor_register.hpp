@@ -38,7 +38,7 @@ namespace ft
                 }
 
                 const ft::irc::server& server = user.get_server();
-                user.set_register_state(ft::irc::user::REGISTER_STATE_PASS, message[0] == server.get_pass());
+                user.set_register_state(ft::irc::user::REGISTER_STATE_PASS, server.get_pass().empty() || message[0] == server.get_pass());
             }
         };
 

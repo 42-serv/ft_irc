@@ -83,7 +83,8 @@ namespace ft
 
             bool get_mode(user_mode index) const throw();
             void set_mode(user_mode index, bool value) throw();
-            // void post_set_mode(user_mode index, bool value); // TODO: 필요한가?
+            bool load_mode(user_mode index) const throw();
+            void store_mode(user_mode index, bool value) throw();
 
             bool get_register_state(register_state index) const throw();
             void set_register_state(register_state index, bool value) throw();
