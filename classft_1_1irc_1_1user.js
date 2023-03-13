@@ -47,6 +47,7 @@ var classft_1_1irc_1_1user =
     [ "part_channel", "classft_1_1irc_1_1user.html#a3dcb054e616907f4ff2ec8d11563c978", null ],
     [ "register_to_server", "classft_1_1irc_1_1user.html#affa6016f0c81205cd3c60ea6e9706132", null ],
     [ "remove_invite", "classft_1_1irc_1_1user.html#a1475337459c0c597d62a5ef698d545dc", null ],
+    [ "reset_away_message", "classft_1_1irc_1_1user.html#a44ea653cf7c32a2f53280f772e694d94", null ],
     [ "send_message", "classft_1_1irc_1_1user.html#a1db558d6d694ca943224c2440fe36c50", null ],
     [ "set_away_message", "classft_1_1irc_1_1user.html#ae8c8b82ebc19cafc1a7c1d69c12f9959", null ],
     [ "set_mode", "classft_1_1irc_1_1user.html#afacc4bf97c3923011c969a5a617f12dc", null ],

@@ -76,6 +76,7 @@ var hierarchy =
     [ "ft::irc::person_info", "structft_1_1irc_1_1person__info.html", null ],
     [ "ft::irc::user::pred_equals_nick", "structft_1_1irc_1_1user_1_1pred__equals__nick.html", null ],
     [ "ft::irc::processor_base", "classft_1_1irc_1_1processor__base.html", [
+      [ "ft::irc::processor_away", "classft_1_1irc_1_1processor__away.html", null ],
       [ "ft::irc::processor_error", "classft_1_1irc_1_1processor__error.html", null ],
       [ "ft::irc::processor_invite", "classft_1_1irc_1_1processor__invite.html", null ],
       [ "ft::irc::processor_join", "classft_1_1irc_1_1processor__join.html", null ],
