@@ -52,6 +52,7 @@ namespace ft
             std::string username;
             std::string hostname;
             std::string realname;
+            std::string away_message;
             channel_list channels;
             invite_list invites;
             std::bitset<NUMBEROF_USER_MODE> mode;
@@ -101,6 +102,11 @@ namespace ft
             bool contains_invite(const ft::shared_ptr<channel>& channel) const;
             void add_invite(const ft::shared_ptr<channel>& channel);
             void remove_invite(const ft::shared_ptr<channel>& channel);
+
+            const std::string& get_away_message() const throw();
+            void set_away_message(const std::string& away_message) throw();
+            const std::string& load_away_message() const throw();
+            void store_away_message(const std::string& away_message) throw();
 
         public:
             void send_message(const ft::irc::message& message) const;

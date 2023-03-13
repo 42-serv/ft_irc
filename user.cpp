@@ -25,6 +25,7 @@ ft::irc::user::user(ft::irc::server& server, const ft::shared_ptr<ft::serv::even
       username(),
       hostname(layer->get_host()),
       realname(),
+      away_message(),
       channels(),
       mode(),
       registered_state(),
@@ -345,4 +346,30 @@ bool ft::irc::user::pred_equals_nick::operator()(const ft::irc::user* user) cons
 bool ft::irc::user::pred_equals_nick::operator()(const ft::shared_ptr<const ft::irc::user>& user) const throw()
 {
     return this->nick == user->load_nick();
+}
+
+const std::string& ft::irc::user::get_away_message() const throw()
+{
+    return this->away_message;
+}
+
+void ft::irc::user::set_away_message(const std::string& new_away_message) throw()
+{
+    this->away_message = new_away_message;
+}
+
+const std::string& ft::irc::user::load_away_message() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return (this->get_away_message());
+    }
+}
+
+void ft::irc::user::store_away_message(const std::string& new_away_message) throw()
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->set_away_message(new_away_message);
+    }
 }
