@@ -95,6 +95,7 @@ void ft::irc::processor_dictionary::init()
     _INSERT_PROCESSOR(ping);
     _INSERT_PROCESSOR(pong);
     _INSERT_PROCESSOR(error);
+    _INSERT_PROCESSOR(away);
 #undef _INSERT_PROCESSOR
 }
 
