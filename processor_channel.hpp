@@ -95,7 +95,6 @@ namespace ft
                         case ft::irc::ERR_NOSUCHCHANNEL:
                             user.send_message(ft::irc::make_error::no_such_channel(channelname));
                             break;
-
                         case ft::irc::ERR_CHANNELISFULL:
                             user.send_message(ft::irc::make_error::channel_is_full(channelname));
                             break;
@@ -399,8 +398,39 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
+                const std::string& nickname = message[0];
+                const std::string& channelname = message[1];
+                const ft::irc::server& server = user.get_server();
+                shared_ptr<ft::irc::user> target_user = server.find_user(nickname);
+                shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
+
+                if (user.is_channel_member(channelname) == false)
+                {
+                    user.send_message(ft::irc::make_error::not_on_channel(nickname));
+                }
+                else if (!target_user)
+                {
+                    user.send_message(ft::irc::make_error::no_such_nickname(nickname));
+                }
+                else if (target_user->is_channel_member(channelname) == true)
+                {
+                    user.send_message(ft::irc::make_error::user_on_channel(nickname, channelname));
+                }
+                else if (channel->get_mode(channel::CHANNEL_MODE_INVITE_ONLY) == true && channel->is_channel_operator(user) == false)
+                {
+                    user.send_message(ft::irc::make_error::channel_operator_privileges_needed(nickname));
+                }
+                else
+                {
+                    if (target_user->get_mode(user::USER_MODE_AWAY) == true)
+                    {
+                        user.send_message(ft::irc::make_reply::away(nickname, target_user->get_away_message()));
+                    }
+                    else
+                    {
+                        user.send_message(ft::irc::make_reply::inviting(channelname, nickname));
+                    }
+                }
             }
         };
 
