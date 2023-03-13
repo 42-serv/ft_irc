@@ -1,5 +1,10 @@
 var NAVTREEINDEX3 =
 {
+"globals_vars.html":[7,1,2],
+"hierarchy.html":[6,2],
+"index.html":[],
+"index.html#autotoc_md1":[0],
+"index.html#autotoc_md2":[1],
 "index.html#autotoc_md3":[1,0],
 "index.html#autotoc_md4":[2],
 "index.html#autotoc_md5":[2,0],
@@ -244,10 +249,5 @@ var NAVTREEINDEX3 =
 "structft_1_1irc_1_1make__error.html#adcc93a598beb7910dca817595812f79d":[6,0,0,0,33,13],
 "structft_1_1irc_1_1make__error.html#aecf99fe83bef1d52e7154d696939c777":[6,0,0,0,33,38],
 "structft_1_1irc_1_1make__error.html#af6a6f095493c0242bce7ecac3463753b":[6,0,0,0,33,33],
-"structft_1_1irc_1_1make__error.html#afae7f78584d05823e980db71ab6a19a4":[6,0,0,0,33,18],
-"structft_1_1irc_1_1make__error.html#afd65ca90a9c1f50f01ece3fa8492cc97":[6,0,0,0,33,40],
-"structft_1_1irc_1_1make__reply.html":[6,0,0,0,37],
-"structft_1_1irc_1_1make__reply.html#a049c4169cd8f3b5e8d855183c8106001":[6,0,0,0,37,22],
-"structft_1_1irc_1_1make__reply.html#a0888da7bb2ce598db57a5576d7cbfe8d":[6,0,0,0,37,70],
-"structft_1_1irc_1_1make__reply.html#a09e75c49d3fee6b61ad0d273f77a3d1f":[6,0,0,0,37,51]
+"structft_1_1irc_1_1make__error.html#afae7f78584d05823e980db71ab6a19a4":[6,0,0,0,33,18]
 };
