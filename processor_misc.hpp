@@ -29,6 +29,7 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
+                static_cast<void>(message[1]); // comment
                 const std::string& target_nick = message[0];
                 ft::irc::server& server = user.get_server();
 
