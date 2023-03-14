@@ -52,11 +52,12 @@ namespace ft
             std::string username;
             std::string hostname;
             std::string realname;
-            std::string away_message;
             channel_list channels;
             invite_list invites;
             std::bitset<NUMBEROF_USER_MODE> mode;
             std::bitset<NUMBEROF_REGISTER_STATE> registered_state;
+            std::string away_message;
+            std::string quit_message;
             mutable ft::readwrite_lock lock;
 
         public:
@@ -93,6 +94,18 @@ namespace ft
             void register_to_server();
             void deregister_from_server();
 
+            const std::string& get_away_message() const throw();
+            void set_away_message(const std::string& away_message) throw();
+            const std::string& load_away_message() const throw();
+            void store_away_message(const std::string& away_message) throw();
+            void reset_away_message() throw();
+
+            const std::string& get_quit_message() const throw();
+            void set_quit_message(const std::string& quit_message) throw();
+            const std::string& load_quit_message() const throw();
+            void store_quit_message(const std::string& quit_message) throw();
+            void reset_quit_message() throw();
+
             channel_list channel_names_snapshot() const throw();
             channel_list::size_type channel_count() const throw();
             bool is_channel_member(const std::string& channelname) const throw();
@@ -102,12 +115,6 @@ namespace ft
             bool contains_invite(const ft::shared_ptr<channel>& channel) const;
             void add_invite(const ft::shared_ptr<channel>& channel);
             void remove_invite(const ft::shared_ptr<channel>& channel);
-
-            const std::string& get_away_message() const throw();
-            void set_away_message(const std::string& away_message) throw();
-            const std::string& load_away_message() const throw();
-            void store_away_message(const std::string& away_message) throw();
-            void reset_away_message() throw();
 
         public:
             void send_message(const ft::irc::message& message) const;

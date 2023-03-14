@@ -25,10 +25,11 @@ ft::irc::user::user(ft::irc::server& server, const ft::shared_ptr<ft::serv::even
       username(),
       hostname(layer->get_host()),
       realname(),
-      away_message(),
       channels(),
       mode(),
       registered_state(),
+      away_message(),
+      quit_message(),
       lock()
 {
     this->channels.reserve(FT_IRC_CHANNEL_LIMIT_PER_USER);
@@ -193,6 +194,14 @@ void ft::irc::user::deregister_from_server()
     {
         this->set_register_state(ft::irc::user::REGISTER_STATE_COMPLETED, false);
 
+        std::string quit_message = this->load_quit_message();
+        if (quit_message.empty())
+        {
+            // default message
+            quit_message = this->load_nick();
+        }
+        this->notify_message(ft::irc::message("QUIT") << quit_message >> this->make_full_name());
+
         channel_list channels_snapshot;
         synchronized (this->lock.get_write_lock())
         {
@@ -211,6 +220,74 @@ void ft::irc::user::deregister_from_server()
         this->set_register_state(ft::irc::user::REGISTER_STATE_NICK, false);
 
         server.release_nick(this->load_nick());
+    }
+}
+
+const std::string& ft::irc::user::get_away_message() const throw()
+{
+    return this->away_message;
+}
+
+void ft::irc::user::set_away_message(const std::string& away_message) throw()
+{
+    this->away_message = away_message;
+}
+
+const std::string& ft::irc::user::load_away_message() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->get_away_message();
+    }
+}
+
+void ft::irc::user::store_away_message(const std::string& away_message) throw()
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->set_away_message(away_message);
+    }
+}
+
+void ft::irc::user::reset_away_message() throw()
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->away_message.clear();
+    }
+}
+
+const std::string& ft::irc::user::get_quit_message() const throw()
+{
+    return this->quit_message;
+}
+
+void ft::irc::user::set_quit_message(const std::string& quit_message) throw()
+{
+    this->quit_message = quit_message;
+}
+
+const std::string& ft::irc::user::load_quit_message() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        return this->get_quit_message();
+    }
+}
+
+void ft::irc::user::store_quit_message(const std::string& quit_message) throw()
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->set_quit_message(quit_message);
+    }
+}
+
+void ft::irc::user::reset_quit_message() throw()
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        this->quit_message.clear();
     }
 }
 
@@ -347,38 +424,4 @@ bool ft::irc::user::pred_equals_nick::operator()(const ft::irc::user* user) cons
 bool ft::irc::user::pred_equals_nick::operator()(const ft::shared_ptr<const ft::irc::user>& user) const throw()
 {
     return this->nick == user->load_nick();
-}
-
-const std::string& ft::irc::user::get_away_message() const throw()
-{
-    return this->away_message;
-}
-
-void ft::irc::user::set_away_message(const std::string& away_message) throw()
-{
-    this->away_message = away_message;
-}
-
-const std::string& ft::irc::user::load_away_message() const throw()
-{
-    synchronized (this->lock.get_read_lock())
-    {
-        return this->get_away_message();
-    }
-}
-
-void ft::irc::user::store_away_message(const std::string& away_message) throw()
-{
-    synchronized (this->lock.get_write_lock())
-    {
-        this->set_away_message(away_message);
-    }
-}
-
-void ft::irc::user::reset_away_message() throw()
-{
-    synchronized (this->lock.get_write_lock())
-    {
-        this->away_message.clear();
-    }
 }

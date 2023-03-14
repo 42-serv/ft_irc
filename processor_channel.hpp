@@ -466,7 +466,7 @@ namespace ft
 
                 const ft::shared_ptr<ft::irc::user> target = server.find_user(nick);
 
-                if (!target || !target->is_channel_member(channel_name))
+                if (!target || !target->is_channel_member(channel_name) || target.get() == &user)
                 {
                     user.send_message(ft::irc::make_error::no_such_nickname(nick));
                     return;

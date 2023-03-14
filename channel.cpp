@@ -247,7 +247,7 @@ void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
         {
             user_list_packets.push_back(ft::irc::make_reply::name_reply(is_secret_channel, is_private_channel, channel_name, user_list));
         }
-        user.send_message(ft::irc::make_reply::end_of_names(channel_name));
+        user_list_packets.push_back(ft::irc::make_reply::end_of_names(channel_name));
     }
 
     foreach (std::vector<ft::irc::message>::const_iterator, it, user_list_packets)

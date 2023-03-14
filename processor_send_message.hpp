@@ -50,7 +50,7 @@ namespace ft
 
                     if (ft::irc::string_utils::is_valid_channelname(receiver))
                     {
-                        ft::shared_ptr<ft::irc::channel> channel = server.find_channel(receiver);
+                        const ft::shared_ptr<ft::irc::channel> channel = server.find_channel(receiver);
                         if (channel)
                         {
                             if (channel->load_mode(ft::irc::channel::CHANNEL_MODE_NO_PRIVMSG) && !user.is_channel_member(receiver))
@@ -74,7 +74,7 @@ namespace ft
                     }
                     else
                     {
-                        ft::shared_ptr<ft::irc::user> target = server.find_user(receiver);
+                        const ft::shared_ptr<ft::irc::user> target = server.find_user(receiver);
                         if (target)
                         {
                             target->send_message(payload);
