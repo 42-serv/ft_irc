@@ -189,14 +189,14 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 std::string quit_message;
-                if (message.param_size() >= 1)
-                {
-                    quit_message = message[0];
-                }
-                else
+                if (message.param_size() == this->get_min_params())
                 {
                     // default message
                     quit_message = user.load_nick();
+                }
+                else
+                {
+                    quit_message = message[0];
                 }
                 user.notify_message(ft::irc::make_reply::replicate(message));
                 user.exit_client();
