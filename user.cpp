@@ -96,7 +96,7 @@ void ft::irc::user::set_username(const std::string& username)
     this->username = username;
 }
 
-std::string ft::irc::user::load_username() const throw()
+std::string ft::irc::user::load_username() const
 {
     synchronized (this->lock.get_read_lock())
     {
@@ -183,7 +183,7 @@ void ft::irc::user::register_to_server()
 
     server.send_welcome(*this);
 
-    // this->send_message(ft::irc::make_reply::user_mode_is("+Oexamplo"));
+    this->send_message(ft::irc::make_reply::user_mode_is("+Oexamplo"));
 }
 
 void ft::irc::user::deregister_from_server()
@@ -228,12 +228,12 @@ const std::string& ft::irc::user::get_away_message() const throw()
     return this->away_message;
 }
 
-void ft::irc::user::set_away_message(const std::string& away_message) throw()
+void ft::irc::user::set_away_message(const std::string& away_message)
 {
     this->away_message = away_message;
 }
 
-const std::string& ft::irc::user::load_away_message() const throw()
+std::string ft::irc::user::load_away_message() const
 {
     synchronized (this->lock.get_read_lock())
     {
@@ -241,7 +241,7 @@ const std::string& ft::irc::user::load_away_message() const throw()
     }
 }
 
-void ft::irc::user::store_away_message(const std::string& away_message) throw()
+void ft::irc::user::store_away_message(const std::string& away_message)
 {
     synchronized (this->lock.get_write_lock())
     {
@@ -262,12 +262,12 @@ const std::string& ft::irc::user::get_quit_message() const throw()
     return this->quit_message;
 }
 
-void ft::irc::user::set_quit_message(const std::string& quit_message) throw()
+void ft::irc::user::set_quit_message(const std::string& quit_message)
 {
     this->quit_message = quit_message;
 }
 
-const std::string& ft::irc::user::load_quit_message() const throw()
+std::string ft::irc::user::load_quit_message() const
 {
     synchronized (this->lock.get_read_lock())
     {
@@ -275,7 +275,7 @@ const std::string& ft::irc::user::load_quit_message() const throw()
     }
 }
 
-void ft::irc::user::store_quit_message(const std::string& quit_message) throw()
+void ft::irc::user::store_quit_message(const std::string& quit_message)
 {
     synchronized (this->lock.get_write_lock())
     {

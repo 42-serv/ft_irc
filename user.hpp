@@ -74,7 +74,7 @@ namespace ft
 
             const std::string& get_username() const throw();
             void set_username(const std::string& username);
-            std::string load_username() const throw();
+            std::string load_username() const;
 
             const std::string& get_hostname() const throw();
 
@@ -87,6 +87,7 @@ namespace ft
             void set_mode(user_mode index, bool value) throw();
             bool load_mode(user_mode index) const throw();
             void store_mode(user_mode index, bool value) throw();
+            std::string make_mode_string();
 
             bool get_register_state(register_state index) const throw();
             void set_register_state(register_state index, bool value) throw();
@@ -95,15 +96,15 @@ namespace ft
             void deregister_from_server();
 
             const std::string& get_away_message() const throw();
-            void set_away_message(const std::string& away_message) throw();
-            const std::string& load_away_message() const throw();
-            void store_away_message(const std::string& away_message) throw();
+            void set_away_message(const std::string& away_message);
+            std::string load_away_message() const;
+            void store_away_message(const std::string& away_message);
             void reset_away_message() throw();
 
             const std::string& get_quit_message() const throw();
-            void set_quit_message(const std::string& quit_message) throw();
-            const std::string& load_quit_message() const throw();
-            void store_quit_message(const std::string& quit_message) throw();
+            void set_quit_message(const std::string& quit_message);
+            std::string load_quit_message() const;
+            void store_quit_message(const std::string& quit_message);
             void reset_quit_message() throw();
 
             channel_list channel_names_snapshot() const throw();
