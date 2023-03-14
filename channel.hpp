@@ -108,7 +108,7 @@ namespace ft
             void leave_user(const ft::irc::user& user);
 
             void send_names(const ft::irc::user& user) const throw();
-            ft::irc::message make_list_packet(const ft::irc::user& user) const throw();
+            ft::irc::message make_list_packet(bool force) const throw();
 
         public:
             void broadcast(const ft::irc::message& message, const ft::irc::user* except = null) const;

@@ -117,7 +117,12 @@ void ft::irc::processor_dictionary::execute(ft::irc::user& user, const ft::irc::
 
     ft::irc::make_reply_base::set_server_name(user.get_server().make_full_name());
     ft::irc::make_reply_base::set_user_name(user.make_full_name());
-    ft::irc::make_reply_base::set_user_nick(user.load_nick());
+    std::string nick = user.load_nick();
+    if (nick.empty())
+    {
+        nick = "*";
+    }
+    ft::irc::make_reply_base::set_user_nick(nick);
 
     if (!processor)
     {

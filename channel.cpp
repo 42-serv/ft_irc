@@ -221,11 +221,10 @@ void ft::irc::channel::leave_user(const ft::irc::user& user)
 
 void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
 {
-    std::string channel_name;
     std::vector<ft::irc::message> user_list_packets;
     synchronized (this->lock.get_read_lock())
     {
-        channel_name = this->get_name();
+        const std::string& channel_name = this->get_name();
         const bool is_secret_channel = this->get_mode(CHANNEL_MODE_SECRET);
         const bool is_private_channel = this->get_mode(CHANNEL_MODE_PRIVATE);
         const std::size_t user_per_page = 32;
@@ -248,17 +247,17 @@ void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
         {
             user_list_packets.push_back(ft::irc::make_reply::name_reply(is_secret_channel, is_private_channel, channel_name, user_list));
         }
+        user.send_message(ft::irc::make_reply::end_of_names(channel_name));
     }
+
     foreach (std::vector<ft::irc::message>::const_iterator, it, user_list_packets)
     {
         user.send_message(*it);
     }
-    user.send_message(ft::irc::make_reply::end_of_names(channel_name));
 }
 
-ft::irc::message ft::irc::channel::make_list_packet(const ft::irc::user& user) const throw()
+ft::irc::message ft::irc::channel::make_list_packet(bool force) const throw()
 {
-    const bool force = user.load_mode(ft::irc::user::USER_MODE_OPERATOR);
     synchronized (this->lock.get_read_lock())
     {
         std::size_t visible_count = 0;

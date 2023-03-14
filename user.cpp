@@ -76,6 +76,7 @@ bool ft::irc::user::change_nick(const std::string& nick)
         {
             this->nick = nick;
         }
+        ft::irc::make_reply_base::set_user_nick(nick);
         return true;
     }
     else

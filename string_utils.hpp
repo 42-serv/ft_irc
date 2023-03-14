@@ -10,6 +10,8 @@
 #include <cctype>
 #include <string>
 
+// #define FT_IRC_LEGACY
+
 namespace ft
 {
     namespace irc
@@ -74,8 +76,11 @@ namespace ft
 
             static bool _is_special(char c)
             {
+#ifdef FT_IRC_LEGACY
                 return c == '-' || c == '[' || c == ']' || c == '\\' || c == '`' || c == '^' || c == '{' || c == '}';
-                // return c == '[' || c == ']' || c == '\\' || c == '`' || c == '_' || c == '^' || c == '{' || c == '|' || c == '}';
+#else
+                return c == '[' || c == ']' || c == '\\' || c == '`' || c == '_' || c == '^' || c == '{' || c == '|' || c == '}';
+#endif
             }
 
             static bool _is_except(char c)
@@ -101,16 +106,22 @@ namespace ft
                 {
                     if (it == nick.begin())
                     {
+#ifdef FT_IRC_LEGACY
                         if (!_internal::_is_letter(*it))
-                        // if (!(_internal::_is_letter(*it) || _internal::_is_special(*it)))
+#else
+                        if (!(_internal::_is_letter(*it) || _internal::_is_special(*it)))
+#endif
                         {
                             return false;
                         }
                     }
                     else
                     {
+#ifdef FT_IRC_LEGACY
                         if (!(_internal::_is_letter(*it) || _internal::_is_digit(*it) || _internal::_is_special(*it)))
-                        // if (!(_internal::_is_letter(*it) || _internal::_is_digit(*it) || _internal::_is_special(*it) || *it == '-'))
+#else
+                        if (!(_internal::_is_letter(*it) || _internal::_is_digit(*it) || _internal::_is_special(*it) || *it == '-'))
+#endif
                         {
                             return false;
                         }
