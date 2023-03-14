@@ -26,7 +26,6 @@ var classft_1_1irc_1_1channel =
     [ "get_mode", "classft_1_1irc_1_1channel.html#a12e5601d953c913418b0d5d9f64721fc", null ],
     [ "get_name", "classft_1_1irc_1_1channel.html#a5bbaa158b69ee9de49c3402cb76c7e09", null ],
     [ "get_topic", "classft_1_1irc_1_1channel.html#aa46cff5971a7b8071c62fef501814fc3", null ],
-    [ "invite_user", "classft_1_1irc_1_1channel.html#a165d9a78daff7b73ee4d0503d4bf5c85", null ],
     [ "is_banned", "classft_1_1irc_1_1channel.html#a167149fa7b382fa3986d794b298706ce", null ],
     [ "is_channel_operator", "classft_1_1irc_1_1channel.html#a09f80cecbaa60df112b6eb082c1cd2e5", null ],
     [ "is_channel_speaker", "classft_1_1irc_1_1channel.html#ac85a7f4044ab3646afe91ae7b3224f4a", null ],
