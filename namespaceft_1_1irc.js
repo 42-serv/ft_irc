@@ -30,6 +30,8 @@ var namespaceft_1_1irc =
     [ "processor_kill", "classft_1_1irc_1_1processor__kill.html", "classft_1_1irc_1_1processor__kill" ],
     [ "processor_away", "classft_1_1irc_1_1processor__away.html", "classft_1_1irc_1_1processor__away" ],
     [ "processor_cap", "classft_1_1irc_1_1processor__cap.html", "classft_1_1irc_1_1processor__cap" ],
+    [ "processor_who", "classft_1_1irc_1_1processor__who.html", "classft_1_1irc_1_1processor__who" ],
+    [ "processor_whois", "classft_1_1irc_1_1processor__whois.html", "classft_1_1irc_1_1processor__whois" ],
     [ "processor_pass", "classft_1_1irc_1_1processor__pass.html", "classft_1_1irc_1_1processor__pass" ],
     [ "processor_nick", "classft_1_1irc_1_1processor__nick.html", "classft_1_1irc_1_1processor__nick" ],
     [ "processor_user", "classft_1_1irc_1_1processor__user.html", "classft_1_1irc_1_1processor__user" ],

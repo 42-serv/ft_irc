@@ -49,6 +49,8 @@ var searchData=
   ['processor_5fsend_5fmessage_2ehpp_509',['processor_send_message.hpp',['../processor__send__message_8hpp.html',1,'']]],
   ['processor_5ftopic_510',['processor_topic',['../classft_1_1irc_1_1processor__topic.html',1,'ft::irc']]],
   ['processor_5fuser_511',['processor_user',['../classft_1_1irc_1_1processor__user.html',1,'ft::irc']]],
-  ['put_512',['put',['../classft_1_1serv_1_1byte__buffer.html#a2ef675e084b7fd5bc2ad427e9a562332',1,'ft::serv::byte_buffer::put(const void *const data, const size_type size)'],['../classft_1_1serv_1_1byte__buffer.html#a26ec915c331aeb187745a841fe66650d',1,'ft::serv::byte_buffer::put(const T &amp;t)']]],
-  ['put_5fworker_513',['put_worker',['../classft_1_1serv_1_1event__worker__group.html#a38691f464474653f2050bc99ea55b6d8',1,'ft::serv::event_worker_group']]]
+  ['processor_5fwho_512',['processor_who',['../classft_1_1irc_1_1processor__who.html',1,'ft::irc']]],
+  ['processor_5fwhois_513',['processor_whois',['../classft_1_1irc_1_1processor__whois.html',1,'ft::irc']]],
+  ['put_514',['put',['../classft_1_1serv_1_1byte__buffer.html#a2ef675e084b7fd5bc2ad427e9a562332',1,'ft::serv::byte_buffer::put(const void *const data, const size_type size)'],['../classft_1_1serv_1_1byte__buffer.html#a26ec915c331aeb187745a841fe66650d',1,'ft::serv::byte_buffer::put(const T &amp;t)']]],
+  ['put_5fworker_515',['put_worker',['../classft_1_1serv_1_1event__worker__group.html#a38691f464474653f2050bc99ea55b6d8',1,'ft::serv::event_worker_group']]]
 ];

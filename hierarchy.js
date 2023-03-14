@@ -95,7 +95,9 @@ var hierarchy =
       [ "ft::irc::processor_pass", "classft_1_1irc_1_1processor__pass.html", null ],
       [ "ft::irc::processor_quit", "classft_1_1irc_1_1processor__quit.html", null ],
       [ "ft::irc::processor_topic", "classft_1_1irc_1_1processor__topic.html", null ],
-      [ "ft::irc::processor_user", "classft_1_1irc_1_1processor__user.html", null ]
+      [ "ft::irc::processor_user", "classft_1_1irc_1_1processor__user.html", null ],
+      [ "ft::irc::processor_who", "classft_1_1irc_1_1processor__who.html", null ],
+      [ "ft::irc::processor_whois", "classft_1_1irc_1_1processor__whois.html", null ]
     ] ],
     [ "ft::irc::processor_dictionary", "classft_1_1irc_1_1processor__dictionary.html", null ],
     [ "ft::serv::socket_utils", "structft_1_1serv_1_1socket__utils.html", null ],
