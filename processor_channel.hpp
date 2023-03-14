@@ -30,7 +30,7 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 ft::irc::server& server = user.get_server();
-                const ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
+                const ft::irc::message::param_vector channel_names = ft::irc::message::split(message[0], ',');
 
                 ft::irc::message::param_vector keys;
                 if (message.param_size() > 1)
@@ -39,9 +39,9 @@ namespace ft
                 }
 
                 std::size_t i = 0;
-                foreach (ft::irc::message::param_vector::const_iterator, it, channelnames)
+                foreach (ft::irc::message::param_vector::const_iterator, it, channel_names)
                 {
-                    const std::string& channelname = *it;
+                    const std::string& channel_name = *it;
 
                     std::string key;
                     if (i < keys.size())
@@ -50,30 +50,30 @@ namespace ft
                     }
                     i++;
 
-                    if (user.is_channel_member(channelname))
+                    if (user.is_channel_member(channel_name))
                     {
                         continue;
                     }
 
-                    if (!ft::irc::string_utils::is_valid_channelname(channelname))
+                    if (!ft::irc::string_utils::is_valid_channelname(channel_name))
                     {
-                        user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                        user.send_message(ft::irc::make_error::no_such_channel(channel_name));
                         continue;
                     }
 
                     if (user.channel_count() >= FT_IRC_CHANNEL_LIMIT_PER_USER)
                     {
-                        user.send_message(ft::irc::make_error::too_many_channels(channelname));
+                        user.send_message(ft::irc::make_error::too_many_channels(channel_name));
                         continue;
                     }
 
-                    ft::shared_ptr<ft::irc::channel> channel = server.ensure_channel(channelname);
+                    ft::shared_ptr<ft::irc::channel> channel = server.ensure_channel(channel_name);
                     ft::irc::reply_numerics rpl = channel->enter_user(user, key);
                     if (rpl == ft::irc::RPL_NONE)
                     {
-                        user.join_channel(channelname);
+                        user.join_channel(channel_name);
                         ft::irc::message payload = ft::irc::make_reply::replicate(message);
-                        payload[0] = channelname;
+                        payload[0] = channel_name;
                         if (message.param_size() > 1)
                         {
                             // mask keys
@@ -93,19 +93,19 @@ namespace ft
                         switch (rpl)
                         {
                         case ft::irc::ERR_NOSUCHCHANNEL:
-                            user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                            user.send_message(ft::irc::make_error::no_such_channel(channel_name));
                             break;
                         case ft::irc::ERR_CHANNELISFULL:
-                            user.send_message(ft::irc::make_error::channel_is_full(channelname));
+                            user.send_message(ft::irc::make_error::channel_is_full(channel_name));
                             break;
                         case ft::irc::ERR_INVITEONLYCHAN:
-                            user.send_message(ft::irc::make_error::invite_only_channel(channelname));
+                            user.send_message(ft::irc::make_error::invite_only_channel(channel_name));
                             break;
                         case ft::irc::ERR_BANNEDFROMCHAN:
-                            user.send_message(ft::irc::make_error::banned_from_channel(channelname));
+                            user.send_message(ft::irc::make_error::banned_from_channel(channel_name));
                             break;
                         case ft::irc::ERR_BADCHANNELKEY:
-                            user.send_message(ft::irc::make_error::bad_channel_key(channelname));
+                            user.send_message(ft::irc::make_error::bad_channel_key(channel_name));
                             break;
 
                         default:
@@ -126,32 +126,32 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 ft::irc::server& server = user.get_server();
-                const ft::irc::message::param_vector channelnames = ft::irc::message::split(message[0], ',');
+                const ft::irc::message::param_vector channel_names = ft::irc::message::split(message[0], ',');
 
-                foreach (ft::irc::message::param_vector::const_iterator, it, channelnames)
+                foreach (ft::irc::message::param_vector::const_iterator, it, channel_names)
                 {
-                    const std::string& channelname = *it;
+                    const std::string& channel_name = *it;
 
-                    if (user.is_channel_member(channelname))
+                    if (user.is_channel_member(channel_name))
                     {
-                        user.part_channel(channelname);
+                        user.part_channel(channel_name);
 
-                        ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
+                        ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channel_name);
                         if (channel)
                         {
                             ft::irc::message payload = ft::irc::make_reply::replicate(message);
-                            payload[0] = channelname;
+                            payload[0] = channel_name;
                             channel->broadcast(payload);
                             channel->leave_user(user);
                         }
                         else
                         {
-                            user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                            user.send_message(ft::irc::make_error::no_such_channel(channel_name));
                         }
                     }
                     else
                     {
-                        user.send_message(ft::irc::make_error::not_on_channel(channelname));
+                        user.send_message(ft::irc::make_error::not_on_channel(channel_name));
                     }
                 }
             }
@@ -276,9 +276,9 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 ft::irc::server& server = user.get_server();
-                const std::string& channelname = message[0];
+                const std::string& channel_name = message[0];
 
-                ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
+                ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channel_name);
                 if (channel)
                 {
                     if (message.param_size() <= 1)
@@ -286,11 +286,11 @@ namespace ft
                         std::string topic = channel->load_topic();
                         if (!topic.empty())
                         {
-                            user.send_message(ft::irc::make_reply::topic(channelname, topic));
+                            user.send_message(ft::irc::make_reply::topic(channel_name, topic));
                         }
                         else
                         {
-                            user.send_message(ft::irc::make_reply::no_topic(channelname));
+                            user.send_message(ft::irc::make_reply::no_topic(channel_name));
                         }
                     }
                     else
@@ -305,14 +305,14 @@ namespace ft
                             switch (rpl)
                             {
                             case ft::irc::ERR_NOSUCHCHANNEL:
-                                user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                                user.send_message(ft::irc::make_error::no_such_channel(channel_name));
                                 break;
 
                             case ft::irc::ERR_NOTONCHANNEL:
-                                user.send_message(ft::irc::make_error::not_on_channel(channelname));
+                                user.send_message(ft::irc::make_error::not_on_channel(channel_name));
                                 break;
                             case ft::irc::ERR_CHANOPRIVSNEEDED:
-                                user.send_message(ft::irc::make_error::channel_operator_privileges_needed(channelname));
+                                user.send_message(ft::irc::make_error::channel_operator_privileges_needed(channel_name));
                                 break;
 
                             default:
@@ -323,7 +323,7 @@ namespace ft
                 }
                 else
                 {
-                    user.send_message(ft::irc::make_error::no_such_channel(channelname));
+                    user.send_message(ft::irc::make_error::no_such_channel(channel_name));
                 }
             }
         };
@@ -399,17 +399,17 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 const std::string& nickname = message[0];
-                const std::string& channelname = message[1];
+                const std::string& channel_name = message[1];
                 const ft::irc::server& server = user.get_server();
                 shared_ptr<ft::irc::user> target = server.find_user(nickname);
-                shared_ptr<ft::irc::channel> channel = server.find_channel(channelname);
+                shared_ptr<ft::irc::channel> channel = server.find_channel(channel_name);
 
                 if (!channel)
                 {
                     return;
                 }
 
-                if (!user.is_channel_member(channelname))
+                if (!user.is_channel_member(channel_name))
                 {
                     user.send_message(ft::irc::make_error::not_on_channel(nickname));
                     return;
@@ -421,9 +421,9 @@ namespace ft
                     return;
                 }
 
-                if (target->is_channel_member(channelname))
+                if (target->is_channel_member(channel_name))
                 {
-                    user.send_message(ft::irc::make_error::user_on_channel(nickname, channelname));
+                    user.send_message(ft::irc::make_error::user_on_channel(nickname, channel_name));
                     return;
                 }
 
@@ -435,10 +435,10 @@ namespace ft
 
                 target->add_invite(channel);
                 target->send_message(ft::irc::make_reply::replicate(message));
-                user.send_message(ft::irc::make_reply::inviting(channelname, nickname));
+                user.send_message(ft::irc::make_reply::inviting(channel_name, nickname));
                 if (target->load_mode(user::USER_MODE_AWAY))
                 {
-                    user.send_message(ft::irc::make_reply::away(nickname, target->get_away_message()));
+                    user.send_message(ft::irc::make_reply::away(nickname, target->load_away_message()));
                 }
             }
         };

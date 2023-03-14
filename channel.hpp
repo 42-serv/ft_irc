@@ -109,8 +109,6 @@ namespace ft
             ft::irc::reply_numerics enter_user(ft::irc::user& user, const std::string& key);
             void leave_user(const ft::irc::user& user);
 
-            ft::irc::reply_numerics invite_user(ft::irc::user& user);
-
             void send_names(const ft::irc::user& user) const throw();
 
             ft::irc::message make_list_packet(const ft::irc::user& user) const throw();

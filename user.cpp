@@ -353,24 +353,24 @@ const std::string& ft::irc::user::get_away_message() const throw()
     return this->away_message;
 }
 
-void ft::irc::user::set_away_message(const std::string& new_away_message) throw()
+void ft::irc::user::set_away_message(const std::string& away_message) throw()
 {
-    this->away_message = new_away_message;
+    this->away_message = away_message;
 }
 
 const std::string& ft::irc::user::load_away_message() const throw()
 {
     synchronized (this->lock.get_read_lock())
     {
-        return (this->get_away_message());
+        return this->get_away_message();
     }
 }
 
-void ft::irc::user::store_away_message(const std::string& new_away_message) throw()
+void ft::irc::user::store_away_message(const std::string& away_message) throw()
 {
     synchronized (this->lock.get_write_lock())
     {
-        this->set_away_message(new_away_message);
+        this->set_away_message(away_message);
     }
 }
 

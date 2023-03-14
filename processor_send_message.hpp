@@ -78,6 +78,11 @@ namespace ft
                         if (target)
                         {
                             target->send_message(payload);
+
+                            if (!this->is_notice() && target->load_mode(user::USER_MODE_AWAY))
+                            {
+                                user.send_message(ft::irc::make_reply::away(receiver, target->load_away_message()));
+                            }
                         }
                         else
                         {

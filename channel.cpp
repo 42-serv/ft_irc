@@ -245,12 +245,6 @@ void ft::irc::channel::leave_user(const ft::irc::user& user)
     }
 }
 
-ft::irc::reply_numerics ft::irc::channel::invite_user(ft::irc::user& user)
-{
-    user.add_invite(this->shared_from_this()); // FIXME: 보강
-    return ft::irc::RPL_NONE;
-}
-
 void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
 {
     std::string channel_name;
