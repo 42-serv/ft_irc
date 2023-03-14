@@ -16,6 +16,7 @@
 
 #include <algorithm>
 #include <bitset>
+#include <sstream>
 #include <string>
 
 ft::irc::user::user(ft::irc::server& server, const ft::shared_ptr<ft::serv::event_layer>& layer)
@@ -153,6 +154,28 @@ void ft::irc::user::store_mode(user_mode index, bool value) throw()
     }
 }
 
+std::string ft::irc::user::make_mode_string()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        std::ostringstream oss;
+        oss << '+';
+        if (this->mode[USER_MODE_OPERATOR])
+        {
+            oss << 'o';
+        }
+        if (this->mode[USER_MODE_INVISIBLE])
+        {
+            oss << 'i';
+        }
+        if (this->mode[USER_MODE_AWAY])
+        {
+            oss << 'a';
+        }
+        return oss.str();
+    }
+}
+
 bool ft::irc::user::get_register_state(register_state index) const throw()
 {
     // assert(is_in_event_loop());
@@ -183,7 +206,7 @@ void ft::irc::user::register_to_server()
 
     server.send_welcome(*this);
 
-    this->send_message(ft::irc::make_reply::user_mode_is("+Oexamplo"));
+    this->send_message(ft::irc::make_reply::user_mode_is(this->make_mode_string()));
 }
 
 void ft::irc::user::deregister_from_server()

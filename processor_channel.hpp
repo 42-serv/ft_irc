@@ -167,23 +167,125 @@ namespace ft
 
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
-                // FIXME: implement
                 ft::irc::server& server = user.get_server();
                 const std::string& target_name = message[0];
                 if (ft::irc::string_utils::is_valid_channelname(target_name))
                 {
                     const ft::shared_ptr<ft::irc::channel> channel = server.find_channel(target_name);
+
+                    if (!channel)
+                    {
+                        user.send_message(ft::irc::make_error::no_such_channel(target_name));
+                        return;
+                    }
+
                     if (message.param_size() == this->get_min_params())
                     {
-                        // Read only
+                        // Query only
+                        std::string mode_param;
+                        std::string mode = channel->make_mode_string(&mode_param);
+                        if (!user.is_channel_member(target_name))
+                        {
+                            // mask
+                            mode_param.clear();
+                        }
+                        user.send_message(ft::irc::make_reply::channel_mode_is(target_name, mode, mode_param));
                     }
                     else
                     {
+                        if (!user.is_channel_member(target_name))
+                        {
+                            user.send_message(ft::irc::make_error::not_on_channel(target_name));
+                            return;
+                        }
+
+                        if (!channel->is_channel_operator(user))
+                        {
+                            user.send_message(ft::irc::make_error::channel_operator_privileges_needed(target_name));
+                            return;
+                        }
+
                         this->update_channel_mode(channel, message);
+                        channel->broadcast(ft::irc::make_reply::replicate(message));
                     }
                 }
                 else
                 {
+                    const ft::shared_ptr<ft::irc::user> target = server.find_user(target_name);
+
+                    if (!target)
+                    {
+                        user.send_message(ft::irc::make_error::no_such_nickname(target_name));
+                        return;
+                    }
+
+                    if (target.get() != &user)
+                    {
+                        user.send_message(ft::irc::make_error::users_donot_match());
+                        return;
+                    }
+
+                    if (message.param_size() == this->get_min_params())
+                    {
+                        // Query only
+                        user.send_message(ft::irc::make_reply::user_mode_is(target->make_mode_string()));
+                    }
+                    else
+                    {
+                        this->update_user_mode(user, target, message[1]);
+                        target->send_message(ft::irc::make_reply::replicate(message));
+                    }
+                }
+            }
+
+            void update_user_mode(ft::irc::user& user, const ft::shared_ptr<ft::irc::user>& target, const std::string& mode_str) const
+            {
+                enum
+                {
+                    NONE,
+                    ADD,
+                    REMOVE
+                } state = NONE;
+                foreach (std::string::const_iterator, it, mode_str)
+                {
+                    std::string::value_type c = *it;
+                    if (c == '+')
+                    {
+                        state = ADD;
+                    }
+                    else if (c == '-')
+                    {
+                        state = REMOVE;
+                    }
+                    else
+                    {
+                        if (state == NONE)
+                        {
+                            // ERROR!
+                            continue;
+                        }
+
+                        bool add = state == ADD;
+                        switch (c)
+                        {
+                        case 'o':
+                            if (add)
+                            {
+                                // ignore self opping
+                                continue;
+                            }
+                            target->store_mode(ft::irc::user::USER_MODE_OPERATOR, add);
+                            break;
+                        case 'i':
+                            target->store_mode(ft::irc::user::USER_MODE_INVISIBLE, add);
+                            break;
+                        case 'a':
+                            target->store_mode(ft::irc::user::USER_MODE_AWAY, add);
+                            break;
+                        default:
+                            user.send_message(ft::irc::make_error::user_mode_unknown_flag());
+                        }
+                    }
                 }
             }
 
@@ -213,14 +315,14 @@ namespace ft
                         if (state == NONE)
                         {
                             // ERROR!
-                            break;
+                            continue;
                         }
 
                         bool add = state == ADD;
                         switch (c)
                         {
                         case 'o':
-                            // give/take chanop
+                            // FIXME: give/take chanop
                             break;
                         case 'p':
                             channel->store_mode(ft::irc::channel::CHANNEL_MODE_PRIVATE, add);
@@ -242,22 +344,25 @@ namespace ft
                             break;
                         case 'l':
                             channel->store_mode(ft::irc::channel::CHANNEL_MODE_LIMIT, add);
-                            // limit
-                            if (message.param_size() < param_index)
+                            // FIXME: set limit
+                            if (add)
                             {
-                                // 매개변수 부족
-                                break;
+                                if (message.param_size() < param_index)
+                                {
+                                    // 매개변수 부족
+                                    break;
+                                }
+                                message[param_index++];
                             }
-                            message[param_index++];
                             break;
                         case 'b':
-                            // ban
+                            // FIXME: ban
                             break;
                         case 'v':
-                            // give/take speak
+                            // FIXME: give/take speak
                             break;
                         case 'k':
-                            // key
+                            // FIXME: key
                             break;
                         }
                     }

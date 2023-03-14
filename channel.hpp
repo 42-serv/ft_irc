@@ -85,22 +85,23 @@ namespace ft
 
             const std::string& get_topic() const throw();
             void set_topic(const std::string& topic);
-            std::string load_topic() const throw();
+            std::string load_topic() const;
             void store_topic(const std::string& topic);
 
             bool get_mode(channel_mode index) const throw();
             void set_mode(channel_mode index, bool value) throw();
             bool load_mode(channel_mode index) const throw();
             void store_mode(channel_mode index, bool value) throw();
+            std::string make_mode_string(std::string* param);
 
             std::size_t get_limit() const throw();
-            void set_limit(std::size_t limit);
+            void set_limit(std::size_t limit) throw();
             std::size_t load_limit() const throw();
-            void store_limit(std::size_t limit);
+            void store_limit(std::size_t limit) throw();
 
             const std::string& get_key() const throw();
             void set_key(const std::string& key);
-            std::string load_key() const throw();
+            std::string load_key() const;
             void store_key(const std::string& key);
 
         public:

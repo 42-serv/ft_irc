@@ -9,7 +9,6 @@
 #include "processor_misc.hpp"
 #include "processor_register.hpp"
 #include "processor_send_message.hpp"
-#include "processor_user.hpp"
 #include "reply.hpp"
 
 #include <cctype>
@@ -84,11 +83,6 @@ void ft::irc::processor_dictionary::init()
     // send_message
     _INSERT_PROCESSOR(privmsg);
     _INSERT_PROCESSOR(notice);
-
-    // user
-    _INSERT_PROCESSOR(who);
-    _INSERT_PROCESSOR(whois);
-    _INSERT_PROCESSOR(whowas);
 
     // misc
     _INSERT_PROCESSOR(kill);

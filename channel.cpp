@@ -17,6 +17,7 @@
 
 #include <algorithm>
 #include <bitset>
+#include <sstream>
 #include <string>
 
 ft::irc::channel::channel(ft::irc::server& server, const std::string& name)
@@ -49,7 +50,7 @@ void ft::irc::channel::set_topic(const std::string& topic)
     this->topic = topic;
 }
 
-std::string ft::irc::channel::load_topic() const throw()
+std::string ft::irc::channel::load_topic() const
 {
     synchronized (this->lock.get_read_lock())
     {
@@ -91,12 +92,61 @@ void ft::irc::channel::store_mode(channel_mode index, bool value) throw()
     }
 }
 
+std::string ft::irc::channel::make_mode_string(std::string* param)
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        std::ostringstream oss;
+        std::ostringstream oss_param;
+        oss << '+';
+        if (this->mode[CHANNEL_MODE_SECRET])
+        {
+            oss << 's';
+        }
+        if (this->mode[CHANNEL_MODE_PRIVATE])
+        {
+            oss << 'p';
+        }
+        if (this->mode[CHANNEL_MODE_MODERATED])
+        {
+            oss << 'm';
+        }
+        if (this->mode[CHANNEL_MODE_TOPIC_LIMIT])
+        {
+            oss << 't';
+        }
+        if (this->mode[CHANNEL_MODE_INVITE_ONLY])
+        {
+            oss << 'i';
+        }
+        if (this->mode[CHANNEL_MODE_NO_PRIVMSG])
+        {
+            oss << 'n';
+        }
+        if (this->mode[CHANNEL_MODE_LIMIT] && this->limit != 0)
+        {
+            oss << 'l';
+            oss_param << this->limit << ' ';
+        }
+        if (this->mode[CHANNEL_MODE_KEY] && !this->key.empty())
+        {
+            oss << 'k';
+            oss_param << this->key;
+        }
+        if (param)
+        {
+            *param = oss_param.str();
+        }
+        return oss.str();
+    }
+}
+
 std::size_t ft::irc::channel::get_limit() const throw()
 {
     return this->limit;
 }
 
-void ft::irc::channel::set_limit(std::size_t limit)
+void ft::irc::channel::set_limit(std::size_t limit) throw()
 {
     this->limit = limit;
 }
@@ -109,7 +159,7 @@ std::size_t ft::irc::channel::load_limit() const throw()
     }
 }
 
-void ft::irc::channel::store_limit(std::size_t limit)
+void ft::irc::channel::store_limit(std::size_t limit) throw()
 {
     synchronized (this->lock.get_write_lock())
     {
@@ -127,7 +177,7 @@ void ft::irc::channel::set_key(const std::string& key)
     this->key = key;
 }
 
-std::string ft::irc::channel::load_key() const throw()
+std::string ft::irc::channel::load_key() const
 {
     synchronized (this->lock.get_read_lock())
     {
@@ -221,17 +271,27 @@ void ft::irc::channel::leave_user(const ft::irc::user& user)
 
 void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
 {
+    const bool force = user.load_mode(ft::irc::user::USER_MODE_OPERATOR);
     std::vector<ft::irc::message> user_list_packets;
     synchronized (this->lock.get_read_lock())
     {
         const std::string& channel_name = this->get_name();
         const bool is_secret_channel = this->get_mode(CHANNEL_MODE_SECRET);
         const bool is_private_channel = this->get_mode(CHANNEL_MODE_PRIVATE);
+        const bool user_is_member = user.is_channel_member(channel_name);
         const std::size_t user_per_page = 32;
         std::vector<ft::irc::member_info> user_list;
         user_list.reserve(user_per_page);
         foreach (member_list::const_iterator, it, this->members)
         {
+            if (it->user->load_mode(ft::irc::user::USER_MODE_INVISIBLE))
+            {
+                if (!force && !user_is_member)
+                {
+                    continue;
+                }
+            }
+
             ft::irc::member_info info;
             info.nickname = it->user->load_nick();
             info.is_chanop = it->mode[member::MEMBER_MODE_OPERATOR];

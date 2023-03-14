@@ -199,7 +199,6 @@ void ft::irc::server::send_welcome(const ft::irc::user& user) const throw()
 
 void ft::irc::server::send_list(const ft::irc::user& user, const ft::irc::message::param_vector& query) const throw()
 {
-    // FIXME: user의 권한 검사, list에서 볼 수 있는지 여부 검사
     const bool force = user.load_mode(ft::irc::user::USER_MODE_OPERATOR);
     user.send_message(ft::irc::make_reply::list_start());
     if (query.empty())
@@ -210,7 +209,12 @@ void ft::irc::server::send_list(const ft::irc::user& user, const ft::irc::messag
         {
             foreach (channel_dictionary::const_iterator, it, this->channels)
             {
-                messages.push_back(it->second->make_list_packet(force));
+                const ft::shared_ptr<ft::irc::channel>& channel = it->second;
+                const bool user_is_member = user.is_channel_member(channel->get_name());
+                if (force || user_is_member || (!channel->load_mode(ft::irc::channel::CHANNEL_MODE_SECRET) && !channel->load_mode(ft::irc::channel::CHANNEL_MODE_PRIVATE)))
+                {
+                    messages.push_back(channel->make_list_packet(force));
+                }
             }
         }
 

@@ -545,9 +545,9 @@ namespace ft
                 return ft::irc::message(RPL_LISTEND) >> *my_server_name << *my_user_nick << "End of /LIST";
             }
 
-            static inline ft::irc::message channel_mode_is(param_t channel_name, param_t channel_mode, param_t member_mode_param)
+            static inline ft::irc::message channel_mode_is(param_t channel_name, param_t channel_mode, param_t mode_param)
             {
-                return ft::irc::message(RPL_CHANNELMODEIS) >> *my_server_name << *my_user_nick << channel_name << channel_mode << member_mode_param;
+                return ft::irc::message(RPL_CHANNELMODEIS) >> *my_server_name << *my_user_nick << channel_name << channel_mode << mode_param;
             }
 
             static inline ft::irc::message no_topic(param_t channel_name)

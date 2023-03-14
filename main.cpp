@@ -41,7 +41,6 @@ static void _on_signal(int signo)
 
 int main(int argc, char* argv[])
 {
-    // FIXME: 임시 코드
     if (argc != 3)
     {
         ft::serv::logger::warn("Usage: %s <port> <pass>", argv[0]);
