@@ -19,7 +19,6 @@ var classft_1_1irc_1_1channel =
     [ "channel", "classft_1_1irc_1_1channel.html#ad23f4e74b361e1543a235ac9149108aa", null ],
     [ "broadcast", "classft_1_1irc_1_1channel.html#a4250c6f755016a2f80ae04de5ffed80f", null ],
     [ "broadcast_unique", "classft_1_1irc_1_1channel.html#a3b2b7e0ac9e2122b7f9e26ce7a851e3f", null ],
-    [ "change_topic", "classft_1_1irc_1_1channel.html#a19309fc55536d05d94761a698d45eebd", null ],
     [ "enter_user", "classft_1_1irc_1_1channel.html#a548d09eca34e5aff0c20939ab28c7cc6", null ],
     [ "get_key", "classft_1_1irc_1_1channel.html#acf22208a61ac85fd939059ebced2011d", null ],
     [ "get_limit", "classft_1_1irc_1_1channel.html#a259812fd438b6b6a28eda3c4a25d7b45", null ],
