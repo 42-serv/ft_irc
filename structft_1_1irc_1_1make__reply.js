@@ -6,7 +6,7 @@ var structft_1_1irc_1_1make__reply =
     [ "admin_me", "structft_1_1irc_1_1make__reply.html#a8b19b83443d1a890c4581ba3302afd31", null ],
     [ "away", "structft_1_1irc_1_1make__reply.html#a39a9c136371879c1ab19ebe282fdd199", null ],
     [ "ban_list", "structft_1_1irc_1_1make__reply.html#a0a486c23beab946a92e23a95730f5a7e", null ],
-    [ "channel_mode_is", "structft_1_1irc_1_1make__reply.html#a79cf1c087e4f19569ea8c686e38a5116", null ],
+    [ "channel_mode_is", "structft_1_1irc_1_1make__reply.html#a96d5812dff74345fdafb86a7a8c404ce", null ],
     [ "create", "structft_1_1irc_1_1make__reply.html#a0f6316e46b6733cefcdcada148b007fe", null ],
     [ "end_of_ban_list", "structft_1_1irc_1_1make__reply.html#a1fcd32547d899569970960956ba0a240", null ],
     [ "end_of_info", "structft_1_1irc_1_1make__reply.html#a5d549900bd5dca642fbd21edd1a57228", null ],

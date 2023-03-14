@@ -61,11 +61,6 @@ var files_dup =
       [ "processor_privmsg", "classft_1_1irc_1_1processor__privmsg.html", "classft_1_1irc_1_1processor__privmsg" ],
       [ "processor_notice", "classft_1_1irc_1_1processor__notice.html", "classft_1_1irc_1_1processor__notice" ]
     ] ],
-    [ "processor_user.hpp", "processor__user_8hpp.html", [
-      [ "processor_who", "classft_1_1irc_1_1processor__who.html", "classft_1_1irc_1_1processor__who" ],
-      [ "processor_whois", "classft_1_1irc_1_1processor__whois.html", "classft_1_1irc_1_1processor__whois" ],
-      [ "processor_whowas", "classft_1_1irc_1_1processor__whowas.html", "classft_1_1irc_1_1processor__whowas" ]
-    ] ],
     [ "reply.cpp", "reply_8cpp.html", null ],
     [ "reply.hpp", "reply_8hpp.html", "reply_8hpp" ],
     [ "server.cpp", "server_8cpp.html", null ],

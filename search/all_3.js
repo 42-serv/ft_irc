@@ -15,7 +15,7 @@ var searchData=
   ['channel_5fmode_81',['channel_mode',['../classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050',1,'ft::irc::channel']]],
   ['channel_5fmode_5fban_82',['CHANNEL_MODE_BAN',['../classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a8c529f91a4d5111dd16b85105930386e',1,'ft::irc::channel']]],
   ['channel_5fmode_5finvite_5fonly_83',['CHANNEL_MODE_INVITE_ONLY',['../classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a0aa7cb1c06f4e8f10b16f64b72d5c802',1,'ft::irc::channel']]],
-  ['channel_5fmode_5fis_84',['channel_mode_is',['../structft_1_1irc_1_1make__reply.html#a79cf1c087e4f19569ea8c686e38a5116',1,'ft::irc::make_reply']]],
+  ['channel_5fmode_5fis_84',['channel_mode_is',['../structft_1_1irc_1_1make__reply.html#a96d5812dff74345fdafb86a7a8c404ce',1,'ft::irc::make_reply']]],
   ['channel_5fmode_5fkey_85',['CHANNEL_MODE_KEY',['../classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a70ed95b051246875f3d3117ea23e803d',1,'ft::irc::channel']]],
   ['channel_5fmode_5flimit_86',['CHANNEL_MODE_LIMIT',['../classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a795e5bbdb8205c14782aab40fabfc9c6',1,'ft::irc::channel']]],
   ['channel_5fmode_5fmoderated_87',['CHANNEL_MODE_MODERATED',['../classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a749d08056fbc8cdb35576b2a85402bb7',1,'ft::irc::channel']]],
