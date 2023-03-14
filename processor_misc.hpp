@@ -45,36 +45,6 @@ namespace ft
             }
         };
 
-        // Command: PING
-        // Parameters: <server1> [<server2>]
-        class processor_ping : public ft::irc::processor_base
-        {
-        public:
-            std::size_t get_min_params() const throw() { return 1; }
-            std::size_t get_max_params() const throw() { return 2; }
-
-            void execute(ft::irc::user& user, const ft::irc::message& message) const
-            {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
-            }
-        };
-
-        // Command: PONG
-        // Parameters: <daemon> [<daemon2>]
-        class processor_pong : public ft::irc::processor_base
-        {
-        public:
-            std::size_t get_min_params() const throw() { return 1; }
-            std::size_t get_max_params() const throw() { return 2; }
-
-            void execute(ft::irc::user& user, const ft::irc::message& message) const
-            {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
-            }
-        };
-
         // Command: AWAY
         // Parameters: [message]
         class processor_away : public ft::irc::processor_base
@@ -94,6 +64,18 @@ namespace ft
                     user.store_away_message(message[0]);
                     user.send_message(ft::irc::make_reply::now_away());
                 }
+            }
+        };
+
+        // Command: CAP
+        // Parameters: [capability]
+        class processor_cap : public ft::irc::processor_base
+        {
+        public:
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
+            {
+                // ignore
+                static_cast<void>(user), static_cast<void>(message);
             }
         };
     }
