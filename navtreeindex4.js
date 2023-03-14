@@ -1,5 +1,12 @@
 var NAVTREEINDEX4 =
 {
+"structft_1_1irc_1_1make__error.html#aa421f4e02d93c3b5d652db5cfb3ad50b":[6,0,0,0,33,3],
+"structft_1_1irc_1_1make__error.html#aaf05c32b11cb27827edace1016766e49":[6,0,0,0,33,20],
+"structft_1_1irc_1_1make__error.html#ab15f6ba737319065faa48589151ce227":[6,0,0,0,33,17],
+"structft_1_1irc_1_1make__error.html#ab839953e26290b6d6af9bebee99cb363":[6,0,0,0,33,14],
+"structft_1_1irc_1_1make__error.html#ac70d050359aaaa31fd48ca3d8535501e":[6,0,0,0,33,42],
+"structft_1_1irc_1_1make__error.html#ac7620eeb2ca535808ddaae28241e822a":[6,0,0,0,33,10],
+"structft_1_1irc_1_1make__error.html#aca1c9bea6c7e51af32e12989b1ff36fd":[6,0,0,0,33,8],
 "structft_1_1irc_1_1make__error.html#ad5903961eb9531f4dad67b0259119c8e":[6,0,0,0,33,9],
 "structft_1_1irc_1_1make__error.html#adcc93a598beb7910dca817595812f79d":[6,0,0,0,33,13],
 "structft_1_1irc_1_1make__error.html#aecf99fe83bef1d52e7154d696939c777":[6,0,0,0,33,38],
