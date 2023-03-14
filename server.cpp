@@ -215,10 +215,10 @@ void ft::irc::server::send_list(const ft::irc::user& user, const ft::irc::messag
     {
         foreach (ft::irc::message::param_vector::const_iterator, it, query)
         {
-            ft::shared_ptr<ft::irc::channel> ch = this->find_channel(*it);
-            if (ch)
+            const ft::shared_ptr<ft::irc::channel> channel = this->find_channel(*it);
+            if (channel)
             {
-                user.send_message(ch->make_list_packet(user));
+                user.send_message(channel->make_list_packet(user));
             }
         }
     }

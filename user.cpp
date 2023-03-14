@@ -199,7 +199,7 @@ void ft::irc::user::deregister_from_server()
         }
         foreach (channel_list::iterator, it, channels_snapshot)
         {
-            ft::shared_ptr<ft::irc::channel> channel = server.find_channel(*it);
+            const ft::shared_ptr<ft::irc::channel> channel = server.find_channel(*it);
             channel->leave_user(*this);
         }
 
@@ -310,7 +310,7 @@ void ft::irc::user::notify_message(const ft::irc::message& message) const
         unique_set.insert(this->shared_from_this());
         foreach (channel_list::const_iterator, it, this->channels)
         {
-            ft::shared_ptr<ft::irc::channel> channel = server.find_channel(*it);
+            const ft::shared_ptr<ft::irc::channel> channel = server.find_channel(*it);
             channel->broadcast_unique(message, unique_set);
         }
     }

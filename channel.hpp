@@ -104,13 +104,10 @@ namespace ft
             void store_key(const std::string& key);
 
         public:
-            ft::irc::reply_numerics change_topic(const ft::irc::user& user, const std::string& new_topic);
-
             ft::irc::reply_numerics enter_user(ft::irc::user& user, const std::string& key);
             void leave_user(const ft::irc::user& user);
 
             void send_names(const ft::irc::user& user) const throw();
-
             ft::irc::message make_list_packet(const ft::irc::user& user) const throw();
 
         public:

@@ -22,7 +22,7 @@ namespace ft
     {
         static ft::shared_ptr<ft::serv::event_channel_base> _make_server(ft::serv::ident_t ident, const std::string& host, int serv, const ft::shared_ptr<ft::serv::event_worker_group>& child_group, void* arg)
         {
-            ft::shared_ptr<ft::serv::event_channel_base> server = ft::make_shared<ft::serv::server_channel>(ident, host, serv, child_group);
+            const ft::shared_ptr<ft::serv::event_channel_base> server = ft::make_shared<ft::serv::server_channel>(ident, host, serv, child_group);
             server->add_last_handler(ft::make_shared<ft::irc::server_handler>(*static_cast<ft::irc::server*>(arg)));
             return server;
         }

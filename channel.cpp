@@ -143,32 +143,6 @@ void ft::irc::channel::store_key(const std::string& key)
     }
 }
 
-ft::irc::reply_numerics ft::irc::channel::change_topic(const ft::irc::user& user, const std::string& new_topic)
-{
-    synchronized (this->lock.get_write_lock())
-    {
-        if (this->invalidated)
-        {
-            return ft::irc::ERR_NOSUCHCHANNEL;
-        }
-
-        foreach (member_list::const_iterator, it, this->members)
-        {
-            if (*it == user)
-            {
-                if (this->get_mode(CHANNEL_MODE_TOPIC_LIMIT) && !it->mode[member::MEMBER_MODE_OPERATOR])
-                {
-                    return ft::irc::ERR_CHANOPRIVSNEEDED;
-                }
-
-                this->set_topic(new_topic);
-                return ft::irc::RPL_NONE;
-            }
-        }
-    }
-    return ft::irc::ERR_NOTONCHANNEL;
-}
-
 ft::irc::reply_numerics ft::irc::channel::enter_user(ft::irc::user& user, const std::string& key)
 {
     synchronized (this->lock.get_write_lock())
