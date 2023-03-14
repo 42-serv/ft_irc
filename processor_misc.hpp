@@ -75,21 +75,6 @@ namespace ft
             }
         };
 
-        // Command: ERROR
-        // Parameters: <error message>
-        class processor_error : public ft::irc::processor_base
-        {
-        public:
-            std::size_t get_min_params() const throw() { return 1; }
-            std::size_t get_max_params() const throw() { return 1; }
-
-            void execute(ft::irc::user& user, const ft::irc::message& message) const
-            {
-                // FIXME: implement
-                static_cast<void>(user), static_cast<void>(message);
-            }
-        };
-
         // Command: AWAY
         // Parameters: [message]
         class processor_away : public ft::irc::processor_base

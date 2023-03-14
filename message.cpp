@@ -93,6 +93,7 @@ bool ft::irc::message::try_parse(const std::string& line, message& out)
     std::string prefix;
     if (line[pos_begin] == ':')
     {
+        pos_begin++;
         std::string::size_type pos_end_prefix = line.find_first_of(' ', pos_begin);
         if (pos_end_prefix == std::string::npos)
         {
