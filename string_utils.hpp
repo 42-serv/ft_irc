@@ -171,6 +171,12 @@ namespace ft
                 }
                 return str;
             }
+
+            static inline std::string pick_nick(const std::string& s)
+            {
+                std::string::size_type pos = s.find_first_of('!');
+                return s.substr(0, pos);
+            }
         };
     }
 }

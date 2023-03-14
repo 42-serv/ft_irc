@@ -11,6 +11,7 @@
 #include "processor.hpp"
 #include "reply.hpp"
 #include "server.hpp"
+#include "string_utils.hpp"
 #include "string_line_decoder.hpp"
 #include "string_line_encoder.hpp"
 
@@ -45,14 +46,39 @@ namespace ft
                 layer.post_flush();
             }
 
+            // FIXME
             void on_read(ft::serv::event_layer& layer, ft::shared_ptr<void> arg)
             {
                 ft::shared_ptr<ft::irc::message> message = ft::static_pointer_cast<ft::irc::message>(arg);
                 // ft::irc::processor_dictionary::execute(*this->user, *message);
 
+                ft::irc::make_reply_base::set_server_name(bot.get_servername());
+                ft::irc::make_reply_base::set_user_name(bot.get_username());
+                ft::irc::make_reply_base::set_user_nick(bot.get_nick());
+
                 ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, message->to_pretty_string().c_str());
-                layer.post_write(message);
-                layer.post_flush();
+                static_cast<void>(layer);
+
+                if (message->get_command() == "PRIVMSG")
+                {
+                    const std::string sender = ft::irc::string_utils::pick_nick(message->get_prefix());
+                    const ft::irc::message payload = ft::irc::message("PRIVMSG") << sender << "THIS IS REPLY";
+
+                    layer.post_write(ft::make_shared<ft::irc::message>(payload));
+                    layer.post_flush();
+                }
+                else if (message->get_command() == "INVITE")
+                {
+                    // accept invite
+                    // what if FT_IRC_CHANNEL_LIMIT_PER_USER ?? -> server 가 알아서 핸들
+                    const ft::irc::message payload = ft::irc::message("JOIN") << (*message)[1];
+                    layer.post_write(ft::make_shared<ft::irc::message>(payload));
+                    layer.post_flush();
+                }
+                else
+                {
+                    return; // ignore
+                }
             }
 
             void on_read_complete(ft::serv::event_layer&)

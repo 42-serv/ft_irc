@@ -40,6 +40,7 @@ BOT_SOURCES += \
 	bot.cpp \
 	bot_main.cpp \
 	message.cpp \
+	reply.cpp \
 
 BOT_OBJECTS = $(addprefix $(OBJECTS_DIR), $(BOT_SOURCES:.cpp=.o))
 
