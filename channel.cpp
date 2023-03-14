@@ -240,7 +240,9 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(ft::irc::user& user, const 
 
 void ft::irc::channel::leave_user(const ft::irc::user& user)
 {
-    std::string remove_channel_name;
+    const std::string& channel_name = this->get_name();
+    bool remove = false;
+    std::string reop_member_name;
     synchronized (this->lock.get_write_lock())
     {
         member_list::iterator it = std::find(this->members.begin(), this->members.end(), user);
@@ -253,32 +255,36 @@ void ft::irc::channel::leave_user(const ft::irc::user& user)
         if (this->members.empty())
         {
             this->invalidated = true;
-            remove_channel_name = this->get_name();
+            remove = true;
         }
         else if (owner)
         {
             member& successor = this->members.front();
             successor.mode[member::MEMBER_MODE_OWNER] = true;
             successor.mode[member::MEMBER_MODE_OPERATOR] = true;
-            successor.user->send_message(ft::irc::make_reply::create("NOTICE") << this->get_name() << "You're new owner.");
+            reop_member_name = successor.user->load_nick();
         }
     }
-    if (!remove_channel_name.empty())
+    if (remove)
     {
-        this->server.remove_channel(remove_channel_name);
+        this->server.remove_channel(channel_name);
+    }
+    else if (!reop_member_name.empty())
+    {
+        this->broadcast(ft::irc::make_reply::create("MODE") << channel_name << "+o" << reop_member_name);
     }
 }
 
 void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
 {
+    const std::string& channel_name = this->get_name();
     const bool force = user.load_mode(ft::irc::user::USER_MODE_OPERATOR);
+    const bool user_is_member = user.is_channel_member(channel_name);
     std::vector<ft::irc::message> user_list_packets;
     synchronized (this->lock.get_read_lock())
     {
-        const std::string& channel_name = this->get_name();
         const bool is_secret_channel = this->get_mode(CHANNEL_MODE_SECRET);
         const bool is_private_channel = this->get_mode(CHANNEL_MODE_PRIVATE);
-        const bool user_is_member = user.is_channel_member(channel_name);
         const std::size_t user_per_page = 32;
         std::vector<ft::irc::member_info> user_list;
         user_list.reserve(user_per_page);

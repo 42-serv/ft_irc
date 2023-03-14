@@ -88,6 +88,8 @@ void ft::irc::processor_dictionary::init()
     _INSERT_PROCESSOR(kill);
     _INSERT_PROCESSOR(away);
     _INSERT_PROCESSOR(cap);
+    _INSERT_PROCESSOR(who);
+    _INSERT_PROCESSOR(whois);
 #undef _INSERT_PROCESSOR
 }
 

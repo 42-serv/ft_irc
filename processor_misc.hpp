@@ -78,5 +78,29 @@ namespace ft
                 static_cast<void>(user), static_cast<void>(message);
             }
         };
+
+        // Command: WHO
+        // Parameters: [<name> [<o>]]
+        class processor_who : public ft::irc::processor_base
+        {
+        public:
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
+            {
+                // ignore
+                static_cast<void>(user), static_cast<void>(message);
+            }
+        };
+
+        // Command: WHOIS
+        // Parameters: [<server>] <nickmask>[,<nickmask>[,...]]
+        class processor_whois : public ft::irc::processor_base
+        {
+        public:
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
+            {
+                // ignore
+                static_cast<void>(user), static_cast<void>(message);
+            }
+        };
     }
 }
