@@ -289,9 +289,15 @@ $(document).ready(function(){initNavTree('string__utils_8hpp_source.html',''); i
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                }</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                <span class="keywordflow">return</span> str;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        };</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#a02d1713c6a0329a583a631d836ec717d">  175</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> std::string <a class="code" href="structft_1_1irc_1_1string__utils.html#a02d1713c6a0329a583a631d836ec717d">pick_nick</a>(<span class="keyword">const</span> std::string&amp; s)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                std::string::size_type pos = s.find_first_of(<span class="charliteral">&#39;!&#39;</span>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="keywordflow">return</span> s.substr(0, pos);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        };</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
 <div class="ttc" id="airc__constants_8hpp_html"><div class="ttname"><a href="irc__constants_8hpp.html">irc_constants.hpp</a></div></div>
 <div class="ttc" id="airc__constants_8hpp_html_a952c1bdc67587612289d7abec8d47c37"><div class="ttname"><a href="irc__constants_8hpp.html#a952c1bdc67587612289d7abec8d47c37">FT_IRC_NICK_LIMIT</a></div><div class="ttdeci">#define FT_IRC_NICK_LIMIT</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:10</div></div>
 <div class="ttc" id="airc__constants_8hpp_html_aa86ae6704c7a7e22929d50af8b4fe9d2"><div class="ttname"><a href="irc__constants_8hpp.html#aa86ae6704c7a7e22929d50af8b4fe9d2">FT_IRC_CHANNEL_NAME_LIMIT</a></div><div class="ttdeci">#define FT_IRC_CHANNEL_NAME_LIMIT</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:11</div></div>
@@ -306,6 +312,7 @@ $(document).ready(function(){initNavTree('string__utils_8hpp_source.html',''); i
 <div class="ttc" id="anamespaceft_1_1irc_1_1__internal_html_ac421a738f6d955bab8b862fca8bd7159"><div class="ttname"><a href="namespaceft_1_1irc_1_1__internal.html#ac421a738f6d955bab8b862fca8bd7159">ft::irc::_internal::_is_except</a></div><div class="ttdeci">static bool _is_except(char c)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:81</div></div>
 <div class="ttc" id="anamespaceft_html"><div class="ttname"><a href="namespaceft.html">ft</a></div><div class="ttdef"><b>Definition:</b> bot.hpp:13</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html">ft::irc::string_utils</a></div><div class="ttdef"><b>Definition:</b> string_utils.hpp:88</div></div>
+<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a02d1713c6a0329a583a631d836ec717d"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a02d1713c6a0329a583a631d836ec717d">ft::irc::string_utils::pick_nick</a></div><div class="ttdeci">static std::string pick_nick(const std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:175</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a2fcf209970f5b02422129e1d9ff28a72"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a2fcf209970f5b02422129e1d9ff28a72">ft::irc::string_utils::is_valid_nick</a></div><div class="ttdeci">static bool is_valid_nick(const std::string &amp;nick)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:89</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a367a22012cc0d2d25959ac3f4e5d33a9"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9">ft::irc::string_utils::to_lower</a></div><div class="ttdeci">static std::string to_lower(const std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:165</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a38cd804a5b73843f0fd63a027dd0dee0"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a38cd804a5b73843f0fd63a027dd0dee0">ft::irc::string_utils::is_valid_channelname</a></div><div class="ttdeci">static bool is_valid_channelname(const std::string &amp;channelname)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:123</div></div>

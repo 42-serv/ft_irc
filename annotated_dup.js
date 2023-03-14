@@ -22,7 +22,6 @@ var annotated_dup =
         [ "processor_kill", "classft_1_1irc_1_1processor__kill.html", "classft_1_1irc_1_1processor__kill" ],
         [ "processor_ping", "classft_1_1irc_1_1processor__ping.html", "classft_1_1irc_1_1processor__ping" ],
         [ "processor_pong", "classft_1_1irc_1_1processor__pong.html", "classft_1_1irc_1_1processor__pong" ],
-        [ "processor_error", "classft_1_1irc_1_1processor__error.html", "classft_1_1irc_1_1processor__error" ],
         [ "processor_away", "classft_1_1irc_1_1processor__away.html", "classft_1_1irc_1_1processor__away" ],
         [ "processor_pass", "classft_1_1irc_1_1processor__pass.html", "classft_1_1irc_1_1processor__pass" ],
         [ "processor_nick", "classft_1_1irc_1_1processor__nick.html", "classft_1_1irc_1_1processor__nick" ],

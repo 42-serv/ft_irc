@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['param_5fsize_1201',['param_size',['../classft_1_1irc_1_1message.html#a34f457ead0453ad914af2cb0482a40b9',1,'ft::irc::message']]],
-  ['part_5fchannel_1202',['part_channel',['../classft_1_1irc_1_1user.html#a3dcb054e616907f4ff2ec8d11563c978',1,'ft::irc::user']]],
-  ['password_5fmismatch_1203',['password_mismatch',['../structft_1_1irc_1_1make__error.html#a701c9cf7a26b2996019a5f2522f0c2b4',1,'ft::irc::make_error']]],
+  ['param_5fsize_1200',['param_size',['../classft_1_1irc_1_1message.html#a34f457ead0453ad914af2cb0482a40b9',1,'ft::irc::message']]],
+  ['part_5fchannel_1201',['part_channel',['../classft_1_1irc_1_1user.html#a3dcb054e616907f4ff2ec8d11563c978',1,'ft::irc::user']]],
+  ['password_5fmismatch_1202',['password_mismatch',['../structft_1_1irc_1_1make__error.html#a701c9cf7a26b2996019a5f2522f0c2b4',1,'ft::irc::make_error']]],
+  ['pick_5fnick_1203',['pick_nick',['../structft_1_1irc_1_1string__utils.html#a02d1713c6a0329a583a631d836ec717d',1,'ft::irc::string_utils']]],
   ['post_5fdisconnect_1204',['post_disconnect',['../classft_1_1serv_1_1event__layer.html#a04fed9acc768e1f59f28a43916c0e417',1,'ft::serv::event_layer']]],
   ['post_5ffinish_1205',['post_finish',['../classft_1_1serv_1_1event__layer.html#a03d3cd92fe0c58afa7bc543a2041e71f',1,'ft::serv::event_layer']]],
   ['post_5fflush_1206',['post_flush',['../classft_1_1serv_1_1event__layer.html#a854a0764bd67adfc716ec4237cd52672',1,'ft::serv::event_layer']]],
