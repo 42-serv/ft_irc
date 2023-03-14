@@ -46,9 +46,8 @@ var files_dup =
     ] ],
     [ "processor_misc.hpp", "processor__misc_8hpp.html", [
       [ "processor_kill", "classft_1_1irc_1_1processor__kill.html", "classft_1_1irc_1_1processor__kill" ],
-      [ "processor_ping", "classft_1_1irc_1_1processor__ping.html", "classft_1_1irc_1_1processor__ping" ],
-      [ "processor_pong", "classft_1_1irc_1_1processor__pong.html", "classft_1_1irc_1_1processor__pong" ],
-      [ "processor_away", "classft_1_1irc_1_1processor__away.html", "classft_1_1irc_1_1processor__away" ]
+      [ "processor_away", "classft_1_1irc_1_1processor__away.html", "classft_1_1irc_1_1processor__away" ],
+      [ "processor_cap", "classft_1_1irc_1_1processor__cap.html", "classft_1_1irc_1_1processor__cap" ]
     ] ],
     [ "processor_register.hpp", "processor__register_8hpp.html", [
       [ "processor_pass", "classft_1_1irc_1_1processor__pass.html", "classft_1_1irc_1_1processor__pass" ],

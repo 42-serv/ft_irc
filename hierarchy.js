@@ -77,6 +77,7 @@ var hierarchy =
     [ "ft::irc::user::pred_equals_nick", "structft_1_1irc_1_1user_1_1pred__equals__nick.html", null ],
     [ "ft::irc::processor_base", "classft_1_1irc_1_1processor__base.html", [
       [ "ft::irc::processor_away", "classft_1_1irc_1_1processor__away.html", null ],
+      [ "ft::irc::processor_cap", "classft_1_1irc_1_1processor__cap.html", null ],
       [ "ft::irc::processor_invite", "classft_1_1irc_1_1processor__invite.html", null ],
       [ "ft::irc::processor_join", "classft_1_1irc_1_1processor__join.html", null ],
       [ "ft::irc::processor_kick", "classft_1_1irc_1_1processor__kick.html", null ],
@@ -92,8 +93,6 @@ var hierarchy =
       [ "ft::irc::processor_oper", "classft_1_1irc_1_1processor__oper.html", null ],
       [ "ft::irc::processor_part", "classft_1_1irc_1_1processor__part.html", null ],
       [ "ft::irc::processor_pass", "classft_1_1irc_1_1processor__pass.html", null ],
-      [ "ft::irc::processor_ping", "classft_1_1irc_1_1processor__ping.html", null ],
-      [ "ft::irc::processor_pong", "classft_1_1irc_1_1processor__pong.html", null ],
       [ "ft::irc::processor_quit", "classft_1_1irc_1_1processor__quit.html", null ],
       [ "ft::irc::processor_topic", "classft_1_1irc_1_1processor__topic.html", null ],
       [ "ft::irc::processor_user", "classft_1_1irc_1_1processor__user.html", null ],
