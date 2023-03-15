@@ -431,7 +431,7 @@ $(document).ready(function(){initNavTree('socket__utils_8hpp_source.html',''); i
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                }</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classft_1_1serv_1_1__internal_1_1ai__failed.html">_internal::ai_failed</a>&amp; e)</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                    <span class="keywordflow">if</span> (e.<a class="code" href="classft_1_1serv_1_1__internal_1_1ai__failed.html#ad3aa900794508d370ef6e1b3c104a39e">error</a>() != EAI_NONAME)</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                    <span class="keywordflow">if</span> (e.<a class="code" href="classft_1_1serv_1_1__internal_1_1ai__failed.html#ad3aa900794508d370ef6e1b3c104a39e">error</a>() != EAI_NONAME &amp;&amp; e.<a class="code" href="classft_1_1serv_1_1__internal_1_1ai__failed.html#ad3aa900794508d370ef6e1b3c104a39e">error</a>() != EAI_SERVICE)</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    {</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                        <span class="keywordflow">throw</span>;</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                    }</div>
