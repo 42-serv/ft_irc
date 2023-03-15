@@ -475,7 +475,7 @@ void ft::irc::channel::unban(const std::string& mask)
 
     synchronized (this->lock.get_read_lock())
     {
-        foreach (ban_list::const_iterator, it, this->bans)
+        foreach (ban_list::/* const_*/ iterator, it, this->bans)
         {
             const bool match_nick = ft::irc::string_utils::is_same(it->name, nick);
             const bool match_username = it->username == username;
