@@ -43,7 +43,6 @@ var annotated_dup =
         [ "string_line_decoder", "classft_1_1irc_1_1string__line__decoder.html", "classft_1_1irc_1_1string__line__decoder" ],
         [ "string_line_encoder", "classft_1_1irc_1_1string__line__encoder.html", "classft_1_1irc_1_1string__line__encoder" ],
         [ "string_utils", "structft_1_1irc_1_1string__utils.html", "structft_1_1irc_1_1string__utils" ],
-        [ "sync", "classft_1_1irc_1_1sync.html", "classft_1_1irc_1_1sync" ],
         [ "user", "classft_1_1irc_1_1user.html", "classft_1_1irc_1_1user" ]
       ] ],
       [ "serv", "namespaceft_1_1serv.html", [

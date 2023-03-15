@@ -105,7 +105,6 @@ var hierarchy =
     [ "ft::irc::processor_dictionary", "classft_1_1irc_1_1processor__dictionary.html", null ],
     [ "ft::serv::socket_utils", "structft_1_1serv_1_1socket__utils.html", null ],
     [ "ft::irc::string_utils", "structft_1_1irc_1_1string__utils.html", null ],
-    [ "ft::irc::sync< T >", "classft_1_1irc_1_1sync.html", null ],
     [ "ft::serv::_internal::synchronized_helper", "classft_1_1serv_1_1__internal_1_1synchronized__helper.html", null ],
     [ "ft::serv::task_base", "classft_1_1serv_1_1task__base.html", null ],
     [ "ft::serv::unique_set< T >", "structft_1_1serv_1_1unique__set.html", null ],

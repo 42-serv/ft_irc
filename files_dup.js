@@ -80,9 +80,6 @@ var files_dup =
       [ "string_line_encoder", "classft_1_1irc_1_1string__line__encoder.html", "classft_1_1irc_1_1string__line__encoder" ]
     ] ],
     [ "string_utils.hpp", "string__utils_8hpp.html", "string__utils_8hpp" ],
-    [ "sync.hpp", "sync_8hpp.html", [
-      [ "sync", "classft_1_1irc_1_1sync.html", "classft_1_1irc_1_1sync" ]
-    ] ],
     [ "user.cpp", "user_8cpp.html", null ],
     [ "user.hpp", "user_8hpp.html", [
       [ "user", "classft_1_1irc_1_1user.html", "classft_1_1irc_1_1user" ],
