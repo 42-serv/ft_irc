@@ -199,14 +199,16 @@ namespace ft
                             return;
                         }
 
-                        if (!channel->is_channel_operator(user))
+                        const bool can_modify = channel->is_channel_operator(user);
+                        const bool modified = this->update_channel_mode(channel, message, can_modify);
+                        if (can_modify && modified)
+                        {
+                            channel->broadcast(ft::irc::make_reply::replicate(message));
+                        }
+                        else if (!can_modify && !modified)
                         {
                             user.send_message(ft::irc::make_error::channel_operator_privileges_needed(target_name));
-                            return;
                         }
-
-                        this->update_channel_mode(channel, message);
-                        channel->broadcast(ft::irc::make_reply::replicate(message));
                     }
                 }
                 else
@@ -261,7 +263,7 @@ namespace ft
                     {
                         if (state == NONE)
                         {
-                            // ERROR!
+                            // nothing
                             continue;
                         }
 
@@ -289,7 +291,7 @@ namespace ft
                 }
             }
 
-            void update_channel_mode(const ft::shared_ptr<ft::irc::channel>& channel, const ft::irc::message& message) const
+            bool update_channel_mode(const ft::shared_ptr<ft::irc::channel>& channel, const ft::irc::message& message, bool can_modify) const
             {
                 const std::string& mode_str = message[1];
                 enum
@@ -314,8 +316,18 @@ namespace ft
                     {
                         if (state == NONE)
                         {
-                            // ERROR!
+                            // FIXME: query
+                            switch (c)
+                            {
+                            case 'b':
+                                // uery ban list
+                                break;
+                            }
                             continue;
+                        }
+                        else if (!can_modify)
+                        {
+                            return false;
                         }
 
                         bool add = state == ADD;
@@ -367,6 +379,11 @@ namespace ft
                         }
                     }
                 }
+                if (can_modify && state == NONE)
+                {
+                    return false;
+                }
+                return true;
             }
         };
 

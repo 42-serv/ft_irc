@@ -80,9 +80,12 @@ namespace ft
                 }
 
                 user.set_register_state(ft::irc::user::REGISTER_STATE_NICK, true);
-                user.notify_message(ft::irc::make_reply::replicate(message));
 
-                if (!user.is_registered() && user.get_register_state(ft::irc::user::REGISTER_STATE_USER))
+                if (user.is_registered())
+                {
+                    user.notify_message(ft::irc::make_reply::replicate(message));
+                }
+                else if (user.get_register_state(ft::irc::user::REGISTER_STATE_USER))
                 {
                     // first
                     user.register_to_server();
