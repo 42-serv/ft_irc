@@ -404,16 +404,15 @@ void ft::irc::user::send_message(const ft::irc::message& message) const
 
 void ft::irc::user::notify_message(const ft::irc::message& message) const
 {
-    synchronized (this->lock.get_write_lock())
+    ft::serv::unique_set<ft::shared_ptr<const ft::irc::user> >::type unique_set;
+    this->send_message(message);
+    unique_set.insert(this->shared_from_this());
+
+    const channel_list channels_snapshot = this->channel_names_snapshot();
+    foreach (channel_list::const_iterator, it, channels_snapshot)
     {
-        ft::serv::unique_set<ft::shared_ptr<const ft::irc::user> >::type unique_set;
-        send_message(message);
-        unique_set.insert(this->shared_from_this());
-        foreach (channel_list::const_iterator, it, this->channels)
-        {
-            const ft::shared_ptr<ft::irc::channel> channel = server.find_channel(*it);
-            channel->broadcast_unique(message, unique_set);
-        }
+        const ft::shared_ptr<ft::irc::channel> channel = server.find_channel(*it);
+        channel->broadcast_unique(message, unique_set);
     }
 }
 
