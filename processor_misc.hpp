@@ -11,6 +11,7 @@
 #include "server.hpp"
 #include "user.hpp"
 
+#include <cctype>
 #include <cstddef>
 
 namespace ft
@@ -68,14 +69,25 @@ namespace ft
         };
 
         // Command: CAP
-        // Parameters: [capability]
+        // Parameters: <sub command>
         class processor_cap : public ft::irc::processor_base
         {
         public:
+            std::size_t get_min_params() const throw() { return 1; }
+
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // ignore
-                static_cast<void>(user), static_cast<void>(message);
+                std::string sub_cmd = message[1];
+                foreach (std::string::iterator, it, sub_cmd)
+                {
+                    *it = std::toupper(*it);
+                }
+
+                if (sub_cmd == "LS" || sub_cmd == "LIST")
+                {
+                    user.send_message(ft::irc::make_reply::create("CAP") << "*" << sub_cmd << "");
+                }
             }
         };
 
@@ -87,7 +99,16 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // ignore
-                static_cast<void>(user), static_cast<void>(message);
+                std::string target_name;
+                if (message.param_size() == this->get_min_params())
+                {
+                    target_name = user.load_nick();
+                }
+                else
+                {
+                    target_name = message[0];
+                }
+                user.send_message(ft::irc::make_reply::end_of_who(target_name));
             }
         };
 
@@ -96,10 +117,12 @@ namespace ft
         class processor_whois : public ft::irc::processor_base
         {
         public:
+            std::size_t get_min_params() const throw() { return 1; }
+
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // ignore
-                static_cast<void>(user), static_cast<void>(message);
+                user.send_message(ft::irc::make_reply::end_of_whois(message[0]));
             }
         };
     }
