@@ -1,14 +1,7 @@
 var files_dup =
 [
     [ "includes", "dir_09e761304027c904456130627fd4dcf5.html", "dir_09e761304027c904456130627fd4dcf5" ],
-    [ "bot.cpp", "bot_8cpp.html", null ],
-    [ "bot.hpp", "bot_8hpp.html", [
-      [ "bot", "classft_1_1irc_1_1bot.html", "classft_1_1irc_1_1bot" ]
-    ] ],
-    [ "bot_handler.hpp", "bot__handler_8hpp.html", [
-      [ "bot_handler", "classft_1_1irc_1_1bot__handler.html", "classft_1_1irc_1_1bot__handler" ]
-    ] ],
-    [ "bot_main.cpp", "bot__main_8cpp.html", "bot__main_8cpp" ],
+    [ "bot.cpp", "bot_8cpp.html", "bot_8cpp" ],
     [ "channel.cpp", "channel_8cpp.html", null ],
     [ "channel.hpp", "channel_8hpp.html", [
       [ "channel", "classft_1_1irc_1_1channel.html", "classft_1_1irc_1_1channel" ],
