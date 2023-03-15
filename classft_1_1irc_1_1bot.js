@@ -6,7 +6,7 @@ var classft_1_1irc_1_1bot =
     [ "bot", "classft_1_1irc_1_1bot.html#a4903a8414c6cfc27560a74127fea5939", null ],
     [ "add_inviter", "classft_1_1irc_1_1bot.html#ab9626c6fee28a7fa7cb968c76362834c", null ],
     [ "check_is_inviter", "classft_1_1irc_1_1bot.html#adf4606e06fe57fead9970ce51853ba0a", null ],
-    [ "find_channels", "classft_1_1irc_1_1bot.html#adc2d6b015e096552cc531c457061bd77", null ],
+    [ "find_channels", "classft_1_1irc_1_1bot.html#aa86cf24bc5169f54781b1a89735fae3d", null ],
     [ "get_hostname", "classft_1_1irc_1_1bot.html#abd5d4f4f5d1690e333978ee4c090047d", null ],
     [ "get_nick", "classft_1_1irc_1_1bot.html#af00201ff653e89960e762d7b12297c13", null ],
     [ "get_pass", "classft_1_1irc_1_1bot.html#a974fe87cc09db5c7298164e092b3a866", null ],
