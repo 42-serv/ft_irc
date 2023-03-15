@@ -78,7 +78,7 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // ignore
-                std::string sub_cmd = message[1];
+                std::string sub_cmd = message[0];
                 foreach (std::string::iterator, it, sub_cmd)
                 {
                     *it = std::toupper(*it);
