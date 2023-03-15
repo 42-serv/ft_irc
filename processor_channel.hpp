@@ -200,7 +200,7 @@ namespace ft
                             return;
                         }
 
-                        const bool can_modify = channel->is_channel_operator(user);
+                        const bool can_modify = channel->is_channel_operator(user) || user.load_mode(ft::irc::user::USER_MODE_OPERATOR);
                         const bool modified = this->update_channel_mode(user, channel, message, can_modify);
                         if (can_modify && modified)
                         {
