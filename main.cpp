@@ -46,9 +46,7 @@ int main(int argc, char* argv[])
         ft::serv::logger::warn("Usage: %s <port> <pass>", argv[0]);
         return EXIT_FAILURE;
     }
-    boss_group = ft::make_shared<ft::serv::event_worker_group>();
-    child_group = ft::make_shared<ft::serv::event_worker_group>();
-    boss_group->put_worker(ft::make_shared<ft::serv::event_worker>());
+
     const long hardware_concurrency =
 #if FT_IRC_HARDWARE_CONCURRENCY > 0
         FT_IRC_HARDWARE_CONCURRENCY
@@ -56,10 +54,15 @@ int main(int argc, char* argv[])
         ::sysconf(_SC_NPROCESSORS_ONLN)
 #endif
         ;
+
+    boss_group = ft::make_shared<ft::serv::event_worker_group>();
+    child_group = ft::make_shared<ft::serv::event_worker_group>();
+    boss_group->put_worker(ft::make_shared<ft::serv::event_worker>());
     for (long i = 0; i < hardware_concurrency; i++)
     {
         child_group->put_worker(ft::make_shared<ft::serv::event_worker>());
     }
+
     ft::irc::server server(argv[2]);
     ft::serv::bootstrap boot(boss_group, child_group, &ft::irc::_make_server, null);
     std::signal(SIGINT, &_on_signal);

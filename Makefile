@@ -1,15 +1,13 @@
 .SUFFIXES: .cpp .o .hpp .h .tpp
-.PHONY: all clean fclean cleanobj cleanbin re deps depsclean depsre bot
+.PHONY: all clean fclean cleanobj cleanbin re deps depsclean depsre allre bonus
 
-MAKEFLAGS =
-
-ifeq ($(shell uname),Linux)
+ifeq ($(shell uname), Linux)
 	MAKEFLAGS := --jobs $(shell nproc)
 else
 	MAKEFLAGS := --jobs $(shell sysctl -n hw.ncpu)
 endif
 
-
+# Configuration
 CXX = c++
 RM = rm -f
 
@@ -21,8 +19,8 @@ LIBSERV := includes/libserv/
 CXXFLAGS += -I$(LIBSERV)includes
 LDFLAGS += -L$(LIBSERV) -lserv -pthread
 
+# Target
 TARGET = ircserv.out
-BOT_TARGET = bot.out
 OBJECTS_DIR = objs/
 
 SOURCES += \
@@ -36,36 +34,35 @@ SOURCES += \
 
 OBJECTS = $(addprefix $(OBJECTS_DIR), $(SOURCES:.cpp=.o))
 
-BOT_SOURCES += \
+# Bonus target
+BONUS_TARGET = bot.out
+
+BONUS_SOURCES += \
 	bot.cpp \
-	bot_main.cpp \
 	message.cpp \
 	reply.cpp \
 
-BOT_OBJECTS = $(addprefix $(OBJECTS_DIR), $(BOT_SOURCES:.cpp=.o))
+BONUS_OBJECTS = $(addprefix $(OBJECTS_DIR), $(BONUS_SOURCES:.cpp=.o))
 
+# Options
 ifdef ASAN
 	CXXFLAGS += -fsanitize=address
 	LDFLAGS += -fsanitize=address
-	DEBUG = 1
 endif
 
 ifdef MSAN
 	CXXFLAGS += -fsanitize=memory
 	LDFLAGS += -fsanitize=memory
-	DEBUG = 1
 endif
 
 ifdef TSAN
 	CXXFLAGS += -fsanitize=thread
 	LDFLAGS += -fsanitize=thread
-	DEBUG = 1
 endif
 
 ifdef UBSAN
 	CXXFLAGS += -fsanitize=undefined
 	LDFLAGS += -fsanitize=undefined
-	DEBUG = 1
 endif
 
 ifdef DEBUG
@@ -80,13 +77,16 @@ ifdef MJ
 	CXXFLAGS += -MJ $@.part.json
 endif
 
-all: $(TARGET) $(BOT_TARGET)
+# Phonies
+all: $(TARGET)
+bonus: $(BONUS_TARGET)
 clean: cleanobj
 fclean: cleanobj cleanbin
 cleanobj:	;	$(RM) -r $(OBJECTS_DIR)
-cleanbin:	;	$(RM) $(TARGET) $(BOT_TARGET)
+cleanbin:	;	$(RM) $(TARGET) $(BONUS_TARGET)
 re: clean	;	$(MAKE)
 
+# Recipes
 $(OBJECTS_DIR):
 	mkdir -p $(OBJECTS_DIR)
 
@@ -95,13 +95,15 @@ $(OBJECTS_DIR)%.o: %.cpp | $(OBJECTS_DIR)
 
 $(TARGET): $(OBJECTS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
-
-$(BOT_TARGET): $(BOT_OBJECTS)
+	
+$(BONUS_TARGET): $(BONUS_OBJECTS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
+# Headers
 -include $(OBJECTS:.o=.d)
--include $(BOT_OBJECTS:.o=.d)
+-include $(BONUS_OBJECTS:.o=.d)
 
+# Dependencies
 deps:
 	$(MAKE) -C $(LIBSERV)
 
