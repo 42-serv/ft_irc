@@ -3,7 +3,7 @@ var searchData=
   ['unaway_1324',['unaway',['../structft_1_1irc_1_1make__reply.html#a179256786b120f4ed7be4b3e1e518849',1,'ft::irc::make_reply']]],
   ['unknown_5fcommand_1325',['unknown_command',['../structft_1_1irc_1_1make__error.html#a67e1d93a440b1db3ddbf9bff22cd2d8b',1,'ft::irc::make_error']]],
   ['unknown_5fmode_1326',['unknown_mode',['../structft_1_1irc_1_1make__error.html#a752f2c9b659b1cf5b558e69a6fcc054c',1,'ft::irc::make_error']]],
-  ['update_5fchannel_5fmode_1327',['update_channel_mode',['../classft_1_1irc_1_1processor__mode.html#a37bfb22efb064cf555ec39b0cc173a38',1,'ft::irc::processor_mode']]],
+  ['update_5fchannel_5fmode_1327',['update_channel_mode',['../classft_1_1irc_1_1processor__mode.html#ab78a2f17d072bf890dc01453d7783e02',1,'ft::irc::processor_mode']]],
   ['update_5fuser_5fmode_1328',['update_user_mode',['../classft_1_1irc_1_1processor__mode.html#a4447a4030b15157ccecfe992192de4b5',1,'ft::irc::processor_mode']]],
   ['user_1329',['user',['../classft_1_1irc_1_1user.html#a8b15c3c488436f09ea3245b6f535f3f8',1,'ft::irc::user::user(ft::irc::server &amp;server, const ft::shared_ptr&lt; ft::serv::event_layer &gt; &amp;layer)'],['../classft_1_1irc_1_1user.html#a9ba556acd89db873dc9225d6f9bc8e96',1,'ft::irc::user::user(const user &amp;)']]],
   ['user_5fhost_1330',['user_host',['../structft_1_1irc_1_1make__reply.html#ad42b610976b1ff924af6146d91e1a123',1,'ft::irc::make_reply']]],
