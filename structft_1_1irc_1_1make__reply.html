@@ -198,8 +198,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a13c90ddae6cb1ea78e9c3615c5ce00b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a1fedb5c0e7bdc3a70f731900c5c769"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1make__reply.html#a4a1fedb5c0e7bdc3a70f731900c5c769">end_of_links</a> (<a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a> mask)</td></tr>
 <tr class="separator:a4a1fedb5c0e7bdc3a70f731900c5c769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a486c23beab946a92e23a95730f5a7e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1make__reply.html#a0a486c23beab946a92e23a95730f5a7e">ban_list</a> (<a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a> channel_name, std::size_t ban_id)</td></tr>
-<tr class="separator:a0a486c23beab946a92e23a95730f5a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a456b9267291e4208ef9d36e20a7948"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1make__reply.html#a7a456b9267291e4208ef9d36e20a7948">ban_list</a> (<a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a> channel_name, <a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a> ban_name, <a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a> ban_username, <a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a> ban_host)</td></tr>
+<tr class="separator:a7a456b9267291e4208ef9d36e20a7948"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fcd32547d899569970960956ba0a240"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1make__reply.html#a1fcd32547d899569970960956ba0a240">end_of_ban_list</a> (<a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a> channel_name)</td></tr>
 <tr class="separator:a1fcd32547d899569970960956ba0a240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add1f1afb2a3bc7aec3c5d2003e6fc198"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classft_1_1irc_1_1message.html">ft::irc::message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1make__reply.html#add1f1afb2a3bc7aec3c5d2003e6fc198">info</a> (<a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a> info)</td></tr>
@@ -466,8 +466,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a0a486c23beab946a92e23a95730f5a7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a486c23beab946a92e23a95730f5a7e">&#9670;&nbsp;</a></span>ban_list()</h2>
+<a id="a7a456b9267291e4208ef9d36e20a7948"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a456b9267291e4208ef9d36e20a7948">&#9670;&nbsp;</a></span>ban_list()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -484,8 +484,20 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::size_t&#160;</td>
-          <td class="paramname"><em>ban_id</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a>&#160;</td>
+          <td class="paramname"><em>ban_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a>&#160;</td>
+          <td class="paramname"><em>ban_username</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structft_1_1irc_1_1make__reply__base.html#a60d203c5c52e2492261d724ba983432a">param_t</a>&#160;</td>
+          <td class="paramname"><em>ban_host</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -501,6 +513,12 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p class="reference">References <a class="el" href="structft_1_1irc_1_1make__reply__base.html#a6295b9a03bb340fa27aaf771fddb4cf8">ft::irc::make_reply_base::my_server_name</a>, and <a class="el" href="structft_1_1irc_1_1make__reply__base.html#a8486749dd928630daafd95efc72b8dec">ft::irc::make_reply_base::my_user_nick</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1make__reply_a7a456b9267291e4208ef9d36e20a7948_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -613,6 +631,12 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p class="reference">References <a class="el" href="structft_1_1irc_1_1make__reply__base.html#a6295b9a03bb340fa27aaf771fddb4cf8">ft::irc::make_reply_base::my_server_name</a>, and <a class="el" href="structft_1_1irc_1_1make__reply__base.html#a8486749dd928630daafd95efc72b8dec">ft::irc::make_reply_base::my_user_nick</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1make__reply_a1fcd32547d899569970960956ba0a240_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>

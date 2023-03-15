@@ -12,7 +12,8 @@ var files_dup =
     [ "channel.cpp", "channel_8cpp.html", null ],
     [ "channel.hpp", "channel_8hpp.html", [
       [ "channel", "classft_1_1irc_1_1channel.html", "classft_1_1irc_1_1channel" ],
-      [ "member", "structft_1_1irc_1_1channel_1_1member.html", "structft_1_1irc_1_1channel_1_1member" ]
+      [ "member", "structft_1_1irc_1_1channel_1_1member.html", "structft_1_1irc_1_1channel_1_1member" ],
+      [ "ban_info", "structft_1_1irc_1_1channel_1_1ban__info.html", "structft_1_1irc_1_1channel_1_1ban__info" ]
     ] ],
     [ "client_handler.hpp", "client__handler_8hpp.html", [
       [ "client_handler", "classft_1_1irc_1_1client__handler.html", "classft_1_1irc_1_1client__handler" ]

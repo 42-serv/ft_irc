@@ -132,8 +132,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ab18511c9107e828924f75099c8500d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367a22012cc0d2d25959ac3f4e5d33a9"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9">to_lower</a> (const std::string &amp;s)</td></tr>
 <tr class="separator:a367a22012cc0d2d25959ac3f4e5d33a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02d1713c6a0329a583a631d836ec717d"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1string__utils.html#a02d1713c6a0329a583a631d836ec717d">pick_nick</a> (const std::string &amp;s)</td></tr>
-<tr class="separator:a02d1713c6a0329a583a631d836ec717d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1e75b32f508ffe5a1a1875d1e1cd2ea"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1string__utils.html#ac1e75b32f508ffe5a1a1875d1e1cd2ea">pick_nick</a> (const std::string &amp;mask)</td></tr>
+<tr class="separator:ac1e75b32f508ffe5a1a1875d1e1cd2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8d525ecc5b9196146c124cd310d8d82"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1string__utils.html#ac8d525ecc5b9196146c124cd310d8d82">pick_username</a> (const std::string &amp;mask)</td></tr>
+<tr class="separator:ac8d525ecc5b9196146c124cd310d8d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8df7fd3632f857bb33e32c24a496df98"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1string__utils.html#a8df7fd3632f857bb33e32c24a496df98">pick_host</a> (const std::string &amp;mask)</td></tr>
+<tr class="separator:a8df7fd3632f857bb33e32c24a496df98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a38cd804a5b73843f0fd63a027dd0dee0"></a>
@@ -216,8 +220,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a02d1713c6a0329a583a631d836ec717d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02d1713c6a0329a583a631d836ec717d">&#9670;&nbsp;</a></span>pick_nick()</h2>
+<a id="a8df7fd3632f857bb33e32c24a496df98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8df7fd3632f857bb33e32c24a496df98">&#9670;&nbsp;</a></span>pick_host()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,10 +230,10 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static std::string ft::irc::string_utils::pick_nick </td>
+          <td class="memname">static std::string ft::irc::string_utils::pick_host </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
+          <td class="paramname"><em>mask</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -242,7 +246,71 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_a02d1713c6a0329a583a631d836ec717d_icgraph.svg" width="334" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_a8df7fd3632f857bb33e32c24a496df98_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ac1e75b32f508ffe5a1a1875d1e1cd2ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1e75b32f508ffe5a1a1875d1e1cd2ea">&#9670;&nbsp;</a></span>pick_nick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::string ft::irc::string_utils::pick_nick </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>mask</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_ac1e75b32f508ffe5a1a1875d1e1cd2ea_icgraph.svg" width="100%" height="416"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ac8d525ecc5b9196146c124cd310d8d82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8d525ecc5b9196146c124cd310d8d82">&#9670;&nbsp;</a></span>pick_username()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::string ft::irc::string_utils::pick_username </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>mask</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_ac8d525ecc5b9196146c124cd310d8d82_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 

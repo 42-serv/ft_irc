@@ -1,9 +1,11 @@
 var hierarchy =
 [
+    [ "ft::irc::channel::ban_info", "structft_1_1irc_1_1channel_1_1ban__info.html", null ],
     [ "ft::serv::bootstrap", "classft_1_1serv_1_1bootstrap.html", null ],
     [ "ft::serv::byte_buffer", "classft_1_1serv_1_1byte__buffer.html", null ],
     [ "ft::irc::channel_info", "structft_1_1irc_1_1channel__info.html", null ],
     [ "ft::serv::dynamic_array< T >", "structft_1_1serv_1_1dynamic__array.html", null ],
+    [ "ft::serv::dynamic_array< ban_info >", "structft_1_1serv_1_1dynamic__array.html", null ],
     [ "ft::serv::dynamic_array< byte_t >", "structft_1_1serv_1_1dynamic__array.html", null ],
     [ "ft::serv::dynamic_array< ft::shared_ptr< channel >::element_type * >", "structft_1_1serv_1_1dynamic__array.html", null ],
     [ "ft::serv::dynamic_array< ft::shared_ptr< ft::irc::user > >", "structft_1_1serv_1_1dynamic__array.html", null ],

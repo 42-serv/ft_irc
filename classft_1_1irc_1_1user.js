@@ -42,7 +42,6 @@ var classft_1_1irc_1_1user =
     [ "load_mode", "classft_1_1irc_1_1user.html#a3cfeaf12c0bdb6ac02debf5e19ce50d2", null ],
     [ "load_nick", "classft_1_1irc_1_1user.html#a7277f06aa83459f6f9b409858d602e3b", null ],
     [ "load_quit_message", "classft_1_1irc_1_1user.html#ab59aa797e509d984fd91f0ce0a7f96e0", null ],
-    [ "load_username", "classft_1_1irc_1_1user.html#a725cbc063e75f64042afcc77e71ae65c", null ],
     [ "make_full_name", "classft_1_1irc_1_1user.html#a7406ed193e13a3c39ee16c9ac7a8b16e", null ],
     [ "make_mode_string", "classft_1_1irc_1_1user.html#aa7b9c3fcfe372bbcebaa41860faf7b84", null ],
     [ "notify_message", "classft_1_1irc_1_1user.html#a29eb92f8b7e66851cd4634d98aa57dc6", null ],

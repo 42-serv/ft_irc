@@ -1,6 +1,8 @@
 var classft_1_1irc_1_1channel =
 [
+    [ "ban_info", "structft_1_1irc_1_1channel_1_1ban__info.html", "structft_1_1irc_1_1channel_1_1ban__info" ],
     [ "member", "structft_1_1irc_1_1channel_1_1member.html", "structft_1_1irc_1_1channel_1_1member" ],
+    [ "ban_list", "classft_1_1irc_1_1channel.html#ac8dd5edef411e1c77d567a678c29c14b", null ],
     [ "member_list", "classft_1_1irc_1_1channel.html#a2d8c6ae3c193ee58749d3591bfba9456", null ],
     [ "channel_mode", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050", [
       [ "CHANNEL_MODE_PRIVATE", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050aa4ee02b9fe0fb46bf67bb20c55a0aea1", null ],
@@ -17,6 +19,7 @@ var classft_1_1irc_1_1channel =
     [ "channel", "classft_1_1irc_1_1channel.html#aa812c5a6cfc904a4330456de28701816", null ],
     [ "~channel", "classft_1_1irc_1_1channel.html#adc2c243ac24e85f321efc12fb09a2840", null ],
     [ "channel", "classft_1_1irc_1_1channel.html#ad23f4e74b361e1543a235ac9149108aa", null ],
+    [ "ban", "classft_1_1irc_1_1channel.html#a88a071511ae42d2faa2ff45d6d6f4abf", null ],
     [ "broadcast", "classft_1_1irc_1_1channel.html#a4250c6f755016a2f80ae04de5ffed80f", null ],
     [ "broadcast_unique", "classft_1_1irc_1_1channel.html#a3b2b7e0ac9e2122b7f9e26ce7a851e3f", null ],
     [ "enter_user", "classft_1_1irc_1_1channel.html#a548d09eca34e5aff0c20939ab28c7cc6", null ],
@@ -37,6 +40,7 @@ var classft_1_1irc_1_1channel =
     [ "make_mode_string", "classft_1_1irc_1_1channel.html#abb21180c96571b7743159bd756164a97", null ],
     [ "modify_member_mode", "classft_1_1irc_1_1channel.html#ad30281781ad94941df6db1284869a73b", null ],
     [ "operator=", "classft_1_1irc_1_1channel.html#a5a81b22ab2c52e2cb3423ee1840dfd7d", null ],
+    [ "send_ban_list", "classft_1_1irc_1_1channel.html#a058c359633e6e7b0029b2feedd6320bf", null ],
     [ "send_names", "classft_1_1irc_1_1channel.html#a5b005d44090820196503e46e45724a51", null ],
     [ "set_key", "classft_1_1irc_1_1channel.html#a8aac9b6c4bac069c4bd152fd3429edca", null ],
     [ "set_limit", "classft_1_1irc_1_1channel.html#a95eaa672a72ff4f44c3ac738934db168", null ],
@@ -46,6 +50,8 @@ var classft_1_1irc_1_1channel =
     [ "store_limit", "classft_1_1irc_1_1channel.html#a9a229b373bb42191a96af592857c279a", null ],
     [ "store_mode", "classft_1_1irc_1_1channel.html#a844f7ff52ac56119ab3de1a568973935", null ],
     [ "store_topic", "classft_1_1irc_1_1channel.html#af0e04d9734c31d48b59a4b515787f0db", null ],
+    [ "unban", "classft_1_1irc_1_1channel.html#aa7b5a547c4ff51772b8a1a6c81f61a8c", null ],
+    [ "bans", "classft_1_1irc_1_1channel.html#a195bf214a6de3217b234d7622db502ad", null ],
     [ "invalidated", "classft_1_1irc_1_1channel.html#aa5a593221f4639f82def69c294fa3d18", null ],
     [ "key", "classft_1_1irc_1_1channel.html#ad5ac82311fc931289f66e1c136761572", null ],
     [ "limit", "classft_1_1irc_1_1channel.html#af3d1073aaa226b478f3a6b8be6e915dd", null ],
