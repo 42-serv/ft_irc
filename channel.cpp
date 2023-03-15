@@ -421,7 +421,7 @@ void ft::irc::channel::modify_member_mode(const std::string& nick, member::membe
     {
         foreach (member_list::iterator, it, this->members)
         {
-            if (it->user->load_nick() == nick)
+            if (ft::irc::string_utils::is_same(it->user->load_nick(), nick))
             {
                 it->mode[index] = value;
                 break;
@@ -436,18 +436,15 @@ bool ft::irc::channel::is_banned(const ft::irc::user& user) const
     const std::string& username = user.get_username();
     const std::string& host = user.get_hostname();
 
-    synchronized (this->lock.get_read_lock())
+    foreach (ban_list::const_iterator, it, this->bans)
     {
-        foreach (ban_list::const_iterator, it, this->bans)
-        {
-            const bool match_nick = it->name == nick || it->name == "*";
-            const bool match_username = it->username == username || it->username == "*";
-            const bool match_host = it->host == host || it->host == "*";
+        const bool match_nick = ft::irc::string_utils::is_same(it->name, nick) || it->name == "*";
+        const bool match_username = it->username == username || it->username == "*";
+        const bool match_host = it->host == host || it->host == "*";
 
-            if (match_nick && match_username && match_host)
-            {
-                return true;
-            }
+        if (match_nick && match_username && match_host)
+        {
+            return true;
         }
     }
 
@@ -480,7 +477,7 @@ void ft::irc::channel::unban(const std::string& mask)
     {
         foreach (ban_list::const_iterator, it, this->bans)
         {
-            const bool match_nick = it->name == nick;
+            const bool match_nick = ft::irc::string_utils::is_same(it->name, nick);
             const bool match_username = it->username == username;
             const bool match_host = it->host == host;
 

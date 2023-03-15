@@ -9,6 +9,7 @@
 #include "message.hpp"
 #include "reply.hpp"
 #include "server.hpp"
+#include "string_utils.hpp"
 
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
@@ -66,7 +67,7 @@ std::string ft::irc::user::load_nick() const
 bool ft::irc::user::change_nick(const std::string& nick)
 {
     std::string old_nick = this->load_nick();
-    if (old_nick == nick)
+    if (ft::irc::string_utils::to_lower(old_nick) == ft::irc::string_utils::to_lower(nick))
     {
         return true;
     }
@@ -427,15 +428,15 @@ ft::irc::user::pred_equals_nick::pred_equals_nick(const std::string& nick) throw
 
 bool ft::irc::user::pred_equals_nick::operator()(const ft::irc::user& user) const throw()
 {
-    return this->nick == user.load_nick();
+    return ft::irc::string_utils::is_same(this->nick, user.load_nick());
 }
 
 bool ft::irc::user::pred_equals_nick::operator()(const ft::irc::user* user) const throw()
 {
-    return this->nick == user->load_nick();
+    return ft::irc::string_utils::is_same(this->nick, user->load_nick());
 }
 
 bool ft::irc::user::pred_equals_nick::operator()(const ft::shared_ptr<const ft::irc::user>& user) const throw()
 {
-    return this->nick == user->load_nick();
+    return ft::irc::string_utils::is_same(this->nick, user->load_nick());
 }

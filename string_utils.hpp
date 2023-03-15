@@ -183,6 +183,11 @@ namespace ft
                 return str;
             }
 
+            static inline bool is_same(const std::string& s1, const std::string& s2)
+            {
+                return to_lower(s1) == to_lower(s2);
+            }
+
             static inline std::string pick_nick(const std::string& mask)
             {
                 std::string::size_type pos_begin = 0;
@@ -197,7 +202,8 @@ namespace ft
                 {
                     return "*";
                 }
-                std::string::size_type pos_end = mask.find_first_of('@');
+                pos_begin++;
+                std::string::size_type pos_end = mask.find_first_of('@', pos_begin);
                 return mask.substr(pos_begin, pos_end - pos_begin);
             }
 
@@ -208,6 +214,7 @@ namespace ft
                 {
                     return "*";
                 }
+                pos_begin++;
                 std::string::size_type pos_end = std::string::npos;
                 return mask.substr(pos_begin, pos_end - pos_begin);
             }
