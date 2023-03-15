@@ -11,9 +11,9 @@
 #include "processor.hpp"
 #include "reply.hpp"
 #include "server.hpp"
-#include "string_utils.hpp"
 #include "string_line_decoder.hpp"
 #include "string_line_encoder.hpp"
+#include "string_utils.hpp"
 
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
@@ -58,8 +58,9 @@ namespace ft
 
                 ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, message->to_pretty_string().c_str());
                 static_cast<void>(layer);
+                const std::string command = message->get_command();
 
-                if (message->get_command() == "PRIVMSG")
+                if (command == "PRIVMSG")
                 {
                     const std::string sender = ft::irc::string_utils::pick_nick(message->get_prefix());
                     const ft::irc::message payload = ft::irc::message("PRIVMSG") << sender << "THIS IS REPLY";
@@ -67,13 +68,53 @@ namespace ft
                     layer.post_write(ft::make_shared<ft::irc::message>(payload));
                     layer.post_flush();
                 }
-                else if (message->get_command() == "INVITE")
+                else if (command == "INVITE")
                 {
                     // accept invite
                     // what if FT_IRC_CHANNEL_LIMIT_PER_USER ?? -> server 가 알아서 핸들
+
+                    const std::string sender = ft::irc::string_utils::pick_nick(message->get_prefix());
+                    bot.add_inviter((*message)[1], sender);
                     const ft::irc::message payload = ft::irc::message("JOIN") << (*message)[1];
                     layer.post_write(ft::make_shared<ft::irc::message>(payload));
                     layer.post_flush();
+                }
+                else if (command == "KICK")
+                {
+                    const std::string nick = (*message)[1];
+                    const std::string channel = (*message)[0];
+
+                    if (this->bot.check_is_inviter(channel, nick))
+                    {
+                        const ft::irc::message payload = ft::irc::message("PART") << channel;
+                        layer.post_write(ft::make_shared<ft::irc::message>(payload));
+                        layer.post_flush();
+                    }
+                }
+                else if (command == "PART")
+                {
+                    const std::string sender = ft::irc::string_utils::pick_nick(message->get_prefix());
+                    const std::string channel = (*message)[0];
+
+                    if (this->bot.check_is_inviter(channel, sender))
+                    {
+                        const ft::irc::message payload = ft::irc::message("PART") << channel;
+                        layer.post_write(ft::make_shared<ft::irc::message>(payload));
+                        layer.post_flush();
+                    }
+                }
+                else if (command == "QUIT")
+                {
+                    const std::string sender = ft::irc::string_utils::pick_nick(message->get_prefix());
+                    const std::string channel_to_remove = this->bot.find_channels(sender);
+                    const ft::irc::message payload = ft::irc::message("PART") << channel_to_remove;
+
+                    layer.post_write(ft::make_shared<ft::irc::message>(payload));
+                    layer.post_flush();
+                }
+                else if (command == "NICK")
+                {
+                    // TODO : if inviter chagnes nick, update it.
                 }
                 else
                 {

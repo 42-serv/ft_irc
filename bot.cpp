@@ -2,6 +2,7 @@
  * https://creativecommons.org/publicdomain/zero/1.0/ */
 
 #include "bot.hpp"
+#include "libserv/serv_types.hpp"
 
 #include <string>
 
@@ -47,4 +48,39 @@ const std::string& ft::irc::bot::get_servername() const throw()
 const std::string& ft::irc::bot::get_realname() const throw()
 {
     return this->realname;
+}
+
+void ft::irc::bot::add_inviter(const std::string& channel, const std::string& inviter) throw()
+{
+    this->inviters.insert(std::make_pair(channel, inviter));
+}
+
+void ft::irc::bot::remove_inviter(const std::string& channel)
+{
+    this->inviters.erase(channel);
+}
+
+bool ft::irc::bot::check_is_inviter(const std::string& channel, const std::string& inviter)
+{
+    ft::irc::bot::inviter_dictionary::iterator it = this->inviters.find(channel);
+
+    return it != this->inviters.end() && it->second == inviter;
+}
+
+const std::string ft::irc::bot::find_channels(const std::string& sender) const throw()
+{
+    std::string channels_to_remvoe;
+
+    foreach (ft::irc::bot::inviter_dictionary::const_iterator, it, this->inviters)
+    {
+        if (it->second == sender)
+        {
+            if (!channels_to_remvoe.empty())
+            {
+                channels_to_remvoe += ",";
+            }
+            channels_to_remvoe += it->first;
+        }
+    }
+    return channels_to_remvoe;
 }
