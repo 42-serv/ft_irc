@@ -513,6 +513,7 @@ namespace ft
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 ft::irc::server& server = user.get_server();
+                const bool force = user.load_mode(ft::irc::user::USER_MODE_OPERATOR);
 
                 ft::irc::message::param_vector channel_names;
                 if (message.param_size() == this->get_min_params())
@@ -536,6 +537,10 @@ namespace ft
                     const ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channel_name);
                     if (channel)
                     {
+                        if (!force && !channel->load_mode(ft::irc::channel::CHANNEL_MODE_SECRET))
+                        {
+                            continue;
+                        }
                         channel->send_names(user);
                     }
                 }
