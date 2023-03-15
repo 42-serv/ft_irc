@@ -42,9 +42,10 @@ var searchData=
   ['is_5freadability_5fenabled_308',['is_readability_enabled',['../classft_1_1serv_1_1event__channel__base.html#a815de9f95e3371cafb6902a52ebe1132',1,'ft::serv::event_channel_base']]],
   ['is_5fregistered_309',['is_registered',['../classft_1_1irc_1_1user.html#a7d133deb3a63faa2627b50cbbdf3a607',1,'ft::irc::user']]],
   ['is_5fregistered_5fonly_310',['is_registered_only',['../classft_1_1irc_1_1processor__base.html#a7a9ba5dde5d1031785ad1613b74512cf',1,'ft::irc::processor_base::is_registered_only()'],['../classft_1_1irc_1_1processor__pass.html#a64e8e9d790f039c42824e887237a8755',1,'ft::irc::processor_pass::is_registered_only()'],['../classft_1_1irc_1_1processor__nick.html#ae34ac5df56b40770d0417d7e8c9254fc',1,'ft::irc::processor_nick::is_registered_only()'],['../classft_1_1irc_1_1processor__user.html#a02c1d81c07e6b1e0b7b010778e1bba8a',1,'ft::irc::processor_user::is_registered_only()'],['../classft_1_1irc_1_1processor__quit.html#abc17fcfe520e1ca4fe42dbe5ba307135',1,'ft::irc::processor_quit::is_registered_only()']]],
-  ['is_5fvalid_5fchannelname_311',['is_valid_channelname',['../structft_1_1irc_1_1string__utils.html#a38cd804a5b73843f0fd63a027dd0dee0',1,'ft::irc::string_utils']]],
-  ['is_5fvalid_5fnick_312',['is_valid_nick',['../structft_1_1irc_1_1string__utils.html#a2fcf209970f5b02422129e1d9ff28a72',1,'ft::irc::string_utils']]],
-  ['is_5fwritability_5fenabled_313',['is_writability_enabled',['../classft_1_1serv_1_1event__channel__base.html#a0573838cd4de2d44cef6447e37772efb',1,'ft::serv::event_channel_base']]],
-  ['ison_314',['ison',['../structft_1_1irc_1_1make__reply.html#ad04d018a596373dfdb8a418e0e2c1077',1,'ft::irc::make_reply']]],
-  ['iterator_315',['iterator',['../classft_1_1serv_1_1byte__buffer.html#aa1c47a31080001e64587357bd0416550',1,'ft::serv::byte_buffer']]]
+  ['is_5fsame_311',['is_same',['../structft_1_1irc_1_1string__utils.html#abd73422cb93e7f7f26cfd59a221933a2',1,'ft::irc::string_utils']]],
+  ['is_5fvalid_5fchannelname_312',['is_valid_channelname',['../structft_1_1irc_1_1string__utils.html#a38cd804a5b73843f0fd63a027dd0dee0',1,'ft::irc::string_utils']]],
+  ['is_5fvalid_5fnick_313',['is_valid_nick',['../structft_1_1irc_1_1string__utils.html#a2fcf209970f5b02422129e1d9ff28a72',1,'ft::irc::string_utils']]],
+  ['is_5fwritability_5fenabled_314',['is_writability_enabled',['../classft_1_1serv_1_1event__channel__base.html#a0573838cd4de2d44cef6447e37772efb',1,'ft::serv::event_channel_base']]],
+  ['ison_315',['ison',['../structft_1_1irc_1_1make__reply.html#ad04d018a596373dfdb8a418e0e2c1077',1,'ft::irc::make_reply']]],
+  ['iterator_316',['iterator',['../classft_1_1serv_1_1byte__buffer.html#aa1c47a31080001e64587357bd0416550',1,'ft::serv::byte_buffer']]]
 ];

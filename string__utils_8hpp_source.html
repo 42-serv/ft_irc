@@ -301,37 +301,44 @@ $(document).ready(function(){initNavTree('string__utils_8hpp_source.html',''); i
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">return</span> str;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            }</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#ac1e75b32f508ffe5a1a1875d1e1cd2ea">  186</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> std::string <a class="code" href="structft_1_1irc_1_1string__utils.html#ac1e75b32f508ffe5a1a1875d1e1cd2ea">pick_nick</a>(<span class="keyword">const</span> std::string&amp; mask)</div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#abd73422cb93e7f7f26cfd59a221933a2">  186</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="structft_1_1irc_1_1string__utils.html#abd73422cb93e7f7f26cfd59a221933a2">is_same</a>(<span class="keyword">const</span> std::string&amp; s1, <span class="keyword">const</span> std::string&amp; s2)</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                std::string::size_type pos_begin = 0;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                std::string::size_type pos_end = mask.find_first_of(<span class="charliteral">&#39;!&#39;</span>, pos_begin);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keywordflow">return</span> mask.substr(pos_begin, pos_end - pos_begin);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            }</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#ac8d525ecc5b9196146c124cd310d8d82">  193</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> std::string <a class="code" href="structft_1_1irc_1_1string__utils.html#ac8d525ecc5b9196146c124cd310d8d82">pick_username</a>(<span class="keyword">const</span> std::string&amp; mask)</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            {</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                std::string::size_type pos_begin = mask.find_first_of(<span class="charliteral">&#39;!&#39;</span>);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                <span class="keywordflow">if</span> (pos_begin == std::string::npos)</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;*&quot;</span>;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                }</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                std::string::size_type pos_end = mask.find_first_of(<span class="charliteral">&#39;@&#39;</span>);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <span class="keywordflow">return</span> mask.substr(pos_begin, pos_end - pos_begin);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#a8df7fd3632f857bb33e32c24a496df98">  204</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> std::string <a class="code" href="structft_1_1irc_1_1string__utils.html#a8df7fd3632f857bb33e32c24a496df98">pick_host</a>(<span class="keyword">const</span> std::string&amp; mask)</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                std::string::size_type pos_begin = mask.find_first_of(<span class="charliteral">&#39;@&#39;</span>);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="keywordflow">if</span> (pos_begin == std::string::npos)</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;*&quot;</span>;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                std::string::size_type pos_end = std::string::npos;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                <span class="keywordflow">return</span> mask.substr(pos_begin, pos_end - pos_begin);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        };</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9">to_lower</a>(s1) == <a class="code" href="structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9">to_lower</a>(s2);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#ac1e75b32f508ffe5a1a1875d1e1cd2ea">  191</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> std::string <a class="code" href="structft_1_1irc_1_1string__utils.html#ac1e75b32f508ffe5a1a1875d1e1cd2ea">pick_nick</a>(<span class="keyword">const</span> std::string&amp; mask)</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                std::string::size_type pos_begin = 0;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                std::string::size_type pos_end = mask.find_first_of(<span class="charliteral">&#39;!&#39;</span>, pos_begin);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                <span class="keywordflow">return</span> mask.substr(pos_begin, pos_end - pos_begin);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#ac8d525ecc5b9196146c124cd310d8d82">  198</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> std::string <a class="code" href="structft_1_1irc_1_1string__utils.html#ac8d525ecc5b9196146c124cd310d8d82">pick_username</a>(<span class="keyword">const</span> std::string&amp; mask)</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                std::string::size_type pos_begin = mask.find_first_of(<span class="charliteral">&#39;!&#39;</span>);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                <span class="keywordflow">if</span> (pos_begin == std::string::npos)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;*&quot;</span>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                pos_begin++;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                std::string::size_type pos_end = mask.find_first_of(<span class="charliteral">&#39;@&#39;</span>, pos_begin);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                <span class="keywordflow">return</span> mask.substr(pos_begin, pos_end - pos_begin);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#a8df7fd3632f857bb33e32c24a496df98">  210</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> std::string <a class="code" href="structft_1_1irc_1_1string__utils.html#a8df7fd3632f857bb33e32c24a496df98">pick_host</a>(<span class="keyword">const</span> std::string&amp; mask)</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                std::string::size_type pos_begin = mask.find_first_of(<span class="charliteral">&#39;@&#39;</span>);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="keywordflow">if</span> (pos_begin == std::string::npos)</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                    <span class="keywordflow">return</span> <span class="stringliteral">&quot;*&quot;</span>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                pos_begin++;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                std::string::size_type pos_end = std::string::npos;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keywordflow">return</span> mask.substr(pos_begin, pos_end - pos_begin);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        };</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
 <div class="ttc" id="airc__constants_8hpp_html"><div class="ttname"><a href="irc__constants_8hpp.html">irc_constants.hpp</a></div></div>
 <div class="ttc" id="airc__constants_8hpp_html_a952c1bdc67587612289d7abec8d47c37"><div class="ttname"><a href="irc__constants_8hpp.html#a952c1bdc67587612289d7abec8d47c37">FT_IRC_NICK_LIMIT</a></div><div class="ttdeci">#define FT_IRC_NICK_LIMIT</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:10</div></div>
 <div class="ttc" id="airc__constants_8hpp_html_aa86ae6704c7a7e22929d50af8b4fe9d2"><div class="ttname"><a href="irc__constants_8hpp.html#aa86ae6704c7a7e22929d50af8b4fe9d2">FT_IRC_CHANNEL_NAME_LIMIT</a></div><div class="ttdeci">#define FT_IRC_CHANNEL_NAME_LIMIT</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:11</div></div>
@@ -349,10 +356,11 @@ $(document).ready(function(){initNavTree('string__utils_8hpp_source.html',''); i
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a2fcf209970f5b02422129e1d9ff28a72"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a2fcf209970f5b02422129e1d9ff28a72">ft::irc::string_utils::is_valid_nick</a></div><div class="ttdeci">static bool is_valid_nick(const std::string &amp;nick)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:94</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a367a22012cc0d2d25959ac3f4e5d33a9"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9">ft::irc::string_utils::to_lower</a></div><div class="ttdeci">static std::string to_lower(const std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:176</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a38cd804a5b73843f0fd63a027dd0dee0"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a38cd804a5b73843f0fd63a027dd0dee0">ft::irc::string_utils::is_valid_channelname</a></div><div class="ttdeci">static bool is_valid_channelname(const std::string &amp;channelname)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:134</div></div>
-<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a8df7fd3632f857bb33e32c24a496df98"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a8df7fd3632f857bb33e32c24a496df98">ft::irc::string_utils::pick_host</a></div><div class="ttdeci">static std::string pick_host(const std::string &amp;mask)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:204</div></div>
+<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a8df7fd3632f857bb33e32c24a496df98"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a8df7fd3632f857bb33e32c24a496df98">ft::irc::string_utils::pick_host</a></div><div class="ttdeci">static std::string pick_host(const std::string &amp;mask)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:210</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_ab18511c9107e828924f75099c8500d03"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#ab18511c9107e828924f75099c8500d03">ft::irc::string_utils::to_upper</a></div><div class="ttdeci">static std::string to_upper(const std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:166</div></div>
-<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_ac1e75b32f508ffe5a1a1875d1e1cd2ea"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#ac1e75b32f508ffe5a1a1875d1e1cd2ea">ft::irc::string_utils::pick_nick</a></div><div class="ttdeci">static std::string pick_nick(const std::string &amp;mask)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:186</div></div>
-<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_ac8d525ecc5b9196146c124cd310d8d82"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#ac8d525ecc5b9196146c124cd310d8d82">ft::irc::string_utils::pick_username</a></div><div class="ttdeci">static std::string pick_username(const std::string &amp;mask)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:193</div></div>
+<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_abd73422cb93e7f7f26cfd59a221933a2"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#abd73422cb93e7f7f26cfd59a221933a2">ft::irc::string_utils::is_same</a></div><div class="ttdeci">static bool is_same(const std::string &amp;s1, const std::string &amp;s2)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:186</div></div>
+<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_ac1e75b32f508ffe5a1a1875d1e1cd2ea"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#ac1e75b32f508ffe5a1a1875d1e1cd2ea">ft::irc::string_utils::pick_nick</a></div><div class="ttdeci">static std::string pick_nick(const std::string &amp;mask)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:191</div></div>
+<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_ac8d525ecc5b9196146c124cd310d8d82"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#ac8d525ecc5b9196146c124cd310d8d82">ft::irc::string_utils::pick_username</a></div><div class="ttdeci">static std::string pick_username(const std::string &amp;mask)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:198</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
