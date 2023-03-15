@@ -1,5 +1,5 @@
 .SUFFIXES: .cpp .o .hpp .h .tpp
-.PHONY: all clean cleanobj cleanbin re deps depsclean depsre bot
+.PHONY: all clean fclean cleanobj cleanbin re deps depsclean depsre bot
 
 MAKEFLAGS =
 
@@ -81,7 +81,8 @@ ifdef MJ
 endif
 
 all: $(TARGET) $(BOT_TARGET)
-clean: cleanobj cleanbin
+clean: cleanobj
+fclean: cleanobj cleanbin
 cleanobj:	;	$(RM) -r $(OBJECTS_DIR)
 cleanbin:	;	$(RM) $(TARGET) $(BOT_TARGET)
 re: clean	;	$(MAKE)
