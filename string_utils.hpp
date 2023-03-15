@@ -183,10 +183,33 @@ namespace ft
                 return str;
             }
 
-            static inline std::string pick_nick(const std::string& s)
+            static inline std::string pick_nick(const std::string& mask)
             {
-                std::string::size_type pos = s.find_first_of('!');
-                return s.substr(0, pos);
+                std::string::size_type pos_begin = 0;
+                std::string::size_type pos_end = mask.find_first_of('!', pos_begin);
+                return mask.substr(pos_begin, pos_end - pos_begin);
+            }
+
+            static inline std::string pick_username(const std::string& mask)
+            {
+                std::string::size_type pos_begin = mask.find_first_of('!');
+                if (pos_begin == std::string::npos)
+                {
+                    return "*";
+                }
+                std::string::size_type pos_end = mask.find_first_of('@');
+                return mask.substr(pos_begin, pos_end - pos_begin);
+            }
+
+            static inline std::string pick_host(const std::string& mask)
+            {
+                std::string::size_type pos_begin = mask.find_first_of('@');
+                if (pos_begin == std::string::npos)
+                {
+                    return "*";
+                }
+                std::string::size_type pos_end = std::string::npos;
+                return mask.substr(pos_begin, pos_end - pos_begin);
             }
         };
     }

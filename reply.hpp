@@ -617,9 +617,11 @@ namespace ft
                 return ft::irc::message(RPL_ENDOFLINKS) >> *my_server_name << *my_user_nick << mask << "End of /LINKS list";
             }
 
-            static inline ft::irc::message ban_list(param_t channel_name, std::size_t ban_id)
+            static inline ft::irc::message ban_list(param_t channel_name, param_t ban_name, param_t ban_username, param_t ban_host)
             {
-                return ft::irc::message(RPL_BANLIST) >> *my_server_name << *my_user_nick << channel_name << ban_id;
+                std::ostringstream oss;
+                oss << ban_name << '!' << ban_username << '@' << ban_host;
+                return ft::irc::message(RPL_BANLIST) >> *my_server_name << *my_user_nick << channel_name << oss.str();
             }
 
             static inline ft::irc::message end_of_ban_list(param_t channel_name)

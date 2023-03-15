@@ -8,6 +8,7 @@
 #include "message.hpp"
 #include "reply.hpp"
 #include "server.hpp"
+#include "string_utils.hpp"
 #include "user.hpp"
 
 #include <libserv/libserv.hpp>
@@ -24,7 +25,10 @@ ft::irc::channel::channel(ft::irc::server& server, const std::string& name)
       name(name),
       topic(),
       mode(),
+      limit(),
+      key(),
       members(),
+      bans(),
       lock(),
       invalidated()
 {
@@ -337,6 +341,25 @@ ft::irc::message ft::irc::channel::make_list_packet(bool force) const throw()
     }
 }
 
+void ft::irc::channel::send_ban_list(const ft::irc::user& user) const throw()
+{
+    const std::string& channel_name = this->get_name();
+    std::vector<ft::irc::message> ban_list_packets;
+    synchronized (this->lock.get_read_lock())
+    {
+        foreach (ban_list::const_iterator, it, this->bans)
+        {
+            ban_list_packets.push_back(ft::irc::make_reply::ban_list(channel_name, it->name, it->username, it->host));
+        }
+        ban_list_packets.push_back(ft::irc::make_reply::end_of_ban_list(channel_name));
+    }
+
+    foreach (std::vector<ft::irc::message>::const_iterator, it, ban_list_packets)
+    {
+        user.send_message(*it);
+    }
+}
+
 void ft::irc::channel::broadcast(const ft::irc::message& message, const ft::irc::user* except) const
 {
     synchronized (this->lock.get_read_lock())
@@ -407,10 +430,67 @@ void ft::irc::channel::modify_member_mode(const std::string& nick, member::membe
     }
 }
 
-bool ft::irc::channel::is_banned(const ft::irc::user& user) const throw()
+bool ft::irc::channel::is_banned(const ft::irc::user& user) const
 {
-    static_cast<void>(user);
-    return false; // TODO: check ban
+    std::string nick = user.load_nick();
+    const std::string& username = user.get_username();
+    const std::string& host = user.get_hostname();
+
+    synchronized (this->lock.get_read_lock())
+    {
+        foreach (ban_list::const_iterator, it, this->bans)
+        {
+            const bool match_nick = it->name == nick || it->name == "*";
+            const bool match_username = it->username == username || it->username == "*";
+            const bool match_host = it->host == host || it->host == "*";
+
+            if (match_nick && match_username && match_host)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+void ft::irc::channel::ban(const std::string& mask)
+{
+    const std::string nick = ft::irc::string_utils::pick_nick(mask);
+    const std::string username = ft::irc::string_utils::pick_username(mask);
+    const std::string host = ft::irc::string_utils::pick_host(mask);
+
+    synchronized (this->lock.get_write_lock())
+    {
+        ban_info b;
+        b.name = nick;
+        b.username = username;
+        b.host = host;
+        this->bans.push_back(b);
+    }
+}
+
+void ft::irc::channel::unban(const std::string& mask)
+{
+    const std::string nick = ft::irc::string_utils::pick_nick(mask);
+    const std::string username = ft::irc::string_utils::pick_username(mask);
+    const std::string host = ft::irc::string_utils::pick_host(mask);
+
+    synchronized (this->lock.get_read_lock())
+    {
+        foreach (ban_list::const_iterator, it, this->bans)
+        {
+            const bool match_nick = it->name == nick;
+            const bool match_username = it->username == username;
+            const bool match_host = it->host == host;
+
+            if (match_nick && match_username && match_host)
+            {
+                this->bans.erase(it);
+                break;
+            }
+        }
+    }
 }
 
 ft::irc::channel::member::member(const ft::shared_ptr<ft::irc::user>& user)

@@ -62,7 +62,15 @@ namespace ft
                 bool operator==(const ft::irc::user& that) const throw();
             };
 
+            struct ban_info
+            {
+                std::string name;
+                std::string username;
+                std::string host;
+            };
+
             typedef ft::serv::dynamic_array<member>::type member_list;
+            typedef ft::serv::dynamic_array<ban_info>::type ban_list;
 
         private:
             ft::irc::server& server;
@@ -72,6 +80,7 @@ namespace ft
             std::size_t limit;
             std::string key;
             member_list members;
+            ban_list bans;
 
             mutable ft::readwrite_lock lock;
             bool invalidated;
@@ -110,6 +119,7 @@ namespace ft
 
             void send_names(const ft::irc::user& user) const throw();
             ft::irc::message make_list_packet(bool force) const throw();
+            void send_ban_list(const ft::irc::user& user) const throw();
 
         public:
             void broadcast(const ft::irc::message& message, const ft::irc::user* except = null) const;
@@ -119,7 +129,11 @@ namespace ft
             bool is_channel_operator(const ft::irc::user& user) const throw();
             bool is_channel_speaker(const ft::irc::user& user) const throw();
             void modify_member_mode(const std::string& nick, member::member_mode index, bool value) throw();
-            bool is_banned(const ft::irc::user& user) const throw();
+
+        public:
+            bool is_banned(const ft::irc::user& user) const;
+            void ban(const std::string& mask);
+            void unban(const std::string& mask);
 
         private:
             channel(const channel&);

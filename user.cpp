@@ -97,14 +97,6 @@ void ft::irc::user::set_username(const std::string& username)
     this->username = username;
 }
 
-std::string ft::irc::user::load_username() const
-{
-    synchronized (this->lock.get_read_lock())
-    {
-        return this->username;
-    }
-}
-
 const std::string& ft::irc::user::get_hostname() const throw()
 {
     return this->hostname;

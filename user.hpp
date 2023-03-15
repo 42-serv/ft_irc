@@ -74,7 +74,6 @@ namespace ft
 
             const std::string& get_username() const throw();
             void set_username(const std::string& username);
-            std::string load_username() const;
 
             const std::string& get_hostname() const throw();
 

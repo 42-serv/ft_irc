@@ -201,7 +201,7 @@ namespace ft
                         }
 
                         const bool can_modify = channel->is_channel_operator(user);
-                        const bool modified = this->update_channel_mode(channel, message, can_modify);
+                        const bool modified = this->update_channel_mode(user, channel, message, can_modify);
                         if (can_modify && modified)
                         {
                             channel->broadcast(ft::irc::make_reply::replicate(message));
@@ -292,7 +292,7 @@ namespace ft
                 }
             }
 
-            bool update_channel_mode(const ft::shared_ptr<ft::irc::channel>& channel, const ft::irc::message& message, bool can_modify) const
+            bool update_channel_mode(ft::irc::user& user, const ft::shared_ptr<ft::irc::channel>& channel, const ft::irc::message& message, bool can_modify) const
             {
                 const std::string& mode_str = message[1];
                 enum
@@ -317,11 +317,11 @@ namespace ft
                     {
                         if (state == NONE)
                         {
-                            // FIXME: query
                             switch (c)
                             {
                             case 'b':
-                                // uery ban list
+                                // Query ban list
+                                channel->send_ban_list(user);
                                 break;
                             }
                             continue;
@@ -378,7 +378,6 @@ namespace ft
 
                                 std::size_t limit;
                                 iss >> limit;
-                                ft::serv::logger::info("limit setted %s, %d", arg.c_str(), limit);
                                 if (!iss)
                                 {
                                     limit = 0;
@@ -392,8 +391,22 @@ namespace ft
                             }
                             break;
                         case 'b':
-                            // FIXME: give/take ban
-                            break;
+                        {
+                            if (message.param_size() < param_index)
+                            {
+                                break;
+                            }
+                            const std::string& mask = message[param_index++];
+                            if (add)
+                            {
+                                channel->ban(mask);
+                            }
+                            else
+                            {
+                                channel->unban(mask);
+                            }
+                        }
+                        break;
                         case 'v':
                             if (message.param_size() < param_index)
                             {
