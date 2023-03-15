@@ -58,6 +58,7 @@ var hierarchy =
     [ "ft::serv::fast_dictionary< K, V >", "structft_1_1serv_1_1fast__dictionary.html", null ],
     [ "ft::serv::fast_dictionary< ident_t, ft::shared_ptr< event_channel_base > >", "structft_1_1serv_1_1fast__dictionary.html", null ],
     [ "ft::serv::fast_dictionary< std::string, ft::shared_ptr< ft::irc::channel > >", "structft_1_1serv_1_1fast__dictionary.html", null ],
+    [ "ft::serv::fast_dictionary< std::string, std::string >", "structft_1_1serv_1_1fast__dictionary.html", null ],
     [ "ft::serv::_internal::forward_reference< T >", "structft_1_1serv_1_1__internal_1_1forward__reference.html", null ],
     [ "ft::serv::_internal::forward_reference< const T & >", "structft_1_1serv_1_1__internal_1_1forward__reference_3_01const_01T_01_6_01_4.html", null ],
     [ "ft::serv::_internal::forward_reference< const volatile T & >", "structft_1_1serv_1_1__internal_1_1forward__reference_3_01const_01volatile_01T_01_6_01_4.html", null ],

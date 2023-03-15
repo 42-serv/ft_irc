@@ -113,6 +113,7 @@ $(document).ready(function(){initNavTree('classft_1_1irc_1_1bot.html',''); initR
 
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -132,10 +133,15 @@ Inheritance diagram for ft::irc::bot:</div>
 <div class="dynheader">
 Collaboration diagram for ft::irc::bot:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1bot__coll__graph.svg" width="296" height="215"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1bot__coll__graph.svg" width="412" height="230"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a2d692f6fc17c73b144cf39d02f3c5d1d"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structft_1_1serv_1_1fast__dictionary.html">ft::serv::fast_dictionary</a>&lt; std::string, std::string &gt;::type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1bot.html#a2d692f6fc17c73b144cf39d02f3c5d1d">inviter_dictionary</a></td></tr>
+<tr class="separator:a2d692f6fc17c73b144cf39d02f3c5d1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a81f122066acb5473d87af882c6d7f0a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1bot.html#a81f122066acb5473d87af882c6d7f0a0">bot</a> (const std::string &amp;<a class="el" href="classft_1_1irc_1_1bot.html#a8944286b0b484dc4236becca785b1dd1">pass</a>)</td></tr>
@@ -154,6 +160,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af82f7c44d8f68db0fe3026e42fcf3f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b8da859f139a8bc65c6722fb9c324f1"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1bot.html#a8b8da859f139a8bc65c6722fb9c324f1">get_realname</a> () const  throw ()</td></tr>
 <tr class="separator:a8b8da859f139a8bc65c6722fb9c324f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9626c6fee28a7fa7cb968c76362834c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1bot.html#ab9626c6fee28a7fa7cb968c76362834c">add_inviter</a> (const std::string &amp;<a class="el" href="classft_1_1irc_1_1channel.html">channel</a>, const std::string &amp;inviter)  throw ()</td></tr>
+<tr class="separator:ab9626c6fee28a7fa7cb968c76362834c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc2d6b015e096552cc531c457061bd77"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1bot.html#adc2d6b015e096552cc531c457061bd77">find_channels</a> (const std::string &amp;inviter) const  throw ()</td></tr>
+<tr class="separator:adc2d6b015e096552cc531c457061bd77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf4606e06fe57fead9970ce51853ba0a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1bot.html#adf4606e06fe57fead9970ce51853ba0a">check_is_inviter</a> (const std::string &amp;<a class="el" href="classft_1_1irc_1_1channel.html">channel</a>, const std::string &amp;inviter)</td></tr>
+<tr class="separator:adf4606e06fe57fead9970ce51853ba0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c852e58073043cd63ace5d56c558fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1bot.html#af8c852e58073043cd63ace5d56c558fe">remove_inviter</a> (const std::string &amp;<a class="el" href="classft_1_1irc_1_1channel.html">channel</a>)</td></tr>
+<tr class="separator:af8c852e58073043cd63ace5d56c558fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -176,7 +190,24 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aa3772b15fbf3dbdaf097c3ac91300c81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a086f393253c21cfb89060cd1169454ec"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1bot.html#a086f393253c21cfb89060cd1169454ec">realname</a></td></tr>
 <tr class="separator:a086f393253c21cfb89060cd1169454ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c5897bf9e27d8824067c7f0edd568d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classft_1_1irc_1_1bot.html#a2d692f6fc17c73b144cf39d02f3c5d1d">inviter_dictionary</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1bot.html#a6c5897bf9e27d8824067c7f0edd568d1">inviters</a></td></tr>
+<tr class="separator:a6c5897bf9e27d8824067c7f0edd568d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a2d692f6fc17c73b144cf39d02f3c5d1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d692f6fc17c73b144cf39d02f3c5d1d">&#9670;&nbsp;</a></span>inviter_dictionary</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="structft_1_1serv_1_1fast__dictionary.html">ft::serv::fast_dictionary</a>&lt;std::string, std::string&gt;::type <a class="el" href="classft_1_1irc_1_1bot.html#a2d692f6fc17c73b144cf39d02f3c5d1d">ft::irc::bot::inviter_dictionary</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a81f122066acb5473d87af882c6d7f0a0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a81f122066acb5473d87af882c6d7f0a0">&#9670;&nbsp;</a></span>bot() <span class="overload">[1/2]</span></h2>
@@ -240,6 +271,110 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab9626c6fee28a7fa7cb968c76362834c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9626c6fee28a7fa7cb968c76362834c">&#9670;&nbsp;</a></span>add_inviter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ft::irc::bot::add_inviter </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>inviter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1bot_ab9626c6fee28a7fa7cb968c76362834c_icgraph.svg" width="364" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="adf4606e06fe57fead9970ce51853ba0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf4606e06fe57fead9970ce51853ba0a">&#9670;&nbsp;</a></span>check_is_inviter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ft::irc::bot::check_is_inviter </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>inviter</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1bot_adf4606e06fe57fead9970ce51853ba0a_icgraph.svg" width="330" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="adc2d6b015e096552cc531c457061bd77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc2d6b015e096552cc531c457061bd77">&#9670;&nbsp;</a></span>find_channels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string ft::irc::bot::find_channels </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>inviter</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1irc_1_1bot_adc2d6b015e096552cc531c457061bd77_icgraph.svg" width="315" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="abd5d4f4f5d1690e333978ee4c090047d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abd5d4f4f5d1690e333978ee4c090047d">&#9670;&nbsp;</a></span>get_hostname()</h2>
 
@@ -440,6 +575,24 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="af8c852e58073043cd63ace5d56c558fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8c852e58073043cd63ace5d56c558fe">&#9670;&nbsp;</a></span>remove_inviter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ft::irc::bot::remove_inviter </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>channel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="ab2db11c32e05900c1c6ee71568325133"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab2db11c32e05900c1c6ee71568325133">&#9670;&nbsp;</a></span>hostname</h2>
@@ -452,6 +605,28 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">std::string ft::irc::bot::hostname</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c5897bf9e27d8824067c7f0edd568d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c5897bf9e27d8824067c7f0edd568d1">&#9670;&nbsp;</a></span>inviters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classft_1_1irc_1_1bot.html#a2d692f6fc17c73b144cf39d02f3c5d1d">inviter_dictionary</a> ft::irc::bot::inviters</td>
         </tr>
       </table>
   </td>
