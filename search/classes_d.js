@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['task_5fbase_880',['task_base',['../classft_1_1serv_1_1task__base.html',1,'ft::serv']]]
+  ['unique_5fset_879',['unique_set',['../structft_1_1serv_1_1unique__set.html',1,'ft::serv']]],
+  ['unique_5fset_3c_20std_3a_3astring_20_3e_880',['unique_set&lt; std::string &gt;',['../structft_1_1serv_1_1unique__set.html',1,'ft::serv']]],
+  ['user_881',['user',['../classft_1_1irc_1_1user.html',1,'ft::irc']]]
 ];

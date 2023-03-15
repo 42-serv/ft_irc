@@ -4,7 +4,6 @@ var serv__types_8hpp =
     [ "fast_dictionary", "structft_1_1serv_1_1fast__dictionary.html", "structft_1_1serv_1_1fast__dictionary" ],
     [ "dynamic_buffer", "structft_1_1serv_1_1dynamic__buffer.html", "structft_1_1serv_1_1dynamic__buffer" ],
     [ "unique_set", "structft_1_1serv_1_1unique__set.html", "structft_1_1serv_1_1unique__set" ],
-    [ "nothing", "structft_1_1nothing.html", "structft_1_1nothing" ],
     [ "synchronized_helper", "classft_1_1serv_1_1__internal_1_1synchronized__helper.html", "classft_1_1serv_1_1__internal_1_1synchronized__helper" ],
     [ "beginof", "serv__types_8hpp.html#a08bacfd35ec1e81ebfc1e66806187943", null ],
     [ "countof", "serv__types_8hpp.html#a39995f96172454526b43ebc17e293352", null ],

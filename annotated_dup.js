@@ -80,8 +80,7 @@ var annotated_dup =
         [ "socket_utils", "structft_1_1serv_1_1socket__utils.html", "structft_1_1serv_1_1socket__utils" ],
         [ "stream_channel", "classft_1_1serv_1_1stream__channel.html", "classft_1_1serv_1_1stream__channel" ],
         [ "task_base", "classft_1_1serv_1_1task__base.html", "classft_1_1serv_1_1task__base" ]
-      ] ],
-      [ "nothing", "structft_1_1nothing.html", "structft_1_1nothing" ]
+      ] ]
     ] ],
     [ "dummy_inbound_adapter", "classdummy__inbound__adapter.html", "classdummy__inbound__adapter" ],
     [ "dummy_outbound_adapter", "classdummy__outbound__adapter.html", "classdummy__outbound__adapter" ]
