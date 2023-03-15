@@ -25,15 +25,11 @@
 var NAVTREE =
 [
   [ "ft_irc", "index.html", [
-    [ "Features", "index.html#autotoc_md1", null ],
-    [ "Usage", "index.html#autotoc_md2", [
-      [ "Bonus part", "index.html#autotoc_md3", null ]
+    [ "Features", "index.html#autotoc_md1", [
+      [ "Commands", "index.html#autotoc_md2", null ]
     ] ],
-    [ "TODO", "index.html#autotoc_md4", [
-      [ "Commands", "index.html#autotoc_md5", null ]
-    ] ],
-    [ "OS support", "index.html#autotoc_md6", null ],
-    [ "Credits", "index.html#autotoc_md7", null ],
+    [ "OS support", "index.html#autotoc_md3", null ],
+    [ "Credits", "index.html#autotoc_md4", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -77,7 +73,7 @@ var NAVTREEINDEX =
 "classft_1_1irc_1_1processor__quit.html#abc17fcfe520e1ca4fe42dbe5ba307135",
 "classft_1_1serv_1_1event__handler__base.html#a9fb54123551d1465900289d74d927d9f",
 "functions_u.html",
-"structft_1_1irc_1_1make__error.html#aaf05c32b11cb27827edace1016766e49"
+"structft_1_1irc_1_1make__error.html#ac70d050359aaaa31fd48ca3d8535501e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
