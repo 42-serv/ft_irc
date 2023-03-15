@@ -38,7 +38,6 @@ namespace ft
                 CHANNEL_MODE_INVITE_ONLY,
                 CHANNEL_MODE_NO_PRIVMSG,
                 CHANNEL_MODE_KEY,
-                CHANNEL_MODE_BAN,
                 CHANNEL_MODE_LIMIT,
                 NUMBEROF_CHANNEL_MODE
             };

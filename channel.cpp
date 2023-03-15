@@ -219,7 +219,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(ft::irc::user& user, const 
             {
                 return ft::irc::ERR_INVITEONLYCHAN;
             }
-            if (this->get_mode(CHANNEL_MODE_BAN) && this->is_banned(user))
+            if (this->is_banned(user))
             {
                 return ft::irc::ERR_BANNEDFROMCHAN;
             }
