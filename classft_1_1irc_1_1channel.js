@@ -35,6 +35,7 @@ var classft_1_1irc_1_1channel =
     [ "load_topic", "classft_1_1irc_1_1channel.html#a9dc33679c51d9af9cc251bbdac49f30c", null ],
     [ "make_list_packet", "classft_1_1irc_1_1channel.html#a36cc8e5ae9be4cb22ae4a31779c62282", null ],
     [ "make_mode_string", "classft_1_1irc_1_1channel.html#abb21180c96571b7743159bd756164a97", null ],
+    [ "modify_member_mode", "classft_1_1irc_1_1channel.html#ad30281781ad94941df6db1284869a73b", null ],
     [ "operator=", "classft_1_1irc_1_1channel.html#a5a81b22ab2c52e2cb3423ee1840dfd7d", null ],
     [ "send_names", "classft_1_1irc_1_1channel.html#a5b005d44090820196503e46e45724a51", null ],
     [ "set_key", "classft_1_1irc_1_1channel.html#a8aac9b6c4bac069c4bd152fd3429edca", null ],

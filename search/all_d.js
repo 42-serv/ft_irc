@@ -37,9 +37,10 @@ var searchData=
   ['message_5fencoder_380',['message_encoder',['../classft_1_1irc_1_1message__encoder.html',1,'ft::irc']]],
   ['message_5fencoder_2ehpp_381',['message_encoder.hpp',['../message__encoder_8hpp.html',1,'']]],
   ['mode_382',['mode',['../structft_1_1irc_1_1channel_1_1member.html#ad47d115b3ba66d7b1d6afea24f71bbd1',1,'ft::irc::channel::member::mode()'],['../classft_1_1irc_1_1channel.html#ac0677f541d34fed15de348b91cf6fb49',1,'ft::irc::channel::mode()'],['../classft_1_1irc_1_1user.html#aa6421aa2cc848b6236f5e457c0a11b50',1,'ft::irc::user::mode()']]],
-  ['motd_383',['motd',['../structft_1_1irc_1_1make__reply.html#a09ef279f20aef8d899a8a1f6e1f843c8',1,'ft::irc::make_reply']]],
-  ['motd_5fstart_384',['motd_start',['../structft_1_1irc_1_1make__reply.html#ac487f0bab92e860c91305ed0b7f02dbe',1,'ft::irc::make_reply']]],
-  ['my_5fserver_5fname_385',['my_server_name',['../structft_1_1irc_1_1make__reply__base.html#a6295b9a03bb340fa27aaf771fddb4cf8',1,'ft::irc::make_reply_base']]],
-  ['my_5fuser_5fname_386',['my_user_name',['../structft_1_1irc_1_1make__reply__base.html#a4bff1ff2c182cbae371580c28eec8ebb',1,'ft::irc::make_reply_base']]],
-  ['my_5fuser_5fnick_387',['my_user_nick',['../structft_1_1irc_1_1make__reply__base.html#a8486749dd928630daafd95efc72b8dec',1,'ft::irc::make_reply_base']]]
+  ['modify_5fmember_5fmode_383',['modify_member_mode',['../classft_1_1irc_1_1channel.html#ad30281781ad94941df6db1284869a73b',1,'ft::irc::channel']]],
+  ['motd_384',['motd',['../structft_1_1irc_1_1make__reply.html#a09ef279f20aef8d899a8a1f6e1f843c8',1,'ft::irc::make_reply']]],
+  ['motd_5fstart_385',['motd_start',['../structft_1_1irc_1_1make__reply.html#ac487f0bab92e860c91305ed0b7f02dbe',1,'ft::irc::make_reply']]],
+  ['my_5fserver_5fname_386',['my_server_name',['../structft_1_1irc_1_1make__reply__base.html#a6295b9a03bb340fa27aaf771fddb4cf8',1,'ft::irc::make_reply_base']]],
+  ['my_5fuser_5fname_387',['my_user_name',['../structft_1_1irc_1_1make__reply__base.html#a4bff1ff2c182cbae371580c28eec8ebb',1,'ft::irc::make_reply_base']]],
+  ['my_5fuser_5fnick_388',['my_user_nick',['../structft_1_1irc_1_1make__reply__base.html#a8486749dd928630daafd95efc72b8dec',1,'ft::irc::make_reply_base']]]
 ];
