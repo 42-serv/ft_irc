@@ -4,19 +4,6 @@
 
 - 🚀 Multi-threading worker
 
-## Usage
-
-<!-- todo: add instructions of start server -->
-<!---->
-<!-- ```bash -->
-<!-- ``` -->
-
-### Bonus part
-
-</div>
-
-## TODO
-
 ### Commands
 
  - [x] PASS
@@ -26,22 +13,15 @@
  - [x] QUIT
  - [x] JOIN
  - [x] PART
- - [ ] MODE
- - [x] TOPIC
- - [ ] NAMES
- - [ ] LIST
- - [ ] INVITE
- - [ ] KICK
- - [ ] PRIVMSG
- - [ ] NOTICE
- - [ ] WHO
- - [ ] WHOIS
- - [ ] WHOWAS
- - [ ] KILL
- - [ ] PING
- - [ ] PONG
- - [ ] ERROR
-
+ - [X] MODE
+ - [X] TOPIC
+ - [X] NAMES
+ - [X] LIST
+ - [X] INVITE
+ - [X] KICK
+ - [X] PRIVMSG
+ - [X] NOTICE
+ - [X] KILL
 
 ## OS support
 
