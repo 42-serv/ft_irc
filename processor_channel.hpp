@@ -335,7 +335,7 @@ namespace ft
                         switch (c)
                         {
                         case 'o':
-                            if (message.param_size() < param_index)
+                            if (message.param_size() <= param_index)
                             {
                                 break;
                             }
@@ -368,7 +368,7 @@ namespace ft
 
                             if (add)
                             {
-                                if (message.param_size() < param_index)
+                                if (message.param_size() <= param_index)
                                 {
                                     break;
                                 }
@@ -392,7 +392,7 @@ namespace ft
                             break;
                         case 'b':
                         {
-                            if (message.param_size() < param_index)
+                            if (message.param_size() <= param_index)
                             {
                                 break;
                             }
@@ -405,10 +405,10 @@ namespace ft
                             {
                                 channel->unban(mask);
                             }
+                            break;
                         }
-                        break;
                         case 'v':
-                            if (message.param_size() < param_index)
+                            if (message.param_size() <= param_index)
                             {
                                 break;
                             }
@@ -423,7 +423,7 @@ namespace ft
 
                             if (add)
                             {
-                                if (message.param_size() < param_index)
+                                if (message.param_size() <= param_index)
                                 {
                                     break;
                                 }
