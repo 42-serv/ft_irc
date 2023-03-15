@@ -118,6 +118,7 @@ namespace ft
         public:
             bool is_channel_operator(const ft::irc::user& user) const throw();
             bool is_channel_speaker(const ft::irc::user& user) const throw();
+            void modify_member_mode(const std::string& nick, member::member_mode index, bool value) throw();
             bool is_banned(const ft::irc::user& user) const throw();
 
         private:

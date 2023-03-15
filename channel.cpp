@@ -5,7 +5,6 @@
 
 #include "irc_constants.hpp"
 
-#include "libserv/serv_types.hpp"
 #include "message.hpp"
 #include "reply.hpp"
 #include "server.hpp"
@@ -208,7 +207,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(ft::irc::user& user, const 
         }
         else
         {
-            if (this->get_mode(CHANNEL_MODE_LIMIT) && this->members.size() >= this->get_limit())
+            if (this->get_mode(CHANNEL_MODE_LIMIT) && this->get_limit() != 0 && this->members.size() >= this->get_limit())
             {
                 return ft::irc::ERR_CHANNELISFULL;
             }
@@ -220,7 +219,7 @@ ft::irc::reply_numerics ft::irc::channel::enter_user(ft::irc::user& user, const 
             {
                 return ft::irc::ERR_BANNEDFROMCHAN;
             }
-            if (this->get_mode(CHANNEL_MODE_KEY) && this->get_key() != key)
+            if (this->get_mode(CHANNEL_MODE_KEY) && !this->get_key().empty() && this->get_key() != key)
             {
                 return ft::irc::ERR_BADCHANNELKEY;
             }
@@ -393,10 +392,25 @@ bool ft::irc::channel::is_channel_speaker(const ft::irc::user& user) const throw
     }
 }
 
+void ft::irc::channel::modify_member_mode(const std::string& nick, member::member_mode index, bool value) throw()
+{
+    synchronized (this->lock.get_write_lock())
+    {
+        foreach (member_list::iterator, it, this->members)
+        {
+            if (it->user->load_nick() == nick)
+            {
+                it->mode[index] = value;
+                break;
+            }
+        }
+    }
+}
+
 bool ft::irc::channel::is_banned(const ft::irc::user& user) const throw()
 {
     static_cast<void>(user);
-    return false; // FIXME: check ban
+    return false; // TODO: check ban
 }
 
 ft::irc::channel::member::member(const ft::shared_ptr<ft::irc::user>& user)

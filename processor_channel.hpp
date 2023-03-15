@@ -14,6 +14,7 @@
 #include "user.hpp"
 
 #include <cstddef>
+#include <sstream>
 #include <string>
 
 namespace ft
@@ -300,7 +301,7 @@ namespace ft
                     ADD,
                     REMOVE
                 } state = NONE;
-                std::size_t param_index = this->get_min_params();
+                std::size_t param_index = this->get_min_params() + 1;
                 foreach (std::string::const_iterator, it, mode_str)
                 {
                     std::string::value_type c = *it;
@@ -334,7 +335,15 @@ namespace ft
                         switch (c)
                         {
                         case 'o':
-                            // FIXME: give/take chanop
+                            if (message.param_size() < param_index)
+                            {
+                                break;
+                            }
+
+                            {
+                                const std::string& nick = message[param_index++];
+                                channel->modify_member_mode(nick, ft::irc::channel::member::MEMBER_MODE_OPERATOR, add);
+                            }
                             break;
                         case 'p':
                             channel->store_mode(ft::irc::channel::CHANNEL_MODE_PRIVATE, add);
@@ -356,25 +365,67 @@ namespace ft
                             break;
                         case 'l':
                             channel->store_mode(ft::irc::channel::CHANNEL_MODE_LIMIT, add);
-                            // FIXME: set limit
+
                             if (add)
                             {
                                 if (message.param_size() < param_index)
                                 {
-                                    // 매개변수 부족
                                     break;
                                 }
-                                message[param_index++];
+
+                                const std::string& arg = message[param_index++];
+                                std::istringstream iss(arg);
+
+                                std::size_t limit;
+                                iss >> limit;
+                                ft::serv::logger::info("limit setted %s, %d", arg.c_str(), limit);
+                                if (!iss)
+                                {
+                                    limit = 0;
+                                }
+
+                                channel->store_limit(limit);
+                            }
+                            else
+                            {
+                                channel->store_limit(0);
                             }
                             break;
                         case 'b':
-                            // FIXME: ban
+                            // FIXME: give/take ban
                             break;
                         case 'v':
-                            // FIXME: give/take speak
+                            if (message.param_size() < param_index)
+                            {
+                                break;
+                            }
+
+                            {
+                                const std::string& nick = message[param_index++];
+                                channel->modify_member_mode(nick, ft::irc::channel::member::MEMBER_MODE_VOICE, add);
+                            }
                             break;
                         case 'k':
-                            // FIXME: key
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_KEY, add);
+
+                            if (add)
+                            {
+                                if (message.param_size() < param_index)
+                                {
+                                    break;
+                                }
+
+                                const std::string& key = message[param_index++];
+
+                                if (!key.empty())
+                                {
+                                    channel->store_key(key);
+                                }
+                            }
+                            else
+                            {
+                                channel->store_key("");
+                            }
                             break;
                         }
                     }

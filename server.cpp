@@ -254,11 +254,11 @@ void ft::irc::server::broadcast_all(const ft::irc::message& message, ft::shared_
 
 ft::irc::reply_numerics ft::irc::server::check_signature(const std::string& user, const std::string& pass) const
 {
-    if (user != "admin") // FIXME: load O-line failed
+    if (user != "admin") // TODO: load O-line failed
     {
         return ft::irc::ERR_NOOPERHOST;
     }
-    if (pass != "password") // FIXME: check password failed
+    if (pass != "password") // TODO: check password failed
     {
         return ft::irc::ERR_PASSWDMISMATCH;
     }
