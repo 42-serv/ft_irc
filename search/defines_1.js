@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['begin_5fvararg_1573',['BEGIN_VARARG',['../logger_8hpp.html#a09036e1bcc1187889ad586ff92162ba3',1,'logger.hpp']]],
-  ['beginof_1574',['beginof',['../serv__types_8hpp.html#a08bacfd35ec1e81ebfc1e66806187943',1,'serv_types.hpp']]]
+  ['begin_5fvararg_1571',['BEGIN_VARARG',['../logger_8hpp.html#a09036e1bcc1187889ad586ff92162ba3',1,'logger.hpp']]],
+  ['beginof_1572',['beginof',['../serv__types_8hpp.html#a08bacfd35ec1e81ebfc1e66806187943',1,'serv_types.hpp']]]
 ];

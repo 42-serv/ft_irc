@@ -12,7 +12,6 @@ var classft_1_1irc_1_1channel =
       [ "CHANNEL_MODE_INVITE_ONLY", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a0aa7cb1c06f4e8f10b16f64b72d5c802", null ],
       [ "CHANNEL_MODE_NO_PRIVMSG", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a12c3cfa0a8dd00cf0aa1533848ba0b6d", null ],
       [ "CHANNEL_MODE_KEY", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a70ed95b051246875f3d3117ea23e803d", null ],
-      [ "CHANNEL_MODE_BAN", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a8c529f91a4d5111dd16b85105930386e", null ],
       [ "CHANNEL_MODE_LIMIT", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050a795e5bbdb8205c14782aab40fabfc9c6", null ],
       [ "NUMBEROF_CHANNEL_MODE", "classft_1_1irc_1_1channel.html#a0186cc29069a4e501cd8e09a69411050af82c2bb204aac379828d35e2707c55c6", null ]
     ] ],
