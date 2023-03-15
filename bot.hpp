@@ -27,10 +27,11 @@ namespace ft
             std::string hostname;
             std::string servername;
             std::string realname;
+
             inviter_dictionary inviters;
 
         public:
-            bot(const std::string& pass); // FIXME
+            bot(const std::string& pass);
             ~bot();
 
         public:
@@ -42,10 +43,12 @@ namespace ft
             const std::string& get_hostname() const throw();
             const std::string& get_servername() const throw();
             const std::string& get_realname() const throw();
+
             void add_inviter(const std::string& channel, const std::string& inviter) throw();
-            const std::string find_channels(const std::string& inviter) throw();
-            bool check_is_inviter(const std::string& channel, const std::string& inviter);
+            bool is_inviter(const std::string& channel, const std::string& inviter);
             void remove_inviter(const std::string& channel);
+            const std::string find_channels(const std::string& inviter) throw();
+            void update_nick(const std::string& old_nick, const std::string& new_nick);
 
         private:
             bot(const bot&);

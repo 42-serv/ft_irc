@@ -100,6 +100,7 @@ $(BOT_TARGET): $(BOT_OBJECTS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
 -include $(OBJECTS:.o=.d)
+-include $(BOT_OBJECTS:.o=.d)
 
 deps:
 	$(MAKE) -C $(LIBSERV)

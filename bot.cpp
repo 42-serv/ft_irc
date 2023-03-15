@@ -2,8 +2,12 @@
  * https://creativecommons.org/publicdomain/zero/1.0/ */
 
 #include "bot.hpp"
+
+#include "string_utils.hpp"
+
 #include "libserv/serv_types.hpp"
 
+#include <sstream>
 #include <string>
 
 ft::irc::bot::bot(const std::string& pass)
@@ -12,7 +16,8 @@ ft::irc::bot::bot(const std::string& pass)
       username("user"),
       hostname("local"),
       servername("user"),
-      realname("42bot")
+      realname("42bot"),
+      inviters()
 {
 }
 
@@ -60,33 +65,52 @@ void ft::irc::bot::remove_inviter(const std::string& channel)
     this->inviters.erase(channel);
 }
 
-bool ft::irc::bot::check_is_inviter(const std::string& channel, const std::string& inviter)
+bool ft::irc::bot::is_inviter(const std::string& channel, const std::string& inviter)
 {
     ft::irc::bot::inviter_dictionary::iterator it = this->inviters.find(channel);
 
-    return it != this->inviters.end() && it->second == inviter;
+    return it != this->inviters.end() && ft::irc::string_utils::is_same(it->second, inviter);
 }
 
 const std::string ft::irc::bot::find_channels(const std::string& sender) throw()
 {
     std::vector<std::string> channels_to_remove;
-    std::string result;
 
     foreach (ft::irc::bot::inviter_dictionary::const_iterator, it, this->inviters)
     {
-        if (it->second == sender)
+        if (ft::irc::string_utils::is_same(it->second, sender))
         {
             channels_to_remove.push_back(it->first);
         }
     }
+
+    std::ostringstream oss;
+    bool first = true;
     foreach (std::vector<std::string>::iterator, it, channels_to_remove)
     {
         this->inviters.erase(*it);
-        if (!result.empty())
+        if (first)
         {
-            result += ",";
+            first = false;
         }
-        result += *it;
+        else
+        {
+            oss << ',';
+        }
+        oss << *it;
     }
-    return result;
+    return oss.str();
+}
+
+void ft::irc::bot::update_nick(const std::string& old_nick, const std::string& new_nick)
+{
+    std::vector<std::string> channels_to_remove;
+
+    foreach (ft::irc::bot::inviter_dictionary::iterator, it, this->inviters)
+    {
+        if (ft::irc::string_utils::is_same(it->second, old_nick))
+        {
+            it->second = new_nick;
+        }
+    }
 }

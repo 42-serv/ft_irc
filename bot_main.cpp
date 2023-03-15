@@ -29,14 +29,12 @@ namespace ft
 
 int main(int argc, char* argv[])
 {
-    // FIXME: 임시 코드
     if (argc != 4)
     {
         ft::serv::logger::warn("Usage: %s <host> <port> <pass>", argv[0]);
         return EXIT_FAILURE;
     }
     ft::shared_ptr<ft::serv::event_worker_group> child_group = ft::make_shared<ft::serv::event_worker_group>();
-    // TODO: sigaction
     child_group->put_worker(ft::make_shared<ft::serv::event_worker>());
     ft::irc::bot bot(argv[3]);
     {

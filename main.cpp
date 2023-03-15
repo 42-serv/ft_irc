@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
     }
     ft::irc::server server(argv[2]);
     ft::serv::bootstrap boot(boss_group, child_group, &ft::irc::_make_server, null);
-    std::signal(SIGINT, &_on_signal); // TODO: sigaction
+    std::signal(SIGINT, &_on_signal);
     try
     {
         bool success = true;

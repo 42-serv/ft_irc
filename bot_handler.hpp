@@ -18,6 +18,7 @@
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
+#include <cstdlib>
 #include <string>
 
 namespace ft
@@ -46,82 +47,99 @@ namespace ft
                 layer.post_flush();
             }
 
-            // FIXME
             void on_read(ft::serv::event_layer& layer, ft::shared_ptr<void> arg)
             {
                 ft::shared_ptr<ft::irc::message> message = ft::static_pointer_cast<ft::irc::message>(arg);
-                // ft::irc::processor_dictionary::execute(*this->user, *message);
-
-                ft::irc::make_reply_base::set_server_name(bot.get_servername());
-                ft::irc::make_reply_base::set_user_name(bot.get_username());
-                ft::irc::make_reply_base::set_user_nick(bot.get_nick());
 
                 ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, message->to_pretty_string().c_str());
-                static_cast<void>(layer);
+
                 const std::string command = message->get_command();
 
                 if (command == "PRIVMSG")
                 {
                     const std::string sender = ft::irc::string_utils::pick_nick(message->get_prefix());
-                    const ft::irc::message payload = ft::irc::message("PRIVMSG") << sender << "THIS IS REPLY";
+                    const std::string& receiver = (*message)[0];
+                    const std::string& text = (*message)[1];
 
+                    if (receiver.find_first_of(',') != std::string::npos)
+                    {
+                        // ignore multiple receiver message
+                        return;
+                    }
+
+                    std::string target;
+                    if (ft::irc::string_utils::is_valid_channelname(receiver))
+                    {
+                        // to channel
+                        target = receiver;
+                    }
+                    else
+                    {
+                        // to user
+                        target = sender;
+                    }
+                    const ft::irc::message payload = ft::irc::message("PRIVMSG") << target << text;
                     layer.post_write(ft::make_shared<ft::irc::message>(payload));
-                    layer.post_flush();
                 }
                 else if (command == "INVITE")
                 {
-                    // accept invite
-                    // what if FT_IRC_CHANNEL_LIMIT_PER_USER ?? -> server 가 알아서 핸들
-
                     const std::string sender = ft::irc::string_utils::pick_nick(message->get_prefix());
-                    bot.add_inviter((*message)[1], sender);
-                    const ft::irc::message payload = ft::irc::message("JOIN") << (*message)[1];
+                    const std::string& channel = (*message)[1];
+
+                    bot.add_inviter(channel, sender);
+
+                    const ft::irc::message payload = ft::irc::message("JOIN") << channel;
                     layer.post_write(ft::make_shared<ft::irc::message>(payload));
-                    layer.post_flush();
                 }
                 else if (command == "KICK")
                 {
-                    const std::string nick = (*message)[1];
-                    const std::string channel = (*message)[0];
+                    const std::string& channel = (*message)[0];
+                    const std::string& nick = (*message)[1];
 
-                    if (this->bot.check_is_inviter(channel, nick))
+                    if (this->bot.is_inviter(channel, nick))
                     {
                         this->bot.remove_inviter(channel);
+
                         const ft::irc::message payload = ft::irc::message("PART") << channel;
                         layer.post_write(ft::make_shared<ft::irc::message>(payload));
-                        layer.post_flush();
                     }
                 }
                 else if (command == "PART")
                 {
-                    const std::string sender = ft::irc::string_utils::pick_nick(message->get_prefix());
-                    const std::string channel = (*message)[0];
+                    const std::string nick = ft::irc::string_utils::pick_nick(message->get_prefix());
+                    const std::string& channel = (*message)[0];
 
-                    if (this->bot.check_is_inviter(channel, sender))
+                    if (this->bot.is_inviter(channel, nick))
                     {
                         this->bot.remove_inviter(channel);
+
                         const ft::irc::message payload = ft::irc::message("PART") << channel;
                         layer.post_write(ft::make_shared<ft::irc::message>(payload));
-                        layer.post_flush();
                     }
                 }
                 else if (command == "QUIT")
                 {
                     const std::string sender = ft::irc::string_utils::pick_nick(message->get_prefix());
-                    const std::string channel_to_remove = this->bot.find_channels(sender);
-                    const ft::irc::message payload = ft::irc::message("PART") << channel_to_remove;
 
+                    const std::string channel_to_remove = this->bot.find_channels(sender);
+
+                    const ft::irc::message payload = ft::irc::message("PART") << channel_to_remove;
                     layer.post_write(ft::make_shared<ft::irc::message>(payload));
-                    layer.post_flush();
                 }
                 else if (command == "NICK")
                 {
-                    // TODO : if inviter chagnes nick, update it.
+                    const std::string old_nick = ft::irc::string_utils::pick_nick(message->get_prefix());
+                    const std::string& new_nick = (*message)[0];
+
+                    this->bot.update_nick(old_nick, new_nick);
+                    return;
                 }
                 else
                 {
-                    return; // ignore
+                    // ignore
+                    return;
                 }
+                layer.post_flush();
             }
 
             void on_read_complete(ft::serv::event_layer&)
@@ -139,6 +157,8 @@ namespace ft
             void on_inactive(ft::serv::event_layer&)
             {
                 ft::serv::logger::debug("%s", __PRETTY_FUNCTION__);
+
+                std::exit(EXIT_SUCCESS);
             }
         };
     }
