@@ -364,8 +364,6 @@ namespace ft
                             channel->store_mode(ft::irc::channel::CHANNEL_MODE_MODERATED, add);
                             break;
                         case 'l':
-                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_LIMIT, add);
-
                             if (add)
                             {
                                 if (message.param_size() <= param_index)
@@ -389,6 +387,8 @@ namespace ft
                             {
                                 channel->store_limit(0);
                             }
+
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_LIMIT, add);
                             break;
                         case 'b':
                         {
@@ -396,6 +396,7 @@ namespace ft
                             {
                                 break;
                             }
+
                             const std::string& mask = message[param_index++];
                             if (add)
                             {
@@ -419,8 +420,6 @@ namespace ft
                             }
                             break;
                         case 'k':
-                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_KEY, add);
-
                             if (add)
                             {
                                 if (message.param_size() <= param_index)
@@ -439,6 +438,8 @@ namespace ft
                             {
                                 channel->store_key("");
                             }
+
+                            channel->store_mode(ft::irc::channel::CHANNEL_MODE_KEY, add);
                             break;
                         }
                     }
