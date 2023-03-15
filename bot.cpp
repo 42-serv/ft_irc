@@ -67,20 +67,26 @@ bool ft::irc::bot::check_is_inviter(const std::string& channel, const std::strin
     return it != this->inviters.end() && it->second == inviter;
 }
 
-const std::string ft::irc::bot::find_channels(const std::string& sender) const throw()
+const std::string ft::irc::bot::find_channels(const std::string& sender) throw()
 {
-    std::string channels_to_remvoe;
+    std::vector<std::string> channels_to_remove;
+    std::string result;
 
     foreach (ft::irc::bot::inviter_dictionary::const_iterator, it, this->inviters)
     {
         if (it->second == sender)
         {
-            if (!channels_to_remvoe.empty())
-            {
-                channels_to_remvoe += ",";
-            }
-            channels_to_remvoe += it->first;
+            channels_to_remove.push_back(it->first);
         }
     }
-    return channels_to_remvoe;
+    foreach (std::vector<std::string>::iterator, it, channels_to_remove)
+    {
+        this->inviters.erase(*it);
+        if (!result.empty())
+        {
+            result += ",";
+        }
+        result += *it;
+    }
+    return result;
 }

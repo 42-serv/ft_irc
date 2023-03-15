@@ -86,6 +86,7 @@ namespace ft
 
                     if (this->bot.check_is_inviter(channel, nick))
                     {
+                        this->bot.remove_inviter(channel);
                         const ft::irc::message payload = ft::irc::message("PART") << channel;
                         layer.post_write(ft::make_shared<ft::irc::message>(payload));
                         layer.post_flush();
@@ -98,6 +99,7 @@ namespace ft
 
                     if (this->bot.check_is_inviter(channel, sender))
                     {
+                        this->bot.remove_inviter(channel);
                         const ft::irc::message payload = ft::irc::message("PART") << channel;
                         layer.post_write(ft::make_shared<ft::irc::message>(payload));
                         layer.post_flush();

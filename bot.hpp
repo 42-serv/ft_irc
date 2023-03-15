@@ -43,7 +43,7 @@ namespace ft
             const std::string& get_servername() const throw();
             const std::string& get_realname() const throw();
             void add_inviter(const std::string& channel, const std::string& inviter) throw();
-            const std::string find_channels(const std::string& inviter) const throw();
+            const std::string find_channels(const std::string& inviter) throw();
             bool check_is_inviter(const std::string& channel, const std::string& inviter);
             void remove_inviter(const std::string& channel);
 
