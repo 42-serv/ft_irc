@@ -438,9 +438,9 @@ bool ft::irc::channel::is_banned(const ft::irc::user& user) const
 
     foreach (ban_list::const_iterator, it, this->bans)
     {
-        const bool match_nick = ft::irc::string_utils::is_same(it->name, nick) || it->name == "*";
-        const bool match_username = it->username == username || it->username == "*";
-        const bool match_host = it->host == host || it->host == "*";
+        const bool match_nick = ft::irc::string_utils::match_mask_ignore_case(it->name, nick);
+        const bool match_username = ft::irc::string_utils::match_mask(it->username, username);
+        const bool match_host = ft::irc::string_utils::match_mask(it->host, host);
 
         if (match_nick && match_username && match_host)
         {

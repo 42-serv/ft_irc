@@ -218,6 +218,69 @@ namespace ft
                 std::string::size_type pos_end = std::string::npos;
                 return mask.substr(pos_begin, pos_end - pos_begin);
             }
+
+            static inline bool match_mask(const std::string& pattern_str, const std::string& name_str)
+            {
+                std::string::const_iterator pattern = pattern_str.begin();
+                std::string::const_iterator name = name_str.begin();
+                std::string::const_iterator pattern_backup = pattern_str.end();
+                std::string::const_iterator name_backup = name_str.end();
+
+                while (pattern != pattern_str.end() || name != name_str.end())
+                {
+                    // continue when match
+                    if (pattern != pattern_str.end())
+                    {
+                        if (*pattern == '\001')
+                        {
+                            // *
+                            pattern_backup = pattern;
+                            name_backup = name;
+                            pattern++;
+                            continue;
+                        }
+                        else if (*pattern == '\002')
+                        {
+                            // ?
+                            if (name != name_str.end())
+                            {
+                                pattern++;
+                                name++;
+                                continue;
+                            }
+                        }
+                        else
+                        {
+                            // character
+                            if (name != name_str.end() && *pattern == *name)
+                            {
+                                pattern++;
+                                name++;
+                                continue;
+                            }
+                        }
+                    }
+
+                    // mismatch
+                    if (name_backup != name_str.end())
+                    {
+                        // restart from last *
+                        pattern = pattern_backup;
+                        name = name_backup;
+                        name++;
+                        continue;
+                    }
+
+                    return false;
+                }
+
+                return true;
+            }
+
+            static inline bool match_mask_ignore_case(const std::string& pattern, const std::string& name)
+            {
+                return match_mask(to_lower(pattern), to_lower(name));
+            }
         };
     }
 }
