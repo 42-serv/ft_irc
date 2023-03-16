@@ -140,6 +140,10 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:ac8d525ecc5b9196146c124cd310d8d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8df7fd3632f857bb33e32c24a496df98"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1string__utils.html#a8df7fd3632f857bb33e32c24a496df98">pick_host</a> (const std::string &amp;mask)</td></tr>
 <tr class="separator:a8df7fd3632f857bb33e32c24a496df98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a357019bbfad30d20e56d2fb4f2a4319c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1string__utils.html#a357019bbfad30d20e56d2fb4f2a4319c">match_mask</a> (const std::string &amp;pattern_str, const std::string &amp;name_str)</td></tr>
+<tr class="separator:a357019bbfad30d20e56d2fb4f2a4319c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d870ac385b6f7fcdacaa1b071810876"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structft_1_1irc_1_1string__utils.html#a4d870ac385b6f7fcdacaa1b071810876">match_mask_ignore_case</a> (const std::string &amp;pattern, const std::string &amp;name)</td></tr>
+<tr class="separator:a4d870ac385b6f7fcdacaa1b071810876"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="abd73422cb93e7f7f26cfd59a221933a2"></a>
@@ -186,7 +190,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_abd73422cb93e7f7f26cfd59a221933a2_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_abd73422cb93e7f7f26cfd59a221933a2_icgraph.svg" width="100%" height="553"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -267,6 +271,98 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_a2fcf209970f5b02422129e1d9ff28a72_icgraph.svg" width="320" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a357019bbfad30d20e56d2fb4f2a4319c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a357019bbfad30d20e56d2fb4f2a4319c">&#9670;&nbsp;</a></span>match_mask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool ft::irc::string_utils::match_mask </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pattern_str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_a357019bbfad30d20e56d2fb4f2a4319c_icgraph.svg" width="574" height="82"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a4d870ac385b6f7fcdacaa1b071810876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d870ac385b6f7fcdacaa1b071810876">&#9670;&nbsp;</a></span>match_mask_ignore_case()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool ft::irc::string_utils::match_mask_ignore_case </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="structft_1_1irc_1_1string__utils.html#a357019bbfad30d20e56d2fb4f2a4319c">match_mask()</a>, and <a class="el" href="structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9">to_lower()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_a4d870ac385b6f7fcdacaa1b071810876_cgraph.svg" width="560" height="118"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="structft_1_1irc_1_1string__utils_a4d870ac385b6f7fcdacaa1b071810876_icgraph.svg" width="391" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

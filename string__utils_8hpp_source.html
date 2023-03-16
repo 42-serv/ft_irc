@@ -336,9 +336,72 @@ $(document).ready(function(){initNavTree('string__utils_8hpp_source.html',''); i
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                std::string::size_type pos_end = std::string::npos;</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keywordflow">return</span> mask.substr(pos_begin, pos_end - pos_begin);</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        };</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#a357019bbfad30d20e56d2fb4f2a4319c">  222</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="structft_1_1irc_1_1string__utils.html#a357019bbfad30d20e56d2fb4f2a4319c">match_mask</a>(<span class="keyword">const</span> std::string&amp; pattern_str, <span class="keyword">const</span> std::string&amp; name_str)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                std::string::const_iterator pattern = pattern_str.begin();</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                std::string::const_iterator name = name_str.begin();</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                std::string::const_iterator pattern_backup = pattern_str.end();</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                std::string::const_iterator name_backup = name_str.end();</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="keywordflow">while</span> (pattern != pattern_str.end() || name != name_str.end())</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    <span class="comment">// continue when match</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    <span class="keywordflow">if</span> (pattern != pattern_str.end())</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                        <span class="keywordflow">if</span> (*pattern == <span class="charliteral">&#39;\001&#39;</span>)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                        {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                            <span class="comment">// *</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                            pattern_backup = pattern;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                            name_backup = name;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                            pattern++;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*pattern == <span class="charliteral">&#39;\002&#39;</span>)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                        {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                            <span class="comment">// ?</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                            <span class="keywordflow">if</span> (name != name_str.end())</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                            {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                pattern++;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                                name++;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                            }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                        }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                            <span class="comment">// character</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                            <span class="keywordflow">if</span> (name != name_str.end() &amp;&amp; *pattern == *name)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                            {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                                pattern++;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                name++;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                                <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                            }</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                    <span class="comment">// mismatch</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    <span class="keywordflow">if</span> (name_backup != name_str.end())</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                    {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                        <span class="comment">// restart from last *</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                        pattern = pattern_backup;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                        name = name_backup;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                        name++;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                    }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                }</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="structft_1_1irc_1_1string__utils.html#a4d870ac385b6f7fcdacaa1b071810876">  280</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="structft_1_1irc_1_1string__utils.html#a4d870ac385b6f7fcdacaa1b071810876">match_mask_ignore_case</a>(<span class="keyword">const</span> std::string&amp; pattern, <span class="keyword">const</span> std::string&amp; name)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="structft_1_1irc_1_1string__utils.html#a357019bbfad30d20e56d2fb4f2a4319c">match_mask</a>(<a class="code" href="structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9">to_lower</a>(pattern), <a class="code" href="structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9">to_lower</a>(name));</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        };</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
 <div class="ttc" id="airc__constants_8hpp_html"><div class="ttname"><a href="irc__constants_8hpp.html">irc_constants.hpp</a></div></div>
 <div class="ttc" id="airc__constants_8hpp_html_a952c1bdc67587612289d7abec8d47c37"><div class="ttname"><a href="irc__constants_8hpp.html#a952c1bdc67587612289d7abec8d47c37">FT_IRC_NICK_LIMIT</a></div><div class="ttdeci">#define FT_IRC_NICK_LIMIT</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:10</div></div>
 <div class="ttc" id="airc__constants_8hpp_html_aa86ae6704c7a7e22929d50af8b4fe9d2"><div class="ttname"><a href="irc__constants_8hpp.html#aa86ae6704c7a7e22929d50af8b4fe9d2">FT_IRC_CHANNEL_NAME_LIMIT</a></div><div class="ttdeci">#define FT_IRC_CHANNEL_NAME_LIMIT</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:11</div></div>
@@ -354,8 +417,10 @@ $(document).ready(function(){initNavTree('string__utils_8hpp_source.html',''); i
 <div class="ttc" id="anamespaceft_html"><div class="ttname"><a href="namespaceft.html">ft</a></div><div class="ttdef"><b>Definition:</b> bot.cpp:22</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html">ft::irc::string_utils</a></div><div class="ttdef"><b>Definition:</b> string_utils.hpp:93</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a2fcf209970f5b02422129e1d9ff28a72"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a2fcf209970f5b02422129e1d9ff28a72">ft::irc::string_utils::is_valid_nick</a></div><div class="ttdeci">static bool is_valid_nick(const std::string &amp;nick)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:94</div></div>
+<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a357019bbfad30d20e56d2fb4f2a4319c"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a357019bbfad30d20e56d2fb4f2a4319c">ft::irc::string_utils::match_mask</a></div><div class="ttdeci">static bool match_mask(const std::string &amp;pattern_str, const std::string &amp;name_str)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:222</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a367a22012cc0d2d25959ac3f4e5d33a9"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a367a22012cc0d2d25959ac3f4e5d33a9">ft::irc::string_utils::to_lower</a></div><div class="ttdeci">static std::string to_lower(const std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:176</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a38cd804a5b73843f0fd63a027dd0dee0"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a38cd804a5b73843f0fd63a027dd0dee0">ft::irc::string_utils::is_valid_channelname</a></div><div class="ttdeci">static bool is_valid_channelname(const std::string &amp;channelname)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:134</div></div>
+<div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a4d870ac385b6f7fcdacaa1b071810876"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a4d870ac385b6f7fcdacaa1b071810876">ft::irc::string_utils::match_mask_ignore_case</a></div><div class="ttdeci">static bool match_mask_ignore_case(const std::string &amp;pattern, const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:280</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_a8df7fd3632f857bb33e32c24a496df98"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#a8df7fd3632f857bb33e32c24a496df98">ft::irc::string_utils::pick_host</a></div><div class="ttdeci">static std::string pick_host(const std::string &amp;mask)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:210</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_ab18511c9107e828924f75099c8500d03"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#ab18511c9107e828924f75099c8500d03">ft::irc::string_utils::to_upper</a></div><div class="ttdeci">static std::string to_upper(const std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:166</div></div>
 <div class="ttc" id="astructft_1_1irc_1_1string__utils_html_abd73422cb93e7f7f26cfd59a221933a2"><div class="ttname"><a href="structft_1_1irc_1_1string__utils.html#abd73422cb93e7f7f26cfd59a221933a2">ft::irc::string_utils::is_same</a></div><div class="ttdeci">static bool is_same(const std::string &amp;s1, const std::string &amp;s2)</div><div class="ttdef"><b>Definition:</b> string_utils.hpp:186</div></div>
