@@ -1,10 +1,12 @@
 .SUFFIXES: .cpp .o .hpp .h .tpp
 .PHONY: all clean fclean cleanobj cleanbin re deps depsclean depsre allre bonus
 
+MAKEFLAGS =
+
 ifeq ($(shell uname), Linux)
-	MAKEFLAGS := --jobs $(shell nproc)
+	MAKEFLAGS += --jobs $(shell nproc)
 else
-	MAKEFLAGS := --jobs $(shell sysctl -n hw.ncpu)
+	MAKEFLAGS += --jobs $(shell sysctl -n hw.ncpu)
 endif
 
 # Configuration
