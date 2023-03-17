@@ -1,7 +1,7 @@
 var searchData=
 [
   ['s_562',['s',['../classft_1_1serv_1_1__internal_1_1ai__failed.html#aba129715a2a8e758bc69e97d8f8952f0',1,'ft::serv::_internal::ai_failed::s()'],['../classft_1_1serv_1_1syscall__failed.html#a0a6e8bdfd2cf71142797337141e8d390',1,'ft::serv::syscall_failed::s()']]],
-  ['send_5fauth_563',['send_auth',['../classft_1_1irc_1_1bot.html#acbb13f56fb68840ebd38e13890b94e52',1,'ft::irc::bot']]],
+  ['send_5fauth_563',['send_auth',['../classft_1_1irc_1_1bot.html#ad4c2de451c251f239abbde2678a603c8',1,'ft::irc::bot']]],
   ['send_5fban_5flist_564',['send_ban_list',['../classft_1_1irc_1_1channel.html#a058c359633e6e7b0029b2feedd6320bf',1,'ft::irc::channel']]],
   ['send_5flist_565',['send_list',['../classft_1_1irc_1_1server.html#a3f4e06d5a9cf57441582f77b95f87135',1,'ft::irc::server']]],
   ['send_5fmessage_566',['send_message',['../classft_1_1irc_1_1user.html#a1db558d6d694ca943224c2440fe36c50',1,'ft::irc::user']]],
