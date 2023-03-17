@@ -135,8 +135,6 @@ namespace ft
 
             void update_nick(const std::string& old_nick, const std::string& new_nick)
             {
-                std::vector<std::string> channels_to_remove;
-
                 foreach (ft::irc::bot::inviter_dictionary::iterator, it, this->inviters)
                 {
                     if (ft::irc::string_utils::is_same(it->second, old_nick))
