@@ -225,9 +225,9 @@ namespace ft
                 {
                     // parent
                     ::close(fildes[STDOUT_FILENO]);
-                    std::string response;
+                    std::vector<std::string> responses;
 
-                    char buf[1024];
+                    char buf[250];
                     ::ssize_t s;
                     do
                     {
@@ -236,10 +236,17 @@ namespace ft
                         {
                             break;
                         }
-                        response.append(buf, s);
+                        responses.push_back(std::string(beginof(buf), s));
                     } while (s != 0);
 
-                    this->send_packet(layer, ft::irc::message("PRIVMSG") << target << response);
+                    foreach (std::vector<std::string>::const_iterator, it, responses)
+                    {
+                        const std::string& response = *it;
+                        if (!response.empty())
+                        {
+                            this->send_packet(layer, ft::irc::message("PRIVMSG") << target << response);
+                        }
+                    }
                 }
             }
 
