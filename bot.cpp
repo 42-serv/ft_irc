@@ -3,6 +3,7 @@
 
 #include "irc_constants.hpp"
 
+#include "libserv/serv_types.hpp"
 #include "message.hpp"
 #include "message_decoder.hpp"
 #include "message_encoder.hpp"
@@ -14,9 +15,13 @@
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
+#include <cctype>
+#include <csignal>
 #include <cstdlib>
 #include <sstream>
 #include <string>
+#include <unistd.h>
+#include <vector>
 
 namespace ft
 {
@@ -25,7 +30,8 @@ namespace ft
         class bot : public ft::enable_shared_from_this<bot>
         {
         public:
-            typedef ft::serv::fast_dictionary<std::string, std::string>::type inviter_dictionary;
+            typedef ft::serv::fast_dictionary<std::string, std::string>::type owner_dictionary;
+            typedef ft::serv::fast_dictionary<std::string, std::vector<std::string> >::type names_dictionary;
 
         private:
             std::string pass;
@@ -37,17 +43,22 @@ namespace ft
             std::string servername;
             std::string realname;
 
-            inviter_dictionary inviters;
+            std::string path;
+
+            owner_dictionary channel_owners;
+            names_dictionary names_map;
 
         public:
-            bot(const std::string& pass)
+            bot(const std::string& pass, const std::string& nick, const std::string& username, const std::string& realname, const std::string& path)
                 : pass(pass),
-                  nick("ircBot"),
-                  username("user"),
-                  hostname("local"),
-                  servername("user"),
-                  realname("42bot"),
-                  inviters()
+                  nick(nick),
+                  username(username),
+                  hostname("*"),
+                  servername("*"),
+                  realname(realname),
+                  path(path),
+                  channel_owners(),
+                  names_map()
             {
             }
 
@@ -86,56 +97,53 @@ namespace ft
                 return this->realname;
             }
 
-            void add_inviter(const std::string& channel, const std::string& inviter)
+            const std::string& get_owner(const std::string& channel) const throw()
             {
-                this->inviters.insert(std::make_pair(channel, inviter));
-            }
+                ft::irc::bot::owner_dictionary::const_iterator it = this->channel_owners.find(channel);
 
-            bool is_inviter(const std::string& channel, const std::string& inviter) const
-            {
-                ft::irc::bot::inviter_dictionary::const_iterator it = this->inviters.find(channel);
-
-                return it != this->inviters.end() && ft::irc::string_utils::is_same(it->second, inviter);
-            }
-
-            void remove_inviter(const std::string& channel) throw()
-            {
-                this->inviters.erase(channel);
-            }
-
-            const std::string find_channels(const std::string& sender)
-            {
-                std::vector<std::string> channels_to_remove;
-
-                foreach (ft::irc::bot::inviter_dictionary::const_iterator, it, this->inviters)
+                if (it != this->channel_owners.end())
                 {
-                    if (ft::irc::string_utils::is_same(it->second, sender))
+                    return it->second;
+                }
+
+                static std::string empty;
+                return empty;
+            }
+
+            void set_owner(const std::string& channel, const std::string& owner_nick)
+            {
+                this->channel_owners.insert(std::make_pair(channel, owner_nick));
+            }
+
+            bool is_owner(const std::string& channel, const std::string& nick) const
+            {
+                const std::string& owner_nick = this->get_owner(channel);
+                return !owner_nick.empty() && ft::irc::string_utils::is_same(owner_nick, nick);
+            }
+
+            void leave_channel(const std::string& channel) throw()
+            {
+                this->channel_owners.erase(channel);
+            }
+
+            std::vector<std::string> find_own_channels(const std::string& owner_nick)
+            {
+                std::vector<std::string> channel_list;
+
+                foreach (ft::irc::bot::owner_dictionary::const_iterator, it, this->channel_owners)
+                {
+                    if (ft::irc::string_utils::is_same(it->second, owner_nick))
                     {
-                        channels_to_remove.push_back(it->first);
+                        channel_list.push_back(it->first);
                     }
                 }
 
-                std::ostringstream oss;
-                bool first = true;
-                foreach (std::vector<std::string>::iterator, it, channels_to_remove)
-                {
-                    this->inviters.erase(*it);
-                    if (first)
-                    {
-                        first = false;
-                    }
-                    else
-                    {
-                        oss << ',';
-                    }
-                    oss << *it;
-                }
-                return oss.str();
+                return channel_list;
             }
 
             void update_nick(const std::string& old_nick, const std::string& new_nick)
             {
-                foreach (ft::irc::bot::inviter_dictionary::iterator, it, this->inviters)
+                foreach (ft::irc::bot::owner_dictionary::iterator, it, this->channel_owners)
                 {
                     if (ft::irc::string_utils::is_same(it->second, old_nick))
                     {
@@ -153,99 +161,283 @@ namespace ft
                 layer.post_flush();
             }
 
+            void send_packet(ft::serv::event_layer& layer, const ft::irc::message& msg) const
+            {
+                layer.post_write(ft::make_shared<ft::irc::message>(msg));
+                layer.post_flush();
+            }
+
+            void on_privmsg(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                const std::string sender = ft::irc::string_utils::pick_nick(message.get_prefix());
+                const std::string& receiver = message[0];
+                const std::string& text = message[1];
+
+                if (receiver.find_first_of(',') != std::string::npos)
+                {
+                    // ignore multiple receiver message
+                    return;
+                }
+
+                std::string target;
+                if (ft::irc::string_utils::is_valid_channelname(receiver))
+                {
+                    // to channel
+                    target = receiver;
+                }
+                else
+                {
+                    // to user
+                    target = sender;
+                }
+
+                int fildes[2];
+                ::pipe(fildes);
+                ::pid_t pid = ::fork();
+                if (pid == 0)
+                {
+                    // child
+                    ::dup2(fildes[STDOUT_FILENO], STDOUT_FILENO);
+                    ::close(fildes[STDIN_FILENO]);
+                    ::close(fildes[STDOUT_FILENO]);
+                    ::pipe(fildes);
+                    ::dup2(fildes[STDIN_FILENO], STDIN_FILENO);
+                    ::close(fildes[STDIN_FILENO]);
+
+                    const char* buf = text.c_str();
+                    ::size_t len = text.length();
+                    ::ssize_t s;
+                    do
+                    {
+                        s = ::write(fildes[STDOUT_FILENO], buf, len);
+                        if (s < 0)
+                        {
+                            ::exit(EXIT_FAILURE);
+                        }
+                        buf += s;
+                        len -= s;
+                    } while (len != 0);
+
+                    ::close(fildes[STDOUT_FILENO]);
+                    ::exit(::system(this->path.c_str()));
+                }
+                else
+                {
+                    // parent
+                    ::close(fildes[STDOUT_FILENO]);
+                    std::string response;
+
+                    char buf[1024];
+                    ::ssize_t s;
+                    do
+                    {
+                        s = ::read(fildes[STDIN_FILENO], buf, sizeof(buf));
+                        if (s < 0)
+                        {
+                            break;
+                        }
+                        response.append(buf, s);
+                    } while (s != 0);
+
+                    this->send_packet(layer, ft::irc::message("PRIVMSG") << target << response);
+                }
+            }
+
+            void on_invite(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                const std::string sender = ft::irc::string_utils::pick_nick(message.get_prefix());
+                const std::string& channel = message[1];
+
+                this->set_owner(channel, sender);
+
+                // Accept invite
+                this->send_packet(layer, ft::irc::message("JOIN") << channel);
+            }
+
+            void on_kick(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                const std::string& channel = message[0];
+                const std::string& target = message[1];
+
+                const bool me = ft::irc::string_utils::is_same(target, this->get_nick());
+                if (me || this->is_owner(channel, target))
+                {
+                    this->leave_channel(channel);
+
+                    if (!me)
+                    {
+                        // Cascade
+                        this->send_packet(layer, ft::irc::message("PART") << channel);
+                    }
+                }
+            }
+
+            void on_part(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                const std::string sender = ft::irc::string_utils::pick_nick(message.get_prefix());
+                const std::string& channel = message[0];
+
+                if (this->is_owner(channel, sender))
+                {
+                    this->leave_channel(channel);
+
+                    // Cascade
+                    this->send_packet(layer, ft::irc::message("PART") << channel);
+                }
+            }
+
+            void on_quit(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                const std::string sender = ft::irc::string_utils::pick_nick(message.get_prefix());
+
+                std::vector<std::string> channels = this->find_own_channels(sender);
+                std::ostringstream oss;
+                bool first = true;
+                foreach (std::vector<std::string>::const_iterator, it, channels)
+                {
+                    this->leave_channel(*it);
+                    if (first)
+                    {
+                        first = false;
+                    }
+                    else
+                    {
+                        oss << ',';
+                    }
+                    oss << *it;
+                }
+
+                // Cascade
+                this->send_packet(layer, ft::irc::message("PART") << oss.str());
+            }
+
+            void on_nick(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                static_cast<void>(layer);
+
+                const std::string old_nick = ft::irc::string_utils::pick_nick(message.get_prefix());
+                const std::string& new_nick = message[0];
+
+                this->update_nick(old_nick, new_nick);
+            }
+
+            void on_name_reply(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                static_cast<void>(layer);
+
+                const std::string& channel = message[2];
+                ft::irc::message::param_vector members = ft::irc::message::split(message[3], ' ');
+
+                std::vector<std::string>& list = this->names_map[channel];
+                foreach (ft::irc::message::param_vector::const_iterator, it, members)
+                {
+                    std::string nick = *it;
+                    if (!nick.empty() && (nick.front() == '@' || nick.front() == '+'))
+                    {
+                        nick.erase(0, 1);
+                    }
+                    list.push_back(nick);
+                }
+            }
+
+            void on_end_of_names(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                const std::string& channel = message[1];
+
+                std::vector<std::string> list = this->names_map[channel]; // copy
+                this->names_map.erase(channel);
+
+                std::vector<std::string>::const_iterator it = std::find(list.begin(), list.end(), this->get_owner(channel));
+                if (it == list.end())
+                {
+                    // owner not found, Cascade
+                    this->send_packet(layer, ft::irc::message("PART") << channel);
+                }
+            }
+
+            void on_bad_error(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                const std::string& channel = message[1];
+                const std::string& reason = message[2];
+
+                const std::string& owner = this->get_owner(channel);
+
+                if (!owner.empty())
+                {
+                    // help to owner
+                    std::ostringstream oss;
+                    oss << "HELP!! I can't do anything on this channel: " << channel << ". Because: " << reason;
+                    this->send_packet(layer, ft::irc::message("PRIVMSG") << owner << oss.str());
+                }
+            }
+
+            void on_nick_error(ft::serv::event_layer& layer, ft::irc::message& message)
+            {
+                static_cast<void>(message);
+
+                layer.post_disconnect();
+            }
+
             void on_packet(ft::serv::event_layer& layer, ft::irc::message& message)
             {
                 const std::string command = message.get_command();
 
+                void (ft::irc::bot::*proc)(ft::serv::event_layer&, ft::irc::message&) = null;
                 if (command == "PRIVMSG")
                 {
-                    const std::string sender = ft::irc::string_utils::pick_nick(message.get_prefix());
-                    const std::string& receiver = message[0];
-                    const std::string& text = message[1];
-
-                    if (receiver.find_first_of(',') != std::string::npos)
-                    {
-                        // ignore multiple receiver message
-                        return;
-                    }
-
-                    std::string target;
-                    if (ft::irc::string_utils::is_valid_channelname(receiver))
-                    {
-                        // to channel
-                        target = receiver;
-                    }
-                    else
-                    {
-                        // to user
-                        target = sender;
-                    }
-                    const ft::irc::message payload = ft::irc::message("PRIVMSG") << target << text;
-                    layer.post_write(ft::make_shared<ft::irc::message>(payload));
+                    proc = &ft::irc::bot::on_privmsg;
                 }
                 else if (command == "INVITE")
                 {
-                    const std::string sender = ft::irc::string_utils::pick_nick(message.get_prefix());
-                    const std::string& channel = message[1];
-
-                    this->add_inviter(channel, sender);
-
-                    const ft::irc::message payload = ft::irc::message("JOIN") << channel;
-                    layer.post_write(ft::make_shared<ft::irc::message>(payload));
+                    proc = &ft::irc::bot::on_invite;
                 }
                 else if (command == "KICK")
                 {
-                    const std::string& channel = message[0];
-                    const std::string& nick = message[1];
-
-                    if (this->is_inviter(channel, nick))
-                    {
-                        this->remove_inviter(channel);
-
-                        const ft::irc::message payload = ft::irc::message("PART") << channel;
-                        layer.post_write(ft::make_shared<ft::irc::message>(payload));
-                    }
-                    else if (ft::irc::string_utils::is_same(nick, this->get_nick()))
-                    {
-                        this->remove_inviter(channel);
-                    }
+                    proc = &ft::irc::bot::on_kick;
                 }
                 else if (command == "PART")
                 {
-                    const std::string nick = ft::irc::string_utils::pick_nick(message.get_prefix());
-                    const std::string& channel = message[0];
-
-                    if (this->is_inviter(channel, nick))
-                    {
-                        this->remove_inviter(channel);
-
-                        const ft::irc::message payload = ft::irc::message("PART") << channel;
-                        layer.post_write(ft::make_shared<ft::irc::message>(payload));
-                    }
+                    proc = &ft::irc::bot::on_part;
                 }
                 else if (command == "QUIT")
                 {
-                    const std::string sender = ft::irc::string_utils::pick_nick(message.get_prefix());
-
-                    const std::string channel_to_remove = this->find_channels(sender);
-
-                    const ft::irc::message payload = ft::irc::message("PART") << channel_to_remove;
-                    layer.post_write(ft::make_shared<ft::irc::message>(payload));
+                    proc = &ft::irc::bot::on_quit;
                 }
                 else if (command == "NICK")
                 {
-                    const std::string old_nick = ft::irc::string_utils::pick_nick(message.get_prefix());
-                    const std::string& new_nick = message[0];
-
-                    this->update_nick(old_nick, new_nick);
-                    return;
+                    proc = &ft::irc::bot::on_nick;
                 }
-                else
+                else if (std::isdigit(command[0]))
                 {
-                    // ignore
-                    return;
+                    int rpl = std::atoi(command.c_str());
+                    switch (rpl)
+                    {
+                    case RPL_NAMREPLY:
+                        proc = &ft::irc::bot::on_name_reply;
+                        break;
+                    case RPL_ENDOFNAMES:
+                        proc = &ft::irc::bot::on_end_of_names;
+                        break;
+                    case ERR_NOSUCHCHANNEL:
+                    case ERR_TOOMANYCHANNELS:
+                    case ERR_CHANNELISFULL:
+                    case ERR_INVITEONLYCHAN:
+                    case ERR_BANNEDFROMCHAN:
+                    case ERR_BADCHANNELKEY:
+                    case ERR_CANNOTSENDTOCHAN:
+                        proc = &ft::irc::bot::on_bad_error;
+                        break;
+                    case ERR_ERRONEUSNICKNAME:
+                    case ERR_NICKNAMEINUSE:
+                        proc = &ft::irc::bot::on_nick_error;
+                        break;
+                    }
                 }
-                layer.post_flush();
+
+                if (proc != null)
+                {
+                    (this->*proc)(layer, message);
+                }
             }
 
         private:
@@ -310,19 +502,29 @@ namespace ft
     }
 }
 
+ft::shared_ptr<ft::serv::event_worker_group> child_group;
+
+static void _on_signal(int signo)
+{
+    static_cast<void>(signo);
+    child_group->shutdown_all();
+}
+
 int main(int argc, char* argv[])
 {
-    if (argc != 4)
+    if (argc != 8)
     {
-        ft::serv::logger::warn("Usage: %s <host> <port> <pass>", argv[0]);
+        ft::serv::logger::warn("Usage: %s <host> <port> <pass> <nick> <username> <realname> <path>", argv[0]);
         return EXIT_FAILURE;
     }
 
-    ft::shared_ptr<ft::serv::event_worker_group> child_group = ft::make_shared<ft::serv::event_worker_group>();
+    child_group = ft::make_shared<ft::serv::event_worker_group>();
     child_group->put_worker(ft::make_shared<ft::serv::event_worker>());
 
-    ft::irc::bot bot(argv[3]);
+    ft::irc::bot bot(argv[3], argv[4], argv[5], argv[6], argv[7]);
     ft::serv::bootstrap boot(child_group, child_group, null, &ft::irc::_make_client);
+    std::signal(SIGINT, &_on_signal);
+    std::signal(SIGCHLD, SIG_IGN); // reaping children
     try
     {
         if (!boot.start_client(argv[1], argv[2], &bot))
