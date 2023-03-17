@@ -205,7 +205,7 @@ namespace ft
                         const ft::irc::message payload = ft::irc::message("PART") << channel;
                         layer.post_write(ft::make_shared<ft::irc::message>(payload));
                     }
-                    else if (std::string_utils::is_same(nick, this->get_nick()))
+                    else if (ft::irc::string_utils::is_same(nick, this->get_nick()))
                     {
                         this->remove_inviter(channel);
                     }
