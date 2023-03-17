@@ -12,6 +12,7 @@ endif
 # Configuration
 CXX = c++
 RM = rm -f
+MKDIR = mkdir -p
 
 CXXFLAGS += -MMD -MF $(@:.o=.d) -MT $@ -MP
 CXXFLAGS += --std=c++98 -Wall -Wextra -Werror -pedantic
@@ -90,7 +91,7 @@ re: clean	;	$(MAKE)
 
 # Recipes
 $(OBJECTS_DIR):
-	mkdir -p $(OBJECTS_DIR)
+	$(MKDIR) $(OBJECTS_DIR)
 
 $(OBJECTS_DIR)%.o: %.cpp | $(OBJECTS_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -109,12 +110,6 @@ $(BONUS_TARGET): $(BONUS_OBJECTS)
 deps:
 	$(MAKE) -C $(LIBSERV)
 
-depsclean:
-	$(MAKE) -C $(LIBSERV) clean
-
-depsre:
-	$(MAKE) -C $(LIBSERV) re
-
 allre:
-	$(MAKE) depsre
+	$(MAKE) -B -C $(LIBSERV)
 	$(MAKE) re

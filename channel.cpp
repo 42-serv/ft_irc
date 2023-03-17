@@ -459,6 +459,19 @@ void ft::irc::channel::ban(const std::string& mask)
 
     synchronized (this->lock.get_write_lock())
     {
+        foreach (ban_list::/* const_*/ iterator, it, this->bans)
+        {
+            const bool match_nick = ft::irc::string_utils::is_same(it->name, nick);
+            const bool match_username = it->username == username;
+            const bool match_host = it->host == host;
+
+            if (match_nick && match_username && match_host)
+            {
+                // duplicated
+                return;
+            }
+        }
+
         ban_info b;
         b.name = nick;
         b.username = username;
