@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['countof_1564',['countof',['../serv__types_8hpp.html#a39995f96172454526b43ebc17e293352',1,'serv_types.hpp']]]
+  ['countof_1630',['countof',['../serv__types_8hpp.html#a39995f96172454526b43ebc17e293352',1,'serv_types.hpp']]]
 ];

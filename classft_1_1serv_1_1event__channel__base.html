@@ -127,7 +127,7 @@ $(document).ready(function(){initNavTree('classft_1_1serv_1_1event__channel__bas
 <div class="dynheader">
 Inheritance diagram for ft::serv::event_channel_base:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1event__channel__base__inherit__graph.svg" width="387" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1event__channel__base__inherit__graph.svg" width="387" height="276"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -190,6 +190,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a9e231903746fce1da12ced6da6d880d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29c287e2466273e0a3b1ff273d8cf77d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1serv_1_1event__channel__base.html#a29c287e2466273e0a3b1ff273d8cf77d">begin_write</a> ()</td></tr>
 <tr class="separator:a29c287e2466273e0a3b1ff273d8cf77d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37bc4e1ebc1574e89801995047ad1521"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1serv_1_1event__channel__base.html#a37bc4e1ebc1574e89801995047ad1521">do_read</a> (void *const buf, const std::size_t len)  throw ()</td></tr>
+<tr class="separator:a37bc4e1ebc1574e89801995047ad1521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab550a6f77af79efdf43ebdfb988d6e82"><td class="memItemLeft" align="right" valign="top">virtual long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1serv_1_1event__channel__base.html#ab550a6f77af79efdf43ebdfb988d6e82">do_write</a> (const void *const buf, const std::size_t len)  throw ()</td></tr>
+<tr class="separator:ab550a6f77af79efdf43ebdfb988d6e82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -422,11 +426,115 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="classft_1_1serv_1_1byte__buffer.html#abd93b4231f39439b0aa0d844a0a93437">ft::serv::byte_buffer::discard()</a>, <a class="el" href="classft_1_1serv_1_1byte__buffer.html#a00215f4a83e7262746ce77daa58a7941">ft::serv::byte_buffer::empty()</a>, <a class="el" href="serv__types_8hpp.html#a7e74980705360e8413c5e477028cde7a">FT_SERV_WRITE_SPIN_COUNT</a>, <a class="el" href="classft_1_1serv_1_1byte__buffer.html#ae2e9e14f5f7ed2e9d35d44319383674a">ft::serv::byte_buffer::get()</a>, <a class="el" href="classft_1_1serv_1_1byte__buffer.html#a61ded5b8087c19ae32b2357cd98c71e8">ft::serv::byte_buffer::remove()</a>, <a class="el" href="structft_1_1serv_1_1socket__utils.html#aa8ee31659d561e387eca7d45ec0c8037">ft::serv::socket_utils::send_socket()</a>, and <a class="el" href="classft_1_1serv_1_1byte__buffer.html#a4b1447dcfaa3679e3a48c8909001225d">ft::serv::byte_buffer::size()</a>.</p>
+<p class="reference">References <a class="el" href="classft_1_1serv_1_1byte__buffer.html#abd93b4231f39439b0aa0d844a0a93437">ft::serv::byte_buffer::discard()</a>, <a class="el" href="classft_1_1serv_1_1byte__buffer.html#a00215f4a83e7262746ce77daa58a7941">ft::serv::byte_buffer::empty()</a>, <a class="el" href="serv__types_8hpp.html#a7e74980705360e8413c5e477028cde7a">FT_SERV_WRITE_SPIN_COUNT</a>, <a class="el" href="classft_1_1serv_1_1byte__buffer.html#ae2e9e14f5f7ed2e9d35d44319383674a">ft::serv::byte_buffer::get()</a>, <a class="el" href="classft_1_1serv_1_1byte__buffer.html#a61ded5b8087c19ae32b2357cd98c71e8">ft::serv::byte_buffer::remove()</a>, and <a class="el" href="classft_1_1serv_1_1byte__buffer.html#a4b1447dcfaa3679e3a48c8909001225d">ft::serv::byte_buffer::size()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1event__channel__base_a29c287e2466273e0a3b1ff273d8cf77d_cgraph.svg" width="616" height="352"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1event__channel__base_a29c287e2466273e0a3b1ff273d8cf77d_cgraph.svg" width="602" height="264"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a37bc4e1ebc1574e89801995047ad1521"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37bc4e1ebc1574e89801995047ad1521">&#9670;&nbsp;</a></span>do_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long ft::serv::event_channel_base::do_read </td>
+          <td>(</td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classft_1_1serv_1_1file__channel.html#ab0a7a4f7a9f4e39ba2d985a5bb615c6b">ft::serv::file_channel</a>.</p>
+
+<p class="reference">References <a class="el" href="structft_1_1serv_1_1socket__utils.html#ad5f1508e443a5539e35f644fa1801a75">ft::serv::socket_utils::recv_socket()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1event__channel__base_a37bc4e1ebc1574e89801995047ad1521_cgraph.svg" width="590" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ab550a6f77af79efdf43ebdfb988d6e82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab550a6f77af79efdf43ebdfb988d6e82">&#9670;&nbsp;</a></span>do_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long ft::serv::event_channel_base::do_write </td>
+          <td>(</td>
+          <td class="paramtype">const void *const&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classft_1_1serv_1_1file__channel.html#a41afc36e716cfa2a9bf9c0619927b0ba">ft::serv::file_channel</a>.</p>
+
+<p class="reference">References <a class="el" href="structft_1_1serv_1_1socket__utils.html#aa8ee31659d561e387eca7d45ec0c8037">ft::serv::socket_utils::send_socket()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="classft_1_1serv_1_1event__channel__base_ab550a6f77af79efdf43ebdfb988d6e82_cgraph.svg" width="590" height="52"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

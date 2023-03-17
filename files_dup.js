@@ -2,6 +2,7 @@ var files_dup =
 [
     [ "includes", "dir_09e761304027c904456130627fd4dcf5.html", "dir_09e761304027c904456130627fd4dcf5" ],
     [ "bot.cpp", "bot_8cpp.html", "bot_8cpp" ],
+    [ "bot_chatgpt.py", "bot__chatgpt_8py.html", "bot__chatgpt_8py" ],
     [ "channel.cpp", "channel_8cpp.html", null ],
     [ "channel.hpp", "channel_8hpp.html", [
       [ "channel", "classft_1_1irc_1_1channel.html", "classft_1_1irc_1_1channel" ],

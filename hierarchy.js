@@ -24,7 +24,9 @@ var hierarchy =
       [ "ft::irc::user", "classft_1_1irc_1_1user.html", null ],
       [ "ft::serv::event_channel_base", "classft_1_1serv_1_1event__channel__base.html", [
         [ "ft::serv::server_channel", "classft_1_1serv_1_1server__channel.html", null ],
-        [ "ft::serv::stream_channel", "classft_1_1serv_1_1stream__channel.html", null ]
+        [ "ft::serv::stream_channel", "classft_1_1serv_1_1stream__channel.html", [
+          [ "ft::serv::file_channel", "classft_1_1serv_1_1file__channel.html", null ]
+        ] ]
       ] ]
     ] ],
     [ "ft::serv::errno_backup", "structft_1_1serv_1_1errno__backup.html", null ],
@@ -61,6 +63,7 @@ var hierarchy =
     [ "ft::serv::fast_dictionary< ident_t, ft::shared_ptr< event_channel_base > >", "structft_1_1serv_1_1fast__dictionary.html", null ],
     [ "ft::serv::fast_dictionary< std::string, ft::shared_ptr< ft::irc::channel > >", "structft_1_1serv_1_1fast__dictionary.html", null ],
     [ "ft::serv::fast_dictionary< std::string, std::string >", "structft_1_1serv_1_1fast__dictionary.html", null ],
+    [ "ft::serv::fast_dictionary< std::string, std::vector< std::string > >", "structft_1_1serv_1_1fast__dictionary.html", null ],
     [ "ft::serv::_internal::forward_reference< T >", "structft_1_1serv_1_1__internal_1_1forward__reference.html", null ],
     [ "ft::serv::_internal::forward_reference< const T & >", "structft_1_1serv_1_1__internal_1_1forward__reference_3_01const_01T_01_6_01_4.html", null ],
     [ "ft::serv::_internal::forward_reference< const volatile T & >", "structft_1_1serv_1_1__internal_1_1forward__reference_3_01const_01volatile_01T_01_6_01_4.html", null ],

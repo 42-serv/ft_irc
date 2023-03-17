@@ -7,6 +7,8 @@ var classft_1_1serv_1_1event__channel__base =
     [ "add_last_handler", "classft_1_1serv_1_1event__channel__base.html#a6df35e340206ef87113a0b95accb3e22", null ],
     [ "begin_read", "classft_1_1serv_1_1event__channel__base.html#a9e231903746fce1da12ced6da6d880d6", null ],
     [ "begin_write", "classft_1_1serv_1_1event__channel__base.html#a29c287e2466273e0a3b1ff273d8cf77d", null ],
+    [ "do_read", "classft_1_1serv_1_1event__channel__base.html#a37bc4e1ebc1574e89801995047ad1521", null ],
+    [ "do_write", "classft_1_1serv_1_1event__channel__base.html#ab550a6f77af79efdf43ebdfb988d6e82", null ],
     [ "finish", "classft_1_1serv_1_1event__channel__base.html#a740ea4b2227c767439a1eed355bc5a67", null ],
     [ "flush", "classft_1_1serv_1_1event__channel__base.html#a005268263635e2c6917efab0926d22e3", null ],
     [ "get_host", "classft_1_1serv_1_1event__channel__base.html#ab1164833db893b594207fdb5e1cfbec6", null ],

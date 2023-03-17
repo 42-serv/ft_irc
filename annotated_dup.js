@@ -65,6 +65,7 @@ var annotated_dup =
         [ "event_layer", "classft_1_1serv_1_1event__layer.html", "classft_1_1serv_1_1event__layer" ],
         [ "event_worker", "classft_1_1serv_1_1event__worker.html", "classft_1_1serv_1_1event__worker" ],
         [ "event_worker_group", "classft_1_1serv_1_1event__worker__group.html", "classft_1_1serv_1_1event__worker__group" ],
+        [ "file_channel", "classft_1_1serv_1_1file__channel.html", "classft_1_1serv_1_1file__channel" ],
         [ "logger", "structft_1_1serv_1_1logger.html", "structft_1_1serv_1_1logger" ],
         [ "logic_adapter", "classft_1_1serv_1_1logic__adapter.html", "classft_1_1serv_1_1logic__adapter" ],
         [ "object_decoder", "classft_1_1serv_1_1object__decoder.html", "classft_1_1serv_1_1object__decoder" ],
