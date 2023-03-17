@@ -231,7 +231,7 @@ namespace ft
                     // continue when match
                     if (pattern != pattern_str.end())
                     {
-                        if (*pattern == '\001')
+                        if (*pattern == '*')
                         {
                             // *
                             pattern_backup = pattern;
@@ -239,7 +239,7 @@ namespace ft
                             pattern++;
                             continue;
                         }
-                        else if (*pattern == '\002')
+                        else if (*pattern == '?')
                         {
                             // ?
                             if (name != name_str.end())
