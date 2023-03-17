@@ -86,24 +86,24 @@ namespace ft
                 return this->realname;
             }
 
-            void add_inviter(const std::string& channel, const std::string& inviter) throw()
+            void add_inviter(const std::string& channel, const std::string& inviter)
             {
                 this->inviters.insert(std::make_pair(channel, inviter));
             }
 
-            bool is_inviter(const std::string& channel, const std::string& inviter)
+            bool is_inviter(const std::string& channel, const std::string& inviter) const
             {
-                ft::irc::bot::inviter_dictionary::iterator it = this->inviters.find(channel);
+                ft::irc::bot::inviter_dictionary::const_iterator it = this->inviters.find(channel);
 
                 return it != this->inviters.end() && ft::irc::string_utils::is_same(it->second, inviter);
             }
 
-            void remove_inviter(const std::string& channel)
+            void remove_inviter(const std::string& channel) throw()
             {
                 this->inviters.erase(channel);
             }
 
-            const std::string find_channels(const std::string& sender) throw()
+            const std::string find_channels(const std::string& sender)
             {
                 std::vector<std::string> channels_to_remove;
 
@@ -147,7 +147,7 @@ namespace ft
             }
 
         public:
-            void send_auth(ft::serv::event_layer& layer)
+            void send_auth(ft::serv::event_layer& layer) const
             {
                 layer.post_write(ft::make_shared<ft::irc::message>(ft::irc::message("PASS") << this->get_pass()));
                 layer.post_write(ft::make_shared<ft::irc::message>(ft::irc::message("NICK") << this->get_nick()));
