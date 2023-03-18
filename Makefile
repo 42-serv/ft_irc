@@ -110,6 +110,8 @@ $(BONUS_TARGET): $(BONUS_OBJECTS)
 deps:
 	$(MAKE) -C $(LIBSERV)
 
-allre:
-	$(MAKE) -B -C $(LIBSERV)
-	$(MAKE) re
+depsre:
+	$(MAKE) -C $(LIBSERV) clean
+	$(MAKE) fclean
+	$(MAKE) -C $(LIBSERV)
+	$(MAKE)

@@ -194,26 +194,32 @@ namespace ft
                 int fildes[2];
                 if (::pipe(fildes) < 0)
                 {
-                    exit(EXIT_FAILURE); // FIXME error handling
+                    std::exit(EXIT_FAILURE);
                 }
 
                 ::pid_t pid = ::fork();
                 if (pid < 0)
                 {
-                    exit(EXIT_FAILURE); // FIXME error handling
+                    std::exit(EXIT_FAILURE);
                 }
                 if (pid == 0)
                 {
                     // child
-                    if (::close(fildes[STDIN_FILENO]) < 0 ||
-                        ::dup2(fildes[STDOUT_FILENO], STDOUT_FILENO) < 0 ||
-                        ::close(fildes[STDOUT_FILENO]) < 0 ||
-                        ::pipe(fildes) < 0 ||
-                        ::dup2(fildes[STDIN_FILENO], STDIN_FILENO) < 0 ||
-                        ::close(fildes[STDIN_FILENO]) < 0) // FIXME error handling
+                    ::close(fildes[STDIN_FILENO]);
+                    if (::dup2(fildes[STDOUT_FILENO], STDOUT_FILENO) < 0)
                     {
-                        exit(EXIT_FAILURE);
+                        std::exit(EXIT_FAILURE);
                     }
+                    ::close(fildes[STDOUT_FILENO]);
+                    if (::pipe(fildes) < 0)
+                    {
+                        std::exit(EXIT_FAILURE);
+                    }
+                    if (::dup2(fildes[STDIN_FILENO], STDIN_FILENO) < 0)
+                    {
+                        std::exit(EXIT_FAILURE);
+                    }
+                    ::close(fildes[STDIN_FILENO]);
 
                     const char* buf = text.c_str();
                     ::size_t len = text.length();
@@ -223,14 +229,15 @@ namespace ft
                         s = ::write(fildes[STDOUT_FILENO], buf, len);
                         if (s < 0)
                         {
-                            ::exit(EXIT_FAILURE);
+                            std::exit(EXIT_FAILURE);
                         }
                         buf += s;
                         len -= s;
                     } while (len != 0);
 
                     ::close(fildes[STDOUT_FILENO]);
-                    ::exit(::system(this->path.c_str()));
+                    int exit_status = ::system(this->path.c_str());
+                    std::exit(exit_status);
                 }
                 else
                 {
