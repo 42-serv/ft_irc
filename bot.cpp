@@ -192,17 +192,28 @@ namespace ft
                 }
 
                 int fildes[2];
-                ::pipe(fildes);
+                if (::pipe(fildes) < 0)
+                {
+                    exit(EXIT_FAILURE); // FIXME error handling
+                }
+
                 ::pid_t pid = ::fork();
+                if (pid < 0)
+                {
+                    exit(EXIT_FAILURE); // FIXME error handling
+                }
                 if (pid == 0)
                 {
                     // child
-                    ::dup2(fildes[STDOUT_FILENO], STDOUT_FILENO);
-                    ::close(fildes[STDIN_FILENO]);
-                    ::close(fildes[STDOUT_FILENO]);
-                    ::pipe(fildes);
-                    ::dup2(fildes[STDIN_FILENO], STDIN_FILENO);
-                    ::close(fildes[STDIN_FILENO]);
+                    if (::close(fildes[STDIN_FILENO]) < 0 ||
+                        ::dup2(fildes[STDOUT_FILENO], STDOUT_FILENO) < 0 ||
+                        ::close(fildes[STDOUT_FILENO]) < 0 ||
+                        ::pipe(fildes) < 0 ||
+                        ::dup2(fildes[STDIN_FILENO], STDIN_FILENO) < 0 ||
+                        ::close(fildes[STDIN_FILENO]) < 0) // FIXME error handling
+                    {
+                        exit(EXIT_FAILURE);
+                    }
 
                     const char* buf = text.c_str();
                     ::size_t len = text.length();
