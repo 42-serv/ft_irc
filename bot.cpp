@@ -339,7 +339,7 @@ namespace ft
                 foreach (ft::irc::message::param_vector::const_iterator, it, members)
                 {
                     std::string nick = *it;
-                    if (!nick.empty() && (nick.front() == '@' || nick.front() == '+'))
+                    if (!nick.empty() && (nick[0] == '@' || nick[0] == '+'))
                     {
                         nick.erase(0, 1);
                     }
