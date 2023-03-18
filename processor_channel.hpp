@@ -537,7 +537,7 @@ namespace ft
                     const ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channel_name);
                     if (channel)
                     {
-                        if (!force && !channel->load_mode(ft::irc::channel::CHANNEL_MODE_SECRET))
+                        if (!force && channel->load_mode(ft::irc::channel::CHANNEL_MODE_SECRET))
                         {
                             continue;
                         }
