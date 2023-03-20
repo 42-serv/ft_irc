@@ -73,7 +73,8 @@ var hierarchy =
     [ "ft::serv::logger", "structft_1_1serv_1_1logger.html", null ],
     [ "ft::irc::make_reply_base", "structft_1_1irc_1_1make__reply__base.html", [
       [ "ft::irc::make_error", "structft_1_1irc_1_1make__error.html", null ],
-      [ "ft::irc::make_reply", "structft_1_1irc_1_1make__reply.html", null ]
+      [ "ft::irc::make_reply", "structft_1_1irc_1_1make__reply.html", null ],
+      [ "ft::irc::make_welcome", "structft_1_1irc_1_1make__welcome.html", null ]
     ] ],
     [ "ft::irc::channel::member", "structft_1_1irc_1_1channel_1_1member.html", null ],
     [ "ft::irc::member_info", "structft_1_1irc_1_1member__info.html", null ],
@@ -98,6 +99,7 @@ var hierarchy =
       [ "ft::irc::processor_oper", "classft_1_1irc_1_1processor__oper.html", null ],
       [ "ft::irc::processor_part", "classft_1_1irc_1_1processor__part.html", null ],
       [ "ft::irc::processor_pass", "classft_1_1irc_1_1processor__pass.html", null ],
+      [ "ft::irc::processor_ping", "classft_1_1irc_1_1processor__ping.html", null ],
       [ "ft::irc::processor_quit", "classft_1_1irc_1_1processor__quit.html", null ],
       [ "ft::irc::processor_topic", "classft_1_1irc_1_1processor__topic.html", null ],
       [ "ft::irc::processor_user", "classft_1_1irc_1_1processor__user.html", null ],

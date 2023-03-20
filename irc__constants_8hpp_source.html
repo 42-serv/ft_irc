@@ -121,12 +121,62 @@ $(document).ready(function(){initNavTree('irc__constants_8hpp_source.html',''); 
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a5e4212450d42ff0a9c9cff397ce31e47">    6</a></span>&#160;<span class="preprocessor">#define FT_IRC_HARDWARE_CONCURRENCY 0</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a4a2aced98c802c75cefaba79b5a1fb63">    7</a></span>&#160;<span class="preprocessor">#define FT_IRC_MESSAGE_LINE_LIMIT 512</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a82d1146a3b72f9985c5c1f31ced2904e">    8</a></span>&#160;<span class="preprocessor">#define FT_IRC_MESSAGE_PARAM_LIMIT 15</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a8eab8d7446e080e346d7d83289518b2e">    9</a></span>&#160;<span class="preprocessor">#define FT_IRC_CHANNEL_LIMIT_PER_USER 10</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a952c1bdc67587612289d7abec8d47c37">   10</a></span>&#160;<span class="preprocessor">#define FT_IRC_NICK_LIMIT 9</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#aa86ae6704c7a7e22929d50af8b4fe9d2">   11</a></span>&#160;<span class="preprocessor">#define FT_IRC_CHANNEL_NAME_LIMIT 200</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">    6</a></span>&#160;<span class="preprocessor">#define XSTR(_s) STR(_s)</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a33a2c34e25afb1d95bee39a285395dce">    7</a></span>&#160;<span class="preprocessor">#define STR(_s) #_s</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a5e4212450d42ff0a9c9cff397ce31e47">    9</a></span>&#160;<span class="preprocessor">#define FT_IRC_HARDWARE_CONCURRENCY 0</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a4a2aced98c802c75cefaba79b5a1fb63">   10</a></span>&#160;<span class="preprocessor">#define FT_IRC_MESSAGE_LINE_LIMIT 512</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a82d1146a3b72f9985c5c1f31ced2904e">   11</a></span>&#160;<span class="preprocessor">#define FT_IRC_MESSAGE_PARAM_LIMIT 15</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a8eab8d7446e080e346d7d83289518b2e">   12</a></span>&#160;<span class="preprocessor">#define FT_IRC_CHANNEL_LIMIT_PER_USER 10</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#ab6c5c03e630616393c1af38a9622c344">   14</a></span>&#160;<span class="preprocessor">#define FT_IRC_UMODES &quot;oia&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a8870785a6e1cd36627247c1a12c68d3f">   15</a></span>&#160;<span class="preprocessor">#define FT_IRC_CMODES &quot;ospmtinbvlk&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#af99b913664ee5515af976957441f80c3">   17</a></span>&#160;<span class="preprocessor">#define FT_IRC_SERVER_NAME &quot;irc.v42.dev&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#af318046b52946195c2ca9732611d4c95">   18</a></span>&#160;<span class="preprocessor">#define FT_IRC_VERSION &quot;ft_irc-0.42&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a5a5eb9b2dc968dfc311b59f90e6dc7ae">   19</a></span>&#160;<span class="preprocessor">#define FT_IRC_OPERATOR_NAME &quot;admin&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a296f84d1b0557382605aacbff02e119b">   20</a></span>&#160;<span class="preprocessor">#define FT_IRC_OPERATOR_PASS &quot;password&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a58015948591333695f0dfbf91c774b56">   21</a></span>&#160;<span class="preprocessor">#define FT_IRC_ADD_ALL_MOTD(_ADD)                        \</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">    _ADD(&quot;Welcome to ft_irc server&quot;</span>);                    \</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    _ADD(&quot;This server was created for libserv example&quot;); \</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    _ADD(&quot;ENJOY!!&quot;);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a3bc1c8894176dc8ac4eab4856835085f">   26</a></span>&#160;<span class="preprocessor">#define FT_IRC_AWAYLEN 200</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#ab32d1b5a86d66d0e301614ab44d74fcb">   27</a></span>&#160;<span class="preprocessor">#define FT_IRC_CASEMAPPING &quot;rfc1459&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a6190947d3301605f89e74ca7a328cd4d">   28</a></span>&#160;<span class="preprocessor">#define FT_IRC_CHANLIMIT &quot;#:&quot;</span> XSTR(FT_IRC_CHANNEL_LIMIT_PER_USER)</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a5d8c50084d408f15c3c5c2930483789c">   29</a></span>&#160;<span class="preprocessor">#define FT_IRC_CHANMODES &quot;b,k,l,imnpst&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a981bb908207f826238bcc15d41e55496">   30</a></span>&#160;<span class="preprocessor">#define FT_IRC_CHANNELLEN 32</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a5053a5f6364c906908c61a56f4cd7fdd">   31</a></span>&#160;<span class="preprocessor">#define FT_IRC_CHANTYPES &quot;#&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a24c22f9e4e72e46fe8e1cc6fb074da96">   32</a></span>&#160;<span class="preprocessor">#define FT_IRC_HOSTLEN 64</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a47d7afefd879db9ef9fed08335b3fbe5">   33</a></span>&#160;<span class="preprocessor">#define FT_IRC_KICKLEN 255</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a994ff008dd460ca14f3bfd2c66de9f0d">   34</a></span>&#160;<span class="preprocessor">#define FT_IRC_MAXLIST &quot;b:25&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a4f00f0331306706c5f933c07958ab886">   35</a></span>&#160;<span class="preprocessor">#define FT_IRC_MAXTARGETS 4</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#ac58e9029b8d49a45aed999a8454404a5">   36</a></span>&#160;<span class="preprocessor">#define FT_IRC_MODES 4</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a013f1fd5525c790679d91e9ef3200e6f">   37</a></span>&#160;<span class="preprocessor">#define FT_IRC_NETWORK &quot;42&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a31dd3b1624af3572e8518f02e567ffe8">   38</a></span>&#160;<span class="preprocessor">#define FT_IRC_NICKLEN 9</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a50dc8df1bef1b91f7a9babc35218584d">   39</a></span>&#160;<span class="preprocessor">#define FT_IRC_PREFIX &quot;(ov)@+&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a4b7eac03f17f8633b43782c4791156fb">   40</a></span>&#160;<span class="preprocessor">#define FT_IRC_STATUSMSG &quot;@+&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#a230c776b58b4209b512c1f41280c62db">   41</a></span>&#160;<span class="preprocessor">#define FT_IRC_TOPICLEN 307</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="irc__constants_8hpp.html#ada6c62a26070cd4767a6981c4cb6ce08">   42</a></span>&#160;<span class="preprocessor">#define FT_IRC_USERLEN 10</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="bot_8cpp.html#a1a3fc1f065e736226d1d493fa3ac1c07">   44</a></span>&#160;<span class="preprocessor">#define FT_IRC_ADD_ALL_SUPPORT_PARAM(_ADD)       \</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">    _ADD(&quot;AWAYLEN=&quot;</span> XSTR(FT_IRC_AWAYLEN));       \</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    _ADD(&quot;CASEMAPPING=&quot; FT_IRC_CASEMAPPING);     \</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    _ADD(&quot;CHANLIMIT=&quot; FT_IRC_CHANLIMIT);         \</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    _ADD(&quot;CHANMODES=&quot; FT_IRC_CHANMODES);         \</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    _ADD(&quot;CHANNELLEN=&quot; XSTR(FT_IRC_CHANNELLEN)); \</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    _ADD(&quot;CHANTYPES=&quot; FT_IRC_CHANTYPES);         \</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    _ADD(&quot;HOSTLEN=&quot; XSTR(FT_IRC_HOSTLEN));       \</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    _ADD(&quot;KICKLEN=&quot; XSTR(FT_IRC_KICKLEN));       \</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    _ADD(&quot;MAXLIST=&quot; FT_IRC_MAXLIST);             \</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    _ADD(&quot;MAXTARGETS=&quot; XSTR(FT_IRC_MAXTARGETS)); \</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    _ADD(&quot;MODES=&quot; XSTR(FT_IRC_MODES));           \</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    _ADD(&quot;NETWORK=&quot; FT_IRC_NETWORK);             \</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    _ADD(&quot;NICKLEN=&quot; XSTR(FT_IRC_NICKLEN));       \</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    _ADD(&quot;PREFIX=&quot; FT_IRC_PREFIX);               \</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    _ADD(&quot;STATUSMSG=&quot; FT_IRC_STATUSMSG);         \</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    _ADD(&quot;TOPICLEN=&quot; XSTR(FT_IRC_TOPICLEN));     \</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    _ADD(&quot;USERLEN=&quot; XSTR(FT_IRC_USERLEN));\</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

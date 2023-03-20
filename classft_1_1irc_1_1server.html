@@ -156,6 +156,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5b8f9b83d37b40f6ee717fc93513e512"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af57f0524725c011c1acec98e84c0b474"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1server.html#af57f0524725c011c1acec98e84c0b474">make_motd_lines</a> () const  throw ()</td></tr>
 <tr class="separator:af57f0524725c011c1acec98e84c0b474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5435ea62d413547ab2b40893a1afcd66"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1server.html#a5435ea62d413547ab2b40893a1afcd66">make_support_params</a> () const  throw ()</td></tr>
+<tr class="separator:a5435ea62d413547ab2b40893a1afcd66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46bc08a8c1893493503351c013f733cc"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1server.html#a46bc08a8c1893493503351c013f733cc">get_pass</a> () const  throw ()</td></tr>
 <tr class="separator:a46bc08a8c1893493503351c013f733cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e7dee7efef3f36af15d1a3b97f3bad9"><td class="memItemLeft" align="right" valign="top">ft::shared_ptr&lt; <a class="el" href="classft_1_1irc_1_1channel.html">ft::irc::channel</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classft_1_1irc_1_1server.html#a0e7dee7efef3f36af15d1a3b97f3bad9">find_channel</a> (const std::string &amp;name) const  throw ()</td></tr>
@@ -376,6 +378,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="irc__constants_8hpp.html#a5a5eb9b2dc968dfc311b59f90e6dc7ae">FT_IRC_OPERATOR_NAME</a>, and <a class="el" href="irc__constants_8hpp.html#a296f84d1b0557382605aacbff02e119b">FT_IRC_OPERATOR_PASS</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -574,6 +578,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="irc__constants_8hpp.html#af99b913664ee5515af976957441f80c3">FT_IRC_SERVER_NAME</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -603,6 +609,33 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="irc__constants_8hpp.html#a58015948591333695f0dfbf91c774b56">FT_IRC_ADD_ALL_MOTD</a>.</p>
+
+</div>
+</div>
+<a id="a5435ea62d413547ab2b40893a1afcd66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5435ea62d413547ab2b40893a1afcd66">&#9670;&nbsp;</a></span>make_support_params()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; ft::irc::server::make_support_params </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+        <tr>
+          <td align="right">throw </td><td>(</td><td colspan="2"></td>
+        </tr>
+        <tr>
+          <td align="right"></td><td>)</td><td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="reference">References <a class="el" href="bot_8cpp.html#a1a3fc1f065e736226d1d493fa3ac1c07">FT_IRC_ADD_ALL_SUPPORT_PARAM</a>.</p>
 
 </div>
 </div>
@@ -788,7 +821,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="reference">References <a class="el" href="structft_1_1irc_1_1make__reply.html#ad65f94ea29a9d677937915bf6d92aed2">ft::irc::make_reply::end_of_motd()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a8b9bcf59a27ddd2ee02c3b46f3e7fe8d">ft::irc::make_reply::luser_channels()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a906cd29c737f934c0f9b89b13338dcde">ft::irc::make_reply::luser_client()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a5e821ad6544810b4534a631fd1957a2d">ft::irc::make_reply::luser_me()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a6f79a81e7858f8037bb0b092bfb2a503">ft::irc::make_reply::luser_operator()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#ab165b755476a24be73f951eb4c228cca">ft::irc::make_reply::luser_unknown()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a09ef279f20aef8d899a8a1f6e1f843c8">ft::irc::make_reply::motd()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#ac487f0bab92e860c91305ed0b7f02dbe">ft::irc::make_reply::motd_start()</a>, <a class="el" href="structft_1_1irc_1_1make__error.html#ab15f6ba737319065faa48589151ce227">ft::irc::make_error::no_motd()</a>, <a class="el" href="classft_1_1irc_1_1user.html#a1db558d6d694ca943224c2440fe36c50">ft::irc::user::send_message()</a>, <a class="el" href="classft_1_1irc_1_1user.html#a00f58c5bbcf52483e4a5c8ffdef72bf1a63798c6dc4621429e62765841b875f4d">ft::irc::user::USER_MODE_INVISIBLE</a>, and <a class="el" href="classft_1_1irc_1_1user.html#a00f58c5bbcf52483e4a5c8ffdef72bf1a961dd6b27c814dd19e2bc902c0b15c43">ft::irc::user::USER_MODE_OPERATOR</a>.</p>
+<p class="reference">References <a class="el" href="server_8cpp.html#a0dfedb23f996daa2ad3724298d0437ca">_human_readable_datetime()</a>, <a class="el" href="structft_1_1irc_1_1make__welcome.html#afebc98d586844eb7ca6bde82cd9869b6">ft::irc::make_welcome::created()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#ad65f94ea29a9d677937915bf6d92aed2">ft::irc::make_reply::end_of_motd()</a>, <a class="el" href="irc__constants_8hpp.html#a8870785a6e1cd36627247c1a12c68d3f">FT_IRC_CMODES</a>, <a class="el" href="irc__constants_8hpp.html#a013f1fd5525c790679d91e9ef3200e6f">FT_IRC_NETWORK</a>, <a class="el" href="irc__constants_8hpp.html#ab6c5c03e630616393c1af38a9622c344">FT_IRC_UMODES</a>, <a class="el" href="irc__constants_8hpp.html#af318046b52946195c2ca9732611d4c95">FT_IRC_VERSION</a>, <a class="el" href="structft_1_1irc_1_1make__welcome.html#ae8a46197564564a8cfae7f34838c2f40">ft::irc::make_welcome::i_support()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a8b9bcf59a27ddd2ee02c3b46f3e7fe8d">ft::irc::make_reply::luser_channels()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a906cd29c737f934c0f9b89b13338dcde">ft::irc::make_reply::luser_client()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a5e821ad6544810b4534a631fd1957a2d">ft::irc::make_reply::luser_me()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a6f79a81e7858f8037bb0b092bfb2a503">ft::irc::make_reply::luser_operator()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#ab165b755476a24be73f951eb4c228cca">ft::irc::make_reply::luser_unknown()</a>, <a class="el" href="classft_1_1irc_1_1user.html#a7406ed193e13a3c39ee16c9ac7a8b16e">ft::irc::user::make_full_name()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#a09ef279f20aef8d899a8a1f6e1f843c8">ft::irc::make_reply::motd()</a>, <a class="el" href="structft_1_1irc_1_1make__reply.html#ac487f0bab92e860c91305ed0b7f02dbe">ft::irc::make_reply::motd_start()</a>, <a class="el" href="structft_1_1irc_1_1make__welcome.html#acb1b6ebc0ae8bee31fe7bdc4b02de3df">ft::irc::make_welcome::my_info()</a>, <a class="el" href="structft_1_1irc_1_1make__error.html#ab15f6ba737319065faa48589151ce227">ft::irc::make_error::no_motd()</a>, <a class="el" href="classft_1_1irc_1_1user.html#a1db558d6d694ca943224c2440fe36c50">ft::irc::user::send_message()</a>, <a class="el" href="classft_1_1irc_1_1user.html#a00f58c5bbcf52483e4a5c8ffdef72bf1a63798c6dc4621429e62765841b875f4d">ft::irc::user::USER_MODE_INVISIBLE</a>, <a class="el" href="classft_1_1irc_1_1user.html#a00f58c5bbcf52483e4a5c8ffdef72bf1a961dd6b27c814dd19e2bc902c0b15c43">ft::irc::user::USER_MODE_OPERATOR</a>, <a class="el" href="structft_1_1irc_1_1make__welcome.html#a2e8b475ae188c441466a2c2c1653330a">ft::irc::make_welcome::welcome()</a>, and <a class="el" href="structft_1_1irc_1_1make__welcome.html#a7cc313384202b05f24a38ae5407b8a41">ft::irc::make_welcome::your_host()</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

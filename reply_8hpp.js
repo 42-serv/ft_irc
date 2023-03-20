@@ -1,6 +1,7 @@
 var reply_8hpp =
 [
     [ "make_reply_base", "structft_1_1irc_1_1make__reply__base.html", "structft_1_1irc_1_1make__reply__base" ],
+    [ "make_welcome", "structft_1_1irc_1_1make__welcome.html", "structft_1_1irc_1_1make__welcome" ],
     [ "make_error", "structft_1_1irc_1_1make__error.html", "structft_1_1irc_1_1make__error" ],
     [ "person_info", "structft_1_1irc_1_1person__info.html", "structft_1_1irc_1_1person__info" ],
     [ "channel_info", "structft_1_1irc_1_1channel__info.html", "structft_1_1irc_1_1channel__info" ],

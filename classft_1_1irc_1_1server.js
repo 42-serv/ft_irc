@@ -16,6 +16,7 @@ var classft_1_1irc_1_1server =
     [ "hold_nick", "classft_1_1irc_1_1server.html#ab534369c5d538fbf60852889a7d8127b", null ],
     [ "make_full_name", "classft_1_1irc_1_1server.html#a5b8f9b83d37b40f6ee717fc93513e512", null ],
     [ "make_motd_lines", "classft_1_1irc_1_1server.html#af57f0524725c011c1acec98e84c0b474", null ],
+    [ "make_support_params", "classft_1_1irc_1_1server.html#a5435ea62d413547ab2b40893a1afcd66", null ],
     [ "operator=", "classft_1_1irc_1_1server.html#a53f13b64c903d9dc9f61a67db07fedba", null ],
     [ "register_user", "classft_1_1irc_1_1server.html#a9bd0c0f5521a9d823a4d097099ebe4da", null ],
     [ "release_nick", "classft_1_1irc_1_1server.html#a2f4c8826af7867f18ed67c1b9dabf65f", null ],

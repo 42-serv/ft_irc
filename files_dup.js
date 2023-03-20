@@ -40,6 +40,7 @@ var files_dup =
       [ "processor_kick", "classft_1_1irc_1_1processor__kick.html", "classft_1_1irc_1_1processor__kick" ]
     ] ],
     [ "processor_misc.hpp", "processor__misc_8hpp.html", [
+      [ "processor_ping", "classft_1_1irc_1_1processor__ping.html", "classft_1_1irc_1_1processor__ping" ],
       [ "processor_kill", "classft_1_1irc_1_1processor__kill.html", "classft_1_1irc_1_1processor__kill" ],
       [ "processor_away", "classft_1_1irc_1_1processor__away.html", "classft_1_1irc_1_1processor__away" ],
       [ "processor_cap", "classft_1_1irc_1_1processor__cap.html", "classft_1_1irc_1_1processor__cap" ],
@@ -60,7 +61,7 @@ var files_dup =
     ] ],
     [ "reply.cpp", "reply_8cpp.html", null ],
     [ "reply.hpp", "reply_8hpp.html", "reply_8hpp" ],
-    [ "server.cpp", "server_8cpp.html", null ],
+    [ "server.cpp", "server_8cpp.html", "server_8cpp" ],
     [ "server.hpp", "server_8hpp.html", [
       [ "server", "classft_1_1irc_1_1server.html", "classft_1_1irc_1_1server" ]
     ] ],
