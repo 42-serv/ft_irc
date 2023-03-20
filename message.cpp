@@ -142,8 +142,7 @@ ft::irc::message::message()
 ft::irc::message::message(int command)
     : command(),
       prefix(),
-      params(),
-      end(false)
+      params()
 {
     std::ostringstream oss;
     oss << std::setfill('0') << std::setw(3) << std::dec << command; // %03d
@@ -155,8 +154,7 @@ ft::irc::message::message(int command)
 ft::irc::message::message(const std::string& command)
     : command(command),
       prefix(),
-      params(),
-      end(false)
+      params()
 {
     assert(_validate_command(this->command));
 }
@@ -164,8 +162,7 @@ ft::irc::message::message(const std::string& command)
 ft::irc::message::message(const std::string& prefix, const std::string& command, const param_vector& params)
     : command(command),
       prefix(prefix),
-      params(params),
-      end(true) // for recv
+      params(params)
 {
     assert(_validate_command(this->command));
 }
@@ -173,8 +170,7 @@ ft::irc::message::message(const std::string& prefix, const std::string& command,
 ft::irc::message::message(const message& that)
     : command(that.command),
       prefix(that.prefix),
-      params(that.params),
-      end(that.end)
+      params(that.params)
 {
 }
 
@@ -185,7 +181,6 @@ ft::irc::message& ft::irc::message::operator=(const message& that)
         this->command = that.command;
         this->prefix = that.prefix;
         this->params = that.params;
-        this->end = that.end;
     }
     return *this;
 }
@@ -240,19 +235,7 @@ std::size_t ft::irc::message::param_size() const
 
 void ft::irc::message::add_param(const std::string& param)
 {
-    if (this->end)
-    {
-        throw std::runtime_error("ended message builder");
-    }
-
     this->params.push_back(param);
-    this->end = param.find(' ') != std::string::npos;
-}
-
-void ft::irc::message::remove_all_param()
-{
-    this->params.clear();
-    this->end = false;
 }
 
 std::string ft::irc::message::to_string() const
@@ -265,7 +248,7 @@ std::string ft::irc::message::to_string() const
     oss << this->command;
     foreach (param_vector::const_iterator, it, this->params)
     {
-        oss << ((this->end && it + 1 == this->params.end()) ? " :" : " ") << *it;
+        oss << ((it->find(' ') != std::string::npos && it + 1 == this->params.end()) ? " :" : " ") << *it;
     }
     return oss.str();
 }

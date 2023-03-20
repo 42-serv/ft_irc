@@ -27,7 +27,6 @@ namespace ft
             std::string command;
             std::string prefix;
             param_vector params;
-            bool end;
 
         public:
             message();
@@ -54,7 +53,6 @@ namespace ft
 
             std::size_t param_size() const;
             void add_param(const std::string& param);
-            void remove_all_param();
 
             std::string to_string() const;
             std::string to_pretty_string() const;
