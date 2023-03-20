@@ -485,16 +485,18 @@ namespace ft
         private:
             void on_active(ft::serv::event_layer& layer)
             {
-                this->bot.send_auth(layer);
                 ft::serv::logger::debug("%s", __PRETTY_FUNCTION__);
+
+                this->bot.send_auth(layer);
             }
 
             void on_read(ft::serv::event_layer& layer, ft::shared_ptr<void> arg)
             {
                 ft::shared_ptr<ft::irc::message> message = ft::static_pointer_cast<ft::irc::message>(arg);
 
-                this->bot.on_packet(layer, *message);
                 ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, message->to_pretty_string().c_str());
+
+                this->bot.on_packet(layer, *message);
             }
 
             void on_read_complete(ft::serv::event_layer&)
@@ -504,8 +506,9 @@ namespace ft
 
             void on_error(ft::serv::event_layer& layer, ft::shared_ptr<const std::exception> eptr)
             {
-                layer.post_disconnect();
                 ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, eptr->what());
+
+                layer.post_disconnect();
             }
 
             void on_inactive(ft::serv::event_layer&)

@@ -19,12 +19,24 @@
 #include <utility>
 #include <vector>
 
+static std::string _human_readable_datetime()
+{
+    std::time_t time;
+    assert(std::time(&time) != static_cast<std::time_t>(-1));
+    ::tm t;
+    assert(::localtime_r(&time, &t) != null);
+    char time_str[sizeof("yyyy-mm-dd hh:mm:ss")];
+    assert(std::strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", &t) == sizeof(time_str) - sizeof('\0'));
+    return time_str;
+}
+
 ft::irc::server::server(const std::string& pass)
     : pass(pass),
       channels(),
       nicks(),
       users(),
-      lock()
+      lock(),
+      created_time(_human_readable_datetime())
 {
 }
 
@@ -148,17 +160,6 @@ void ft::irc::server::deregister_user(const ft::shared_ptr<ft::irc::user>& user)
     }
 }
 
-static std::string _human_readable_datetime()
-{
-    std::time_t time;
-    assert(std::time(&time) != static_cast<std::time_t>(-1));
-    ::tm t;
-    assert(::localtime_r(&time, &t) != null);
-    char time_str[sizeof("yyyy-mm-dd hh:mm:ss")];
-    assert(std::strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", &t) == sizeof(time_str) - sizeof('\0'));
-    return time_str;
-}
-
 void ft::irc::server::send_welcome(const ft::irc::user& user) const throw()
 {
     const std::string servername = this->make_full_name();
@@ -169,7 +170,7 @@ void ft::irc::server::send_welcome(const ft::irc::user& user) const throw()
 
     user.send_message(ft::irc::make_welcome::welcome("Welcome to the " FT_IRC_NETWORK " Network, " + user.make_full_name()));
     user.send_message(ft::irc::make_welcome::your_host("Your host is " + servername + ", running version " + version));
-    user.send_message(ft::irc::make_welcome::created("This server was created " + _human_readable_datetime()));
+    user.send_message(ft::irc::make_welcome::created("This server was created " + this->created_time));
     user.send_message(ft::irc::make_welcome::my_info(servername, version, umodes, cmodes));
 
     const std::size_t param_per_page = 13;

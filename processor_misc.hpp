@@ -89,6 +89,8 @@ namespace ft
         public:
             std::size_t get_min_params() const throw() { return 1; }
 
+            bool is_registered_only() const throw() { return false; }
+
             void execute(ft::irc::user& user, const ft::irc::message& message) const
             {
                 // ignore

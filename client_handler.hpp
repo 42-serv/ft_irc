@@ -34,21 +34,22 @@ namespace ft
         private:
             void on_active(ft::serv::event_layer& layer)
             {
+                ft::serv::logger::debug("%s", __PRETTY_FUNCTION__);
+
                 this->user = ft::make_shared<ft::irc::user>(this->server, layer.shared_from_channel());
                 if (this->server.get_pass().empty())
                 {
                     this->user->set_register_state(ft::irc::user::REGISTER_STATE_PASS, true);
                 }
-
-                ft::serv::logger::debug("%s", __PRETTY_FUNCTION__);
             }
 
             void on_read(ft::serv::event_layer&, ft::shared_ptr<void> arg)
             {
                 ft::shared_ptr<ft::irc::message> message = ft::static_pointer_cast<ft::irc::message>(arg);
-                ft::irc::processor_dictionary::execute(*this->user, *message);
 
                 ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, message->to_pretty_string().c_str());
+
+                ft::irc::processor_dictionary::execute(*this->user, *message);
             }
 
             void on_read_complete(ft::serv::event_layer&)
@@ -58,16 +59,16 @@ namespace ft
 
             void on_error(ft::serv::event_layer& layer, ft::shared_ptr<const std::exception> eptr)
             {
-                layer.post_disconnect();
-
                 ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, eptr->what());
+
+                layer.post_disconnect();
             }
 
             void on_inactive(ft::serv::event_layer&)
             {
-                this->user->deregister_from_server();
-
                 ft::serv::logger::debug("%s", __PRETTY_FUNCTION__);
+
+                this->user->deregister_from_server();
             }
         };
     }

@@ -37,6 +37,7 @@ namespace ft
             nick_set nicks;
             user_list users;
             mutable ft::readwrite_lock lock;
+            std::string created_time;
 
         public:
             server(const std::string& pass);

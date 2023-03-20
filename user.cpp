@@ -385,6 +385,8 @@ void ft::irc::user::send_message(const ft::irc::message& message) const
 {
     try
     {
+        ft::serv::logger::debug("%s : %s", __PRETTY_FUNCTION__, message.to_pretty_string().c_str());
+
         const ft::shared_ptr<ft::serv::event_layer>& layer = this->layer.lock();
         layer->post_write(ft::make_shared<ft::irc::message>(message));
         layer->post_flush();
