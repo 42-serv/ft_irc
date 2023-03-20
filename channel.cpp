@@ -293,9 +293,9 @@ void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
         user_list.reserve(user_per_page);
         foreach (member_list::const_iterator, it, this->members)
         {
-            if (it->user->load_mode(ft::irc::user::USER_MODE_INVISIBLE))
+            if (!force && !user_is_member)
             {
-                if (!force && !user_is_member)
+                if (it->user->load_mode(ft::irc::user::USER_MODE_INVISIBLE))
                 {
                     continue;
                 }
@@ -332,7 +332,7 @@ ft::irc::message ft::irc::channel::make_list_packet(bool force) const throw()
         std::size_t visible_count = 0;
         foreach (member_list::const_iterator, it, this->members)
         {
-            if (!it->user->load_mode(ft::irc::user::USER_MODE_INVISIBLE) || force)
+            if (force || !it->user->load_mode(ft::irc::user::USER_MODE_INVISIBLE))
             {
                 visible_count++;
             }

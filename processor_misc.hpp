@@ -24,7 +24,7 @@ namespace ft
         {
         public:
             std::size_t get_min_params() const throw() { return 2; }
-            std::size_t get_max_params() const throw() { return 3; }
+            std::size_t get_max_params() const throw() { return 2; }
 
             bool is_operator_only() const throw() { return true; }
 

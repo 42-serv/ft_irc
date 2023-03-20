@@ -537,11 +537,10 @@ namespace ft
                     const ft::shared_ptr<ft::irc::channel> channel = server.find_channel(channel_name);
                     if (channel)
                     {
-                        if (!force && channel->load_mode(ft::irc::channel::CHANNEL_MODE_SECRET))
+                        if (force || !channel->load_mode(ft::irc::channel::CHANNEL_MODE_SECRET))
                         {
-                            continue;
+                            channel->send_names(user);
                         }
-                        channel->send_names(user);
                     }
                 }
             }
@@ -557,11 +556,7 @@ namespace ft
                 ft::irc::server& server = user.get_server();
 
                 ft::irc::message::param_vector channel_names;
-                if (message.param_size() == this->get_min_params())
-                {
-                    channel_names = user.channel_names_snapshot();
-                }
-                else
+                if (message.param_size() != this->get_min_params())
                 {
                     channel_names = ft::irc::message::split(message[0], ',');
                 }

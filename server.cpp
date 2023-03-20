@@ -211,9 +211,10 @@ void ft::irc::server::send_list(const ft::irc::user& user, const ft::irc::messag
             {
                 const ft::shared_ptr<ft::irc::channel>& channel = it->second;
                 const bool user_is_member = user.is_channel_member(channel->get_name());
-                if (force || user_is_member || (!channel->load_mode(ft::irc::channel::CHANNEL_MODE_SECRET) && !channel->load_mode(ft::irc::channel::CHANNEL_MODE_PRIVATE)))
+                const bool public_channel = !channel->load_mode(ft::irc::channel::CHANNEL_MODE_SECRET) && !channel->load_mode(ft::irc::channel::CHANNEL_MODE_PRIVATE);
+                if (force || user_is_member || public_channel)
                 {
-                    messages.push_back(channel->make_list_packet(force));
+                    messages.push_back(channel->make_list_packet(force || user_is_member));
                 }
             }
         }
