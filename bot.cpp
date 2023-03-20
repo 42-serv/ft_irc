@@ -3,7 +3,6 @@
 
 #include "irc_constants.hpp"
 
-#include "libserv/serv_types.hpp"
 #include "message.hpp"
 #include "message_decoder.hpp"
 #include "message_encoder.hpp"
@@ -15,13 +14,16 @@
 #include <libserv/libserv.hpp>
 #include <smart_ptr/smart_ptr.hpp>
 
+#include <unistd.h>
+
 #include <cctype>
 #include <csignal>
 #include <cstdlib>
 #include <sstream>
 #include <string>
-#include <unistd.h>
 #include <vector>
+
+ft::shared_ptr<ft::serv::event_worker_group> child_group;
 
 namespace ft
 {
@@ -510,7 +512,7 @@ namespace ft
             {
                 ft::serv::logger::debug("%s", __PRETTY_FUNCTION__);
 
-                std::exit(EXIT_SUCCESS);
+                child_group->shutdown_all();
             }
         };
 
@@ -526,8 +528,6 @@ namespace ft
         }
     }
 }
-
-ft::shared_ptr<ft::serv::event_worker_group> child_group;
 
 static void _on_signal(int signo)
 {
