@@ -46,7 +46,7 @@ if (edges && edges.length) {
         </defs>
 
 <script type="text/javascript">
-var viewWidth = 300;
+var viewWidth = 772;
 var viewHeight = 755;
 var sectionId = 'dynsection-2';
 </script>
@@ -54,7 +54,7 @@ var sectionId = 'dynsection-2';
 <svg id="graph" class="graph">
 <g id="viewport">
 <title>ft::irc::processor_topic::execute</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-750.5 296,-750.5 296,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-750.5 768,-750.5 768,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
@@ -287,37 +287,116 @@ var sectionId = 'dynsection-2';
 <path fill="none" stroke="midnightblue" d="M49.32,-357.47C52.38,-316.32 66.57,-200.76 131,-138.5 137.21,-132.5 144.84,-127.94 152.89,-124.48"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="154.34,-127.67 162.48,-120.89 151.89,-121.11 154.34,-127.67"/>
 </g>
-<!-- Node16 -->
-<g id="node16" class="node">
-<title>Node16</title>
-<g id="a_node16"><a xlink:href="classft_1_1irc_1_1channel.html#af0e04d9734c31d48b59a4b515787f0db" target="_top" xlink:title=" ">
+<!-- Node21 -->
+<g id="node21" class="node">
+<title>Node21</title>
+<g id="a_node21"><a xlink:href="classft_1_1irc_1_1channel.html#af0e04d9734c31d48b59a4b515787f0db" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="153.5,-49.5 153.5,-79.5 269.5,-79.5 269.5,-49.5 153.5,-49.5"/>
 <text text-anchor="start" x="161.5" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::channel::store</text>
 <text text-anchor="middle" x="211.5" y="-56.5" font-family="Helvetica,sans-Serif" font-size="10.00">_topic</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node16 -->
-<g id="edge15" class="edge">
-<title>Node1&#45;&gt;Node16</title>
+<!-- Node1&#45;&gt;Node21 -->
+<g id="edge20" class="edge">
+<title>Node1&#45;&gt;Node21</title>
 <path fill="none" stroke="midnightblue" d="M48.25,-357.49C48.3,-310.9 54.91,-167.2 131,-89.5 134.86,-85.56 139.33,-82.24 144.15,-79.44"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="145.76,-82.55 153.14,-74.94 142.63,-76.29 145.76,-82.55"/>
 </g>
-<!-- Node17 -->
-<g id="node17" class="node">
-<title>Node17</title>
-<g id="a_node17"><a xlink:href="structft_1_1irc_1_1make__reply.html#a39ce3be333c36d7d0ce54cfc7ef59451" target="_top" xlink:title=" ">
+<!-- Node22 -->
+<g id="node22" class="node">
+<title>Node22</title>
+<g id="a_node22"><a xlink:href="structft_1_1irc_1_1make__reply.html#a39ce3be333c36d7d0ce54cfc7ef59451" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="159.5,-0.5 159.5,-30.5 263.5,-30.5 263.5,-0.5 159.5,-0.5"/>
 <text text-anchor="start" x="167.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::make_reply</text>
 <text text-anchor="middle" x="211.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">::topic</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node17 -->
+<!-- Node1&#45;&gt;Node22 -->
+<g id="edge21" class="edge">
+<title>Node1&#45;&gt;Node22</title>
+<path fill="none" stroke="midnightblue" d="M50.26,-357.41C57.37,-298.78 85.85,-86.98 131,-39.5 136.26,-33.97 142.74,-29.7 149.72,-26.41"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="151.49,-29.47 159.47,-22.49 148.89,-22.97 151.49,-29.47"/>
+</g>
+<!-- Node16 -->
+<g id="node16" class="node">
+<title>Node16</title>
+<g id="a_node16"><a xlink:href="structft_1_1serv_1_1logger.html#a83649a4f3bb804c8fed6dfd130de5ee6" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="328,-126 328,-145 450,-145 450,-126 328,-126"/>
+<text text-anchor="middle" x="389" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::logger::debug</text>
+</a>
+</g>
+</g>
+<!-- Node15&#45;&gt;Node16 -->
+<g id="edge15" class="edge">
+<title>Node15&#45;&gt;Node16</title>
+<path fill="none" stroke="midnightblue" d="M260.92,-119.57C278.47,-121.77 298.65,-124.3 317.7,-126.69"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="317.48,-130.19 327.84,-127.96 318.35,-123.24 317.48,-130.19"/>
+</g>
+<!-- Node20 -->
+<g id="node20" class="node">
+<title>Node20</title>
+<g id="a_node20"><a xlink:href="classft_1_1irc_1_1message.html#a076fdbb740cb752dd153e207f076183a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="335.5,-76.5 335.5,-106.5 442.5,-106.5 442.5,-76.5 335.5,-76.5"/>
+<text text-anchor="start" x="343.5" y="-94.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::irc::message::to</text>
+<text text-anchor="middle" x="389" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">_pretty_string</text>
+</a>
+</g>
+</g>
+<!-- Node15&#45;&gt;Node20 -->
+<g id="edge19" class="edge">
+<title>Node15&#45;&gt;Node20</title>
+<path fill="none" stroke="midnightblue" d="M260.92,-107.43C280.8,-104.94 304.08,-102.02 325.24,-99.37"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="325.94,-102.81 335.43,-98.09 325.07,-95.86 325.94,-102.81"/>
+</g>
+<!-- Node17 -->
+<g id="node17" class="node">
+<title>Node17</title>
+<g id="a_node17"><a xlink:href="namespaceft_1_1serv_1_1__internal.html#a4dfb80be7b817fc0ee18658f313a6274" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="486,-120.5 486,-150.5 584,-150.5 584,-120.5 486,-120.5"/>
+<text text-anchor="start" x="494" y="-138.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::_internal</text>
+<text text-anchor="middle" x="535" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00">::print</text>
+</a>
+</g>
+</g>
+<!-- Node16&#45;&gt;Node17 -->
 <g id="edge16" class="edge">
-<title>Node1&#45;&gt;Node17</title>
-<path fill="none" stroke="midnightblue" d="M50.28,-357.47C57.48,-299.07 86.24,-88.09 131,-40.5 136.37,-34.79 143.02,-30.38 150.17,-26.98"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="151.52,-30.21 159.45,-23.17 148.87,-23.73 151.52,-30.21"/>
+<title>Node16&#45;&gt;Node17</title>
+<path fill="none" stroke="midnightblue" d="M450.23,-135.5C458.67,-135.5 467.33,-135.5 475.73,-135.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="475.82,-139 485.82,-135.5 475.82,-132 475.82,-139"/>
+</g>
+<!-- Node18 -->
+<g id="node18" class="node">
+<title>Node18</title>
+<g id="a_node18"><a xlink:href="namespaceft_1_1serv_1_1__internal.html#aff49349b58dc84fa69076e9cd27a1db4" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="620,-145.5 620,-175.5 764,-175.5 764,-145.5 620,-145.5"/>
+<text text-anchor="start" x="628" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::_internal</text>
+<text text-anchor="middle" x="692" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00">::make_format_string_line</text>
+</a>
+</g>
+</g>
+<!-- Node17&#45;&gt;Node18 -->
+<g id="edge17" class="edge">
+<title>Node17&#45;&gt;Node18</title>
+<path fill="none" stroke="midnightblue" d="M584.19,-143.27C592.39,-144.6 601.11,-146 609.88,-147.42"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="609.36,-150.88 619.79,-149.01 610.48,-143.97 609.36,-150.88"/>
+</g>
+<!-- Node19 -->
+<g id="node19" class="node">
+<title>Node19</title>
+<g id="a_node19"><a xlink:href="namespaceft_1_1serv_1_1__internal.html#aad4af39d62c2b1687b0bef7a91bf6c60" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="640.5,-96.5 640.5,-126.5 743.5,-126.5 743.5,-96.5 640.5,-96.5"/>
+<text text-anchor="start" x="648.5" y="-114.5" font-family="Helvetica,sans-Serif" font-size="10.00">ft::serv::_internal</text>
+<text text-anchor="middle" x="692" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00">::make_utc_string</text>
+</a>
+</g>
+</g>
+<!-- Node17&#45;&gt;Node19 -->
+<g id="edge18" class="edge">
+<title>Node17&#45;&gt;Node19</title>
+<path fill="none" stroke="midnightblue" d="M584.19,-128.04C598.85,-125.77 615.14,-123.25 630.49,-120.87"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="631.08,-124.32 640.42,-119.33 630.01,-117.4 631.08,-124.32"/>
 </g>
 </g>
 </svg>

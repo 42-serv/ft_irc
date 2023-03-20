@@ -24,6 +24,7 @@ var classft_1_1irc_1_1server =
     [ "send_list", "classft_1_1irc_1_1server.html#a3f4e06d5a9cf57441582f77b95f87135", null ],
     [ "send_welcome", "classft_1_1irc_1_1server.html#a5ecd192da409f6740de44ea8cb3b44cf", null ],
     [ "channels", "classft_1_1irc_1_1server.html#a583f8a997b75f885d6da691fa1c7f51a", null ],
+    [ "created_time", "classft_1_1irc_1_1server.html#a4a17ef4400fb849637e867e6e8100e1d", null ],
     [ "lock", "classft_1_1irc_1_1server.html#a912d34238623061ad44289aa84119387", null ],
     [ "nicks", "classft_1_1irc_1_1server.html#a06242c53cf587417b6cd4bd0db6194a9", null ],
     [ "pass", "classft_1_1irc_1_1server.html#a5928f776266633202d38b2706de38379", null ],

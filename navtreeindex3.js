@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"functions_func.html":[4,3,1],
+"functions_func_b.html":[4,3,1,1],
 "functions_func_c.html":[4,3,1,2],
 "functions_func_d.html":[4,3,1,3],
 "functions_func_e.html":[4,3,1,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX3 =
 "socket__utils_8hpp_source.html":[5,0,0,0,33],
 "stream__channel_8cpp.html":[5,0,0,0,34],
 "stream__channel_8hpp.html":[5,0,0,0,35],
-"stream__channel_8hpp_source.html":[5,0,0,0,35],
-"string__line__decoder_8hpp.html":[5,0,23],
-"string__line__decoder_8hpp_source.html":[5,0,23]
+"stream__channel_8hpp_source.html":[5,0,0,0,35]
 };

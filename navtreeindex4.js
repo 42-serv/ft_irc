@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"string__line__decoder_8hpp.html":[5,0,23],
+"string__line__decoder_8hpp_source.html":[5,0,23],
 "string__line__encoder_8hpp.html":[5,0,24],
 "string__line__encoder_8hpp_source.html":[5,0,24],
 "string__utils_8hpp.html":[5,0,25],
@@ -247,7 +249,5 @@ var NAVTREEINDEX4 =
 "structft_1_1serv_1_1unique__set.html#a4beff219f6b393aa3b1bdd57a8780be3":[4,0,0,1,21,0],
 "task__base_8cpp.html":[5,0,0,0,36],
 "task__base_8hpp.html":[5,0,0,0,37],
-"task__base_8hpp.html#a1f89ee119857d85a28d5f0f36eb4c595":[5,0,0,0,37,9],
-"task__base_8hpp.html#a29f78388ae7583030bb1e4ae3e5c0edd":[5,0,0,0,37,13],
-"task__base_8hpp.html#a6e165b8418b1a36cb2e61976eee756cc":[5,0,0,0,37,7]
+"task__base_8hpp.html#a1f89ee119857d85a28d5f0f36eb4c595":[5,0,0,0,37,9]
 };
