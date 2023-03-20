@@ -18,6 +18,13 @@
 
 #define IRC_REP_MAP(_MACRO)           \
                                       \
+    /* Welcome Bursts */              \
+    _MACRO(001, RPL_WELCOME)          \
+    _MACRO(002, RPL_YOURHOST)         \
+    _MACRO(003, RPL_CREATED)          \
+    _MACRO(004, RPL_MYINFO)           \
+    _MACRO(005, RPL_ISUPPORT)         \
+                                      \
     /* Error Replies */               \
     _MACRO(401, ERR_NOSUCHNICK)       \
     _MACRO(402, ERR_NOSUCHSERVER)     \
@@ -182,6 +189,41 @@ namespace ft
             static void set_server_name(const std::string& str);
             static void set_user_name(const std::string& str);
             static void set_user_nick(const std::string& str);
+        };
+
+        struct make_welcome : make_reply_base
+        {
+            static inline ft::irc::message welcome(param_t msg)
+            {
+                return ft::irc::message(RPL_WELCOME) >> *my_server_name << *my_user_nick << msg;
+            }
+
+            static inline ft::irc::message your_host(param_t msg)
+            {
+                return ft::irc::message(RPL_YOURHOST) >> *my_server_name << *my_user_nick << msg;
+            }
+
+            static inline ft::irc::message created(param_t msg)
+            {
+                return ft::irc::message(RPL_CREATED) >> *my_server_name << *my_user_nick << msg;
+            }
+
+            static inline ft::irc::message my_info(param_t servername, param_t version, param_t umodes, param_t cmodes)
+            {
+                return ft::irc::message(RPL_MYINFO) >> *my_server_name << *my_user_nick << servername << version << umodes << cmodes;
+            }
+
+            static inline ft::irc::message i_support(std::vector<std::string>::const_iterator params, std::vector<std::string>::const_iterator params_end)
+            {
+                ft::irc::message message(RPL_ISUPPORT);
+                message >> *my_server_name << *my_user_nick;
+                for (; params != params_end; ++params)
+                {
+                    message << *params;
+                }
+                message << "are supported by this server";
+                return message;
+            }
         };
 
         struct make_error : make_reply_base

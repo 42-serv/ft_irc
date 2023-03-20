@@ -45,6 +45,7 @@ namespace ft
         public:
             std::string make_full_name() const throw();
             std::vector<std::string> make_motd_lines() const throw();
+            std::vector<std::string> make_support_params() const throw();
             const std::string& get_pass() const throw();
 
             ft::shared_ptr<ft::irc::channel> find_channel(const std::string& name) const throw();

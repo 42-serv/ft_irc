@@ -85,6 +85,7 @@ void ft::irc::processor_dictionary::init()
     _INSERT_PROCESSOR(notice);
 
     // misc
+    _INSERT_PROCESSOR(ping);
     _INSERT_PROCESSOR(kill);
     _INSERT_PROCESSOR(away);
     _INSERT_PROCESSOR(cap);

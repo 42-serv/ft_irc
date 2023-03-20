@@ -18,6 +18,20 @@ namespace ft
 {
     namespace irc
     {
+        // Command: PING
+        // Parameters: <token>
+        class processor_ping : public ft::irc::processor_base
+        {
+        public:
+            std::size_t get_min_params() const throw() { return 1; }
+
+            void execute(ft::irc::user& user, const ft::irc::message& message) const
+            {
+                const std::string& token = message[0];
+                user.send_message(ft::irc::make_reply::create("PONG") << token);
+            }
+        };
+
         // Command: KILL
         // Parameters: <nickname> <comment>
         class processor_kill : public ft::irc::processor_base

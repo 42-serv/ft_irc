@@ -97,7 +97,7 @@ namespace ft
                 {
                     return false;
                 }
-                if (nick.length() > FT_IRC_NICK_LIMIT)
+                if (nick.length() > FT_IRC_NICKLEN)
                 {
                     return false;
                 }
@@ -137,7 +137,7 @@ namespace ft
                 {
                     return false;
                 }
-                if (channelname.length() > FT_IRC_CHANNEL_NAME_LIMIT)
+                if (channelname.length() > FT_IRC_CHANNELLEN)
                 {
                     return false;
                 }

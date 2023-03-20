@@ -14,6 +14,7 @@
 #include "string_utils.hpp"
 #include "user.hpp"
 
+#include <cstddef>
 #include <string>
 #include <utility>
 #include <vector>
@@ -35,7 +36,7 @@ std::string ft::irc::server::make_full_name() const throw()
 {
     synchronized (this->lock.get_read_lock())
     {
-        return "irc.v42.dev";
+        return FT_IRC_SERVER_NAME;
     }
 }
 
@@ -44,10 +45,18 @@ std::vector<std::string> ft::irc::server::make_motd_lines() const throw()
     synchronized (this->lock.get_read_lock())
     {
         std::vector<std::string> motd;
-        motd.push_back("Welcome to ft_irc server");
-        motd.push_back("This server was created for libserv example");
-        motd.push_back("ENJOY!!");
+        FT_IRC_ADD_ALL_MOTD(motd.push_back);
         return motd;
+    }
+}
+
+std::vector<std::string> ft::irc::server::make_support_params() const throw()
+{
+    synchronized (this->lock.get_read_lock())
+    {
+        std::vector<std::string> params;
+        FT_IRC_ADD_ALL_SUPPORT_PARAM(params.push_back);
+        return params;
     }
 }
 
@@ -139,8 +148,47 @@ void ft::irc::server::deregister_user(const ft::shared_ptr<ft::irc::user>& user)
     }
 }
 
+static std::string _human_readable_datetime()
+{
+    std::time_t time;
+    assert(std::time(&time) != static_cast<std::time_t>(-1));
+    ::tm t;
+    assert(::localtime_r(&time, &t) != null);
+    char time_str[sizeof("yyyy-mm-dd hh:mm:ss")];
+    assert(std::strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", &t) == sizeof(time_str) - sizeof('\0'));
+    return time_str;
+}
+
 void ft::irc::server::send_welcome(const ft::irc::user& user) const throw()
 {
+    const std::string servername = this->make_full_name();
+    const std::string& version = FT_IRC_VERSION;
+    const std::string& umodes = FT_IRC_UMODES;
+    const std::string& cmodes = FT_IRC_CMODES;
+    const std::vector<std::string> support_params = this->make_support_params();
+
+    user.send_message(ft::irc::make_welcome::welcome("Welcome to the " FT_IRC_NETWORK " Network, " + user.make_full_name()));
+    user.send_message(ft::irc::make_welcome::your_host("Your host is " + servername + ", running version " + version));
+    user.send_message(ft::irc::make_welcome::created("This server was created " + _human_readable_datetime()));
+    user.send_message(ft::irc::make_welcome::my_info(servername, version, umodes, cmodes));
+
+    const std::size_t param_per_page = 13;
+    std::size_t count = support_params.size() / param_per_page + !!(support_params.size() % param_per_page);
+    for (std::size_t i = 0; i < count; i++)
+    {
+        std::vector<std::string>::const_iterator begin = support_params.begin() + i * param_per_page;
+        std::vector<std::string>::const_iterator end;
+        if (static_cast<std::size_t>(support_params.end() - begin) < param_per_page)
+        {
+            end = support_params.end();
+        }
+        else
+        {
+            end = begin + param_per_page;
+        }
+        user.send_message(ft::irc::make_welcome::i_support(begin, end));
+    }
+
     int user_count = 0;
     int invisible_count = 0;
     int server_count = 0;
@@ -255,11 +303,11 @@ void ft::irc::server::broadcast_all(const ft::irc::message& message, ft::shared_
 
 ft::irc::reply_numerics ft::irc::server::check_signature(const std::string& user, const std::string& pass) const
 {
-    if (user != "admin") // TODO: load O-line failed
+    if (user != FT_IRC_OPERATOR_NAME)
     {
         return ft::irc::ERR_NOOPERHOST;
     }
-    if (pass != "password") // TODO: check password failed
+    if (pass != FT_IRC_OPERATOR_PASS)
     {
         return ft::irc::ERR_PASSWDMISMATCH;
     }
