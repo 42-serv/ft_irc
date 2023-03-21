@@ -254,6 +254,7 @@ void ft::irc::channel::leave_user(const ft::irc::user& user)
             return;
         }
         const bool owner = it->mode[member::MEMBER_MODE_OWNER];
+        const bool oper = it->mode[member::MEMBER_MODE_OPERATOR];
         this->members.erase(it);
         if (this->members.empty())
         {
@@ -264,8 +265,12 @@ void ft::irc::channel::leave_user(const ft::irc::user& user)
         {
             member& successor = this->members.front();
             successor.mode[member::MEMBER_MODE_OWNER] = true;
-            successor.mode[member::MEMBER_MODE_OPERATOR] = true;
-            reop_member_name = successor.user->load_nick();
+            const bool successor_oper = successor.mode[member::MEMBER_MODE_OPERATOR];
+            if (oper && !successor_oper)
+            {
+                successor.mode[member::MEMBER_MODE_OPERATOR] = true;
+                reop_member_name = successor.user->load_nick();
+            }
         }
     }
     if (remove)
