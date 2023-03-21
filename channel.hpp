@@ -116,9 +116,9 @@ namespace ft
             ft::irc::reply_numerics enter_user(ft::irc::user& user, const std::string& key);
             void leave_user(const ft::irc::user& user);
 
-            void send_names(const ft::irc::user& user) const throw();
-            ft::irc::message make_list_packet(bool force) const throw();
-            void send_ban_list(const ft::irc::user& user) const throw();
+            void send_names(const ft::irc::user& user) const;
+            ft::irc::message make_list_packet(bool force) const;
+            void send_ban_list(const ft::irc::user& user) const;
 
         public:
             void broadcast(const ft::irc::message& message, const ft::irc::user* except = null) const;
