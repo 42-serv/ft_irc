@@ -58,5 +58,4 @@
     _ADD("PREFIX=" FT_IRC_PREFIX);               \
     _ADD("STATUSMSG=" FT_IRC_STATUSMSG);         \
     _ADD("TOPICLEN=" XSTR(FT_IRC_TOPICLEN));     \
-    _ADD("USERLEN=" XSTR(FT_IRC_USERLEN));\
-
+    _ADD("USERLEN=" XSTR(FT_IRC_USERLEN));
