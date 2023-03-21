@@ -278,7 +278,7 @@ void ft::irc::channel::leave_user(const ft::irc::user& user)
     }
 }
 
-void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
+void ft::irc::channel::send_names(const ft::irc::user& user) const
 {
     const std::string& channel_name = this->get_name();
     const bool force = user.load_mode(ft::irc::user::USER_MODE_OPERATOR);
@@ -325,7 +325,7 @@ void ft::irc::channel::send_names(const ft::irc::user& user) const throw()
     }
 }
 
-ft::irc::message ft::irc::channel::make_list_packet(bool force) const throw()
+ft::irc::message ft::irc::channel::make_list_packet(bool force) const
 {
     synchronized (this->lock.get_read_lock())
     {
@@ -341,7 +341,7 @@ ft::irc::message ft::irc::channel::make_list_packet(bool force) const throw()
     }
 }
 
-void ft::irc::channel::send_ban_list(const ft::irc::user& user) const throw()
+void ft::irc::channel::send_ban_list(const ft::irc::user& user) const
 {
     const std::string& channel_name = this->get_name();
     std::vector<ft::irc::message> ban_list_packets;
