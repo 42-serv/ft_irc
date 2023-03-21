@@ -282,7 +282,7 @@ namespace ft
                         const std::string& response = *it;
                         if (!response.empty())
                         {
-                            this->send_packet(layer, ft::irc::message("PRIVMSG") << target << response);
+                            this->send_packet(layer, ft::irc::message("NOTICE") << target << response);
                         }
                     }
                 }
