@@ -6,11 +6,10 @@ var NAVTREEINDEX0 =
 "bootstrap_8hpp.html":[5,0,0,0,1],
 "bootstrap_8hpp_source.html":[5,0,0,0,1],
 "bot_8cpp.html":[5,0,1],
-"bot_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97":[5,0,1,5],
-"bot_8cpp.html#a1a3fc1f065e736226d1d493fa3ac1c07":[5,0,1,2],
-"bot_8cpp.html#a4b8f6bfb370734d9097623adf02d499d":[5,0,1,4],
-"bot_8cpp.html#a9036d887eb28cf0fe185eea0a70d1844":[5,0,1,3],
-"bot_8cpp.html#aafbc4a3b189f32732001041e2788cd15":[5,0,1,6],
+"bot_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97":[5,0,1,4],
+"bot_8cpp.html#a4b8f6bfb370734d9097623adf02d499d":[5,0,1,3],
+"bot_8cpp.html#a9036d887eb28cf0fe185eea0a70d1844":[5,0,1,2],
+"bot_8cpp.html#aafbc4a3b189f32732001041e2788cd15":[5,0,1,5],
 "bot__parse__json_8py.html":[5,0,2],
 "bot__parse__json_8py.html#a1dad331e4d16fb38058daf48e96d1cef":[5,0,2,2],
 "bot__parse__json_8py.html#a98464c5764298b95e708fadcf2067f7b":[5,0,2,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX0 =
 "classft_1_1irc_1_1processor__nick.html#a626cab8cce5dea7e9d17ddffe9bb0d8c":[4,0,0,0,24,1],
 "classft_1_1irc_1_1processor__nick.html#a7a2f0f709488328c04b6ccf0c41ce78e":[4,0,0,0,24,0],
 "classft_1_1irc_1_1processor__nick.html#ae34ac5df56b40770d0417d7e8c9254fc":[4,0,0,0,24,3],
-"classft_1_1irc_1_1processor__notice.html":[4,0,0,0,30]
+"classft_1_1irc_1_1processor__notice.html":[4,0,0,0,30],
+"classft_1_1irc_1_1processor__notice.html#ac98a9b8daf87e613b19fa7438d3c2436":[4,0,0,0,30,0]
 };

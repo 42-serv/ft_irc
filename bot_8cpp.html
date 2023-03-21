@@ -115,7 +115,6 @@ $(document).ready(function(){initNavTree('bot_8cpp.html',''); initResizable(); }
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -160,11 +159,6 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceft_1_1irc"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1irc.html">ft::irc</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a1a3fc1f065e736226d1d493fa3ac1c07"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bot_8cpp.html#a1a3fc1f065e736226d1d493fa3ac1c07">FT_IRC_ADD_ALL_SUPPORT_PARAM</a>(_ADD)</td></tr>
-<tr class="separator:a1a3fc1f065e736226d1d493fa3ac1c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a9036d887eb28cf0fe185eea0a70d1844"><td class="memItemLeft" align="right" valign="top">static ft::shared_ptr&lt; <a class="el" href="classft_1_1serv_1_1event__channel__base.html">ft::serv::event_channel_base</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceft_1_1irc.html#a9036d887eb28cf0fe185eea0a70d1844">ft::irc::_make_client</a> (<a class="el" href="namespaceft_1_1serv.html#a2eb7f9f06f9ae2be0c715b7e66b50492">ft::serv::ident_t</a> ident, const std::string &amp;host, int serv, void *arg)</td></tr>
@@ -179,60 +173,6 @@ Variables</h2></td></tr>
 <tr class="memitem:aafbc4a3b189f32732001041e2788cd15"><td class="memItemLeft" align="right" valign="top">ft::shared_ptr&lt; <a class="el" href="classft_1_1serv_1_1event__worker__group.html">ft::serv::event_worker_group</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bot_8cpp.html#aafbc4a3b189f32732001041e2788cd15">child_group</a></td></tr>
 <tr class="separator:aafbc4a3b189f32732001041e2788cd15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a1a3fc1f065e736226d1d493fa3ac1c07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a3fc1f065e736226d1d493fa3ac1c07">&#9670;&nbsp;</a></span>FT_IRC_ADD_ALL_SUPPORT_PARAM</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FT_IRC_ADD_ALL_SUPPORT_PARAM</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">_ADD</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    _ADD(<span class="stringliteral">&quot;AWAYLEN=&quot;</span> <a class="code" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a>(<a class="code" href="irc__constants_8hpp.html#a3bc1c8894176dc8ac4eab4856835085f">FT_IRC_AWAYLEN</a>));       \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;CASEMAPPING=&quot;</span> <a class="code" href="irc__constants_8hpp.html#ab32d1b5a86d66d0e301614ab44d74fcb">FT_IRC_CASEMAPPING</a>);     \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;CHANLIMIT=&quot;</span> <a class="code" href="irc__constants_8hpp.html#a6190947d3301605f89e74ca7a328cd4d">FT_IRC_CHANLIMIT</a>);         \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;CHANMODES=&quot;</span> <a class="code" href="irc__constants_8hpp.html#a5d8c50084d408f15c3c5c2930483789c">FT_IRC_CHANMODES</a>);         \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;CHANNELLEN=&quot;</span> <a class="code" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a>(<a class="code" href="irc__constants_8hpp.html#a981bb908207f826238bcc15d41e55496">FT_IRC_CHANNELLEN</a>)); \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;CHANTYPES=&quot;</span> <a class="code" href="irc__constants_8hpp.html#a5053a5f6364c906908c61a56f4cd7fdd">FT_IRC_CHANTYPES</a>);         \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;HOSTLEN=&quot;</span> <a class="code" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a>(<a class="code" href="irc__constants_8hpp.html#a24c22f9e4e72e46fe8e1cc6fb074da96">FT_IRC_HOSTLEN</a>));       \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;KICKLEN=&quot;</span> <a class="code" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a>(<a class="code" href="irc__constants_8hpp.html#a47d7afefd879db9ef9fed08335b3fbe5">FT_IRC_KICKLEN</a>));       \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;MAXLIST=&quot;</span> <a class="code" href="irc__constants_8hpp.html#a994ff008dd460ca14f3bfd2c66de9f0d">FT_IRC_MAXLIST</a>);             \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;MAXTARGETS=&quot;</span> <a class="code" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a>(<a class="code" href="irc__constants_8hpp.html#a4f00f0331306706c5f933c07958ab886">FT_IRC_MAXTARGETS</a>)); \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;MODES=&quot;</span> <a class="code" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a>(<a class="code" href="irc__constants_8hpp.html#ac58e9029b8d49a45aed999a8454404a5">FT_IRC_MODES</a>));           \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;NETWORK=&quot;</span> <a class="code" href="irc__constants_8hpp.html#a013f1fd5525c790679d91e9ef3200e6f">FT_IRC_NETWORK</a>);             \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;NICKLEN=&quot;</span> <a class="code" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a>(<a class="code" href="irc__constants_8hpp.html#a31dd3b1624af3572e8518f02e567ffe8">FT_IRC_NICKLEN</a>));       \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;PREFIX=&quot;</span> <a class="code" href="irc__constants_8hpp.html#a50dc8df1bef1b91f7a9babc35218584d">FT_IRC_PREFIX</a>);               \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;STATUSMSG=&quot;</span> <a class="code" href="irc__constants_8hpp.html#a4b7eac03f17f8633b43782c4791156fb">FT_IRC_STATUSMSG</a>);         \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;TOPICLEN=&quot;</span> <a class="code" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a>(<a class="code" href="irc__constants_8hpp.html#a230c776b58b4209b512c1f41280c62db">FT_IRC_TOPICLEN</a>));     \</div>
-<div class="line">    _ADD(<span class="stringliteral">&quot;USERLEN=&quot;</span> <a class="code" href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a>(<a class="code" href="irc__constants_8hpp.html#ada6c62a26070cd4767a6981c4cb6ce08">FT_IRC_USERLEN</a>));\</div>
-<div class="ttc" id="airc__constants_8hpp_html_a013f1fd5525c790679d91e9ef3200e6f"><div class="ttname"><a href="irc__constants_8hpp.html#a013f1fd5525c790679d91e9ef3200e6f">FT_IRC_NETWORK</a></div><div class="ttdeci">#define FT_IRC_NETWORK</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:37</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a230c776b58b4209b512c1f41280c62db"><div class="ttname"><a href="irc__constants_8hpp.html#a230c776b58b4209b512c1f41280c62db">FT_IRC_TOPICLEN</a></div><div class="ttdeci">#define FT_IRC_TOPICLEN</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:41</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a24c22f9e4e72e46fe8e1cc6fb074da96"><div class="ttname"><a href="irc__constants_8hpp.html#a24c22f9e4e72e46fe8e1cc6fb074da96">FT_IRC_HOSTLEN</a></div><div class="ttdeci">#define FT_IRC_HOSTLEN</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:32</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a31dd3b1624af3572e8518f02e567ffe8"><div class="ttname"><a href="irc__constants_8hpp.html#a31dd3b1624af3572e8518f02e567ffe8">FT_IRC_NICKLEN</a></div><div class="ttdeci">#define FT_IRC_NICKLEN</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:38</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a3bc1c8894176dc8ac4eab4856835085f"><div class="ttname"><a href="irc__constants_8hpp.html#a3bc1c8894176dc8ac4eab4856835085f">FT_IRC_AWAYLEN</a></div><div class="ttdeci">#define FT_IRC_AWAYLEN</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:26</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a47d7afefd879db9ef9fed08335b3fbe5"><div class="ttname"><a href="irc__constants_8hpp.html#a47d7afefd879db9ef9fed08335b3fbe5">FT_IRC_KICKLEN</a></div><div class="ttdeci">#define FT_IRC_KICKLEN</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:33</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a4b7eac03f17f8633b43782c4791156fb"><div class="ttname"><a href="irc__constants_8hpp.html#a4b7eac03f17f8633b43782c4791156fb">FT_IRC_STATUSMSG</a></div><div class="ttdeci">#define FT_IRC_STATUSMSG</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:40</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a4f00f0331306706c5f933c07958ab886"><div class="ttname"><a href="irc__constants_8hpp.html#a4f00f0331306706c5f933c07958ab886">FT_IRC_MAXTARGETS</a></div><div class="ttdeci">#define FT_IRC_MAXTARGETS</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:35</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a5053a5f6364c906908c61a56f4cd7fdd"><div class="ttname"><a href="irc__constants_8hpp.html#a5053a5f6364c906908c61a56f4cd7fdd">FT_IRC_CHANTYPES</a></div><div class="ttdeci">#define FT_IRC_CHANTYPES</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:31</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a50dc8df1bef1b91f7a9babc35218584d"><div class="ttname"><a href="irc__constants_8hpp.html#a50dc8df1bef1b91f7a9babc35218584d">FT_IRC_PREFIX</a></div><div class="ttdeci">#define FT_IRC_PREFIX</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:39</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a5d8c50084d408f15c3c5c2930483789c"><div class="ttname"><a href="irc__constants_8hpp.html#a5d8c50084d408f15c3c5c2930483789c">FT_IRC_CHANMODES</a></div><div class="ttdeci">#define FT_IRC_CHANMODES</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:29</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a6190947d3301605f89e74ca7a328cd4d"><div class="ttname"><a href="irc__constants_8hpp.html#a6190947d3301605f89e74ca7a328cd4d">FT_IRC_CHANLIMIT</a></div><div class="ttdeci">#define FT_IRC_CHANLIMIT</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:28</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a981bb908207f826238bcc15d41e55496"><div class="ttname"><a href="irc__constants_8hpp.html#a981bb908207f826238bcc15d41e55496">FT_IRC_CHANNELLEN</a></div><div class="ttdeci">#define FT_IRC_CHANNELLEN</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:30</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_a994ff008dd460ca14f3bfd2c66de9f0d"><div class="ttname"><a href="irc__constants_8hpp.html#a994ff008dd460ca14f3bfd2c66de9f0d">FT_IRC_MAXLIST</a></div><div class="ttdeci">#define FT_IRC_MAXLIST</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:34</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_ab32d1b5a86d66d0e301614ab44d74fcb"><div class="ttname"><a href="irc__constants_8hpp.html#ab32d1b5a86d66d0e301614ab44d74fcb">FT_IRC_CASEMAPPING</a></div><div class="ttdeci">#define FT_IRC_CASEMAPPING</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:27</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_ac58e9029b8d49a45aed999a8454404a5"><div class="ttname"><a href="irc__constants_8hpp.html#ac58e9029b8d49a45aed999a8454404a5">FT_IRC_MODES</a></div><div class="ttdeci">#define FT_IRC_MODES</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:36</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_ada6c62a26070cd4767a6981c4cb6ce08"><div class="ttname"><a href="irc__constants_8hpp.html#ada6c62a26070cd4767a6981c4cb6ce08">FT_IRC_USERLEN</a></div><div class="ttdeci">#define FT_IRC_USERLEN</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:42</div></div>
-<div class="ttc" id="airc__constants_8hpp_html_af274eeb85cdb8f474ea3ce6d67e7553f"><div class="ttname"><a href="irc__constants_8hpp.html#af274eeb85cdb8f474ea3ce6d67e7553f">XSTR</a></div><div class="ttdeci">#define XSTR(_s)</div><div class="ttdef"><b>Definition:</b> irc_constants.hpp:6</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a4b8f6bfb370734d9097623adf02d499d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4b8f6bfb370734d9097623adf02d499d">&#9670;&nbsp;</a></span>_on_signal()</h2>
