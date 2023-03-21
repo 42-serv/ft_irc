@@ -1,12 +1,12 @@
 .SUFFIXES: .cpp .o .hpp .h .tpp
 .PHONY: all clean fclean cleanobj cleanbin re deps depsclean depsre allre bonus
 
-MAKEFLAGS =
+JOBS =
 
 ifeq ($(shell uname), Linux)
-	MAKEFLAGS += --jobs $(shell nproc)
+	JOBS += --jobs $(shell nproc)
 else
-	MAKEFLAGS += --jobs $(shell sysctl -n hw.ncpu)
+	JOBS += --jobs $(shell sysctl -n hw.ncpu)
 endif
 
 # Configuration
@@ -18,9 +18,9 @@ CXXFLAGS += -MMD -MF $(@:.o=.d) -MT $@ -MP
 CXXFLAGS += --std=c++98 -Wall -Wextra -Werror -pedantic
 CXXFLAGS += -Iincludes
 
-LIBSERV := includes/libserv/
-CXXFLAGS += -I$(LIBSERV)includes
-LDFLAGS += -L$(LIBSERV) -lserv -pthread
+LIBSERV := includes/libserv/libserv.a
+CXXFLAGS += -I$(dir $(LIBSERV))includes
+LDFLAGS += -L$(dir $(LIBSERV)) -lserv -pthread
 
 # Target
 TARGET = ircserv.out
@@ -81,13 +81,26 @@ ifdef MJ
 endif
 
 # Phonies
-all: $(TARGET)
+all: | $(LIBSERV)
+	@$(MAKE) $(JOBS) $(TARGET)
+
 bonus: $(BONUS_TARGET)
+
 clean: cleanobj
+	$(MAKE) -C $(dir $(LIBSERV)) $@
+
 fclean: cleanobj cleanbin
-cleanobj:	;	$(RM) -r $(OBJECTS_DIR)
-cleanbin:	;	$(RM) $(TARGET) $(BONUS_TARGET)
-re: clean	;	$(MAKE)
+	$(MAKE) -C $(dir $(LIBSERV)) $@
+
+cleanobj:
+	$(RM) -r $(OBJECTS_DIR)
+
+cleanbin:
+	$(RM) $(TARGET) $(BONUS_TARGET)
+
+re: 
+	$(MAKE) fclean
+	$(MAKE)
 
 # Recipes
 $(OBJECTS_DIR):
@@ -98,20 +111,14 @@ $(OBJECTS_DIR)%.o: %.cpp | $(OBJECTS_DIR)
 
 $(TARGET): $(OBJECTS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
-	
-$(BONUS_TARGET): $(BONUS_OBJECTS)
+
+$(BONUS_TARGET): $(BONUS_OBJECTS) | $(LIBSERV)
 	$(CXX) -o $@ $^ $(LDFLAGS)
+
+$(LIBSERV):
+	$(MAKE) -C $(dir $(LIBSERV))
+
 
 # Headers
 -include $(OBJECTS:.o=.d)
 -include $(BONUS_OBJECTS:.o=.d)
-
-# Dependencies
-deps:
-	$(MAKE) -C $(LIBSERV)
-
-depsre:
-	$(MAKE) -C $(LIBSERV) clean
-	$(MAKE) fclean
-	$(MAKE) -C $(LIBSERV)
-	$(MAKE)

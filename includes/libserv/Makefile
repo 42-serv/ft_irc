@@ -1,6 +1,14 @@
 .SUFFIXES: .cpp .o .hpp .h .tpp
 .PHONY: all clean cleanobj cleanbin re
 
+MAKEFLAGS :=
+
+ifeq ($(shell uname), Linux)
+	MAKEFLAGS += --jobs $(shell nproc)
+else
+	MAKEFLAGS += --jobs $(shell sysctl -n hw.ncpu)
+endif
+
 CXX = c++
 RM = rm -f
 AR = ar
@@ -72,7 +80,8 @@ ifdef TRACE
 endif
 
 all: $(TARGET)
-clean: cleanobj cleanbin
+clean: cleanobj
+fclean: cleanobj cleanbin
 cleanobj:	;	$(RM) -r $(OBJECTS_DIR)
 cleanbin:	;	$(RM) $(TARGET)
 
