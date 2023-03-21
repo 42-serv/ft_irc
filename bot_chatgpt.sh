@@ -21,10 +21,7 @@ function retrieve()
 	body=$(cat << EOF
 {
   "model": "gpt-3.5-turbo",
-  "messages": [{"role": "user", "content": $1}],
-  "temperature": 1.5,
-  "presence_penalty": 1.5,
-  "frequency_penalty": 1.5
+  "messages": [{"role": "user", "content": $1}]
 }
 EOF
 )
