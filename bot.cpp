@@ -247,7 +247,8 @@ namespace ft
                     ::close(fildes[STDOUT_FILENO]);
                     std::vector<std::string> responses;
 
-                    char buf[250];
+                    std::string str;
+                    char buf[1024];
                     ::ssize_t s;
                     do
                     {
@@ -256,8 +257,25 @@ namespace ft
                         {
                             break;
                         }
-                        responses.push_back(std::string(beginof(buf), s));
+                        str.append(buf, s);
                     } while (s != 0);
+
+                    const std::size_t lim = FT_IRC_MESSAGE_LINE_LIMIT / 2;
+                    const char* const delim = " !,.:;?";
+                    for (std::string::size_type beg = 0, end; beg < str.length(); beg = end)
+                    {
+                        std::string::size_type pos = str.find_last_of(delim, beg + lim - 1);
+
+                        if (pos != std::string::npos && pos > beg)
+                        {
+                            end = pos + 1;
+                        }
+                        else
+                        {
+                            end = beg + lim;
+                        }
+                        responses.push_back(str.substr(beg, end - beg));
+                    }
 
                     foreach (std::vector<std::string>::const_iterator, it, responses)
                     {
